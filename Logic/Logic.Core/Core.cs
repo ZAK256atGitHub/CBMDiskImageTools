@@ -1,0 +1,553 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using System.IO;
+using System.Collections;
+using System.Security.Cryptography;
+
+namespace ZAK256.CBMDiskImageTools.Logic.Core
+{
+    static class Const
+    {
+        internal const int MIN_TRACK = 1;
+        internal const int MAX_TRACK = 35;
+        internal const int MIN_SECTOR = 0;
+        internal const int BLOCK_LEN = 256;
+        internal const char LOCK_FLAG_SIGN = '<';
+        internal static readonly string LOCK_FLAG_SIGN_EMPTY = " ";
+        internal const char SPLAT_FILE_SIGN = '*';
+        internal static readonly string SPLAT_FILE_SIGN_EMPTY = " ";
+        internal const int DATA_BLOCK_TRACK_POS_IN_DIR_ENTRY = 1;
+        internal const int DATA_BLOCK_SECTOR_POS_IN_DIR_ENTRY = 2;
+        internal const int USED_BLOCKS_LOW_POS_IN_DIR_ENTRY = 28;
+        internal const int USED_BLOCKS_HIGH_POS_IN_DIR_ENTRY = 29;
+        internal const int NEXT_DIR_TRACK_POS_IN_DIR_ENTRY = 0;
+        internal const int NEXT_DIR_SECTOR_POS_IN_DIR_ENTRY = 1;
+        internal const int DIR_ENTRY_LEN = 30;
+        internal const int FIRST_DIR_ENTRY_POS_IN_DIR_BLOCK = 2;
+        internal const int NUM_OF_FILL_BYTES_BETWEEN_DIR_ENTRIES = 2;
+        internal const int NUM_OF_DIR_ENTRIES_IN_DIR_BLOCK = 8;
+        internal const int BAM_TRACK = 18;
+        internal const int BAM_SECTOR = 0;
+        internal const int DOS_TYPE_POS_IN_BAM_BLOCK = 165;
+        internal const int DOS_TYPE_LEN = 2;
+        internal const int DISK_ID_POS_IN_BAM_BLOCK = 162;
+        internal const int DISK_ID_LEN = 2;
+        internal const int DISK_NAME_POS_IN_BAM_BLOCK = 144;
+        internal const int DISK_NAME_LEN = 16;
+        internal const int FILENAME_POS_IN_DIR_ENTRY = 3;
+        internal const int FILENAME_LEN = 16;
+        internal const byte TERMINATE_BYTE = 0xA0;
+        internal const byte LOCK_FLAG_BIT_MASK = 0x40; // 0x40 = 0b01000000
+        internal const byte SPLAT_FILE_BIT_MASK = 0x80; // 0x80 = 0b10000000
+        internal const byte FILE_TYPE_BIT_MASK = 0x07; // 0x07 = 0b00000111
+        internal static readonly string DOS_FILE_TYPE_EXT_UNKNOWN = "???";
+        internal enum DOS_FILE_TYPE : int
+        {
+            Deleted = 0,
+            Sequential = 1,
+            Program = 2,
+            User = 3,
+            Relative = 4
+        };
+        internal readonly static string[] DOS_FILE_TYPE_EXT = {
+            "DEL",  // 0 - DEL
+            "SEQ",  // 1 - SEQ                                         
+            "PRG",  // 2 - PRG
+            "USR",  // 3 - USR
+            "REL",  // 4 - REL
+                    // Values 5-15 are illegal
+        };
+        internal readonly static int[] NUM_OF_SECTORS_PER_TRACK = {
+            0,       
+            21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21, // Zone 1
+	        19,19,19,19,19,19,19,                               // Zone 2
+	        18,18,18,18,18,18,                                  // Zone 3
+	        17,17,17,17,17                                      // Zone 4
+        };
+
+        internal const int GEOS_INFO_BLOCK_TRACK_POS_IN_DIR_ENTRY = 19;
+        internal const int GEOS_INFO_BLOCK_SECTOR_POS_IN_DIR_ENTRY = 20;
+        internal const int GEOS_RECORD_BLOCK_TRACK_POS_IN_DIR_ENTRY = 1;
+        internal const int GEOS_RECORD_BLOCK_SECTOR_POS_IN_DIR_ENTRY = 2;
+        internal const int GEOS_FILE_STRUCTURE_POS_IN_DIR_ENTRY = 21;
+        internal static readonly string GEOS_FILETYPE_NAME_UNKNOWN = "???";
+        internal static readonly string GEOS_FILE_STRUCTURE_NAME_UNKNOWN = "???";
+        internal const int GEOS_FILETYPE_POS_IN_DIR_ENTRY = 22;
+        internal enum GEOS_FILE_STRUCTURE : int
+        {
+            SEQ = 0,
+            VLIR = 1
+        };
+        internal readonly static string[] GEOS_FILE_STRUCTURE_NAMES = {
+            "SEQ ",
+            "VLIR"
+        };
+        internal enum GEOS_FILE_TYPE : int
+        {
+            NonGEOS = 0,
+            BASIC = 1,
+            Assembler = 2,
+            Datafile = 3,
+            SystemFile = 4,
+            DeskAccessory = 5,
+            Application = 6,
+            ApplicationData = 7,
+            FontFile = 8,
+            PrinterDriver = 9,
+            InputDriver = 10,
+            DiskDriver = 11,
+            SystemBootFile = 12,
+            Temporary = 13,
+            AutoExecuteFile = 14,
+        };
+        internal readonly static string[] GEOS_FILE_TYPE_NAMES = {
+            "   ",  // $00 - Non-GEOS (normal C64 file)
+            "BAS",  // $01 - BASIC
+            "ASM",  // $02 - Assembler
+            "DAT",  // $03 - Data file
+            "SYS",  // $04 - System File
+            "ACC",  // $05 - Desk Accessory
+            "APP",  // $06 - Application
+            "DOC",  // $07 - Application Data (user-created documents)
+            "FNT",  // $08 - Font File
+            "PRN",  // $09 - Printer Driver
+            "INP",  // $0A - Input Driver
+            "DSK",  // $0B - Disk Driver (or Disk Device)
+            "BOT",  // $0C - System Boot File
+            "TMP",  // $0D - Temporary
+            "AUT"  // $0E - Auto-Execute File
+                   // $0F-$FF - Undefined
+        };
+        internal static readonly string CVT_FILE_SIGNATURE_SEQ = "SEQ formatted GEOS file V1.0";
+        internal static readonly string CVT_FILE_SIGNATURE_PRG = "PRG formatted GEOS file V1.0";
+        internal const int CVT_DIR_BLOCK_CLEAR_FROM_POS = 58;
+    }
+    public static class Core
+    {
+        #region Checksum
+        public static string GetMD5Hash(byte[] data)
+        {
+            MD5 md5Hash = MD5.Create();
+            byte[] hash = md5Hash.ComputeHash(data);
+            return string.Concat(hash.Select(x => x.ToString("X2")));
+        }
+        #endregion
+
+        #region [CBM System]
+        public static string ConvertPETSCII2ASCII(byte[] petscii)
+        {
+            for (int i = 0; i < petscii.Length; i++)
+            {
+                if (petscii[i] == 255)
+                {
+                    petscii[i] = 126;
+                }
+                else if (petscii[i] >= 224)
+                {
+                    petscii[i] = (byte)(petscii[i] - 64);
+                }
+                else if (petscii[i] >= 192)
+                {
+                    petscii[i] = (byte)(petscii[i] - 96);
+                }
+            }
+            return Encoding.Default.GetString(petscii);
+        }
+        #endregion
+    }
+
+    public static class GEOSDisk
+    {
+        #region[GEOS-DISK] File
+        public static byte[] ClearCvtDirBlock(byte[] cvtDirBlock)
+        {
+            byte[] newDirEntry = cvtDirBlock.Take(Const.BLOCK_LEN).ToArray();
+            newDirEntry[Const.DATA_BLOCK_TRACK_POS_IN_DIR_ENTRY] = 0x0;
+            newDirEntry[Const.DATA_BLOCK_SECTOR_POS_IN_DIR_ENTRY] = 0x0;
+            newDirEntry[Const.GEOS_INFO_BLOCK_TRACK_POS_IN_DIR_ENTRY] = 0x0;
+            newDirEntry[Const.GEOS_INFO_BLOCK_SECTOR_POS_IN_DIR_ENTRY] = 0x0;
+            for (int i = Const.CVT_DIR_BLOCK_CLEAR_FROM_POS; i < Const.BLOCK_LEN; i++)
+            {
+                newDirEntry[i] = 0x0;
+            }
+            return newDirEntry;
+        }
+        public static byte[] GetClearCvtDirBlock(byte[] dirEntry)
+        {
+            byte[] cvtDirBlock;
+            cvtDirBlock = dirEntry.ToArray();
+            if (GetGEOSFileStructure(dirEntry) == (int)Const.GEOS_FILE_STRUCTURE.SEQ)
+            {
+                Encoding e = Encoding.ASCII;
+                cvtDirBlock = cvtDirBlock.Concat(e.GetBytes(Const.CVT_FILE_SIGNATURE_SEQ).ToArray()).ToArray();
+            }
+           else if (GetGEOSFileStructure(dirEntry) == (int)Const.GEOS_FILE_STRUCTURE.VLIR)
+            {
+                Encoding e = Encoding.ASCII;
+                cvtDirBlock = cvtDirBlock.Concat(e.GetBytes(Const.CVT_FILE_SIGNATURE_PRG).ToArray()).ToArray();
+            }
+            byte[] fillByte = new byte[Const.BLOCK_LEN - cvtDirBlock.Length];
+            cvtDirBlock = cvtDirBlock.Concat(fillByte).ToArray();
+            return ClearCvtDirBlock(cvtDirBlock);
+        }
+        public static byte[] GetCVTFromGeosFile(byte[] dirEntry, string imagePathFilename)
+        {
+            byte[] cvtData = new byte[0];
+            if (IsGeosFile(dirEntry) == false)
+            {
+                return cvtData;
+            }
+            byte[] cvtDirBlock;
+            byte[] cvtGeosInfoBlock;
+            byte[] cvtVLIRRecordBlock;
+            byte[] cvtRecordData = null;
+
+            cvtDirBlock = GetClearCvtDirBlock(dirEntry);
+            if (GetGEOSFileStructure(dirEntry) == (int)Const.GEOS_FILE_STRUCTURE.SEQ)
+            {
+            }
+            if (GetGEOSFileStructure(dirEntry) == (int)Const.GEOS_FILE_STRUCTURE.VLIR)
+            {
+            }
+            cvtGeosInfoBlock = GetGeosInfoBlock(dirEntry, imagePathFilename);
+            if (GetGEOSFileStructure(dirEntry) == (int)Const.GEOS_FILE_STRUCTURE.SEQ)
+            {
+                byte[] blocksData;
+                DOSDisk.ReadBlockChain(
+                    dirEntry[Const.DATA_BLOCK_TRACK_POS_IN_DIR_ENTRY],
+                    dirEntry[Const.DATA_BLOCK_SECTOR_POS_IN_DIR_ENTRY],
+                    imagePathFilename,
+                    out blocksData
+                );
+                cvtRecordData = blocksData;
+                cvtData = cvtDirBlock.Concat(cvtGeosInfoBlock).Concat(cvtRecordData).ToArray();
+            }
+            else if (GetGEOSFileStructure(dirEntry) == (int)Const.GEOS_FILE_STRUCTURE.VLIR)
+            {
+                cvtVLIRRecordBlock = GetGeosRecordBlock(dirEntry, imagePathFilename);
+                cvtRecordData = new byte[256];
+                cvtData = cvtDirBlock.Concat(cvtGeosInfoBlock).Concat(cvtVLIRRecordBlock).Concat(cvtRecordData).ToArray();
+            }
+            return cvtData;
+        }
+        public static byte[] GetGeosInfoBlock(byte[] dirEntry, string imagePathFilename)
+        {
+            byte[] blockData;
+            DOSDisk.ReadBlock(
+                dirEntry[Const.GEOS_INFO_BLOCK_TRACK_POS_IN_DIR_ENTRY],
+                dirEntry[Const.GEOS_INFO_BLOCK_SECTOR_POS_IN_DIR_ENTRY],
+                imagePathFilename,
+                out blockData
+                );
+            return blockData;
+        }
+        public static byte[] GetGeosRecordBlock(byte[] dirEntry, string imagePathFilename)
+        {
+            byte[] blockData;
+            DOSDisk.ReadBlock(Const.GEOS_RECORD_BLOCK_TRACK_POS_IN_DIR_ENTRY, Const.GEOS_RECORD_BLOCK_SECTOR_POS_IN_DIR_ENTRY, imagePathFilename, out blockData);
+            return blockData;
+        }
+        #endregion
+
+        #region [GEOS-DISK] GEOS DIR-Entry
+        public static bool IsGeosFile(byte[] dirEntry)
+        {
+            int FileType = DOSDisk.GetFileType(dirEntry);
+            int GEOSFiletype = GetGEOSFiletype(dirEntry);
+            int GEOSFileStructure = GetGEOSFileStructure(dirEntry);
+            if (
+                 ((FileType == (int)(Const.DOS_FILE_TYPE.Sequential)) || (FileType == (int)Const.DOS_FILE_TYPE.Program) || (FileType == (int)Const.DOS_FILE_TYPE.User)) // REL files are not allowed
+                 &&
+                 (GEOSFiletype > (int)(Const.GEOS_FILE_TYPE.NonGEOS)) // $00 - Non-GEOS (normal C64 file)
+                 &&
+                 ((GEOSFileStructure == (int)(Const.GEOS_FILE_STRUCTURE.SEQ)) || (GEOSFileStructure == (int)(Const.GEOS_FILE_STRUCTURE.VLIR)))  // $00 - Sequential, $01 - VLIR file
+               )
+            {
+                return true;
+            }
+            return false;
+        }
+        public static string GetGEOSFileStructureName(byte[] dirEntry)
+        {
+            int geosFileStructure = GetGEOSFileStructure(dirEntry);
+            if (geosFileStructure < Const.GEOS_FILE_STRUCTURE_NAMES.Length)
+            {
+                return Const.GEOS_FILE_STRUCTURE_NAMES[geosFileStructure];
+            }
+            else
+            {
+                return Const.GEOS_FILE_STRUCTURE_NAME_UNKNOWN; // "???"
+            }
+        }
+        public static int GetGEOSFileStructure(byte[] dirEntry)
+        {
+            return dirEntry[Const.GEOS_FILE_STRUCTURE_POS_IN_DIR_ENTRY];
+        }
+        public static string GetGEOSFiletypeName(byte[] dirEntry)
+        {
+            int geosFiletype = GetGEOSFiletype(dirEntry);
+            if (geosFiletype < Const.GEOS_FILE_TYPE_NAMES.Length)
+            {
+                return Const.GEOS_FILE_TYPE_NAMES[geosFiletype];
+            }
+            else
+            {
+                return Const.GEOS_FILETYPE_NAME_UNKNOWN; // "???"
+            }
+        }
+        public static int GetGEOSFiletype(byte[] dirEntry)
+        {
+            return dirEntry[Const.GEOS_FILETYPE_POS_IN_DIR_ENTRY];
+        }
+        #endregion
+    }
+    public static class DOSDisk
+    {
+        #region [DISK] File
+        public static string GetMD5ByFile(byte[] dirEntry, string imagePathFilename)
+        {
+            int track = dirEntry[Const.DATA_BLOCK_TRACK_POS_IN_DIR_ENTRY];
+            int sector = dirEntry[Const.DATA_BLOCK_SECTOR_POS_IN_DIR_ENTRY];
+            byte[] blocksData;
+            ReadBlockChain(track, sector, imagePathFilename, out blocksData);
+            return Core.GetMD5Hash(blocksData);
+        }
+        #endregion
+
+        #region [DISK] DIR-Entry
+        public static string GetLockFlagSign(byte[] dirEntry)
+        {
+            if (IsLockFlag(dirEntry))
+            {
+                return Const.LOCK_FLAG_SIGN.ToString();
+            }
+            else
+            {
+                return Const.LOCK_FLAG_SIGN_EMPTY; // " "
+            }
+        }
+        public static bool IsLockFlag(byte[] DirEntry)
+        {
+            return ((byte)(DirEntry[0] & Const.LOCK_FLAG_BIT_MASK) != 0); // 0x40 = 0b01000000
+        }
+        public static string GetSplatFileSign(byte[] dirEntry)
+        {
+            if (IsSplatFile(dirEntry))
+            {
+                return Const.SPLAT_FILE_SIGN.ToString();
+            }
+            else
+            {
+                return Const.SPLAT_FILE_SIGN_EMPTY; // " "
+            }
+        }
+        public static bool IsSplatFile(byte[] dirEntry)
+        {
+            return ((byte)(dirEntry[0] & Const.SPLAT_FILE_BIT_MASK) == 0); // 0x80 = 0b10000000
+        }
+        public static int GetFileSizeInBlocks(byte[] dirEntry)
+        {
+            return dirEntry[Const.USED_BLOCKS_HIGH_POS_IN_DIR_ENTRY] * Const.BLOCK_LEN + dirEntry[Const.USED_BLOCKS_LOW_POS_IN_DIR_ENTRY];
+        }
+        public static string GetFileTypeExt(byte[] dirEntry)
+        {
+            int fileType = GetFileType(dirEntry);
+            if (fileType <= Const.DOS_FILE_TYPE_EXT.Length)
+            {
+                return Const.DOS_FILE_TYPE_EXT[fileType];
+            }
+            else
+            {
+                return Const.DOS_FILE_TYPE_EXT_UNKNOWN; // "???"
+            }
+        }
+        public static int GetFileType(byte[] dirEntry)
+        {
+            //Bit 0-3: The actual filetype
+            //  000 (0) - DEL
+            //  001 (1) - SEQ
+            //  010 (2) - PRG
+            //  011 (3) - USR
+            //  100 (4) - REL
+            //  Values 5-15 are illegal, but if used will produce
+            //  very strange results. The 1541 is inconsistent in
+            //  how it treats these bits. Some routines use all 4
+            //  bits, others ignore bit 3,  resulting  in  values
+            //  from 0-7.
+            return (int)(dirEntry[0] & Const.FILE_TYPE_BIT_MASK); // 0x07 = 0b00000111
+        }
+        public static byte[] GetFilename(byte[] dirEntry)
+        {
+            byte[] fullFilename = GetFullFilename(dirEntry);
+            int termIndex = Array.IndexOf(fullFilename, Const.TERMINATE_BYTE);
+            if (termIndex >= 0)
+            {
+                return fullFilename.Take(termIndex).ToArray();
+            }
+            else
+            {
+                return fullFilename;
+            }
+        }
+        public static byte[] GetPartAfterFilename(byte[] dirEntry)
+        {
+            byte[] fullFilename = GetFullFilename(dirEntry);
+            int termIndex = Array.IndexOf(fullFilename, Const.TERMINATE_BYTE);
+            if ((termIndex >= 0) && (termIndex < fullFilename.Length))
+            {
+                return fullFilename.Skip(termIndex + 1).Concat(new byte[1] { 32 }).ToArray(); // 32 = SPACE                
+            }
+            else
+            {
+                return new byte[0];
+            }
+        }
+        public static byte[] GetFullFilename(byte[] dirEntry)
+        {
+            return dirEntry.Skip(Const.FILENAME_POS_IN_DIR_ENTRY).Take(Const.FILENAME_LEN).ToArray();
+        }
+        #endregion
+
+        #region [DISK] BLOCK / BAM-BLOCK / DIR-Entry
+        public static void FillDirEntryList(byte[] bamBlock, string imagePathFilename, ref ArrayList dirEntries)
+        {
+            int nextDirTrack = bamBlock[Const.NEXT_DIR_TRACK_POS_IN_DIR_ENTRY];
+            int nextDirSector = bamBlock[Const.NEXT_DIR_SECTOR_POS_IN_DIR_ENTRY];
+            byte[] dirBlock;
+            while (nextDirTrack > 0)
+            {
+                ReadBlock(nextDirTrack, nextDirSector, imagePathFilename, out dirBlock);
+                AddDirEntriesToDirEntryList(ref dirEntries, dirBlock);
+                nextDirTrack = dirBlock[Const.NEXT_DIR_TRACK_POS_IN_DIR_ENTRY];
+                nextDirSector = dirBlock[Const.NEXT_DIR_SECTOR_POS_IN_DIR_ENTRY];
+            }
+        }
+        public static void AddDirEntriesToDirEntryList(ref ArrayList dirEntryList, byte[] dirBlock)
+        {
+            for (int i = 0; i <= Const.NUM_OF_DIR_ENTRIES_IN_DIR_BLOCK - 1; i++)
+            {
+                byte[] dirEntry = new byte[Const.DIR_ENTRY_LEN];
+                dirEntry = dirBlock.Skip(i * (Const.DIR_ENTRY_LEN + Const.NUM_OF_FILL_BYTES_BETWEEN_DIR_ENTRIES) + Const.FIRST_DIR_ENTRY_POS_IN_DIR_BLOCK).Take(Const.DIR_ENTRY_LEN).ToArray();
+                dirEntryList.Add(dirEntry);
+            }
+        }
+        #endregion
+
+        #region [DISK] BAM-Block
+        public static int GetFreeBlocks(byte[] bamBlock)
+        {
+            // only for single sided d64 images
+            int freeBlocks = 0;
+            for (int i = 1; i <= Const.MAX_TRACK; i++) // MAX_TRACK muss hier 35 sein
+            {
+                if (i != Const.BAM_TRACK) // Die freien Blöcke auf Track 18 nicht mit zählen
+                {
+                    freeBlocks += bamBlock[4 * i];
+                }
+            }
+            return freeBlocks;
+        }
+        public static byte[] GetDOSType(byte[] bamBlock)
+        {
+            return bamBlock.Skip(Const.DOS_TYPE_POS_IN_BAM_BLOCK).Take(Const.DOS_TYPE_LEN).ToArray();
+        }
+        public static byte[] GetDiskID(byte[] bamBlock)
+        {
+            return bamBlock.Skip(Const.DISK_ID_POS_IN_BAM_BLOCK).Take(Const.DISK_ID_LEN).ToArray();
+        }
+        public static byte[] GetDiskName(byte[] bamBlock)
+        {
+            return bamBlock.Skip(Const.DISK_NAME_POS_IN_BAM_BLOCK).Take(Const.DISK_NAME_LEN).ToArray();
+        }
+        #endregion
+
+        #region [DISK] BLOCK / BAM-BLOCK
+        public static void ReadBAMBlock(string imagePathFilename, out byte[] bamBlock)
+        {
+            ReadBlock(Const.BAM_TRACK, Const.BAM_SECTOR, imagePathFilename, out bamBlock);
+        }
+        #endregion
+
+        #region [DISK] BLOCK
+        public static void ReadBlockChain(int track, int sector, string imagePathFilename, out byte[] blocksData)
+        {
+            blocksData = null;
+            byte[] blockData;
+            MemoryStream ms = new MemoryStream();
+            while (track > 0)
+            {
+                ReadBlock(track, sector, imagePathFilename, out blockData);
+                track = blockData[0];
+                sector = blockData[1];
+                if (track > 0)
+                {
+                    ms.Write(blockData, 2, blockData.Length - 2);
+                }
+                else
+                {
+                    ms.Write(blockData, 2, sector - 1); // last sector 
+                }
+            }
+            blocksData = ms.ToArray();
+        }
+        public static void ReadBlock(int track, int sector, string imagePathFilename, out byte[] blockData)
+        {
+            blockData = null;
+            switch (Path.GetExtension(imagePathFilename).ToUpper())
+            {
+                case ".D64":
+                    DiskImageFile.ReadBlockD64(track, sector, imagePathFilename, out blockData);
+                    break;
+                default:
+                    break;
+            }
+        }
+        #endregion
+    }
+    public static class DiskImageFile
+    {
+        #region [D64 Image] (file access)
+        public static void ReadBlockD64(int track, int sector, string imagePathFilename, out byte[] blockData)
+        {
+            blockData = null;
+            using (BinaryReader b = new BinaryReader(File.Open(imagePathFilename, FileMode.Open, FileAccess.Read)))
+            {
+                // convert track/sector to byte offset in file
+                long Offset = GetD64Offset(track, sector);
+                if (Offset >= 0)
+                {
+                    b.BaseStream.Seek(Offset, SeekOrigin.Begin);
+                    blockData = b.ReadBytes(Const.BLOCK_LEN);
+                }
+            }
+        }
+        public static long GetD64Offset(int track, int sector)
+        {
+            if ((track < Const.MIN_TRACK) || (track > Const.MAX_TRACK) || (sector < Const.MIN_SECTOR) || (sector >= Const.NUM_OF_SECTORS_PER_TRACK[track]))
+            {
+                return -1;
+            }
+            int SumOfSectorsToTrack = Const.NUM_OF_SECTORS_PER_TRACK.Take(track).Sum(); // used System.Linq;
+            return (SumOfSectorsToTrack + sector) * Const.BLOCK_LEN;
+        }
+        #endregion
+
+        #region Write (file access)
+        public static void WriteFileBlockChain(int track, int sector, string imagePathFilename, string outPathFilename)
+        {
+            byte[] blocksData;
+            DOSDisk.ReadBlockChain(track, sector, imagePathFilename, out blocksData);
+            File.WriteAllBytes(outPathFilename, blocksData);
+        }
+        public static void WriteCVTFile(byte[] dirEntry, string imagePathFilename, string outPathFilename)
+        {
+            byte[] cvtData = GEOSDisk.GetCVTFromGeosFile(dirEntry,imagePathFilename);
+            File.WriteAllBytes(outPathFilename, cvtData);
+        }
+        #endregion
+    }
+}

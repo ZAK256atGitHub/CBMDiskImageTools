@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Shared", "_Shared", "{0BC08898-EAEA-4249-A403-39A9FADA7806}"
+	ProjectSection(SolutionItems) = preProject
+		_Shared\SharedAssemblyInfo.cs = _Shared\SharedAssemblyInfo.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logic", "Logic", "{C987BFDA-07E6-4F48-B454-72E019D9CB2A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ui", "Ui", "{0AAFF247-4AE8-4051-B6F9-8DCED720C8A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic.Core", "Logic\Logic.Core\Logic.Core.csproj", "{5E8B0982-8267-45E8-A81A-C1369E022238}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CDIDir", "Ui\CDIDir\CDIDir.csproj", "{30D07C73-6187-43BE-9CA1-D823BD7CEC48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CDIGet", "Ui\CDIGet\CDIGet.csproj", "{8B89E7ED-5548-427F-8E44-BA4B7B55CE4F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5E8B0982-8267-45E8-A81A-C1369E022238}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E8B0982-8267-45E8-A81A-C1369E022238}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E8B0982-8267-45E8-A81A-C1369E022238}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E8B0982-8267-45E8-A81A-C1369E022238}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30D07C73-6187-43BE-9CA1-D823BD7CEC48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30D07C73-6187-43BE-9CA1-D823BD7CEC48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30D07C73-6187-43BE-9CA1-D823BD7CEC48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30D07C73-6187-43BE-9CA1-D823BD7CEC48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B89E7ED-5548-427F-8E44-BA4B7B55CE4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B89E7ED-5548-427F-8E44-BA4B7B55CE4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B89E7ED-5548-427F-8E44-BA4B7B55CE4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B89E7ED-5548-427F-8E44-BA4B7B55CE4F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5E8B0982-8267-45E8-A81A-C1369E022238} = {C987BFDA-07E6-4F48-B454-72E019D9CB2A}
+		{30D07C73-6187-43BE-9CA1-D823BD7CEC48} = {0AAFF247-4AE8-4051-B6F9-8DCED720C8A9}
+		{8B89E7ED-5548-427F-8E44-BA4B7B55CE4F} = {0AAFF247-4AE8-4051-B6F9-8DCED720C8A9}
+	EndGlobalSection
+EndGlobal
