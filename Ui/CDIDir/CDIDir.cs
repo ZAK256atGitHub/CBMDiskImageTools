@@ -20,8 +20,20 @@ namespace ZAK256.CBMDiskImageTools.Ui.CDIDir
 
         static void Main(string[] args)
         {
-            string imagePathFilename = @"geos20_d1a.d64";
-            ShowDir(imagePathFilename);
+            bool showHelpMsg = false;
+            if (args.Length == 1)
+            {
+                string imagePathFilename = args[0]; //@"geos20_d1a.d64";
+                ShowDir(imagePathFilename);
+            }
+            else
+            {
+                showHelpMsg = true;
+            }
+            if (showHelpMsg)
+            {
+                ShowHelpMsg();
+            }
             Console.ReadKey();
         }
 
@@ -82,6 +94,10 @@ namespace ZAK256.CBMDiskImageTools.Ui.CDIDir
             Console.WriteLine("{0} BLOCKS FREE."
               , DOSDisk.GetFreeBlocks(bamBlock).ToString()
             );
+        }
+        public static void ShowHelpMsg()
+        {
+            Console.WriteLine("CDIDir [D64 image file]");
         }
         #endregion
     }
