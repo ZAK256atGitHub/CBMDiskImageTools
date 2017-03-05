@@ -9,6 +9,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Shared", "_Shared", "{0BC0
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logic", "Logic", "{C987BFDA-07E6-4F48-B454-72E019D9CB2A}"
+	ProjectSection(SolutionItems) = preProject
+		_Shared\SharedAssemblyInfo.cs = _Shared\SharedAssemblyInfo.cs
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ui", "Ui", "{0AAFF247-4AE8-4051-B6F9-8DCED720C8A9}"
 EndProject
@@ -16,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic.Core", "Logic\Logic.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CDIDir", "Ui\CDIDir\CDIDir.csproj", "{30D07C73-6187-43BE-9CA1-D823BD7CEC48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CDIGet", "Ui\CDIGet\CDIGet.csproj", "{8B89E7ED-5548-427F-8E44-BA4B7B55CE4F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CDIExtract", "Ui\CDIExtract\CDIExtract.csproj", "{8B89E7ED-5548-427F-8E44-BA4B7B55CE4F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
