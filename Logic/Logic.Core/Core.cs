@@ -343,6 +343,11 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
         #region [DISK] File
         public static string GetMD5ByFile(byte[] dirEntry, string imagePathFilename)
         {
+            byte[] fileData = getFileData(dirEntry, imagePathFilename);
+            return Core.GetMD5Hash(fileData);
+        }
+        public static byte[] getFileData(byte[] dirEntry, string imagePathFilename)
+        {
             int track = dirEntry[Const.DATA_BLOCK_TRACK_POS_IN_DIR_ENTRY];
             int sector = dirEntry[Const.DATA_BLOCK_SECTOR_POS_IN_DIR_ENTRY];
             byte[] fileData;
@@ -354,7 +359,7 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
             {
                 fileData = ReadBlockChain(track, sector, imagePathFilename);
             }
-            return Core.GetMD5Hash(fileData);
+            return fileData;
         }
         #endregion
 
@@ -453,8 +458,9 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
         #endregion
 
         #region [DISK] BLOCK / BAM-BLOCK / DIR-Entry
-        public static void FillDirEntryList(byte[] bamBlock, string imagePathFilename, ref ArrayList dirEntries)
+        public static ArrayList GetDirEntryList(byte[] bamBlock, string imagePathFilename)
         {
+            ArrayList dirEntries = new ArrayList();
             int nextDirTrack = bamBlock[Const.NEXT_DIR_TRACK_POS_IN_DIR_ENTRY];
             int nextDirSector = bamBlock[Const.NEXT_DIR_SECTOR_POS_IN_DIR_ENTRY];
             byte[] dirBlock;
@@ -465,6 +471,7 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
                 nextDirTrack = dirBlock[Const.NEXT_DIR_TRACK_POS_IN_DIR_ENTRY];
                 nextDirSector = dirBlock[Const.NEXT_DIR_SECTOR_POS_IN_DIR_ENTRY];
             }
+            return dirEntries;
         }
         public static void AddDirEntriesToDirEntryList(ref ArrayList dirEntryList, byte[] dirBlock)
         {
@@ -591,12 +598,16 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
         public static void WriteFileBlockChain(int track, int sector, string imagePathFilename, string outPathFilename)
         {
             byte[] blocksData = DOSDisk.ReadBlockChain(track, sector, imagePathFilename);
-            File.WriteAllBytes(outPathFilename, blocksData);
+            WriteFile(blocksData, outPathFilename);
         }
         public static void WriteCVTFile(byte[] dirEntry, string imagePathFilename, string outPathFilename)
         {
             byte[] cvtData = GEOSDisk.GetCVTFromGeosFile(dirEntry, imagePathFilename);
-            File.WriteAllBytes(outPathFilename, cvtData);
+            WriteFile(cvtData, outPathFilename);
+        }
+        public static void WriteFile(byte[] fileData, string outPathFilename)
+        {
+            File.WriteAllBytes(outPathFilename, fileData);
         }
         #endregion
     }

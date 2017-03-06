@@ -49,7 +49,7 @@ namespace ZAK256.CBMDiskImageTools.Ui.CDIDir
         static void ShowDir(string imagePathFilename)
         {
             byte[] bamBlock;
-            ArrayList dirEntryArrayList = new ArrayList();
+            ArrayList dirEntryList = new ArrayList();
             //string imagePathFilename = @"free.d64";
 
             bamBlock = DOSDisk.ReadBAMBlock(imagePathFilename);
@@ -62,9 +62,9 @@ namespace ZAK256.CBMDiskImageTools.Ui.CDIDir
             Console.Write("|{0}", "  GEOS  ");
             Console.Write("|{0}", "MD5");
             Console.WriteLine();
-            DOSDisk.FillDirEntryList(bamBlock, imagePathFilename, ref dirEntryArrayList);
+            dirEntryList = DOSDisk.GetDirEntryList(bamBlock, imagePathFilename);
             int dirIndex = 0;
-            foreach (byte[] de in dirEntryArrayList)
+            foreach (byte[] de in dirEntryList)
             {
                 dirIndex++;
                 if (DOSDisk.GetFileType(de) != 0)
