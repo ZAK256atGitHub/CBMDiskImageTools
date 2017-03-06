@@ -7,8 +7,8 @@
     <ProjectGuid>{8B89E7ED-5548-427F-8E44-BA4B7B55CE4F}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ZAK256.CBMDiskImageTools.Ui.CDIGet</RootNamespace>
-    <AssemblyName>CDIGet</AssemblyName>
+    <RootNamespace>ZAK256.CBMDiskImageTools.Ui.CDIExtract</RootNamespace>
+    <AssemblyName>CDIExtract</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,7 +46,7 @@
     <Compile Include="..\..\_Shared\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="CDIExtract.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

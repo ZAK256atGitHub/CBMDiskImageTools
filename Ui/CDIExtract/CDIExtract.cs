@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZAK256.CBMDiskImageTools.Ui.CDIGet
+namespace ZAK256.CBMDiskImageTools.Ui.CDIExtract
 {
     class Program
     {

@@ -24,7 +24,15 @@ namespace ZAK256.CBMDiskImageTools.Ui.CDIDir
             if (args.Length == 1)
             {
                 string imagePathFilename = args[0]; //@"geos20_d1a.d64";
-                ShowDir(imagePathFilename);
+                try
+                {
+                    ShowDir(imagePathFilename);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message.ToString());
+                    showHelpMsg = true; 
+                }
             }
             else
             {
@@ -50,15 +58,15 @@ namespace ZAK256.CBMDiskImageTools.Ui.CDIDir
                 , Core.ConvertPETSCII2ASCII(DOSDisk.GetDiskID(bamBlock))
                 , Core.ConvertPETSCII2ASCII(DOSDisk.GetDOSType(bamBlock)));
             Console.Write("    ");
-            Console.Write("|{0}"
-                , "  GEOS  ");
-            Console.Write("|{0}"
-                , "MD5"
-            );
+            Console.Write("|{0}", "DirIndex");
+            Console.Write("|{0}", "  GEOS  ");
+            Console.Write("|{0}", "MD5");
             Console.WriteLine();
             DOSDisk.FillDirEntryList(bamBlock, imagePathFilename, ref dirEntryArrayList);
+            int dirIndex = 0;
             foreach (byte[] de in dirEntryArrayList)
             {
+                dirIndex++;
                 if (DOSDisk.GetFileType(de) != 0)
                 {
                     string filename = Core.ConvertPETSCII2ASCII(DOSDisk.GetFilename(de));
@@ -71,6 +79,7 @@ namespace ZAK256.CBMDiskImageTools.Ui.CDIDir
                         , DOSDisk.GetLockFlagSign(de)
                     );
                     Console.Write("  ");
+                    Console.Write("|{0,8}", dirIndex.ToString());
                     Console.Write("|{0} {1}"
                             , (GEOSDisk.IsGeosFile(de) ? GEOSDisk.GetGEOSFiletypeName(de) : "   ")
                             , (GEOSDisk.IsGeosFile(de) ? GEOSDisk.GetGEOSFileStructureName(de) : "    ")
@@ -97,7 +106,7 @@ namespace ZAK256.CBMDiskImageTools.Ui.CDIDir
         }
         public static void ShowHelpMsg()
         {
-            Console.WriteLine("CDIDir [D64 image file]");
+            Console.WriteLine("Usage: CDIDir [Commodore disk image filename]");
         }
         #endregion
     }

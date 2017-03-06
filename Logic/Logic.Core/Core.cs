@@ -10,7 +10,7 @@ using System.Security.Cryptography;
 
 namespace ZAK256.CBMDiskImageTools.Logic.Core
 {
-    static class Const
+    public static class Const
     {
         internal const int MIN_TRACK = 1;
         internal const int MAX_TRACK = 35;
@@ -545,13 +545,14 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
         public static byte[] ReadBlock(int track, int sector, string imagePathFilename)
         {
             byte[] blockData = null;
-            switch (Path.GetExtension(imagePathFilename).ToUpper())
+            string FileExt = Path.GetExtension(imagePathFilename).ToUpper();
+            switch (FileExt)
             {
                 case ".D64":
                     blockData = DiskImageFile.ReadBlockD64(track, sector, imagePathFilename);
                     break;
                 default:
-                    break;
+                    throw new Exception(String.Format("File Extension {0} is not supported!", FileExt));
             }
             return blockData;
         }
