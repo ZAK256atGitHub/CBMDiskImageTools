@@ -12,12 +12,124 @@ namespace ZAK256.CBMDiskImageTools.Ui.CDIExtract
     {
         static void Main(string[] args)
         {
-            string imagePathFilename = args[0];
+            
+            string imagePathFilename = "";
             int dirIndex = 0;
-            string asciiCbmFilename = "GEOS KERNAL";
-            ExtraxctFile(imagePathFilename, dirIndex, asciiCbmFilename);
+            string asciiCbmFilename = "";
+            string outPathFilename = "";
+
+            try
+            {
+                ParseCommandLineArgs(args, ref imagePathFilename, ref dirIndex, ref asciiCbmFilename, ref outPathFilename);
+                ExtraxctFile(imagePathFilename, dirIndex, asciiCbmFilename, outPathFilename);
+            }            
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message.ToString());
+                ShowUsageMsg();
+            }
         }
-        static void ExtraxctFile(string imagePathFilename,int dirIndex, string asciiCbmFilename)
+        static void ParseCommandLineArgs(string[] args,ref string imagePathFilename,ref int dirIndex,ref  string asciiCbmFilename,ref string outPathFilename)
+        {
+            // <filename>                    ... Commodore disk image filename with path ... fix position parameter (at first position)
+            // -i <index> | -f <fielename>   ... Commodore DOS filename in ascii         ... option with one value (-i or -f is required)
+            // [-o <filename>]               ... filename with path of output file       ... option with one value (optional)
+            imagePathFilename = "";
+            dirIndex = 0;
+            asciiCbmFilename = "";
+            outPathFilename = "";
+            
+            ArrayList options = new ArrayList();
+            options.Add("-i");
+            options.Add("-f");
+            options.Add("-o");
+            string currOption = "";
+            Dictionary<string, string> existArgs = new Dictionary<string, string>();
+
+            if (args.Length <= 0)
+            {
+                throw new Exception("Parameters are required!");
+            }
+            if (options.IndexOf(args[0]) >= 0) 
+            {
+                // the first argument must been a filename
+                throw new Exception("Commodore disk image filename is required!");
+            }
+            imagePathFilename = args[0];       
+            // split arguments and values
+            // check of duplicate options
+            for (int argsIndex = 1; argsIndex < args.Length; argsIndex++)
+            {
+                if (options.IndexOf(args[argsIndex]) >= 0)
+                {
+                    // Option
+                    currOption = args[argsIndex];
+                    if (existArgs.ContainsKey(currOption))
+                    {
+                        throw new Exception(String.Format("Option {0} occurs several times!", currOption));
+                    }
+                    else
+                    { 
+                        existArgs.Add(currOption, "");
+                    }
+                }
+                else
+                {
+                    if (currOption != "")
+                    {
+                        existArgs.Remove(currOption);
+                        existArgs.Add(currOption, args[argsIndex]);
+                        currOption = "";
+                    }
+                    else
+                    {
+                        throw new Exception(String.Format("The value {0} can not be assigned to any option!", args[argsIndex]));
+                    }
+                }
+            }
+            // check options ans values
+            
+            if ((existArgs.ContainsKey("-i")) && (existArgs.ContainsKey("-f")))
+            {
+                throw new Exception("The options -i and -f can not be used at the same time!");
+            }
+            if ((!existArgs.ContainsKey("-i")) && (!existArgs.ContainsKey("-f")))
+            {
+                throw new Exception("Option -i or -f is required!");
+            }
+            if (existArgs.ContainsKey("-i"))
+            {
+                if (existArgs["-i"] == "")
+                {
+                    throw new Exception("The option -i require a value!");
+                }
+                try
+                {
+                    dirIndex = Int32.Parse(existArgs["-i"]);
+                }
+                catch
+                {
+                    throw new Exception("The Option -i requires a numeric value!");
+                }
+            }
+            if (existArgs.ContainsKey("-f"))
+            {
+                if (existArgs["-f"] == "")
+                {
+                    throw new Exception("The option -f require a value!");
+                }
+                asciiCbmFilename = existArgs["-f"];
+            }
+            if (existArgs.ContainsKey("-o"))
+            {
+                if (existArgs["-o"] == "")
+                {
+                    throw new Exception("The option -o require a value!");
+                }
+                outPathFilename = existArgs["-o"];
+            } 
+        }
+        static void ExtraxctFile(string imagePathFilename,int dirIndex, string asciiCbmFilename, string outPathFilename)
         {
             byte[] bamBlock;
             byte[] dirEntry = null;
@@ -65,10 +177,19 @@ namespace ZAK256.CBMDiskImageTools.Ui.CDIExtract
                 throw new Exception(String.Format("File {0} is deleted!", filename));
             }
             byte[] fileData = DOSDisk.getFileData(dirEntry, imagePathFilename);
-            DiskImageFile.WriteFile(fileData,filename);
-            Console.WriteLine("OK");
-            Console.ReadKey();
-        }
+            if (outPathFilename != "")
+            {
+                DiskImageFile.WriteFile(fileData, outPathFilename);
+            }
+            else
+            {
+                DiskImageFile.WriteFile(fileData, filename);
+            }
 
+        }
+        public static void ShowUsageMsg()
+        {
+            Console.WriteLine("Usage: CDIDir [Commodore disk image filename] -i <dir index> | -f <filename> [-o <filename>]");
+        }
     }
 }

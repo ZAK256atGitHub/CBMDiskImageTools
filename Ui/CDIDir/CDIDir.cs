@@ -20,7 +20,7 @@ namespace ZAK256.CBMDiskImageTools.Ui.CDIDir
 
         static void Main(string[] args)
         {
-            bool showHelpMsg = false;
+            bool showUsageMsg = false;
             if (args.Length == 1)
             {
                 string imagePathFilename = args[0]; //@"geos20_d1a.d64";
@@ -31,16 +31,16 @@ namespace ZAK256.CBMDiskImageTools.Ui.CDIDir
                 catch (Exception e)
                 {
                     Console.WriteLine(e.Message.ToString());
-                    showHelpMsg = true; 
+                    showUsageMsg = true; 
                 }
             }
             else
             {
-                showHelpMsg = true;
+                showUsageMsg = true;
             }
-            if (showHelpMsg)
+            if (showUsageMsg)
             {
-                ShowHelpMsg();
+                ShowUsageMsg();
             }
             Console.ReadKey();
         }
@@ -104,7 +104,7 @@ namespace ZAK256.CBMDiskImageTools.Ui.CDIDir
               , DOSDisk.GetFreeBlocks(bamBlock).ToString()
             );
         }
-        public static void ShowHelpMsg()
+        public static void ShowUsageMsg()
         {
             Console.WriteLine("Usage: CDIDir [Commodore disk image filename]");
         }
