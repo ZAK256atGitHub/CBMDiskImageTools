@@ -611,4 +611,173 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
         }
         #endregion
     }
+    public static class CmdLineArgsParser
+    {
+        public static Dictionary<String, String> Parse(string[] args,Dictionary<String,int[]> arguments,out string firstArgValue)
+        {
+            // arguments
+            //   Key   ... argument
+            //   Value ... propertys od argument as int[]
+            //       index 0 .. fix first position (0 = false, 1 = true)
+            //       index 1 .. is required (0 = false, 1 = true)
+            //       index 2 .. is value required (0 = false, 1 = true)
+            //       index 3 .. group of or- operators (0 = no goup, 1..n = group no.)
+            bool firstArgIsFix = false;
+            bool oneArgIsRequired = false;
+            Dictionary<String, String> outDict = new Dictionary<string, string>();
+            Dictionary<String, int[]> optionList = new Dictionary<string, int[]>();
+            firstArgValue = "";
+            int firstOptionIndex = 0;
+            string currOption = "";
+            foreach (var item in arguments)
+            {
+                if (item.Value[0] != 0) // 0 .. fix first position (0 = false, 1 = true)
+                {
+                    firstArgIsFix = true;
+                    oneArgIsRequired = true;
+                }
+                else
+                {
+                    optionList.Add(item.Key, item.Value);
+                    if (item.Value[1] != 0)  // 1.. is required (0 = false, 1 = true)
+                    {
+                        oneArgIsRequired = true;
+                    }
+                }
+            }
+            if (!oneArgIsRequired)
+            {
+                return outDict; // return empty
+            }
+            if (args.Length <= 0)
+            {
+                throw new Exception("Parameters are required!");
+            }
+            if (firstArgIsFix)
+            {
+                // check is first arg a option?
+                if (optionList.ContainsKey(args[0]))
+                {
+                    throw new Exception("The first argument may not be an option!");
+                }
+                else
+                {
+                    firstArgValue = args[0];
+                }
+                firstOptionIndex = 1;
+            }
+            for (int optionIndex = firstOptionIndex; optionIndex < args.Length; optionIndex++)
+            {
+                if (optionList.ContainsKey(args[optionIndex])) // is option or value?
+                {
+                    // option
+                    currOption = args[optionIndex];
+                    if (outDict.ContainsKey(currOption))
+                    {
+                        throw new Exception(String.Format("The Option {0} occurs several times!", currOption));
+                    }
+                    else
+                    {
+                        outDict.Add(currOption, "");
+                    }
+                }
+                else
+                {
+                    // value
+                    if (currOption != "")
+                    {
+                        outDict.Remove(currOption);
+                        outDict.Add(currOption, args[optionIndex]);
+                        currOption = "";
+                    }
+                    else
+                    {
+                        throw new Exception(String.Format("The value {0} can not be assigned to any option!", args[optionIndex]));
+                    }
+                }
+            }
+            // check is required and is value required
+            ArrayList requiredGroupList = new ArrayList();
+            foreach (var item in optionList)
+            {
+                if (item.Value[3] > 0) // 3 .. group of or- operators (0 = no goup, 1..n = group no.)
+                {
+                    // group
+                    if (item.Value[1] != 0) // 1 .. is required (0 = false, 1 = true)
+                    {
+                        if (!requiredGroupList.Contains(item.Value[3]))
+                        {
+                            requiredGroupList.Add(item.Value[3]);
+                        }
+                    }
+                }
+                else
+                {
+                    // not group
+                    if (item.Value[1] != 0) // 1 .. is required (0 = false, 1 = true)
+                    {
+                        if (!outDict.ContainsKey(item.Key))
+                        {
+                            // Option is required
+                            throw new Exception(String.Format("The Option {0} is required!",item.Key));
+                        }
+                    }
+                }
+            }
+            Dictionary<int,String> existingGroupList = new Dictionary<int, string>();
+            foreach (var item in outDict)
+            {
+                int groupNo = optionList[item.Key][3]; // 3 .. group of or- operators (0 = no goup, 1..n = group no.)
+                if (groupNo > 0)  
+                {
+                    // group
+                    requiredGroupList.Remove(groupNo);
+                    if (existingGroupList.ContainsKey(groupNo))
+                    {
+                         throw new Exception(String.Format("The options {0} and {1} can not be used at the same time!",
+                             existingGroupList[groupNo],item.Key));
+                    }
+                    else
+                    {
+                        existingGroupList.Add(groupNo,item.Key);
+                    }
+                }
+                if (optionList[item.Key][2] !=0 ) // 2 .. is value required (0 = false, 1 = true)
+                {
+                    // value is required
+                    if (item.Value.Length == 0)
+                    {
+                        throw new Exception(String.Format("The option {0} require a value!",item.Key));
+                    }
+                }
+            }
+            if (requiredGroupList.Count > 0)
+            {
+                int groupNo = (int)requiredGroupList[0];
+                StringBuilder excepStrB = new StringBuilder();
+                foreach (var item2 in optionList)
+                {
+                    if (item2.Value[3] == groupNo)
+                    {
+                        if (excepStrB.Length > 0)
+                        {
+                            excepStrB.Append(" or ");
+                        }
+                        excepStrB.Append(item2.Key);
+                    }
+                }
+                throw new Exception(String.Format("The Option {0} is required!", excepStrB));
+            }
+            return outDict;
+        }
+        public static void AddArgument(ref Dictionary<String, int[]> arguments, string argKey, bool fixFirstPosition, bool isRequired, bool isValueRequired, int groupOfOrOperators)
+        {
+            int[] newValue = new int[4];
+            newValue[0] = (fixFirstPosition ? 1 : 0);
+            newValue[1] = (isRequired ? 1 : 0);
+            newValue[2] = (isValueRequired ? 1 : 0);
+            newValue[3] = groupOfOrOperators;
+            arguments.Add(argKey, newValue);
+        }
+    }
 }
