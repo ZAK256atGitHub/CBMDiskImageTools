@@ -9,9 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Shared", "_Shared", "{0BC0
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logic", "Logic", "{C987BFDA-07E6-4F48-B454-72E019D9CB2A}"
-	ProjectSection(SolutionItems) = preProject
-		_Shared\SharedAssemblyInfo.cs = _Shared\SharedAssemblyInfo.cs
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ui", "Ui", "{0AAFF247-4AE8-4051-B6F9-8DCED720C8A9}"
 EndProject
@@ -24,6 +21,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CVTChecksum", "Ui\CVTChecksum\CVTChecksum.csproj", "{1BF14B08-05AE-488C-90DE-09CE490C36DD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CVT2CleanCVT", "Ui\CVT2CleanCVT\CVT2CleanCVT.csproj", "{24D0FE06-7247-43C2-A3B2-094DE6C818C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CDITools", "Ui\CDITools\CDITools.csproj", "{37209B0A-13A6-4F9F-BC7D-155F504402A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +50,10 @@ Global
 		{24D0FE06-7247-43C2-A3B2-094DE6C818C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24D0FE06-7247-43C2-A3B2-094DE6C818C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24D0FE06-7247-43C2-A3B2-094DE6C818C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37209B0A-13A6-4F9F-BC7D-155F504402A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37209B0A-13A6-4F9F-BC7D-155F504402A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37209B0A-13A6-4F9F-BC7D-155F504402A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37209B0A-13A6-4F9F-BC7D-155F504402A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,5 +64,6 @@ Global
 		{8B89E7ED-5548-427F-8E44-BA4B7B55CE4F} = {0AAFF247-4AE8-4051-B6F9-8DCED720C8A9}
 		{1BF14B08-05AE-488C-90DE-09CE490C36DD} = {0AAFF247-4AE8-4051-B6F9-8DCED720C8A9}
 		{24D0FE06-7247-43C2-A3B2-094DE6C818C8} = {0AAFF247-4AE8-4051-B6F9-8DCED720C8A9}
+		{37209B0A-13A6-4F9F-BC7D-155F504402A1} = {0AAFF247-4AE8-4051-B6F9-8DCED720C8A9}
 	EndGlobalSection
 EndGlobal
