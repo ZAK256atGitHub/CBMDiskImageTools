@@ -189,14 +189,20 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
             // Block 2 = Record Block by VLIR | First Data Block by SEQ
             // Block 3 = First Data Block by VLIR
             // Block n = Data Block n
-            byte[] signatureDataBlock = GEOSDisk.ReadDataBlockCvt(cvtPathFilename, 0);
-            Console.Write(Core.byteArrayToString(signatureDataBlock));
-            byte[] dirEntry = signatureDataBlock.Take(Const.DIR_ENTRY_LEN).ToArray();
-            string fileSignature = System.Text.Encoding.ASCII.GetString(signatureDataBlock.Skip(Const.DIR_ENTRY_LEN).Take(Const.CVT_FILE_SIGNATURE_PRG.Length).ToArray());
+            byte[] cvtSignatureBlock;
+            byte[] cvtGeosInfoBlock;
+            byte[] cvtVLIRRecordBlock;
+            byte[] cvtRecordData;
+
+            cvtSignatureBlock = GEOSDisk.ReadDataBlockCvt(cvtPathFilename, 0);
+            Console.Write(Core.byteArrayToString(cvtSignatureBlock));
+            byte[] dirEntry = cvtSignatureBlock.Take(Const.DIR_ENTRY_LEN).ToArray();
+            string fileSignature = System.Text.Encoding.ASCII.GetString(cvtSignatureBlock.Skip(Const.DIR_ENTRY_LEN).Take(Const.CVT_FILE_SIGNATURE_PRG.Length).ToArray());
             if (fileSignature != Const.CVT_FILE_SIGNATURE_PRG)
             {
                 throw new Exception(String.Format("The file signature is {0} but {1}!",fileSignature,Const.CVT_FILE_SIGNATURE_PRG));
             }
+            cvtSignatureBlock = ClearCvtSignatureBlock(cvtSignatureBlock);
             Console.Write(fileSignature);
             return null;
         }
@@ -216,16 +222,15 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
         }
         public static byte[] ClearCvtSignatureBlock(byte[] cvtSignatureBlock)
         {
-            byte[] newDirEntry = cvtSignatureBlock.Take(Const.BLOCK_LEN).ToArray();
-            newDirEntry[Const.DATA_BLOCK_TRACK_POS_IN_DIR_ENTRY] = 0x0;
-            newDirEntry[Const.DATA_BLOCK_SECTOR_POS_IN_DIR_ENTRY] = 0x0;
-            newDirEntry[Const.GEOS_INFO_BLOCK_TRACK_POS_IN_DIR_ENTRY] = 0x0;
-            newDirEntry[Const.GEOS_INFO_BLOCK_SECTOR_POS_IN_DIR_ENTRY] = 0x0;
+            cvtSignatureBlock[Const.DATA_BLOCK_TRACK_POS_IN_DIR_ENTRY] = 0x0;
+            cvtSignatureBlock[Const.DATA_BLOCK_SECTOR_POS_IN_DIR_ENTRY] = 0x0;
+            cvtSignatureBlock[Const.GEOS_INFO_BLOCK_TRACK_POS_IN_DIR_ENTRY] = 0x0;
+            cvtSignatureBlock[Const.GEOS_INFO_BLOCK_SECTOR_POS_IN_DIR_ENTRY] = 0x0;
             for (int i = Const.CVT_DIR_BLOCK_CLEAR_FROM_POS; i < Const.DATA_BLOCK_LEN; i++)
             {
-                newDirEntry[i] = 0x0;
+                cvtSignatureBlock[i] = 0x0;
             }
-            return newDirEntry;
+            return cvtSignatureBlock;
         }
         public static byte[] GetClearCvtSignatureBlock(byte[] dirEntry)
         {
