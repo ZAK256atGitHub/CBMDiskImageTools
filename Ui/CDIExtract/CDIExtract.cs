@@ -29,9 +29,9 @@ namespace ZAK256.CBMDiskImageTools.Ui.CDIExtract
         }
         static void ParseCommandLineArgs(string[] args, out string imagePathFilename, out int dirIndex, out string asciiCbmFilename, out string outPathFilename)
         {
-            //// <filename>                    ... Commodore disk image filename with path ... fix position parameter (at first position)
-            //// -i <index> | -f <fielename>   ... Commodore DOS filename in ascii         ... option with one value (-i or -f is required)
-            //// [-o <filename>]               ... filename with path of output file       ... option with one value (optional)
+            // <filename>                    ... Commodore disk image filename with path ... fix position parameter (at first position)
+            // -i <index> | -f <fielename>   ... Commodore DOS filename in ascii         ... option with one value (-i or -f is required)
+            // [-o <filename>]               ... filename with path of output file       ... option with one value (optional)
             const string OPTION_INDEX = "-i";
             const string OPTION_FILENAME = "-f";
             const string OPTION_OUTFILENAME = "-o";
@@ -57,7 +57,7 @@ namespace ZAK256.CBMDiskImageTools.Ui.CDIExtract
                 }
                 catch
                 {
-                    throw new Exception(String.Format("The Option {} requires a numeric value!", OPTION_INDEX));
+                    throw new Exception(String.Format("The Option {0} requires a numeric value!", OPTION_INDEX));
                 }
             }
             if (optionList.ContainsKey(OPTION_FILENAME))
@@ -130,7 +130,7 @@ namespace ZAK256.CBMDiskImageTools.Ui.CDIExtract
         }
         public static void ShowUsageMsg()
         {
-            Console.WriteLine("Usage: CDIDir [Commodore disk image filename] -i <dir index> | -f <filename> [-o <filename>]");
+            Console.WriteLine("Usage: CDIDir <Commodore disk image filename> -i <dir index> | -f <filename> [-o <filename>]");
         }
     }
 }

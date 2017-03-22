@@ -129,6 +129,23 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
     }
     public static class Core
     {
+        public static string byteArrayToString(byte[] byteArray)
+        {
+            StringBuilder sb = new StringBuilder();
+            int lineCount = 0;
+            foreach (byte b in byteArray)
+            {
+                lineCount++;
+                sb.Append(b.ToString("X2"));
+                sb.Append(" ");
+                if (lineCount >= 16)
+                {
+                    lineCount = 0;
+                    sb.AppendLine();
+                }
+            }
+            return sb.ToString();
+        }
         #region Checksum
         public static string GetMD5Hash(byte[] data)
         {
@@ -164,6 +181,39 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
     public static class GEOSDisk
     {
         #region[GEOS-DISK] File
+        public static byte[] CleanCvt(string cvtPathFilename)
+        {
+            // CVT
+            // Block 0 = Signature Block
+            // Block 1 = Info Block
+            // Block 2 = Record Block by VLIR | First Data Block by SEQ
+            // Block 3 = First Data Block by VLIR
+            // Block n = Data Block n
+            byte[] signatureDataBlock = GEOSDisk.ReadDataBlockCvt(cvtPathFilename, 0);
+            Console.Write(Core.byteArrayToString(signatureDataBlock));
+            byte[] dirEntry = signatureDataBlock.Take(Const.DIR_ENTRY_LEN).ToArray();
+            string fileSignature = System.Text.Encoding.ASCII.GetString(signatureDataBlock.Skip(Const.DIR_ENTRY_LEN).Take(Const.CVT_FILE_SIGNATURE_PRG.Length).ToArray());
+            if (fileSignature != Const.CVT_FILE_SIGNATURE_PRG)
+            {
+                throw new Exception(String.Format("The file signature is {0} but {1}!",fileSignature,Const.CVT_FILE_SIGNATURE_PRG));
+            }
+            Console.Write(fileSignature);
+            return null;
+        }
+        public static byte[] ReadDataBlockCvt(string cvtPathFilename, int blockNo)
+        {
+            byte[] blockData = null;
+            using (BinaryReader b = new BinaryReader(File.Open(cvtPathFilename, FileMode.Open, FileAccess.Read)))
+            {                
+                long offset = blockNo * Const.DATA_BLOCK_LEN;
+                if (offset >= 0)
+                {
+                    b.BaseStream.Seek(offset, SeekOrigin.Begin);
+                    blockData = b.ReadBytes(Const.DATA_BLOCK_LEN);
+                }
+            }
+            return blockData;
+        }
         public static byte[] ClearCvtDirBlock(byte[] cvtDirBlock)
         {
             byte[] newDirEntry = cvtDirBlock.Take(Const.BLOCK_LEN).ToArray();
@@ -574,10 +624,10 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
             using (BinaryReader b = new BinaryReader(File.Open(imagePathFilename, FileMode.Open, FileAccess.Read)))
             {
                 // convert track/sector to byte offset in file
-                long Offset = GetD64Offset(track, sector);
-                if (Offset >= 0)
+                long offset = GetD64Offset(track, sector);
+                if (offset >= 0)
                 {
-                    b.BaseStream.Seek(Offset, SeekOrigin.Begin);
+                    b.BaseStream.Seek(offset, SeekOrigin.Begin);
                     blockData = b.ReadBytes(Const.BLOCK_LEN);
                 }
             }
