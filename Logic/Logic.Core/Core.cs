@@ -214,9 +214,9 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
             }
             return blockData;
         }
-        public static byte[] ClearCvtDirBlock(byte[] cvtDirBlock)
+        public static byte[] ClearCvtSignatureBlock(byte[] cvtSignatureBlock)
         {
-            byte[] newDirEntry = cvtDirBlock.Take(Const.BLOCK_LEN).ToArray();
+            byte[] newDirEntry = cvtSignatureBlock.Take(Const.BLOCK_LEN).ToArray();
             newDirEntry[Const.DATA_BLOCK_TRACK_POS_IN_DIR_ENTRY] = 0x0;
             newDirEntry[Const.DATA_BLOCK_SECTOR_POS_IN_DIR_ENTRY] = 0x0;
             newDirEntry[Const.GEOS_INFO_BLOCK_TRACK_POS_IN_DIR_ENTRY] = 0x0;
@@ -227,7 +227,7 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
             }
             return newDirEntry;
         }
-        public static byte[] GetClearCvtDirBlock(byte[] dirEntry)
+        public static byte[] GetClearCvtSignatureBlock(byte[] dirEntry)
         {
             MemoryStream ms = new MemoryStream();
             ms.Write(dirEntry, 0, dirEntry.Length);
@@ -236,7 +236,7 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
             ms.Write(prgSignature, 0, prgSignature.Length);
             byte[] fillByte = new byte[Const.DATA_BLOCK_LEN - ms.Length];
             ms.Write(fillByte, 0, fillByte.Length);
-            return ClearCvtDirBlock(ms.ToArray());
+            return ClearCvtSignatureBlock(ms.ToArray());
         }
         public static byte[] GetCVTFromGeosFile(byte[] dirEntry, string imagePathFilename)
         {
@@ -245,13 +245,13 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
             {
                 return null;
             }
-            byte[] cvtDirBlock;
+            byte[] cvtSignatureBlock;
             byte[] cvtGeosInfoBlock;
             byte[] cvtVLIRRecordBlock;
             byte[] cvtRecordData;
 
-            cvtDirBlock = GetClearCvtDirBlock(dirEntry);
-            ms.Write(cvtDirBlock, 0, cvtDirBlock.Length);
+            cvtSignatureBlock = GetClearCvtSignatureBlock(dirEntry);
+            ms.Write(cvtSignatureBlock, 0, cvtSignatureBlock.Length);
             cvtGeosInfoBlock = GetGeosInfoBlock(dirEntry, imagePathFilename);
             ms.Write(cvtGeosInfoBlock, 2, cvtGeosInfoBlock.Length - 2); // nur die Daten ohne die ersten 2 Byte Spur/Sektor
             if (GetGEOSFileStructure(dirEntry) == (int)Const.GEOS_FILE_STRUCTURE.SEQ)
