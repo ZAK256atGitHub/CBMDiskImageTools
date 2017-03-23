@@ -49,7 +49,7 @@ namespace ZAK256.CBMDiskImageTools.Ui.CVT2CleanCVT
         }
         static void CleanCvt(string cvtPathFilename, string outPathFilename)
         {
-            byte[] cleanCVT = GEOSDisk.CleanCvt(cvtPathFilename);
+            byte[] cleanCVT = GEOSDisk.GetCleanCvtFromCvt(cvtPathFilename);
         }
         public static void ShowUsageMsg()
         {

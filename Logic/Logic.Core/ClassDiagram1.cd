@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ZAK256.CBMDiskImageTools.Logic.Core.Const" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.75" />
+    <NestedTypes>
+      <Enum Name="ZAK256.CBMDiskImageTools.Logic.Core.Const.DOS_FILE_TYPE" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Core.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="ZAK256.CBMDiskImageTools.Logic.Core.Const.GEOS_FILE_STRUCTURE" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Core.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="ZAK256.CBMDiskImageTools.Logic.Core.Const.GEOS_FILE_TYPE" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Core.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>giMFCAARIAkAAAAgEAIACBQCcCEIggISAAgIhghAAQQ=</HashCode>
+      <FileName>Core.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZAK256.CBMDiskImageTools.Logic.Core.Core">
+    <Position X="5.25" Y="4.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Core.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZAK256.CBMDiskImageTools.Logic.Core.GEOSDisk">
+    <Position X="5.25" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAkAAACgAABQAhAQAAAACAABAAAAAA=</HashCode>
+      <FileName>Core.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZAK256.CBMDiskImageTools.Logic.Core.DOSDisk">
+    <Position X="2.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AQCACIIAEJAAhAAAQACAACIQAAKAAAAAACAAAAIAQIA=</HashCode>
+      <FileName>Core.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZAK256.CBMDiskImageTools.Logic.Core.DiskImageFile">
+    <Position X="0.5" Y="3.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEIAAAAAAAAAAAAAAAAACAAAAAAAAAACAAAIAA=</HashCode>
+      <FileName>Core.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZAK256.CBMDiskImageTools.Logic.Core.CmdLineArgsParser">
+    <Position X="0.5" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

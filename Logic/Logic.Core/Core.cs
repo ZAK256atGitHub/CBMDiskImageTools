@@ -181,7 +181,7 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
     public static class GEOSDisk
     {
         #region[GEOS-DISK] File
-        public static byte[] CleanCvt(string cvtPathFilename)
+        public static byte[] GetCleanCvtFromCvt(string cvtPathFilename)
         {
             // CVT
             // Block 0 = Signature Block
@@ -189,34 +189,64 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
             // Block 2 = Record Block by VLIR | First Data Block by SEQ
             // Block 3 = First Data Block by VLIR
             // Block n = Data Block n
+            MemoryStream ms = new MemoryStream();
+            byte[] dirEntry = cvtSignatureBlock.Take(Const.DIR_ENTRY_LEN).ToArray();
+            if (IsGeosFile(dirEntry) == false)
+            {
+                return null;
+            }
             byte[] cvtSignatureBlock;
             byte[] cvtGeosInfoBlock;
             byte[] cvtVLIRRecordBlock;
             byte[] cvtRecordData;
 
-            cvtSignatureBlock = GEOSDisk.ReadDataBlockCvt(cvtPathFilename, 0);
-            Console.Write(Core.byteArrayToString(cvtSignatureBlock));
-            byte[] dirEntry = cvtSignatureBlock.Take(Const.DIR_ENTRY_LEN).ToArray();
+            // Signature Block
+            cvtSignatureBlock = GEOSDisk.ReadOneDataBlockFromCvt(cvtPathFilename, 0);
             string fileSignature = System.Text.Encoding.ASCII.GetString(cvtSignatureBlock.Skip(Const.DIR_ENTRY_LEN).Take(Const.CVT_FILE_SIGNATURE_PRG.Length).ToArray());
             if (fileSignature != Const.CVT_FILE_SIGNATURE_PRG)
             {
-                throw new Exception(String.Format("The file signature is {0} but {1}!",fileSignature,Const.CVT_FILE_SIGNATURE_PRG));
+                throw new Exception(String.Format("The file signature is {0} but {1}!", fileSignature, Const.CVT_FILE_SIGNATURE_PRG));
             }
             cvtSignatureBlock = ClearCvtSignatureBlock(cvtSignatureBlock);
-            Console.Write(fileSignature);
-            return null;
+            ms.Write(cvtSignatureBlock, 0, cvtSignatureBlock.Length);
+
+            // Info Block
+            cvtGeosInfoBlock = ReadOneDataBlockFromCvt(cvtPathFilename,1);
+            ms.Write(cvtGeosInfoBlock, 0, cvtGeosInfoBlock.Length);
+            
+            if (GetGEOSFileStructure(dirEntry) == (int)Const.GEOS_FILE_STRUCTURE.SEQ)
+            {
+                // Data Block
+                cvtRecordData = ReadDataBlocksFromCvt(cvtPathFilename,2,true);
+                ms.Write(cvtRecordData, 0, cvtRecordData.Length);
+            }
+            else if (GetGEOSFileStructure(dirEntry) == (int)Const.GEOS_FILE_STRUCTURE.VLIR)
+            {
+                // Record Block only by VLIR
+                cvtVLIRRecordBlock = ReadOneDataBlockFromCvt(cvtPathFilename, 2);
+                ms.Write(cvtVLIRRecordBlock, 0, cvtVLIRRecordBlock.Length);
+                // Data Block
+                cvtRecordData = ReadDataBlocksFromCvt(cvtPathFilename, 3, true);
+                ms.Write(cvtRecordData, 0, cvtRecordData.Length);
+            }
+            return ms.ToArray();
         }
-        public static byte[] ReadDataBlockCvt(string cvtPathFilename, int blockNo)
+        public static byte[] ReadOneDataBlockFromCvt(string cvtPathFilename, int blockIndex)
         {
-            byte[] blockData = null;
-            using (BinaryReader b = new BinaryReader(File.Open(cvtPathFilename, FileMode.Open, FileAccess.Read)))
-            {                
-                long offset = blockNo * Const.DATA_BLOCK_LEN;
-                if (offset >= 0)
-                {
-                    b.BaseStream.Seek(offset, SeekOrigin.Begin);
-                    blockData = b.ReadBytes(Const.DATA_BLOCK_LEN);
-                }
+            return ReadDataBlocksFromCvt(cvtPathFilename, blockIndex,false);
+        }
+        public static byte[] ReadDataBlocksFromCvt(string cvtPathFilename, int blockIndex,bool readToEOF)
+        {
+            byte[] blockData = null;                      
+            int offset = blockIndex * Const.DATA_BLOCK_LEN;
+            byte[] fileData = File.ReadAllBytes(cvtPathFilename);
+            if (readToEOF)
+            {
+                blockData = fileData.Skip(offset).ToArray();
+            }
+            else
+            {
+                blockData = fileData.Skip(offset).Take(Const.DATA_BLOCK_LEN).ToArray();
             }
             return blockData;
         }
