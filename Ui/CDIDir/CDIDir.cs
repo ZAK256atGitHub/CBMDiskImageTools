@@ -90,14 +90,14 @@ namespace ZAK256.CBMDiskImageTools.Ui.CDIDir
                     Console.WriteLine();
 
 
-                    if (GEOSDisk.IsGeosFile(de))
-                    {
-                        DiskImageFile.WriteCVTFile(de, imagePathFilename, filename);
-                    }
-                    else
-                    {
-                        DiskImageFile.WriteFileBlockChain(de[1], de[2], imagePathFilename, filename);
-                    }
+                    //if (GEOSDisk.IsGeosFile(de))
+                    //{
+                    //    DiskImageFile.WriteCVTFile(de, imagePathFilename, filename);
+                    //}
+                    //else
+                    //{
+                    //    DiskImageFile.WriteFileBlockChain(de[1], de[2], imagePathFilename, filename);
+                    //}
                 }
             }
             Console.WriteLine("{0} BLOCKS FREE."

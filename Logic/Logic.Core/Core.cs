@@ -183,28 +183,35 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
         #region[GEOS-DISK] File
         public static byte[] CleanCvtVlirRecordData(byte[] cvtVlirRecordData, byte[] cvtVLIRRecordBlock)
         {
-            bool done = false;
-            int totalOffset = 0;
-            for (int i = 0; i < cvtVLIRRecordBlock.Length; i = i + 2)
+            List<byte[]> blockCountLastBlockIndexList = new List<byte[]>();
+            for (int i = 0; i < cvtVLIRRecordBlock.Length; i += 2)
             {
-                if (!done)
+                byte[] blockCountLastBlockIndex = cvtVLIRRecordBlock.Skip(i).Take(2).ToArray();
+                if ((blockCountLastBlockIndex[0] == 0x00) && (blockCountLastBlockIndex[1] == 0x00))
                 {
-                    if ((cvtVLIRRecordBlock[i] == 0x00) && (cvtVLIRRecordBlock[i + 1] == 0x00))
+                    break;
+                }
+                if (!((blockCountLastBlockIndex[0] == 0x00) && (blockCountLastBlockIndex[1] == 0xFF))) // ignore deleted records
+                {
+                    blockCountLastBlockIndexList.Add(blockCountLastBlockIndex);
+                }
+            }
+            int totalOffset = 0;
+            foreach (byte[] blockCountLastBlockIndex in blockCountLastBlockIndexList)
+            {
+                if (blockCountLastBlockIndex != blockCountLastBlockIndexList.Last())
+                {
+                    int cleanFrom = (blockCountLastBlockIndex[0] - 1) * Const.DATA_BLOCK_LEN + blockCountLastBlockIndex[1] + totalOffset;
+                    int cleanTo = blockCountLastBlockIndex[0]  * Const.DATA_BLOCK_LEN - 1 + totalOffset;
+                    for (int i = cleanFrom; i < cleanTo; i++)
                     {
-                        done = true;
+                        cvtVlirRecordData[i] = 0x00;
                     }
-                    else
-                    {
-                        if (!((cvtVLIRRecordBlock[i] == 0x00) && (cvtVLIRRecordBlock[i + 1] == 0xFF)))
-                        {
-                            int blockCount = cvtVLIRRecordBlock[i];
-                            int lastBlockIndex = cvtVLIRRecordBlock[i + 1];
-                            int currOffset = blockCount * Const.DATA_BLOCK_LEN + lastBlockIndex + lastBlockIndex;
-                            // Claen
-
-                            // lastBlockIndex += 
-                        }
-                    }
+                    totalOffset = cleanTo + 1;
+                }
+                else
+                {
+                    // last
                 }
             }
             return cvtVlirRecordData;
