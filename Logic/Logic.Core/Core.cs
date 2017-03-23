@@ -181,6 +181,65 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
     public static class GEOSDisk
     {
         #region[GEOS-DISK] File
+        public static byte[] CleanCvtVlirRecordData(byte[] cvtVlirRecordData, byte[] cvtVLIRRecordBlock)
+        {
+            bool done = false;
+            int totalOffset = 0;
+            for (int i = 0; i < cvtVLIRRecordBlock.Length; i = i + 2)
+            {
+                if (!done)
+                {
+                    if ((cvtVLIRRecordBlock[i] == 0x00) && (cvtVLIRRecordBlock[i + 1] == 0x00))
+                    {
+                        done = true;
+                    }
+                    else
+                    {
+                        if (!((cvtVLIRRecordBlock[i] == 0x00) && (cvtVLIRRecordBlock[i + 1] == 0xFF)))
+                        {
+                            int blockCount = cvtVLIRRecordBlock[i];
+                            int lastBlockIndex = cvtVLIRRecordBlock[i + 1];
+                            int currOffset = blockCount * Const.DATA_BLOCK_LEN + lastBlockIndex + lastBlockIndex;
+                            // Claen
+
+                            // lastBlockIndex += 
+                        }
+                    }
+                }
+            }
+            return cvtVlirRecordData;
+        }
+        public static byte[] CleanCvtVLIRRecordBlock(byte[] cvtVLIRRecordBlock)
+        {
+            bool firstNull = false;
+            bool secondNull = false;
+            for (int i = 0; i < cvtVLIRRecordBlock.Length; i++)
+            {
+                if (firstNull && secondNull)
+                {
+                    cvtVLIRRecordBlock[i] = 0x00;
+                }
+                else
+                {
+                    if (cvtVLIRRecordBlock[i] == 0)
+                    {
+                        if (firstNull)
+                        {
+                            secondNull = true;
+                        }
+                        else
+                        {
+                            firstNull = true;
+                        }
+                    }
+                    else
+                    {
+                        firstNull = false;
+                    }                    
+                }
+            }
+            return cvtVLIRRecordBlock;
+        }
         public static byte[] GetCleanCvtFromCvt(string cvtPathFilename)
         {
             // CVT
@@ -189,19 +248,20 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
             // Block 2 = Record Block by VLIR | First Data Block by SEQ
             // Block 3 = First Data Block by VLIR
             // Block n = Data Block n
-            MemoryStream ms = new MemoryStream();
-            byte[] dirEntry = cvtSignatureBlock.Take(Const.DIR_ENTRY_LEN).ToArray();
-            if (IsGeosFile(dirEntry) == false)
-            {
-                return null;
-            }
+
             byte[] cvtSignatureBlock;
             byte[] cvtGeosInfoBlock;
             byte[] cvtVLIRRecordBlock;
             byte[] cvtRecordData;
+            MemoryStream ms = new MemoryStream();
 
             // Signature Block
             cvtSignatureBlock = GEOSDisk.ReadOneDataBlockFromCvt(cvtPathFilename, 0);
+            byte[] dirEntry = cvtSignatureBlock.Take(Const.DIR_ENTRY_LEN).ToArray();
+            if (IsGeosFile(dirEntry) == false)
+            {
+                return null;
+            }            
             string fileSignature = System.Text.Encoding.ASCII.GetString(cvtSignatureBlock.Skip(Const.DIR_ENTRY_LEN).Take(Const.CVT_FILE_SIGNATURE_PRG.Length).ToArray());
             if (fileSignature != Const.CVT_FILE_SIGNATURE_PRG)
             {
@@ -223,10 +283,10 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
             else if (GetGEOSFileStructure(dirEntry) == (int)Const.GEOS_FILE_STRUCTURE.VLIR)
             {
                 // Record Block only by VLIR
-                cvtVLIRRecordBlock = ReadOneDataBlockFromCvt(cvtPathFilename, 2);
+                cvtVLIRRecordBlock = CleanCvtVLIRRecordBlock(ReadOneDataBlockFromCvt(cvtPathFilename, 2));
                 ms.Write(cvtVLIRRecordBlock, 0, cvtVLIRRecordBlock.Length);
                 // Data Block
-                cvtRecordData = ReadDataBlocksFromCvt(cvtPathFilename, 3, true);
+                cvtRecordData = CleanCvtVlirRecordData(ReadDataBlocksFromCvt(cvtPathFilename, 3, true), cvtVLIRRecordBlock);
                 ms.Write(cvtRecordData, 0, cvtRecordData.Length);
             }
             return ms.ToArray();
@@ -252,13 +312,13 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
         }
         public static byte[] ClearCvtSignatureBlock(byte[] cvtSignatureBlock)
         {
-            cvtSignatureBlock[Const.DATA_BLOCK_TRACK_POS_IN_DIR_ENTRY] = 0x0;
-            cvtSignatureBlock[Const.DATA_BLOCK_SECTOR_POS_IN_DIR_ENTRY] = 0x0;
-            cvtSignatureBlock[Const.GEOS_INFO_BLOCK_TRACK_POS_IN_DIR_ENTRY] = 0x0;
-            cvtSignatureBlock[Const.GEOS_INFO_BLOCK_SECTOR_POS_IN_DIR_ENTRY] = 0x0;
+            cvtSignatureBlock[Const.DATA_BLOCK_TRACK_POS_IN_DIR_ENTRY] = 0x00;
+            cvtSignatureBlock[Const.DATA_BLOCK_SECTOR_POS_IN_DIR_ENTRY] = 0x00;
+            cvtSignatureBlock[Const.GEOS_INFO_BLOCK_TRACK_POS_IN_DIR_ENTRY] = 0x00;
+            cvtSignatureBlock[Const.GEOS_INFO_BLOCK_SECTOR_POS_IN_DIR_ENTRY] = 0x00;
             for (int i = Const.CVT_DIR_BLOCK_CLEAR_FROM_POS; i < Const.DATA_BLOCK_LEN; i++)
             {
-                cvtSignatureBlock[i] = 0x0;
+                cvtSignatureBlock[i] = 0x00;
             }
             return cvtSignatureBlock;
         }
