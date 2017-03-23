@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace CDITools
 {
-    static class Program
+    static class CDITools
     {
         /// <summary>
         /// Der Haupteinstiegspunkt für die Anwendung.

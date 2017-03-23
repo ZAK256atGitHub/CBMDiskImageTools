@@ -212,6 +212,11 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
                 else
                 {
                     // last
+                    int len = (blockCountLastBlockIndex[0] - 1) * Const.DATA_BLOCK_LEN + blockCountLastBlockIndex[1] + totalOffset - 1;
+                    if (cvtVlirRecordData.Length != len)
+                    {
+                        throw new Exception("VLIR record blog length error!");
+                    }
                 }
             }
             return cvtVlirRecordData;
