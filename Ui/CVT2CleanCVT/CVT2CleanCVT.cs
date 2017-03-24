@@ -15,9 +15,10 @@ namespace ZAK256.CBMDiskImageTools.Ui.CVT2CleanCVT
             string cvtPathFilename;
             string outPathFilename;
             try
-            {
+            {                
                 ParseCommandLineArgs(args, out cvtPathFilename, out outPathFilename);
-                CleanCvt(cvtPathFilename, outPathFilename);
+                byte[] imageData = DiskImageFile.ReadCvtFile(cvtPathFilename);
+                CleanCvt(imageData, outPathFilename);
             }
             catch (Exception e)
             {
@@ -47,9 +48,9 @@ namespace ZAK256.CBMDiskImageTools.Ui.CVT2CleanCVT
             }
 
         }
-        static void CleanCvt(string cvtPathFilename, string outPathFilename)
+        static void CleanCvt(byte[] cvtData, string outPathFilename)
         {
-            byte[] cleanCvt = GEOSDisk.GetCleanCvtFromCvt(cvtPathFilename);
+            byte[] cleanCvt = GEOSDisk.GetCleanCvtFromCvt(cvtData);
             DiskImageFile.WriteFile(cleanCvt, outPathFilename);
         }
         public static void ShowUsageMsg()

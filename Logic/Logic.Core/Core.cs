@@ -18,6 +18,9 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
             G64 = 1,
             unknown = -1
         };
+        internal static readonly string D64_IMAGE_FILE_EXTENSION = ".D64";
+        internal static readonly string G64_IMAGE_FILE_EXTENSION = ".G64";
+        internal static readonly string CVT_FILE_EXTENSION = ".CVT";
         internal const int MIN_TRACK = 1;
         internal const int MAX_TRACK = 35;
         internal const int MIN_SECTOR = 0;
@@ -258,7 +261,7 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
             }
             return cvtVLIRRecordBlock;
         }
-        public static byte[] GetCleanCvtFromCvt(string cvtPathFilename)
+        public static byte[] GetCleanCvtFromCvt(byte[] cvtData)
         {
             // CVT
             // Block 0 = Signature Block
@@ -274,7 +277,7 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
             MemoryStream ms = new MemoryStream();
 
             // Signature Block
-            cvtSignatureBlock = GEOSDisk.ReadOneDataBlockFromCvt(cvtPathFilename, 0);
+            cvtSignatureBlock = GEOSDisk.ReadOneDataBlockFromCvt(cvtData, 0);
             byte[] dirEntry = cvtSignatureBlock.Take(Const.DIR_ENTRY_LEN).ToArray();
             if (IsGeosFile(dirEntry) == false)
             {
@@ -289,42 +292,41 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
             ms.Write(cvtSignatureBlock, 0, cvtSignatureBlock.Length);
 
             // Info Block
-            cvtGeosInfoBlock = ReadOneDataBlockFromCvt(cvtPathFilename,1);
+            cvtGeosInfoBlock = ReadOneDataBlockFromCvt(cvtData, 1);
             ms.Write(cvtGeosInfoBlock, 0, cvtGeosInfoBlock.Length);
             
             if (GetGEOSFileStructure(dirEntry) == (int)Const.GEOS_FILE_STRUCTURE.SEQ)
             {
                 // Data Block
-                cvtRecordData = ReadDataBlocksFromCvt(cvtPathFilename,2,true);
+                cvtRecordData = ReadDataBlocksFromCvt(cvtData, 2,true);
                 ms.Write(cvtRecordData, 0, cvtRecordData.Length);
             }
             else if (GetGEOSFileStructure(dirEntry) == (int)Const.GEOS_FILE_STRUCTURE.VLIR)
             {
                 // Record Block only by VLIR
-                cvtVLIRRecordBlock = CleanCvtVLIRRecordBlock(ReadOneDataBlockFromCvt(cvtPathFilename, 2));
+                cvtVLIRRecordBlock = CleanCvtVLIRRecordBlock(ReadOneDataBlockFromCvt(cvtData, 2));
                 ms.Write(cvtVLIRRecordBlock, 0, cvtVLIRRecordBlock.Length);
                 // Data Block
-                cvtRecordData = CleanCvtVlirRecordData(ReadDataBlocksFromCvt(cvtPathFilename, 3, true), cvtVLIRRecordBlock);
+                cvtRecordData = CleanCvtVlirRecordData(ReadDataBlocksFromCvt(cvtData, 3, true), cvtVLIRRecordBlock);
                 ms.Write(cvtRecordData, 0, cvtRecordData.Length);
             }
             return ms.ToArray();
         }
-        public static byte[] ReadOneDataBlockFromCvt(string cvtPathFilename, int blockIndex)
+        public static byte[] ReadOneDataBlockFromCvt(byte[] cvtData, int blockIndex)
         {
-            return ReadDataBlocksFromCvt(cvtPathFilename, blockIndex,false);
+            return ReadDataBlocksFromCvt(cvtData, blockIndex,false);
         }
-        public static byte[] ReadDataBlocksFromCvt(string cvtPathFilename, int blockIndex,bool readToEOF)
+        public static byte[] ReadDataBlocksFromCvt(byte[] cvtData, int blockIndex,bool readToEOF)
         {
             byte[] blockData = null;                      
             int offset = blockIndex * Const.DATA_BLOCK_LEN;
-            byte[] fileData = File.ReadAllBytes(cvtPathFilename);
             if (readToEOF)
             {
-                blockData = fileData.Skip(offset).ToArray();
+                blockData = cvtData.Skip(offset).ToArray();
             }
             else
             {
-                blockData = fileData.Skip(offset).Take(Const.DATA_BLOCK_LEN).ToArray();
+                blockData = cvtData.Skip(offset).Take(Const.DATA_BLOCK_LEN).ToArray();
             }
             return blockData;
         }
@@ -736,15 +738,25 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
         {
             return File.ReadAllBytes(imagePathFilename);
         }
+        public static byte[] ReadCvtFile(string imagePathFilename)
+        {
+            string fileExt = Path.GetExtension(imagePathFilename).ToUpper();
+            if (fileExt != Const.CVT_FILE_EXTENSION)
+            {
+                throw new Exception("The file must be CVT file!");
+            }
+            return File.ReadAllBytes(imagePathFilename);
+        }
         public static int GetImageDataType(string imagePathFilename)
         {
             string fileExt = Path.GetExtension(imagePathFilename).ToUpper();
-            switch (fileExt)
+            if (fileExt == Const.D64_IMAGE_FILE_EXTENSION)
             {
-                case ".D64":
-                    return (int)Const.IMAGE_DATA_TYPE.D64;
-                case ".G64":
-                    return (int)Const.IMAGE_DATA_TYPE.G64;
+                return (int)Const.IMAGE_DATA_TYPE.D64;
+            }
+            if (fileExt == Const.G64_IMAGE_FILE_EXTENSION)
+            { 
+                return (int)Const.IMAGE_DATA_TYPE.G64;
             }
             return (int)Const.IMAGE_DATA_TYPE.unknown;
         }

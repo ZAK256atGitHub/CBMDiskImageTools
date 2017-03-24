@@ -40,7 +40,8 @@ namespace ZAK256.CBMDiskImageTools.Ui.CVTChecksum
         }
         static void ShowCvtChecksum(string cvtPathFilename)
         {
-            byte[] cleanCvt = GEOSDisk.GetCleanCvtFromCvt(cvtPathFilename);
+            byte[] imageData = DiskImageFile.ReadCvtFile(cvtPathFilename);
+            byte[] cleanCvt = GEOSDisk.GetCleanCvtFromCvt(imageData);
             byte[] dirEntry = cleanCvt.Take(30).ToArray();
             string filename = Core.ConvertPETSCII2ASCII(DOSDisk.GetFilename(dirEntry));
             Console.WriteLine("{0,-16} MD5: {1}"
