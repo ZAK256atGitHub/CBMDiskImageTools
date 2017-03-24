@@ -51,8 +51,9 @@ namespace ZAK256.CBMDiskImageTools.Ui.CDIDir
             byte[] bamBlock;
             ArrayList dirEntryList = new ArrayList();
             //string imagePathFilename = @"free.d64";
-
-            bamBlock = DOSDisk.ReadBAMBlock(imagePathFilename);
+            byte[] imageData = DiskImageFile.ReadFile(imagePathFilename);
+            int imageDataType = DiskImageFile.GetImageDataType(imagePathFilename);
+            bamBlock = DOSDisk.ReadBAMBlock(imageData, imageDataType);
             Console.Write("0 \"{0}\" {1} {2}"
                 , Core.ConvertPETSCII2ASCII(DOSDisk.GetDiskName(bamBlock))
                 , Core.ConvertPETSCII2ASCII(DOSDisk.GetDiskID(bamBlock))
@@ -62,7 +63,7 @@ namespace ZAK256.CBMDiskImageTools.Ui.CDIDir
             Console.Write("|{0}", "  GEOS  ");
             Console.Write("|{0}", "MD5");
             Console.WriteLine();
-            dirEntryList = DOSDisk.GetDirEntryList(bamBlock, imagePathFilename);
+            dirEntryList = DOSDisk.GetDirEntryList(bamBlock, imageData, imageDataType);
             int dirIndex = 0;
             foreach (byte[] de in dirEntryList)
             {
@@ -85,7 +86,7 @@ namespace ZAK256.CBMDiskImageTools.Ui.CDIDir
                             , (GEOSDisk.IsGeosFile(de) ? GEOSDisk.GetGEOSFileStructureName(de) : "    ")
                     );
                     Console.Write("|{0}"
-                        , DOSDisk.GetMD5ByFile(de, imagePathFilename)
+                        , DOSDisk.GetMD5ByFile(de, imageData, imageDataType)
                     );
                     Console.WriteLine();
 

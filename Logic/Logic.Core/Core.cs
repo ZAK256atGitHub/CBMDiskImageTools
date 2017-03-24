@@ -12,6 +12,12 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
 {
     public static class Const
     {
+        internal enum IMAGE_DATA_TYPE : int
+        {
+            D64 = 0,
+            G64 = 1,
+            unknown = -1
+        };
         internal const int MIN_TRACK = 1;
         internal const int MAX_TRACK = 35;
         internal const int MIN_SECTOR = 0;
@@ -345,7 +351,7 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
             ms.Write(fillByte, 0, fillByte.Length);
             return ClearCvtSignatureBlock(ms.ToArray());
         }
-        public static byte[] GetCVTFromGeosFile(byte[] dirEntry, string imagePathFilename)
+        public static byte[] GetCVTFromGeosFile(byte[] dirEntry, byte[] imageData, int imageDataType)
         {
             MemoryStream ms = new MemoryStream();
             if (IsGeosFile(dirEntry) == false)
@@ -359,27 +365,27 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
 
             cvtSignatureBlock = GetClearCvtSignatureBlock(dirEntry);
             ms.Write(cvtSignatureBlock, 0, cvtSignatureBlock.Length);
-            cvtGeosInfoBlock = GetGeosInfoBlock(dirEntry, imagePathFilename);
+            cvtGeosInfoBlock = GetGeosInfoBlock(dirEntry, imageData, imageDataType);
             ms.Write(cvtGeosInfoBlock, 2, cvtGeosInfoBlock.Length - 2); // nur die Daten ohne die ersten 2 Byte Spur/Sektor
             if (GetGEOSFileStructure(dirEntry) == (int)Const.GEOS_FILE_STRUCTURE.SEQ)
             {
                 cvtRecordData = DOSDisk.ReadBlockChain(
                     dirEntry[Const.DATA_BLOCK_TRACK_POS_IN_DIR_ENTRY],
                     dirEntry[Const.DATA_BLOCK_SECTOR_POS_IN_DIR_ENTRY],
-                    imagePathFilename
+                    imageData, imageDataType
                 );
                 ms.Write(cvtRecordData, 0, cvtRecordData.Length);
             }
             else if (GetGEOSFileStructure(dirEntry) == (int)Const.GEOS_FILE_STRUCTURE.VLIR)
             {
-                cvtVLIRRecordBlock = GetGeosRecordBlock(dirEntry, imagePathFilename);
-                cvtRecordData = GetGeosBlockChains(ref cvtVLIRRecordBlock, imagePathFilename);
+                cvtVLIRRecordBlock = GetGeosRecordBlock(dirEntry, imageData, imageDataType);
+                cvtRecordData = GetGeosBlockChains(ref cvtVLIRRecordBlock, imageData,  imageDataType);
                 ms.Write(cvtVLIRRecordBlock, 2, cvtVLIRRecordBlock.Length - 2); // nur die Daten ohne die ersten 2 Byte Spur/Sektor
                 ms.Write(cvtRecordData, 0, cvtRecordData.Length);
             }
             return ms.ToArray();
         }
-        public static byte[] GetGeosBlockChains(ref byte[] geosRecordBlock, string imagePathFilename)
+        public static byte[] GetGeosBlockChains(ref byte[] geosRecordBlock, byte[] imageData, int imageDataType)
         {
             int sectorCount = 0;
             int lastSectorIndex = 0;
@@ -399,7 +405,7 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
                     byte[] cvtRecordData = DOSDisk.ReadBlockChain2(
                         track,
                         sector,
-                        imagePathFilename,
+                        imageData,  imageDataType,
                         ref sectorCount,
                         ref lastSectorIndex
                     );
@@ -423,21 +429,23 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
             }
             return ms.ToArray();
         }
-        public static byte[] GetGeosInfoBlock(byte[] dirEntry, string imagePathFilename)
+        public static byte[] GetGeosInfoBlock(byte[] dirEntry, byte[] imageData,int imageDataType)
         {
             byte[] blockData = DOSDisk.ReadBlock(
                 dirEntry[Const.GEOS_INFO_BLOCK_TRACK_POS_IN_DIR_ENTRY],
                 dirEntry[Const.GEOS_INFO_BLOCK_SECTOR_POS_IN_DIR_ENTRY],
-                imagePathFilename
+                imageData,
+                imageDataType
                 );
             return blockData;
         }
-        public static byte[] GetGeosRecordBlock(byte[] dirEntry, string imagePathFilename)
+        public static byte[] GetGeosRecordBlock(byte[] dirEntry, byte[] imageData, int imageDataType)
         {
             byte[] blockData = DOSDisk.ReadBlock(
                 dirEntry[Const.GEOS_RECORD_BLOCK_TRACK_POS_IN_DIR_ENTRY],
                 dirEntry[Const.GEOS_RECORD_BLOCK_SECTOR_POS_IN_DIR_ENTRY],
-                imagePathFilename
+                imageData,
+                imageDataType
                 );
             return blockData;
         }
@@ -498,23 +506,23 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
     public static class DOSDisk
     {
         #region [DISK] File
-        public static string GetMD5ByFile(byte[] dirEntry, string imagePathFilename)
+        public static string GetMD5ByFile(byte[] dirEntry, byte[] imageData, int imageDataType)
         {
-            byte[] fileData = getFileData(dirEntry, imagePathFilename);
+            byte[] fileData = getFileData(dirEntry, imageData,  imageDataType);
             return Core.GetMD5Hash(fileData);
         }
-        public static byte[] getFileData(byte[] dirEntry, string imagePathFilename)
+        public static byte[] getFileData(byte[] dirEntry, byte[] imageData, int imageDataType)
         {
             int track = dirEntry[Const.DATA_BLOCK_TRACK_POS_IN_DIR_ENTRY];
             int sector = dirEntry[Const.DATA_BLOCK_SECTOR_POS_IN_DIR_ENTRY];
             byte[] fileData;
             if (GEOSDisk.IsGeosFile(dirEntry))
             {
-                fileData = GEOSDisk.GetCVTFromGeosFile(dirEntry, imagePathFilename);
+                fileData = GEOSDisk.GetCVTFromGeosFile(dirEntry, imageData,  imageDataType);
             }
             else
             {
-                fileData = ReadBlockChain(track, sector, imagePathFilename);
+                fileData = ReadBlockChain(track, sector, imageData,  imageDataType);
             }
             return fileData;
         }
@@ -615,7 +623,7 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
         #endregion
 
         #region [DISK] BLOCK / BAM-BLOCK / DIR-Entry
-        public static ArrayList GetDirEntryList(byte[] bamBlock, string imagePathFilename)
+        public static ArrayList GetDirEntryList(byte[] bamBlock, byte[] imageData, int imageDataType)
         {
             ArrayList dirEntries = new ArrayList();
             int nextDirTrack = bamBlock[Const.NEXT_DIR_TRACK_POS_IN_DIR_ENTRY];
@@ -623,7 +631,7 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
             byte[] dirBlock;
             while (nextDirTrack > 0)
             {
-                dirBlock = ReadBlock(nextDirTrack, nextDirSector, imagePathFilename);
+                dirBlock = ReadBlock(nextDirTrack, nextDirSector, imageData, imageDataType);
                 AddDirEntriesToDirEntryList(ref dirEntries, dirBlock);
                 nextDirTrack = dirBlock[Const.NEXT_DIR_TRACK_POS_IN_DIR_ENTRY];
                 nextDirSector = dirBlock[Const.NEXT_DIR_SECTOR_POS_IN_DIR_ENTRY];
@@ -670,27 +678,27 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
         #endregion
 
         #region [DISK] BLOCK / BAM-BLOCK
-        public static byte[] ReadBAMBlock(string imagePathFilename)
+        public static byte[] ReadBAMBlock(byte[] imageData, int imageDataType)
         {
-            return ReadBlock(Const.BAM_TRACK, Const.BAM_SECTOR, imagePathFilename);
+            return ReadBlock(Const.BAM_TRACK, Const.BAM_SECTOR, imageData, imageDataType);
         }
         #endregion
 
         #region [DISK] BLOCK
-        public static byte[] ReadBlockChain(int track, int sector, string imagePathFilename)
+        public static byte[] ReadBlockChain(int track, int sector, byte[] imageData, int imageDataType)
         {
             int sectorCount = 0;
             int lastSectorIndex = 0;
-            return ReadBlockChain2(track, sector, imagePathFilename, ref sectorCount,ref lastSectorIndex);
+            return ReadBlockChain2(track, sector, imageData,  imageDataType, ref sectorCount,ref lastSectorIndex);
         }
-        public static byte[] ReadBlockChain2(int track, int sector, string imagePathFilename, ref int sectorCount, ref int lastSectorIndex)
+        public static byte[] ReadBlockChain2(int track, int sector, byte[] imageData, int imageDataType, ref int sectorCount, ref int lastSectorIndex)
         {
             byte[] blockData;
             sectorCount = 0;
             MemoryStream ms = new MemoryStream();
             while (track > 0)
             {
-                blockData = ReadBlock(track, sector, imagePathFilename);
+                blockData = ReadBlock(track, sector, imageData, imageDataType);
                 track = blockData[0];
                 sector = blockData[1];
                 if (track > 0)
@@ -706,17 +714,16 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
             }
             return ms.ToArray();
         }
-        public static byte[] ReadBlock(int track, int sector, string imagePathFilename)
+        public static byte[] ReadBlock(int track, int sector, byte[] imageData, int imageDataType)
         {
             byte[] blockData = null;
-            string FileExt = Path.GetExtension(imagePathFilename).ToUpper();
-            switch (FileExt)
+            switch (imageDataType)
             {
-                case ".D64":
-                    blockData = DiskImageFile.ReadBlockD64(track, sector, imagePathFilename);
+                case (int)Const.IMAGE_DATA_TYPE.D64:
+                    blockData = DiskImageFile.ReadBlockD64(track, sector, imageData);
                     break;
                 default:
-                    throw new Exception(String.Format("File Extension {0} is not supported!", FileExt));
+                    throw new Exception(String.Format("Image data type {0} is not supported!", imageDataType.ToString()));
             }
             return blockData;
         }
@@ -724,23 +731,37 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
     }
     public static class DiskImageFile
     {
-        #region [D64 Image] (file access)
-        public static byte[] ReadBlockD64(int track, int sector, string imagePathFilename)
+        #region with file access
+        public static byte[] ReadFile(string imagePathFilename)
+        {
+            return File.ReadAllBytes(imagePathFilename);
+        }
+        public static int GetImageDataType(string imagePathFilename)
+        {
+            string fileExt = Path.GetExtension(imagePathFilename).ToUpper();
+            switch (fileExt)
+            {
+                case ".D64":
+                    return (int)Const.IMAGE_DATA_TYPE.D64;
+                case ".G64":
+                    return (int)Const.IMAGE_DATA_TYPE.G64;
+            }
+            return (int)Const.IMAGE_DATA_TYPE.unknown;
+        }
+        #endregion
+        #region [D64 Image]
+        public static byte[] ReadBlockD64(int track, int sector, byte[] imageData)
         {
             byte[] blockData = null;
-            using (BinaryReader b = new BinaryReader(File.Open(imagePathFilename, FileMode.Open, FileAccess.Read)))
+            // convert track/sector to byte offset in file
+            int offset = GetD64Offset(track, sector);
+            if (offset >= 0)
             {
-                // convert track/sector to byte offset in file
-                long offset = GetD64Offset(track, sector);
-                if (offset >= 0)
-                {
-                    b.BaseStream.Seek(offset, SeekOrigin.Begin);
-                    blockData = b.ReadBytes(Const.BLOCK_LEN);
-                }
+                blockData = imageData.Skip(offset).Take(Const.BLOCK_LEN).ToArray();
             }
             return blockData;
         }
-        public static long GetD64Offset(int track, int sector)
+        public static int GetD64Offset(int track, int sector)
         {
             if ((track < Const.MIN_TRACK) || (track > Const.MAX_TRACK) || (sector < Const.MIN_SECTOR) || (sector >= Const.NUM_OF_SECTORS_PER_TRACK[track]))
             {
@@ -752,14 +773,14 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
         #endregion
 
         #region Write (file access)
-        public static void WriteFileBlockChain(int track, int sector, string imagePathFilename, string outPathFilename)
+        public static void WriteFileBlockChain(int track, int sector, byte[] imageData, int imageDataType, string outPathFilename)
         {
-            byte[] blocksData = DOSDisk.ReadBlockChain(track, sector, imagePathFilename);
+            byte[] blocksData = DOSDisk.ReadBlockChain(track, sector, imageData, imageDataType);
             WriteFile(blocksData, outPathFilename);
         }
-        public static void WriteCVTFile(byte[] dirEntry, string imagePathFilename, string outPathFilename)
+        public static void WriteCVTFile(byte[] dirEntry, byte[] imageData, int imageDataType, string outPathFilename)
         {
-            byte[] cvtData = GEOSDisk.GetCVTFromGeosFile(dirEntry, imagePathFilename);
+            byte[] cvtData = GEOSDisk.GetCVTFromGeosFile(dirEntry, imageData, imageDataType);
             WriteFile(cvtData, outPathFilename);
         }
         public static void WriteFile(byte[] fileData, string outPathFilename)

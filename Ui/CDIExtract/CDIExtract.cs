@@ -75,8 +75,10 @@ namespace ZAK256.CBMDiskImageTools.Ui.CDIExtract
             byte[] bamBlock;
             byte[] dirEntry = null;
             ArrayList dirEntryList = new ArrayList();
-            bamBlock = DOSDisk.ReadBAMBlock(imagePathFilename);
-            dirEntryList = DOSDisk.GetDirEntryList(bamBlock, imagePathFilename);
+            byte[] imageData = DiskImageFile.ReadFile(imagePathFilename);
+            int imageDataType = DiskImageFile.GetImageDataType(imagePathFilename);
+            bamBlock = DOSDisk.ReadBAMBlock(imageData, imageDataType);
+            dirEntryList = DOSDisk.GetDirEntryList(bamBlock, imageData, imageDataType);
             // by DirIndex
             if (dirIndex > 0)
             {
@@ -117,7 +119,7 @@ namespace ZAK256.CBMDiskImageTools.Ui.CDIExtract
             {
                 throw new Exception(String.Format("File {0} is deleted!", filename));
             }
-            byte[] fileData = DOSDisk.getFileData(dirEntry, imagePathFilename);
+            byte[] fileData = DOSDisk.getFileData(dirEntry, imageData, imageDataType);
             if (outPathFilename != "")
             {
                 DiskImageFile.WriteFile(fileData, outPathFilename);

@@ -34,13 +34,15 @@ namespace CDITools
                 string imagePathFilename = openFileDialog1.FileName;
                 byte[] bamBlock;
                 ArrayList dirEntryList = new ArrayList();
-                bamBlock = DOSDisk.ReadBAMBlock(imagePathFilename);
+                byte[] imageData = DiskImageFile.ReadFile(imagePathFilename);
+                int imageDataType = DiskImageFile.GetImageDataType(imagePathFilename);
+                bamBlock = DOSDisk.ReadBAMBlock(imageData, imageDataType);
                 textBoxDiskLabel.Text = String.Format("0 \"{0}\" {1} {2}"
                     , Core.ConvertPETSCII2ASCII(DOSDisk.GetDiskName(bamBlock))
                     , Core.ConvertPETSCII2ASCII(DOSDisk.GetDiskID(bamBlock))
                     , Core.ConvertPETSCII2ASCII(DOSDisk.GetDOSType(bamBlock)));
 
-                dirEntryList = DOSDisk.GetDirEntryList(bamBlock, imagePathFilename);
+                dirEntryList = DOSDisk.GetDirEntryList(bamBlock, imageData, imageDataType);
                 int dirIndex = 0;
                 foreach (byte[] de in dirEntryList)
                 {
@@ -55,7 +57,7 @@ namespace CDITools
                         listViewItem.SubItems.Add(dirIndex.ToString());
                         listViewItem.SubItems.Add((GEOSDisk.IsGeosFile(de) ? GEOSDisk.GetGEOSFiletypeName(de) : "   "));
                         listViewItem.SubItems.Add((GEOSDisk.IsGeosFile(de) ? GEOSDisk.GetGEOSFileStructureName(de) : "    "));
-                        listViewItem.SubItems.Add(DOSDisk.GetMD5ByFile(de, imagePathFilename));
+                        listViewItem.SubItems.Add(DOSDisk.GetMD5ByFile(de, imageData, imageDataType));
                         listView1.Items.Add(listViewItem);                        
                     }
                 }
