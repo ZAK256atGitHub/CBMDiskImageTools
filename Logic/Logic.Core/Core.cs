@@ -210,13 +210,13 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
             {
                 if (blockCountLastBlockIndex != blockCountLastBlockIndexList.Last())
                 {
-                    int cleanFrom = (blockCountLastBlockIndex[0] - 1) * Const.DATA_BLOCK_LEN + blockCountLastBlockIndex[1] + totalOffset;
-                    int cleanTo = blockCountLastBlockIndex[0]  * Const.DATA_BLOCK_LEN - 1 + totalOffset;
+                    int cleanFrom = (blockCountLastBlockIndex[0] - 1) * Const.DATA_BLOCK_LEN + blockCountLastBlockIndex[1] + totalOffset -1; // Hmm ?!
+                    int cleanTo = blockCountLastBlockIndex[0]  * Const.DATA_BLOCK_LEN  + totalOffset;
                     for (int i = cleanFrom; i < cleanTo; i++)
                     {
                         cvtVlirRecordData[i] = 0x00;
                     }
-                    totalOffset = cleanTo + 1;
+                    totalOffset = cleanTo;
                 }
                 else
                 {
@@ -224,7 +224,7 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
                     int len = (blockCountLastBlockIndex[0] - 1) * Const.DATA_BLOCK_LEN + blockCountLastBlockIndex[1] + totalOffset - 1;
                     if (cvtVlirRecordData.Length != len)
                     {
-                        throw new Exception("VLIR record blog length error!");
+                        throw new Exception(string.Format("VLIR record blog length error! ({0} <> {1})", cvtVlirRecordData.Length,len));
                     }
                 }
             }

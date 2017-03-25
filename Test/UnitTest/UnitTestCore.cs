@@ -7,17 +7,26 @@ using System.Collections.Generic;
 
 namespace UnitTest
 {
+    // Test files:
+    // 8EB414AB37B23A1D1D348D456896A1B0* APPS64.D64
+    // F004B907634A30C21D4DF39E362C0789* GEOS64.D64
+    // 5518FA80D16F09EB8DF16749423FE74A* GPT64.CVT
+    // 7BB3438CBE86A08448BB03585AF68787* GW64.CVT
+
     [TestClass]
     public class UnitTestCore
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestMethod_GEOS64_D64()
         {
             ArrayList dirEntryList = new ArrayList();
             byte[] imageData = Properties.Resources.GEOS64_D64;
+            Assert.AreEqual("F004B907634A30C21D4DF39E362C0789", Core.GetMD5Hash(imageData),"The test file is incorrect!");
             int imageDataType = 0; // sorry hard coding 0 = D64
             byte[] bamBlock = DOSDisk.ReadBAMBlock(imageData, imageDataType);
             dirEntryList = DOSDisk.GetDirEntryList(bamBlock, imageData, imageDataType);
+
+
 
             // 0 "System          " 00 2A    |DirIndex|  GEOS  |MD5
             // 2    "GEOS"             PRG   |       1|BAS SEQ |D4189F0FA391276504B680E1205402D6
@@ -88,14 +97,70 @@ namespace UnitTest
                     Assert.AreEqual(expectedGEOSFileStructureName, GEOSFileStructureName, "The GEOS file structure is incorrect.");
                     Console.WriteLine("GEOS file structure {0} = {1}", expectedGEOSFileStructureName, GEOSFileStructureName); // see at test explorer --> "output"
 
-                    string expectedMd5 = currList[5];                                     
+                    string expectedMd5 = currList[5];
                     string md5 = DOSDisk.GetMD5ByFile(dirEntry, imageData, imageDataType);
                     Assert.AreEqual(expectedMd5, md5, "The MD5 checksum is incorrect.");
                     Console.WriteLine("MD5 {0} = {1}", expectedMd5, md5); // see at test explorer --> "output"                    
-                }                
+                }
                 index++;
             }
             Assert.AreEqual(16, dirIndex, "The number of fils is incorrect.");
+        }
+        [TestMethod]
+        public void TestMethod_APPS64_D64()
+        {
+            ArrayList dirEntryList = new ArrayList();
+            byte[] imageData = Properties.Resources.APPS64_D64;
+            Assert.AreEqual("8EB414AB37B23A1D1D348D456896A1B0", Core.GetMD5Hash(imageData), "The test file is incorrect!");
+            int imageDataType = 0; // sorry hard coding 0 = D64
+            byte[] bamBlock = DOSDisk.ReadBAMBlock(imageData, imageDataType);
+            dirEntryList = DOSDisk.GetDirEntryList(bamBlock, imageData, imageDataType);
+
+            // 0 "Applications    " ML 2A | DirIndex | GEOS | MD5
+            // 120  "DESK TOP"  USR | 1 | SYS VLIR | F5D400333C8A6BCA4DFFCEFC2AF4AE93
+            // 141  "GEOWRITE"  USR | 2 | APP VLIR | 7F16CB41C1C885BB02D118FC0411C1C6
+            // 152  "GEOPAINT"  USR | 3 | APP VLIR | 492A38CDA1A9385DD8F501C043352514
+            // 41   "photo manager"  USR | 4 | ACC SEQ | FD24833DA9184D6B28A0C376FA524D91
+            // 15   "calculator"  USR | 5 | ACC SEQ | C1B61367915D2360AE6030DA96EB38A4
+            // 19   "note pad"  USR | 6 | ACC SEQ | CCCB6812019B90B9B8370664C6419E71
+            // 26   "California"  USR | 7 | FNT VLIR | C0F2E40D33FBB81390FB258F6B6FF702
+            // 23   "Cory"  USR | 8 | FNT VLIR | 8B2B387AC0EA5AC66D15A25B2FAD6ECB
+            // 13   "Dwinelle"  USR | 9 | FNT VLIR | 47E58B32C121C8CCDF49806EE59F21F7
+            // 34   "Roma"  USR | 10 | FNT VLIR | 1F10A57D2052DF486AE5BAAAD3C89A83
+            // 40   "University"  USR | 11 | FNT VLIR | 8D464DC9D97612168A025435AEB15CBE
+            // 7    "Commodore"  USR | 12 | FNT VLIR | 52D872F4FAAFD30400282F085E990C63
+            // 9    "ReadMe"  USR | 13 | DOC VLIR | 72E1B96410FDF050BC7F2EF2C28D0B09
+            // 23 BLOCKS FREE.
+
+            // "GEOWRITE"
+            byte[] dirEntry = (byte[])dirEntryList[1];
+            string filename = Core.ConvertPETSCII2ASCII(DOSDisk.GetFilename(dirEntry));
+            string expectedMd5 = "7F16CB41C1C885BB02D118FC0411C1C6";
+
+            string md5 = DOSDisk.GetMD5ByFile(dirEntry, imageData, imageDataType);
+            Assert.AreEqual(expectedMd5, md5, "The MD5 checksum is incorrect.");
+            Console.WriteLine("Filename = {0}", filename);
+            Console.WriteLine("MD5 {0} = {1}", expectedMd5, md5); // see at test explorer --> "output"
+
+            byte[] cleanCvt = GEOSDisk.GetCleanCvtFromCvt(Properties.Resources.GW64_CVT);
+            Assert.AreEqual("7BB3438CBE86A08448BB03585AF68787", Core.GetMD5Hash(Properties.Resources.GW64_CVT), "The test file is incorrect!");
+            string cvtMD5 = Core.GetMD5Hash(cleanCvt);
+            Assert.AreEqual(expectedMd5, cvtMD5, "The MD5 checksum of CVT file is incorrect.");
+
+            // "GEOPAINT"
+            dirEntry = (byte[])dirEntryList[2];
+            filename = Core.ConvertPETSCII2ASCII(DOSDisk.GetFilename(dirEntry));
+            expectedMd5 = "492A38CDA1A9385DD8F501C043352514";
+
+            md5 = DOSDisk.GetMD5ByFile(dirEntry, imageData, imageDataType);
+            Assert.AreEqual(expectedMd5, md5, "The MD5 checksum is incorrect.");
+            Console.WriteLine("Filename = {0}", filename);
+            Console.WriteLine("MD5 {0} = {1}", expectedMd5, md5); // see at test explorer --> "output"
+
+            cleanCvt = GEOSDisk.GetCleanCvtFromCvt(Properties.Resources.GPT64_CVT);
+            Assert.AreEqual("5518FA80D16F09EB8DF16749423FE74A", Core.GetMD5Hash(Properties.Resources.GPT64_CVT), "The test file is incorrect!");
+            cvtMD5 = Core.GetMD5Hash(cleanCvt);
+            Assert.AreEqual(expectedMd5, cvtMD5, "The MD5 checksum of CVT file is incorrect.");
         }
     }
 }

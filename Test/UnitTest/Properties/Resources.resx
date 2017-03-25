@@ -118,6 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="APPS64_D64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\APPS64.D64;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <comment>http://cbmfiles.com/geos/geosfiles/GEOS64.ZIP</comment>
+  </data>
   <data name="GEOS64_D64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\GEOS64.D64;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     <comment>http://cbmfiles.com/geos/geosfiles/GEOS64.ZIP</comment>
@@ -125,5 +129,13 @@
   <data name="GEOS64_ZIP" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\GEOS64.ZIP;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     <comment>http://cbmfiles.com/geos/geosfiles/GEOS64.ZIP</comment>
+  </data>
+  <data name="GPT64_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GPT64.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <comment>http://cbmfiles.com/geos/geosfiles/GPT64.CVT</comment>
+  </data>
+  <data name="GW64_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GW64.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <comment>http://cbmfiles.com/geos/geosfiles/GW64.CVT</comment>
   </data>
 </root>

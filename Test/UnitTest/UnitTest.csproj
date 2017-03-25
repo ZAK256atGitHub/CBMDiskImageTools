@@ -74,8 +74,11 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\APPS64.D64" />
     <None Include="Resources\GEOS64.D64" />
     <None Include="Resources\GEOS64.ZIP" />
+    <None Include="Resources\GPT64.CVT" />
+    <None Include="Resources\GW64.CVT" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

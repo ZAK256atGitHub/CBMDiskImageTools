@@ -63,6 +63,16 @@ namespace UnitTest.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
+        internal static byte[] APPS64_D64 {
+            get {
+                object obj = ResourceManager.GetObject("APPS64_D64", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
+        /// </summary>
         internal static byte[] GEOS64_D64 {
             get {
                 object obj = ResourceManager.GetObject("GEOS64_D64", resourceCulture);
@@ -76,6 +86,26 @@ namespace UnitTest.Properties {
         internal static byte[] GEOS64_ZIP {
             get {
                 object obj = ResourceManager.GetObject("GEOS64_ZIP", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
+        /// </summary>
+        internal static byte[] GPT64_CVT {
+            get {
+                object obj = ResourceManager.GetObject("GPT64_CVT", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
+        /// </summary>
+        internal static byte[] GW64_CVT {
+            get {
+                object obj = ResourceManager.GetObject("GW64_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
