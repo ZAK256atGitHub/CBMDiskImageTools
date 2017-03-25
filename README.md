@@ -12,3 +12,4 @@ CDIDir dient zur Anzeigen des Directorys eines  Abbildes (Images) einer Commodor
 ###CVTChecksum
 
 ###CVT2CleanCVT
+123
