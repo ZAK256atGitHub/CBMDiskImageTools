@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 using System.Collections;
 using ZAK256.CBMDiskImageTools.Logic.Core;
-namespace CDITools
+namespace ZAK256.CBMDiskImageTools.Ui.CDITools
 {
     public partial class MainForm : Form
     {

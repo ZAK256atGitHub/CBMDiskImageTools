@@ -1,4 +1,4 @@
-﻿namespace CDITools
+﻿namespace ZAK256.CBMDiskImageTools.Ui.CDITools
 {
     partial class MainForm
     {

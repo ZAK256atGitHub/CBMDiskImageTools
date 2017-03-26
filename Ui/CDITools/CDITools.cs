@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CDITools
+namespace ZAK256.CBMDiskImageTools.Ui.CDITools
 {
     static class CDITools
     {

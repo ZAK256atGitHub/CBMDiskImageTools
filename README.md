@@ -63,6 +63,7 @@ Eine Ausnahme bilden *Konstanten*, welche komplett mit Großbuchstaben zu bezeic
 ### Visual Studio Solution
 
 Der Aufbau der Visual Studio Solution orientierte sich an der Beschreibung von codingfreaks (siehe http://www.codingfreaks.de/2014/08/25/eine-solution-bauen/).
+
 *Kurz Zusammengefasst:*
 * Ordneraufteilung:
   * _Shared: Ein Ordner, der immer ganz oben hängt (daher das „_“) und alles Mögliche aufnimmt, nur keine Projekte (z.B. Textdateien usw.). 
@@ -71,6 +72,13 @@ Der Aufbau der Visual Studio Solution orientierte sich an der Beschreibung von c
   * Ui: Natürlich benötigen wir meist irgendwas Visuelles am Anwender. Hier versammeln sich Web-, XAML und z.B. Consolen-Projekte. 
   * Setup
 * Verwendung eines SharedAssemblyInfo.cs für alle Projekte
+* Bezeichnung der Namespaces {SolutionName}.{SolutionFolder}.{ProjectName ohne SolutionFolder-Teil}.{ProjectFolder1}.{ProjectFolderx}
+  * namespace ZAK256.CBMDiskImageTools.Logic.Core
+  * namespace ZAK256.CBMDiskImageTools.Ui.CDIDir
+  * namespace ZAK256.CBMDiskImageTools.Ui.CDIExtract
+  * namespace ZAK256.CBMDiskImageTools.Ui.CDITools
+  * namespace ZAK256.CBMDiskImageTools.Ui.CVT2CleanCVT
+  * namespace ZAK256.CBMDiskImageTools.Ui.CVTChecksum
 
 # Testdokumentation
 
