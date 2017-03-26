@@ -26,15 +26,15 @@ Ein weiteres Ziel der Toolsammlung ist es, auch für vorhandene Dateien im CVT F
 
 ### Bestandteile
 
-### CDIDir
+#### CDIDir
 
 CDIDir dient zur Anzeigen des Directorys eines  Abbildes (Images) einer Commodore Diskette. Die Anzeige soll dabei der bekannten Ausgabe am C64 entsprechen. Für Geos Dateien werden noch weitere Informationen angezeigt. Für jede Datei wird auch eine Prüfsumme generiert und ausgegeben.
 
-### CDIExtract
+#### CDIExtract
 
-### CVTChecksum
+#### CVTChecksum
 
-### CVT2CleanCVT
+#### CVT2CleanCVT
 
 # Entwicklungsdokumentation
 
@@ -68,7 +68,7 @@ Der Aufbau der Visual Studio Solution orientierte sich an der Beschreibung von c
 
 *Kurz Zusammengefasst:*
 * Ordneraufteilung:
-  * \_Shared: Ein Ordner, der immer ganz oben hängt (daher das „_“) und alles Mögliche aufnimmt, nur keine Projekte (z.B. Textdateien usw.). 
+  * \_Shared: Ein Ordner, der immer ganz oben hängt (daher das "\_") und alles Mögliche aufnimmt, nur keine Projekte (z.B. Textdateien usw.). 
   * Logic: Nicht weiter verwunderlich kommen hier meist rein, die zentrale Logik bereitstellen. 
   * Test: Alles, was irgendwie nach Testing riecht, kommt hier rein. 
   * Ui: Natürlich benötigen wir meist irgendwas Visuelles am Anwender. Hier versammeln sich Web-, XAML und z.B. Consolen-Projekte. 
