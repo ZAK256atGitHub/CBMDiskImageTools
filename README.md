@@ -1,4 +1,6 @@
-## CBM Disk Image Tools
+# CBM Disk Image Tools
+
+The CBM Disk Image Tools are a collection of several small programs that can process images of Commodore diskettes. The focus of the tool collection is currently to create checksums of individual files.
 
 ## Contributing
 
