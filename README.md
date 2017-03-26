@@ -58,7 +58,7 @@ Es werden die normalen Regeln von Microsoft verwendet (siehe <https://msdn.micro
 |Parameter                            |Camel   |typeName        |
 |Property                             |Pascal  |BackColor       |
 
-Eine Ausname bilden Konstanten, welche 
+Eine Ausnahme bilden Konstanten, welche komplett mit Großbuchstaben zu bezeichnen sind. Einzelne Worte werden dabei mit einem Unterstrich getrennt. Dies nennt man auch CONSTANT_CASE oder UPPER_CASE. Beispiel: D64_IMAGE_FILE_EXTENSION
 
 # Testdokumentation
 
