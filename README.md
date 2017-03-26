@@ -39,7 +39,10 @@ CDIDir dient zur Anzeigen des Directorys eines  Abbildes (Images) einer Commodor
 # Entwicklungsdokumentation
 
 ## Konventionen für die Groß-/Kleinschreibung
+
 ### Regeln für die Groß-/Kleinschreibung von Bezeichnern
+
+Es werden die normalen Regeln von Microsoft verwendet (siehe <https://msdn.microsoft.com/de-de/library/ms229043(v=vs.100).aspx>).
 
 |Bezeichner                           |Case    |Beispiel        |
 |:------------------------------------|:-------|:---------------|
@@ -54,6 +57,8 @@ CDIDir dient zur Anzeigen des Directorys eines  Abbildes (Images) einer Commodor
 |namespace                            |Pascal  |System.Drawing  |
 |Parameter                            |Camel   |typeName        |
 |Property                             |Pascal  |BackColor       |
+
+Eine Ausname bilden Konstanten, welche 
 
 # Testdokumentation
 
