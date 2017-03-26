@@ -58,7 +58,7 @@ Es werden die normalen Regeln von Microsoft verwendet (siehe <https://msdn.micro
 |Parameter                            |Camel   |typeName        |
 |Property                             |Pascal  |BackColor       |
 
-Eine Ausnahme bilden *Konstanten*, welche komplett mit Großbuchstaben zu bezeichnen sind. Einzelne Worte werden dabei mit einem Unterstrich getrennt. Dies nennt man auch CONSTANT_CASE oder UPPER_CASE. Beispiel: D64_IMAGE_FILE_EXTENSION
+Eine Ausnahme bilden *Konstanten*, welche komplett mit Großbuchstaben zu bezeichnen sind. Einzelne Worte werden dabei mit einem Unterstrich getrennt. Dies nennt man auch CONSTANT\_CASE oder UPPER\_CASE. Beispiel: D64\_IMAGE\_FILE\_EXTENSION
 
 ### Visual Studio Solution
 
@@ -66,7 +66,7 @@ Der Aufbau der Visual Studio Solution orientierte sich an der Beschreibung von c
 
 *Kurz Zusammengefasst:*
 * Ordneraufteilung:
-  * _Shared: Ein Ordner, der immer ganz oben hängt (daher das „_“) und alles Mögliche aufnimmt, nur keine Projekte (z.B. Textdateien usw.). 
+  * \_Shared: Ein Ordner, der immer ganz oben hängt (daher das „_“) und alles Mögliche aufnimmt, nur keine Projekte (z.B. Textdateien usw.). 
   * Logic: Nicht weiter verwunderlich kommen hier meist rein, die zentrale Logik bereitstellen. 
   * Test: Alles, was irgendwie nach Testing riecht, kommt hier rein. 
   * Ui: Natürlich benötigen wir meist irgendwas Visuelles am Anwender. Hier versammeln sich Web-, XAML und z.B. Consolen-Projekte. 
