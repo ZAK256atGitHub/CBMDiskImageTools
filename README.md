@@ -61,11 +61,11 @@ Eine normal CVT Datei, welche z.B. vom Geos Programm CONVERT 2.5 oder vom MS-Dos
 * **Der Bereich des VLIR Record Blocks nach den Datensatzangaben** wird mit dem Wert $00 belegt. Der VLIR Record Block einer CVT Datei enthält Verweise zu den einzelnen Datensäten der CVT Datei. Der letzte Verweis ist an dem Werten $00 $00 zu erkennen. Nach diesen 2 Byte (bis zum Ende des VLIR Record Blocks) könnten sich noch Daten verbergen, welche für die Wiederherstellung der Geos Datei nicht benötigt werden. Auch diese Informationen sollen nicht in die Berechnung der Prüfsumme einfließen. Hinweis eine CVT Datei markiert gelöschte Datensäte, wie Geos auch,  mit den Werten $00 $FF. Auch gelöschte Datensätze müssen übrigens Wiederhergestellt werden, deshalb werden diese auch in  einer CVT Datei gespeichert.
 * **Der Bereich nach den Daten jedes Letzen Datenblocks**  wird mit dem Wert $00 belegt. Bei VLIR Dateien werden immer nur ganze Datenblöcke eines Datensatzes gespeichert. D.h. auch die Letzten Datenblöcke eines Datensatzes sind 254 Byte lang, auch wenn diese weniger Nutzdaten enthalten.  Hier werden wohl die ganzen Blöcke der Quelldiskette in die CVT Datei übernommen. Auch diese Informationen sollen nicht in die Berechnung der Prüfsumme einfließen. Hinweis, der aller letzte Datensatz einer  VLIR Datei ist davon nicht betroffen, da von diesem nur die Nutzdaten in einer CVT Datei gespeichert werden.
 
-'''
+```
 tsets
 njsnsandsa
 kdmkfmsdklfls
-'''
+```
 
 # Entwicklungsdokumentation
 
