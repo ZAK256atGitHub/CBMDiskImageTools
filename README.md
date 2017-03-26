@@ -28,13 +28,19 @@ Ein weiteres Ziel der Toolsammlung ist es, auch für vorhandene Dateien im CVT F
 
 #### CDIDir
 
-CDIDir dient zur Anzeigen des Directorys eines  Abbildes (Images) einer Commodore Diskette. Die Anzeige soll dabei der bekannten Ausgabe am C64 entsprechen. Für Geos Dateien werden noch weitere Informationen angezeigt. Für jede Datei wird auch eine Prüfsumme generiert und ausgegeben.
+CDIDir dient zur Anzeigen des Directorys eines Abbildes (Images) einer Commodore Diskette. Die Anzeige soll dabei der bekannten Ausgabe am C64 entsprechen. Für Geos Dateien werden noch weitere Informationen angezeigt. Für jede Datei wird auch eine Prüfsumme generiert und ausgegeben. Die Berechnung der Prüfsummen für Geos Dateien erfolgt durch die interne Umwandlung der Datei in das CleanCVT Format.
 
 #### CDIExtract
 
+CDIExtract dient zum Extrahieren von einzelnen Dateien aus einem Abbild (Image) einer Commodore Diskette. Geos Dateien werden dabei im CleanCVT Format extrahiert.
+
 #### CVTChecksum
 
+CVTChecksum dient zur Anzeige einer Prüfsumme von einer Datei im CVT Format. Die Berechnung der Prüfsumme erfolgt durch die interne Umwandlung der Datei in das CleanCVT Format.
+
 #### CVT2CleanCVT
+
+CVT2CleanCVT dient zur Konvertierung einer Datei im CVT Format in eine Datei im CleanCVT Format.
 
 # Entwicklungsdokumentation
 
@@ -66,7 +72,7 @@ Eine Ausnahme bilden *Konstanten*, welche komplett mit Großbuchstaben zu bezeic
 
 Der Aufbau der Visual Studio Solution orientierte sich an der Beschreibung von codingfreaks (siehe http://www.codingfreaks.de/2014/08/25/eine-solution-bauen/).
 
-*Kurz Zusammengefasst:*
+**Kurz Zusammengefasst:**
 * Ordneraufteilung:
   * \_Shared: Ein Ordner, der immer ganz oben hängt (daher das "\_") und alles Mögliche aufnimmt, nur keine Projekte (z.B. Textdateien usw.). 
   * Logic: Nicht weiter verwunderlich kommen hier meist rein, die zentrale Logik bereitstellen. 
@@ -83,5 +89,7 @@ Der Aufbau der Visual Studio Solution orientierte sich an der Beschreibung von c
   * namespace ZAK256.CBMDiskImageTools.Ui.CVTChecksum
 
 # Testdokumentation
+
+In der Solution ist ein Testprojekt enthalten, welches mehere Testfunktionen zum Testen der Kernfunktionen beinhaltet.
 
 # Installationsdokumentation
