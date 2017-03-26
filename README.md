@@ -58,9 +58,11 @@ Es werden die normalen Regeln von Microsoft verwendet (siehe <https://msdn.micro
 |Parameter                            |Camel   |typeName        |
 |Property                             |Pascal  |BackColor       |
 
+### Regeln für die Groß-/Kleinschreibung von Konstanten
+
 Eine Ausnahme bilden *Konstanten*, welche komplett mit Großbuchstaben zu bezeichnen sind. Einzelne Worte werden dabei mit einem Unterstrich getrennt. Dies nennt man auch CONSTANT\_CASE oder UPPER\_CASE. Beispiel: D64\_IMAGE\_FILE\_EXTENSION
 
-### Visual Studio Solution
+## Visual Studio Solution
 
 Der Aufbau der Visual Studio Solution orientierte sich an der Beschreibung von codingfreaks (siehe http://www.codingfreaks.de/2014/08/25/eine-solution-bauen/).
 
