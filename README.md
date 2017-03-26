@@ -41,19 +41,19 @@ CDIDir dient zur Anzeigen des Directorys eines  Abbildes (Images) einer Commodor
 ## Konventionen für die Groß-/Kleinschreibung
 ### Regeln für die Groß-/Kleinschreibung von Bezeichnern
 
-|Bezeichner                           |Case    |   Beispiel        |
-|-------------------------------------|--------|-------------------|
-|class                                |Pascal  |   AppDomain       |
-|Enumerationstyp                      |Pascal  |   ErrorLevel      |
-|Enumerationswerte                    |Pascal  |   FatalError      |
-|event                                |Pascal  |   ValueChanged    |
-|Ausnahmeklasse                       |Pascal  |   WebException    |
-|Schreibgeschütztes statisches Feld   |Pascal  |   RedValue        |
-|interface                            |Pascal  |   IDisposable     |
-|Methode                              |Pascal  |   ToString        |
-|namespace                            |Pascal  |   System.Drawing  |
-|Parameter                            |Camel   |   typeName        |
-|Property                             |Pascal  |   BackColor       |
+|Bezeichner                           |Case    |Beispiel        |
+|:------------------------------------|:-------|:---------------|
+|class                                |Pascal  |AppDomain       |
+|Enumerationstyp                      |Pascal  |ErrorLevel      |
+|Enumerationswerte                    |Pascal  |FatalError      |
+|event                                |Pascal  |ValueChanged    |
+|Ausnahmeklasse                       |Pascal  |WebException    |
+|Schreibgeschütztes statisches Feld   |Pascal  |RedValue        |
+|interface                            |Pascal  |IDisposable     |
+|Methode                              |Pascal  |ToString        |
+|namespace                            |Pascal  |System.Drawing  |
+|Parameter                            |Camel   |typeName        |
+|Property                             |Pascal  |BackColor       |
 
 # Testdokumentation
 
