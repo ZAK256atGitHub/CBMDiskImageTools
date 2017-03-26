@@ -230,7 +230,7 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
             }
             return cvtVlirRecordData;
         }
-        public static byte[] CleanCvtVLIRRecordBlock(byte[] cvtVLIRRecordBlock)
+        public static byte[] CleanCvtVlirRecordBlock(byte[] cvtVLIRRecordBlock)
         {
             bool firstNull = false;
             bool secondNull = false;
@@ -304,7 +304,7 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
             else if (GetGEOSFileStructure(dirEntry) == (int)Const.GEOS_FILE_STRUCTURE.VLIR)
             {
                 // Record Block only by VLIR
-                cvtVLIRRecordBlock = CleanCvtVLIRRecordBlock(ReadOneDataBlockFromCvt(cvtData, 2));
+                cvtVLIRRecordBlock = CleanCvtVlirRecordBlock(ReadOneDataBlockFromCvt(cvtData, 2));
                 ms.Write(cvtVLIRRecordBlock, 0, cvtVLIRRecordBlock.Length);
                 // Data Block
                 cvtRecordData = CleanCvtVlirRecordData(ReadDataBlocksFromCvt(cvtData, 3, true), cvtVLIRRecordBlock);

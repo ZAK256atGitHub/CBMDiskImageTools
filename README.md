@@ -54,6 +54,10 @@ Bei CleanCVT Dateien werden alle Datenstellen, welche keine relevanten Informati
 
 Eine normal CVT Datei, welche z.B. vom Geos Programm CONVERT 2.5 oder vom MS-Dos Progrmm Star Commander erzeugt wird, enthält an einigen Datenstellen Informationen, welche zur Wiederherstellung der eigentlichen Geos Datei nicht benötigt werden. Genau diese Stellen werden beim CleanCVT Format mit dem Wert $00 überschrieben, um die Dateien dadurch vergleichbar zu machen. 
 
+**Liste der Datenstellen welche den Wert $00 bekommen:**
+* **Position 2 und 3** wird mit dem Wert $00 belegt, da sich dort die Spur und der Sektor des ersten Datenblocks befinden. Eine CVT Datei beginnt mit 30 Byte, welche genau dem Directory Eintrag der gespeicherten Geos Datei entsprechen. Da die Spur und der Sektor des ersten Datenblocks beim Wiederherstellen auf einer Diskette ändern können, sollen diese Informationen nicht in die Berechnung der Prüfsumme einfließen.
+* **Position 27 und 29** wird mit dem Wert $00 belegt, da sich dort die Spur und der Sektor des Info Blocks der Geos Datei  befinden. Auch der Geos Info Block kann auf verschiedenen Disketten auf unterschiedlichen Spuren bzw. Sektoren gespeichert sein.  Deshalb sollen auch diese Informationen nicht in die Berechnung der Prüfsumme einfließen.
+
 
 
 # Entwicklungsdokumentation
