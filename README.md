@@ -68,7 +68,6 @@ Eine normal CVT Datei, welche z.B. vom Geos Programm CONVERT 2.5 oder vom MS-Dos
 kdmkfmsdklfls ┌► 
 ```
 
-```html
 <table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0 width=729
  style='width:546.4pt;border-collapse:collapse;border:none'>
  <tr>
@@ -767,7 +766,7 @@ kdmkfmsdklfls ┌►
   </td>
  </tr>
 </table>
-```
+
 
 # Entwicklungsdokumentation
 
