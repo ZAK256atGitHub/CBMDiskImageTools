@@ -111,11 +111,11 @@ Der Aufbau der Visual Studio Solution orientierte sich an der Beschreibung von c
 
 |Pos         | Commodore DOS (SEQ, PRG, USR)          | Commodore DOS (REL)                    | GEOS (SEQ)                             | GEOS (VLIR)                            |
 |:-----------|:---------------------------------------|:---------------------------------------|:---------------------------------------|:---------------------------------------|
-|0 (Bit 0-3) | Dateiart                               | Dateiart                               | Dateiart                               | Dateiart                               |
-|0 (Bit 4)   | unbenutzt                              | unbenutzt                              | unbenutzt                              | unbenutzt                              |
-|0 (Bit 5)   | Ersetzungs- Kennung                    | Ersetzungs- Kennung                    | Ersetzungs- Kennung                    | Ersetzungs- Kennung                    |
-|0 (Bit 6)   | Schreibschutz- Kennung                 | Schreibschutz- Kennung                 | Schreibschutz- Kennung                 | Schreibschutz- Kennung                 |
-|0 (Bit 7)   | Offen- Kennung                         | Offen- Kennung                         | Offen- Kennung                         | Offen- Kennung                         |
+|0 Bit 0-3   | Dateiart                               | Dateiart                               | Dateiart                               | Dateiart                               |
+|0 Bit 4     | unbenutzt                              | unbenutzt                              | unbenutzt                              | unbenutzt                              |
+|0 Bit 5     | Ersetzungs- Kennung                    | Ersetzungs- Kennung                    | Ersetzungs- Kennung                    | Ersetzungs- Kennung                    |
+|0 Bit 6     | Schreibschutz- Kennung                 | Schreibschutz- Kennung                 | Schreibschutz- Kennung                 | Schreibschutz- Kennung                 |
+|0 Bit 7     | Offen- Kennung                         | Offen- Kennung                         | Offen- Kennung                         | Offen- Kennung                         |
 |1           | Spur des ersten Datenblocks            | Spur des ersten Datenblocks            | Spur des ersten Datenblocks            | Spur des RECORD Blocks                 |
 |2           | Sektor des ersten Datenblocks          | Sektor des ersten Datenblocks          | Sektor des ersten Datenblocks          | Sektor des RECORD Blocks               |
 |3-18        | Dateiname (aufgefüllt mit SHIFT-SPACE) | Dateiname (aufgefüllt mit SHIFT-SPACE) | Dateiname (aufgefüllt mit SHIFT-SPACE) | Dateiname (aufgefüllt mit SHIFT-SPACE) |
@@ -138,6 +138,7 @@ Eine Datei ist eine GEOS Datei, wenn
 * die Dateiart gleich 1, 2 oder 3 ist
 * und die GEOS Dateiart größer 0 ist
 * und GEOS Dateistruktur gleich 0 oder 1 ist
+
 Jede GEOS Datei benötigt auch einen gültigen Info Block. GEOS versucht schon beim Lesen einer Diskette auf dem DESK TOP den Info Block zu lesen. Ist keine korrekte Kombination aus Spur und Sektor angeben, wird eine Fehlermeldung ausgeben und der Vorgang abgebrochen. Kann der angeben Block gelesen werden, so werden aus diesem Block die Icon Information auf dem DESK TOP angezeigt. Dies ist auch der Fall, wenn es sich um keinen gültigen Info Block handelt. Aber spätestens beim Start einer Applikation muss ein gültiger Info Block vorhanden sein, da dieser Informationen zum Start einer Applikation beinhaltet. Eine Prüfung ob ein Info Block gültig ist kann nur durch GEOS selbst erfolgen. Eine Prüfung auf eine korrekte Kombination aus Spur und Sektor kann auch ohne von GEOS durchgeführt werden.
 
 ## Welche Informationen werden von einer Commodore DOS Datei mit der Dateiart SEQ, PRG, USR exportiert bzw. fließen in die Prüfsummenberechnung ein?
