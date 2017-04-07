@@ -109,27 +109,27 @@ Der Aufbau der Visual Studio Solution orientierte sich an der Beschreibung von c
 
 ## Directory Einträge der verschiedenen Dateiarten
 
-|Pos         | Commodore DOS (SEQ, PRG, USR)          | Commodore DOS (REL)                    | GEOS (SEQ)                             | GEOS (VLIR)                            |
-|:-----------|:---------------------------------------|:---------------------------------------|:---------------------------------------|:---------------------------------------|
-|0 Bit 0-3   | Dateiart                               | Dateiart                               | Dateiart                               | Dateiart                               |
-|0 Bit 4     | unbenutzt                              | unbenutzt                              | unbenutzt                              | unbenutzt                              |
-|0 Bit 5     | Ersetzungs- Kennung                    | Ersetzungs- Kennung                    | Ersetzungs- Kennung                    | Ersetzungs- Kennung                    |
-|0 Bit 6     | Schreibschutz- Kennung                 | Schreibschutz- Kennung                 | Schreibschutz- Kennung                 | Schreibschutz- Kennung                 |
-|0 Bit 7     | Offen- Kennung                         | Offen- Kennung                         | Offen- Kennung                         | Offen- Kennung                         |
-|1           | Spur des ersten Datenblocks            | Spur des ersten Datenblocks            | Spur des ersten Datenblocks            | Spur des RECORD Blocks                 |
-|2           | Sektor des ersten Datenblocks          | Sektor des ersten Datenblocks          | Sektor des ersten Datenblocks          | Sektor des RECORD Blocks               |
-|3-18        | Dateiname (aufgefüllt mit SHIFT-SPACE) | Dateiname (aufgefüllt mit SHIFT-SPACE) | Dateiname (aufgefüllt mit SHIFT-SPACE) | Dateiname (aufgefüllt mit SHIFT-SPACE) |
-|19          | unbenutzt                              | Spur des ersten Side-Sector-Blocks     | Spur des INFO Blocks                   | Spur des INFO Blocks                   |
-|20          | unbenutzt                              | Sektor des ersten Side-Sector-Blocks   | Sektor des INFO Blocks                 | Sektor des INFO Blocks                 |
-|21          | unbenutzt egal                         | Datensatzlänge                         | GEOS Dateistruktur                     | GEOS Dateistruktur                     |
-|22          | unbenutzt immer=0                      | unbenutzt egal                         | GEOS Dateiart                          | GEOS Dateiart                          |
-|23          | unbenutzt                              | unbenutzt                              | Jahr                                   | Jahr                                   |
-|24          | unbenutzt                              | unbenutzt                              | Monat                                  | Monat                                  |
-|25          | unbenutzt                              | unbenutzt                              | Tag                                    | Tag                                    |
-|26          | unbenutzt                              | unbenutzt                              | Stunde                                 | Stunde                                 |
-|27          | unbenutzt                              | unbenutzt                              | Minute                                 | Minute                                 |
-|28          | Anzahl der Verwendeten Blöcke (Low)    | Anzahl der Verwendeten Blöcke (Low)    | Anzahl der Verwendeten Blöcke (Low)    | Anzahl der Verwendeten Blöcke (Low)    |
-|29          | Anzahl der Verwendeten Blöcke (High)   | Anzahl der Verwendeten Blöcke (High)   | Anzahl der Verwendeten Blöcke (High)   | Anzahl der Verwendeten Blöcke (High)   |
+|Pos      | Commodore DOS (SEQ, PRG, USR)          | Commodore DOS (REL)                    | GEOS (SEQ)                             | GEOS (VLIR)                            |
+|:--------|:---------------------------------------|:---------------------------------------|:---------------------------------------|:---------------------------------------|
+|0 Bit0-3 | Dateiart                               | Dateiart                               | Dateiart                               | Dateiart                               |
+|0 Bit4   | unbenutzt                              | unbenutzt                              | unbenutzt                              | unbenutzt                              |
+|0 Bit5   | Ersetzungs- Kennung                    | Ersetzungs- Kennung                    | Ersetzungs- Kennung                    | Ersetzungs- Kennung                    |
+|0 Bit6   | Schreibschutz- Kennung                 | Schreibschutz- Kennung                 | Schreibschutz- Kennung                 | Schreibschutz- Kennung                 |
+|0 Bit7   | Offen- Kennung                         | Offen- Kennung                         | Offen- Kennung                         | Offen- Kennung                         |
+|1        | Spur des ersten Datenblocks            | Spur des ersten Datenblocks            | Spur des ersten Datenblocks            | Spur des RECORD Blocks                 |
+|2        | Sektor des ersten Datenblocks          | Sektor des ersten Datenblocks          | Sektor des ersten Datenblocks          | Sektor des RECORD Blocks               |
+|3-18     | Dateiname (aufgefüllt mit SHIFT-SPACE) | Dateiname (aufgefüllt mit SHIFT-SPACE) | Dateiname (aufgefüllt mit SHIFT-SPACE) | Dateiname (aufgefüllt mit SHIFT-SPACE) |
+|19       | unbenutzt                              | Spur des ersten Side-Sector-Blocks     | Spur des INFO Blocks                   | Spur des INFO Blocks                   |
+|20       | unbenutzt                              | Sektor des ersten Side-Sector-Blocks   | Sektor des INFO Blocks                 | Sektor des INFO Blocks                 |
+|21       | unbenutzt egal                         | Datensatzlänge                         | GEOS Dateistruktur                     | GEOS Dateistruktur                     |
+|22       | unbenutzt immer=0                      | unbenutzt egal                         | GEOS Dateiart                          | GEOS Dateiart                          |
+|23       | unbenutzt                              | unbenutzt                              | Jahr                                   | Jahr                                   |
+|24       | unbenutzt                              | unbenutzt                              | Monat                                  | Monat                                  |
+|25       | unbenutzt                              | unbenutzt                              | Tag                                    | Tag                                    |
+|26       | unbenutzt                              | unbenutzt                              | Stunde                                 | Stunde                                 |
+|27       | unbenutzt                              | unbenutzt                              | Minute                                 | Minute                                 |
+|28       | Anzahl der Verwendeten Blöcke (Low)    | Anzahl der Verwendeten Blöcke (Low)    | Anzahl der Verwendeten Blöcke (Low)    | Anzahl der Verwendeten Blöcke (Low)    |
+|29       | Anzahl der Verwendeten Blöcke (High)   | Anzahl der Verwendeten Blöcke (High)   | Anzahl der Verwendeten Blöcke (High)   | Anzahl der Verwendeten Blöcke (High)   |
 
 
 ## Wann ist eine Datei eine GEOS DATEI?
