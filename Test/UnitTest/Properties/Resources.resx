@@ -120,11 +120,19 @@
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="APPS64_D64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\APPS64.D64;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-    <comment>http://cbmfiles.com/geos/geosfiles/GEOS64.ZIP</comment>
+    <comment>aus http://cbmfiles.com/geos/geosfiles/GEOS64.ZIP</comment>
+  </data>
+  <data name="Convert_2_5_D64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Convert 2.5.D64;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <comment>erzeugt von http://cbmfiles.com/geos/geosfiles/CONVERT.BAS</comment>
+  </data>
+  <data name="CONVERT_BAS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CONVERT.BAS;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+    <comment>http://cbmfiles.com/geos/geosfiles/CONVERT.BAS</comment>
   </data>
   <data name="GEOS64_D64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\GEOS64.D64;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-    <comment>http://cbmfiles.com/geos/geosfiles/GEOS64.ZIP</comment>
+    <comment>aus http://cbmfiles.com/geos/geosfiles/GEOS64.ZIP</comment>
   </data>
   <data name="GEOS64_ZIP" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\GEOS64.ZIP;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

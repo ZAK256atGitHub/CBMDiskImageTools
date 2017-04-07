@@ -107,8 +107,68 @@ Der Aufbau der Visual Studio Solution orientierte sich an der Beschreibung von c
   * namespace ZAK256.CBMDiskImageTools.Ui.CVT2CleanCVT
   * namespace ZAK256.CBMDiskImageTools.Ui.CVTChecksum
 
+## Directory Einträge der verschiedenen Dateiarten
+
+|Pos         | Commodore DOS (SEQ, PRG, USR)          | Commodore DOS (REL)                    | GEOS (SEQ)                             | GEOS (VLIR)                            |
+|:-----------|:---------------------------------------|:---------------------------------------|:---------------------------------------|:---------------------------------------|
+|0 (Bit 0-3) | Dateiart                               | Dateiart                               | Dateiart                               | Dateiart                               |
+|0 (Bit 4)   | unbenutzt                              | unbenutzt                              | unbenutzt                              | unbenutzt                              |
+|0 (Bit 5)   | Ersetzungs- Kennung                    | Ersetzungs- Kennung                    | Ersetzungs- Kennung                    | Ersetzungs- Kennung                    |
+|0 (Bit 6)   | Schreibschutz- Kennung                 | Schreibschutz- Kennung                 | Schreibschutz- Kennung                 | Schreibschutz- Kennung                 |
+|0 (Bit 7)   | Offen- Kennung                         | Offen- Kennung                         | Offen- Kennung                         | Offen- Kennung                         |
+|1           | Spur des ersten Datenblocks            | Spur des ersten Datenblocks            | Spur des ersten Datenblocks            | Spur des RECORD Blocks                 |
+|2           | Sektor des ersten Datenblocks          | Sektor des ersten Datenblocks          | Sektor des ersten Datenblocks          | Sektor des RECORD Blocks               |
+|3-18        | Dateiname (aufgefüllt mit SHIFT-SPACE) | Dateiname (aufgefüllt mit SHIFT-SPACE) | Dateiname (aufgefüllt mit SHIFT-SPACE) | Dateiname (aufgefüllt mit SHIFT-SPACE) |
+|19          | unbenutzt                              | Spur des ersten Side-Sector-Blocks     | Spur des INFO Blocks                   | Spur des INFO Blocks                   |
+|20          | unbenutzt                              | Sektor des ersten Side-Sector-Blocks   | Sektor des INFO Blocks                 | Sektor des INFO Blocks                 |
+|21          | unbenutzt egal                         | Datensatzlänge                         | GEOS Dateistruktur                     | GEOS Dateistruktur                     |
+|22          | unbenutzt immer=0                      | unbenutzt egal                         | GEOS Dateiart                          | GEOS Dateiart                          |
+|23          | unbenutzt                              | unbenutzt                              | Jahr                                   | Jahr                                   |
+|24          | unbenutzt                              | unbenutzt                              | Monat                                  | Monat                                  |
+|25          | unbenutzt                              | unbenutzt                              | Tag                                    | Tag                                    |
+|26          | unbenutzt                              | unbenutzt                              | Stunde                                 | Stunde                                 |
+|27          | unbenutzt                              | unbenutzt                              | Minute                                 | Minute                                 |
+|28          | Anzahl der Verwendeten Blöcke (Low)    | Anzahl der Verwendeten Blöcke (Low)    | Anzahl der Verwendeten Blöcke (Low)    | Anzahl der Verwendeten Blöcke (Low)    |
+|29          | Anzahl der Verwendeten Blöcke (High)   | Anzahl der Verwendeten Blöcke (High)   | Anzahl der Verwendeten Blöcke (High)   | Anzahl der Verwendeten Blöcke (High)   |
+
+
+## Wann ist eine Datei eine GEOS DATEI?
+
+Eine Datei ist eine GEOS Datei, wenn
+* die Dateiart gleich 1, 2 oder 3 ist
+* und die GEOS Dateiart größer 0 ist
+* und GEOS Dateistruktur gleich 0 oder 1 ist
+Jede GEOS Datei benötigt auch einen gültigen Info Block. GEOS versucht schon beim Lesen einer Diskette auf dem DESK TOP den Info Block zu lesen. Ist keine korrekte Kombination aus Spur und Sektor angeben, wird eine Fehlermeldung ausgeben und der Vorgang abgebrochen. Kann der angeben Block gelesen werden, so werden aus diesem Block die Icon Information auf dem DESK TOP angezeigt. Dies ist auch der Fall, wenn es sich um keinen gültigen Info Block handelt. Aber spätestens beim Start einer Applikation muss ein gültiger Info Block vorhanden sein, da dieser Informationen zum Start einer Applikation beinhaltet. Eine Prüfung ob ein Info Block gültig ist kann nur durch GEOS selbst erfolgen. Eine Prüfung auf eine korrekte Kombination aus Spur und Sektor kann auch ohne von GEOS durchgeführt werden.
+
+## Welche Informationen werden von einer Commodore DOS Datei mit der Dateiart SEQ, PRG, USR exportiert bzw. fließen in die Prüfsummenberechnung ein?
+
+Von Commodore DOS Datei mit der Dateiart SEQ, PRG, USR werden nur die reinen Daten exportiert bzw. fließen in die Prüfsummenberechnung ein. Das bedeutet, dass nur alle Datenblöcke betrachtet werden. Es werden keine weiteren Informationen berücksichtigt.
+
+## Welche Informationen werden von einer Commodore DOS Datei mit der Dateiart REL exportiert bzw. fließen in die Prüfsummenberechnung ein?
+
+Commodore DOS Dateien mir der Dateiart REL werden momentan noch nicht unterstützt!
+
+## Wie werden die Prüfsummen von GEOS Dateien erstellt?
+
+
+## Welche Informationen werden von einer GEOS Datei mit der GEOS Dateistruktur SEQ exportiert bzw. fließen in die Prüfsummenberechnung ein?
+
+
+## Welche Informationen werden von einer GEOS Datei mit der GEOS Dateistruktur VLIR exportiert bzw. fließen in die Prüfsummenberechnung ein?
+
+
 # Testdokumentation
 
 In der Solution ist ein Testprojekt enthalten, welches mehere Testfunktionen zum Testen der Kernfunktionen beinhaltet.
 
+# Convert 2.5 erstellen
+
+Das Programm CONVERT.BAS (http://cbmfiles.com/geos/geosfiles/CONVERT.BAS) wurde auf einer leeren von Vice (Version 3.0) erstellten Diskette ausgeführt. Es ist wichtig, das die Diskette absolut leer ist.
+Die Diskette wurde anschließend noch in das Geos Format konvertiert.
+
 # Installationsdokumentation
+
+# ToDo Liste
+
+* G64 Unterstützung
+* CleanCVT für CVT Dateien mit SEQ Dateien (Umwandlung von SEQ in PRG)
