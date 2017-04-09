@@ -177,16 +177,22 @@ Für viele Tests werden die D64 Images aus dem Archiv GEOS64.ZIP von der Interne
 
 
 ```
-GEOS SEQ/VLIR                    CVT Dateien                      CVT Dateien
-in D64 Images                    in D64 Images                    als PC Dateien
--------------                    -------------                    --------------
-    O ----------------------------CDI Extract--------------------------------------------------------> O
+GEOS SEQ/VLIR                    CVT Dateien                    CVT (dirty) Dateien         Clean CVT Dateien   
+in D64 Images                    in D64 Images                  als PC Dateien              als PC Dateien 
+-------------                    -------------                  --------------              --------------
+    O----------------------------CDI Extract----------------------------------------------------->O
+    O-------------------------Star Commander 0.83------------------------------------------------>O
+    O-------------------------pcGeos 0.3–GGET.EXE--------------------->O ┐
+                                     ┌ O--------CDI Extract----------->O │
+    O------convert 2.5-------------->┤ O-----Star Commander 0.83------>O ├─────CVT2CleanCVT──────►□
+                                     └ O----u.v.a.m. z.B. 64Copy------>O ┘
+
 ```
 
 #### convert 2.5 (und Star Commander 0.83)
 
 ```
-GEOS SEQ/VLIR                   CVT Dateien                                          CVT Dateien
+GEOS SEQ/VLIR                   CVT (dirty) Dateien                                  CVT (dirty) Dateien
 in D64 Images                   in D64 Images                                        als PC Dateien
 ---------------------------     ---------------------------                          --------------------
 APPS64.D64    --convert 2.5-->  APPS64_Convert2.5_to_CVT(PRG).D64
@@ -206,7 +212,7 @@ APPS64.D64    --convert 2.5-->  APPS64_Convert2.5_to_CVT(PRG).D64
 9    "ReadMe"           USR --> 10   "README"           PRG --Star Commander 0.83--> README.prg
 23 BLOCKS FREE.                 10 BLOCKS FREE.
 
-GEOS SEQ/VLIR                   CVT Dateien                                          CVT Dateien
+GEOS SEQ/VLIR                   CVT (dirty) Dateien                                  CVT (dirty) Dateien
 in D64 Images                   in D64 Images                                        als PC Dateien
 ---------------------------     ---------------------------                          -------------------- 
 GEOS64.D64    --convert 2.5-->  GEOS64_Convert2.5_to_CVT(PRG).D64
@@ -229,7 +235,7 @@ GEOS64.D64    --convert 2.5-->  GEOS64_Convert2.5_to_CVT(PRG).D64
 20   "CONVERT"          USR --> 21   "CONVERT"          PRG --Star Commander 0.83--> CONVERT.prg
 259 BLOCKS FREE.                246 BLOCKS FREE.
 
-GEOS SEQ/VLIR                   CVT Dateien                                          CVT Dateien
+GEOS SEQ/VLIR                   CVT (dirty) Dateien                                  CVT (dirty) Dateien
 in D64 Images                   in D64 Images                                        als PC Dateien
 ---------------------------     ---------------------------                          --------------------
 SPELL64.D64   --convert 2.5-->  SPELL64_Convert2.5_to_CVT(PRG).D64
@@ -239,7 +245,7 @@ SPELL64.D64   --convert 2.5-->  SPELL64_Convert2.5_to_CVT(PRG).D64
 387  "GeoDictionary"    USR --> 388  "GEODICTIONARY"    PRG --Star Commander 0.83--> GEODICTIONARY.prg
 45 BLOCKS FREE.                 42 BLOCKS FREE.
 
-GEOS SEQ/VLIR                   CVT Dateien                                          CVT Dateien
+GEOS SEQ/VLIR                   CVT (dirty) Dateien                                  CVT (dirty) Dateien
 in D64 Images                   in D64 Images                                        als PC Dateien
 ---------------------------     ---------------------------                          --------------------
 WRUTIL64.D64  --convert 2.5-->  WRUTIL64_Convert2.5_to_CVT(PRG).D64
@@ -266,7 +272,7 @@ WRUTIL64.D64  --convert 2.5-->  WRUTIL64_Convert2.5_to_CVT(PRG).D64
 #### Star Commander 0.83
 
 ```
-GEOS SEQ/VLIR                                          CVT Dateien
+GEOS SEQ/VLIR                                          Clean CVT Dateien
 in D64 Images                                          als PC Dateien
 ---------------------------                            --------------------
 APPS64.D64                                           
@@ -286,7 +292,7 @@ APPS64.D64
 9    "ReadMe"           USR  --Star Commander 0.83-->  ReadMe.cvt
 23 BLOCKS FREE.                                      
    
-GEOS SEQ/VLIR                                          CVT Dateien
+GEOS SEQ/VLIR                                          Clean CVT Dateien
 in D64 Images                                          als PC Dateien
 ---------------------------                            --------------------
 GEOS64.D64                                           
@@ -309,7 +315,7 @@ GEOS64.D64
 20   "CONVERT"          USR  --Star Commander 0.83-->  CONVERT.cvt
 259 BLOCKS FREE.                                     
 
-GEOS SEQ/VLIR                                          CVT Dateien
+GEOS SEQ/VLIR                                          Clean CVT Dateien
 in D64 Images                                          als PC Dateien
 ---------------------------                            --------------------
 SPELL64.D64                                          
@@ -319,7 +325,7 @@ SPELL64.D64
 387  "GeoDictionary"    USR  --Star Commander 0.83-->  GeoDictionary.cvt
 45 BLOCKS FREE.                                      
 
-GEOS SEQ/VLIR                                          CVT Dateien
+GEOS SEQ/VLIR                                          Clean CVT Dateien
 in D64 Images                                          als PC Dateien
 ---------------------------                            --------------------
 WRUTIL64.D64                                         
@@ -343,10 +349,10 @@ WRUTIL64.D64
 110 BLOCKS FREE.     
 ```
 
-#### pcGeos 0.3
+#### pcGeos 0.3 – GGET.EXE
 
 ```
-GEOS SEQ/VLIR                                 CVT Dateien
+GEOS SEQ/VLIR                                 CVT (dirty) Dateien
 in D64 Images                                 als PC Dateien
 ---------------------------                   --------------------
 APPS64.D64                                           
@@ -366,7 +372,7 @@ APPS64.D64
 9    "ReadMe"           USR  --pcGeos 0.3-->  README.CVT
 23 BLOCKS FREE.                                      
     
-GEOS SEQ/VLIR                                 CVT Dateien
+GEOS SEQ/VLIR                                 CVT (dirty) Dateien
 in D64 Images                                 als PC Dateien
 ---------------------------                   --------------------
 GEOS64.D64                                           
@@ -389,7 +395,7 @@ GEOS64.D64
 20   "CONVERT"          USR  --pcGeos 0.3-->  CONVERT.CVT
 259 BLOCKS FREE.                                     
  
-GEOS SEQ/VLIR                                 CVT Dateien
+GEOS SEQ/VLIR                                 CVT (dirty) Dateien
 in D64 Images                                 als PC Dateien
 ---------------------------                   --------------------
 SPELL64.D64                                          
@@ -399,7 +405,7 @@ SPELL64.D64
 387  "GeoDictionary"    USR  --pcGeos 0.3-->  GEODICTI.CVT
 45 BLOCKS FREE.                                      
 
-GEOS SEQ/VLIR                                 CVT Dateien
+GEOS SEQ/VLIR                                 CVT (dirty) Dateien
 in D64 Images                                 als PC Dateien
 ---------------------------                   --------------------
 WRUTIL64.D64                                         
