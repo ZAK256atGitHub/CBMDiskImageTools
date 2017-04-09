@@ -4,8 +4,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections;
 using ZAK256.CBMDiskImageTools.Logic.Core;
 using System.Collections.Generic;
+using System.Resources;
 
-namespace UnitTest
+namespace ZAK256.CBMDiskImageTools.Test.UnitTest
 {
     // Test files:
     // 8EB414AB37B23A1D1D348D456896A1B0* APPS64.D64
@@ -19,8 +20,13 @@ namespace UnitTest
         [TestMethod]
         public void TestMethod_GEOS64_D64()
         {
+            ResourceManager LocRM = new ResourceManager("ZAK256.CBMDiskImageTools.Test.UnitTest.Resources.cbmfiles.com_GEOS64_ZIP", System.Reflection.Assembly.GetExecutingAssembly());
+            
+            byte[] imageData = (byte[])LocRM.GetObject("GEOS64_D64");
+            
             ArrayList dirEntryList = new ArrayList();
-            byte[] imageData = Properties.Resources.GEOS64_D64;
+            //byte[] imageData = Properties.Resources.GEOS64_D64;
+
             Assert.AreEqual("F004B907634A30C21D4DF39E362C0789", Core.GetMD5Hash(imageData),"The test file is incorrect!");
             int imageDataType = 0; // sorry hard coding 0 = D64
             byte[] bamBlock = DOSDisk.ReadBAMBlock(imageData, imageDataType);
@@ -109,8 +115,10 @@ namespace UnitTest
         [TestMethod]
         public void TestMethod_APPS64_D64()
         {
+            ResourceManager ResMgrGEOS64_ZIP = new ResourceManager("ZAK256.CBMDiskImageTools.Test.UnitTest.Resources.cbmfiles.com_GEOS64_ZIP", System.Reflection.Assembly.GetExecutingAssembly());
+            ResourceManager ResMgrCVT = new ResourceManager("ZAK256.CBMDiskImageTools.Test.UnitTest.Resources.cbmfiles.com_CVT", System.Reflection.Assembly.GetExecutingAssembly());
             ArrayList dirEntryList = new ArrayList();
-            byte[] imageData = Properties.Resources.APPS64_D64;
+            byte[] imageData = (byte[])ResMgrGEOS64_ZIP.GetObject("APPS64_D64");
             Assert.AreEqual("8EB414AB37B23A1D1D348D456896A1B0", Core.GetMD5Hash(imageData), "The test file is incorrect!");
             int imageDataType = 0; // sorry hard coding 0 = D64
             byte[] bamBlock = DOSDisk.ReadBAMBlock(imageData, imageDataType);
@@ -142,8 +150,8 @@ namespace UnitTest
             Console.WriteLine("Filename = {0}", filename);
             Console.WriteLine("MD5 {0} = {1}", expectedMd5, md5); // see at test explorer --> "output"
 
-            byte[] cleanCvt = GEOSDisk.GetCleanCvtFromCvt(Properties.Resources.GW64_CVT);
-            Assert.AreEqual("7BB3438CBE86A08448BB03585AF68787", Core.GetMD5Hash(Properties.Resources.GW64_CVT), "The test file is incorrect!");
+            byte[] cleanCvt = GEOSDisk.GetCleanCvtFromCvt((byte[])ResMgrCVT.GetObject("GW64_CVT"));
+            Assert.AreEqual("7BB3438CBE86A08448BB03585AF68787", Core.GetMD5Hash((byte[])ResMgrCVT.GetObject("GW64_CVT")), "The test file is incorrect!");
             string cvtMD5 = Core.GetMD5Hash(cleanCvt);
             Assert.AreEqual(expectedMd5, cvtMD5, "The MD5 checksum of CVT file is incorrect.");
 
@@ -157,8 +165,8 @@ namespace UnitTest
             Console.WriteLine("Filename = {0}", filename);
             Console.WriteLine("MD5 {0} = {1}", expectedMd5, md5); // see at test explorer --> "output"
 
-            cleanCvt = GEOSDisk.GetCleanCvtFromCvt(Properties.Resources.GPT64_CVT);
-            Assert.AreEqual("5518FA80D16F09EB8DF16749423FE74A", Core.GetMD5Hash(Properties.Resources.GPT64_CVT), "The test file is incorrect!");
+            cleanCvt = GEOSDisk.GetCleanCvtFromCvt((byte[])ResMgrCVT.GetObject("GPT64_CVT"));
+            Assert.AreEqual("5518FA80D16F09EB8DF16749423FE74A", Core.GetMD5Hash((byte[])ResMgrCVT.GetObject("GPT64_CVT")), "The test file is incorrect!");
             cvtMD5 = Core.GetMD5Hash(cleanCvt);
             Assert.AreEqual(expectedMd5, cvtMD5, "The MD5 checksum of CVT file is incorrect.");
         }

@@ -6,7 +6,7 @@
     <ProjectGuid>{148F88CB-01A0-4C7B-8C4A-612CD7B24155}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UnitTest</RootNamespace>
+    <RootNamespace>ZAK256.CBMDiskImageTools.Test.UnitTest</RootNamespace>
     <AssemblyName>UnitTest</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -58,6 +59,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\cbmfiles.com_CVT.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cbmfiles.com_CVT.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\cbmfiles.com_GEOS64_ZIP.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cbmfiles.com_GEOS64_ZIP.resx</DependentUpon>
+    </Compile>
     <Compile Include="UnitTestCore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -72,17 +83,27 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\cbmfiles.com_CVT.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>cbmfiles.com_CVT.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\cbmfiles.com_GEOS64_ZIP.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>cbmfiles.com_GEOS64_ZIP.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\APPS64.D64" />
-    <None Include="Resources\Convert 2.5.D64" />
-    <None Include="Resources\GEOS64.D64" />
-    <None Include="Resources\GEOS64.ZIP" />
-    <None Include="Resources\GPT64.CVT" />
-    <None Include="Resources\GW64.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\GPT64.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\GW64.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_ZIP\APPS64.D64" />
+    <None Include="Resources\cbmfiles.com_GEOS64_ZIP\GEOS64.D64" />
+    <None Include="Resources\cbmfiles.com_GEOS64_ZIP\GEOS64.ZIP" />
+    <None Include="Resources\cbmfiles.com_GEOS64_ZIP\SPELL64.D64" />
+    <None Include="Resources\cbmfiles.com_GEOS64_ZIP\WRUTIL64.D64" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\CONVERT.BAS" />
+    <None Include="Resources\cbmfiles.com_GEOS64_ZIP\README.TXT" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
