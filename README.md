@@ -167,41 +167,41 @@ In der Solution ist ein Testprojekt enthalten, welches mehere Testfunktionen zum
 Das Programm CONVERT.BAS (http://cbmfiles.com/geos/geosfiles/CONVERT.BAS) wurde auf einer leeren von Vice (Version 3.0) erstellten Diskette ausgeführt. Es ist wichtig, das die Diskette absolut leer ist.
 Die Diskette wurde anschließend noch in das Geos Format konvertiert.
 
-```
+
 http://cbmfiles.com/geos/geosfiles/GEOS64.ZIP
 * APPS64.D64
 * GEOS64.D64
 * SPELL64.D64
 * WRUTIL64.D64
-
+```
 GEOS SEQ/VLIR                    CVT Dateien                      CVT Dateien
 in D64 Images                    in D64 Images                    als PC Dateien
 -------------                    -------------                    --------------
     O ----------------------------CDI Extract--------------------------------------------------------> O
+```
 
------------------------------------------------------------------------------------------------------------------------
-convert 2.5 (und Star Commander 0.83)
------------------------------------------------------------------------------------------------------------------------
+#### convert 2.5 (und Star Commander 0.83)
 
+```
 GEOS SEQ/VLIR                   CVT Dateien                                         CVT Dateien
 in D64 Images                   in D64 Images                                       als PC Dateien
 ---------------------------     ---------------------------                         ---------------------------
 APPS64.D64    --convert 2.5-->  APPS64_Convert2.5_to_CVT(PRG).D64
-**0 "Applications    " ML 2A **     **0 "Applications    " ML 2A **
-**120  "DESK TOP"         USR** --> **121  "DESK TOP"         PRG** --Star Commander 0.83--> **DESK TOP.prg		**
-**141  "GEOWRITE"         USR** --> **142  "GEOWRITE"         PRG** --Star Commander 0.83--> **GEOWRITE.prg		**
-**152  "GEOPAINT"         USR** --> **153  "GEOPAINT"         PRG** --Star Commander 0.83--> **GEOPAINT.prg		**
-**41   "photo manager"    USR** --> **42   "PHOTO MANAGER"    PRG** --Star Commander 0.83--> **PHOTO MANAGER.prg**
-**15   "calculator"       USR** --> **16   "CALCULATOR"       PRG** --Star Commander 0.83--> **CALCULATOR.prg	**
-**19   "note pad"         USR** --> **20   "NOTE PAD"         PRG** --Star Commander 0.83--> **NOTE PAD.prg		**
-**26   "California"       USR** --> **27   "CALIFORNIA"       PRG** --Star Commander 0.83--> **CALIFORNIA.prg	**
-**23   "Cory"             USR** --> **24   "CORY"             PRG** --Star Commander 0.83--> **CORY.prg			**
-**13   "Dwinelle"         USR** --> **14   "DWINELLE"         PRG** --Star Commander 0.83--> **DWINELLE.prg		**
-**34   "Roma"             USR** --> **35   "ROMA"             PRG** --Star Commander 0.83--> **ROMA.prg			**
-**40   "University"       USR** --> **41   "UNIVERSITY"       PRG** --Star Commander 0.83--> **UNIVERSITY.prg	**
-**7    "Commodore"        USR** --> **8    "COMMODORE"        PRG** --Star Commander 0.83--> **COMMODORE.prg	**
-**9    "ReadMe"           USR** --> **10   "README"           PRG** --Star Commander 0.83--> **README.prg		**
-**23 BLOCKS FREE.            **     **10 BLOCKS FREE.            **
+0 "Applications    " ML 2A      0 "Applications    " ML 2A
+120  "DESK TOP"         USR --> 121  "DESK TOP"         PRG --Star Commander 0.83--> DESK TOP.prg
+141  "GEOWRITE"         USR --> 142  "GEOWRITE"         PRG --Star Commander 0.83--> GEOWRITE.prg
+152  "GEOPAINT"         USR --> 153  "GEOPAINT"         PRG --Star Commander 0.83--> GEOPAINT.prg
+41   "photo manager"    USR --> 42   "PHOTO MANAGER"    PRG --Star Commander 0.83--> PHOTO MANAGER.prg
+15   "calculator"       USR --> 16   "CALCULATOR"       PRG --Star Commander 0.83--> CALCULATOR.prg
+19   "note pad"         USR --> 20   "NOTE PAD"         PRG --Star Commander 0.83--> NOTE PAD.prg
+26   "California"       USR --> 27   "CALIFORNIA"       PRG --Star Commander 0.83--> CALIFORNIA.prg
+23   "Cory"             USR --> 24   "CORY"             PRG --Star Commander 0.83--> CORY.prg
+13   "Dwinelle"         USR --> 14   "DWINELLE"         PRG --Star Commander 0.83--> DWINELLE.prg
+34   "Roma"             USR --> 35   "ROMA"             PRG --Star Commander 0.83--> ROMA.prg
+40   "University"       USR --> 41   "UNIVERSITY"       PRG --Star Commander 0.83--> UNIVERSITY.prg
+7    "Commodore"        USR --> 8    "COMMODORE"        PRG --Star Commander 0.83--> COMMODORE.prg
+9    "ReadMe"           USR --> 10   "README"           PRG --Star Commander 0.83--> README.prg
+23 BLOCKS FREE.                 10 BLOCKS FREE.
  
 GEOS64.D64    --convert 2.5-->  GEOS64_Convert2.5_to_CVT(PRG).D64
 0 "System          " 00 2A      0 "System          " 00 2A
@@ -249,10 +249,11 @@ WRUTIL64.D64  --convert 2.5-->  WRUTIL64_Convert2.5_to_CVT(PRG).D64
 46   "LW_Greek"         USR --> 47   "LW_GREEK"         PRG --Star Commander 0.83--> LW_GREEK.prg
 49   "LW_Barrows"       USR --> 50   "LW_BARROWS"       PRG --Star Commander 0.83--> LW_BARROWS.prg
 110 BLOCKS FREE.                94 BLOCKS FREE.
+```
 
------------------------------------------------------------------------------------------------------------------------
-Star Commander 0.83
------------------------------------------------------------------------------------------------------------------------
+#### Star Commander 0.83
+
+```
 GEOS SEQ/VLIR                                          CVT Dateien
 in D64 Images                                          als PC Dateien
 ---------------------------                            ---------------------------
@@ -319,11 +320,11 @@ WRUTIL64.D64
 46   "LW_Greek"         USR  --Star Commander 0.83-->  LW_Greek.cvt
 49   "LW_Barrows"       USR  --Star Commander 0.83-->  LW_Barrows.cvt
 110 BLOCKS FREE.     
+```
 
------------------------------------------------------------------------------------------------------------------------
-pcGeos 0.3
------------------------------------------------------------------------------------------------------------------------
+#### pcGeos 0.3
 
+```
 GEOS SEQ/VLIR                                 CVT Dateien
 in D64 Images                                 als PC Dateien
 ---------------------------                   ---------------------------
