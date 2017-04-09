@@ -177,16 +177,23 @@ Für viele Tests werden die D64 Images aus dem Archiv GEOS64.ZIP von der Interne
 
 
 ```
-GEOS SEQ/VLIR                    CVT Dateien                    CVT (dirty) Dateien         Clean CVT Dateien   
-in D64 Images                    in D64 Images                  als PC Dateien              als PC Dateien 
--------------                    -------------                  --------------              --------------
-    O----------------------------CDI Extract----------------------------------------------------->O
-    O-------------------------Star Commander 0.83------------------------------------------------>O
-    O-------------------------pcGeos 0.3–GGET.EXE--------------------->O ┐
-                                     ┌ O--------CDI Extract----------->O │
-    O------convert 2.5-------------->┤ O-----Star Commander 0.83------>O ├─────CVT2CleanCVT──────►□
-                                     └ O----u.v.a.m. z.B. 64Copy------>O ┘
-
+┌───────────────────┬─────────────────────────────┬─────────────────────────────┬────────────────────────────────┐
+│  GEOS SEQ/VLIR    │       CVT Dateien           │       CVT (dirty) Dateien   │     Clean CVT Dateien          │
+│  in D64 Images    │       in D64 Images         │       als PC Dateien        │     als PC Dateien             │
+├───────────────────┴─────────────────────────────┴─────────────────────────────┴────────────────────────────────┤
+│    O───────────────────────────────────CDIExtract────────────────────────────────────────►O                    │
+│    O───────────────────────────────Star Commander 0.83───────────────────────────────────►O                    │
+│    O────────────────────pcGeos 0.3–GGET.EXE───────────────────►O ┐                                             │
+│                              ┌ O─────────CDIExtract───────────►O │                                             │
+│    O──────convert 2.5───────►┤ O─────Star Commander 0.83──────►O ├─────CVT2CleanCVT──────►O                    │
+│                              └ O────u.v.a.m. z.B. 64Copy──────►O ┘                                             │
+│                                                                                                                │
+│    ║                                                           ║                          ║jegliche Programme  │
+│    ║CDIDir                                                     ║CVTChecksum               ║zum Erzeugen von MD5│
+│    ║                                                           ║                          ║Prüfsummen          │
+│    ▼                                                           ▼                          ▼                    │
+│   MD5                                                         MD5                        MD5                   │
+└────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 #### convert 2.5 (und Star Commander 0.83)
