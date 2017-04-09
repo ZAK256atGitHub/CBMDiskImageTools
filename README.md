@@ -167,6 +167,231 @@ In der Solution ist ein Testprojekt enthalten, welches mehere Testfunktionen zum
 Das Programm CONVERT.BAS (http://cbmfiles.com/geos/geosfiles/CONVERT.BAS) wurde auf einer leeren von Vice (Version 3.0) erstellten Diskette ausgeführt. Es ist wichtig, das die Diskette absolut leer ist.
 Die Diskette wurde anschließend noch in das Geos Format konvertiert.
 
+```
+http://cbmfiles.com/geos/geosfiles/GEOS64.ZIP
+* APPS64.D64
+* GEOS64.D64
+* SPELL64.D64
+* WRUTIL64.D64
+
+GEOS SEQ/VLIR                    CVT Dateien                      CVT Dateien
+in D64 Images                    in D64 Images                    als PC Dateien
+-------------                    -------------                    --------------
+    O ----------------------------CDI Extract--------------------------------------------------------> O
+
+-----------------------------------------------------------------------------------------------------------------------
+convert 2.5 (und Star Commander 0.83)
+-----------------------------------------------------------------------------------------------------------------------
+
+GEOS SEQ/VLIR                               CVT Dateien                                            CVT Dateien
+in D64 Images                               in D64 Images                                          als PC Dateien
+---------------------------                 ---------------------------                            ---------------------------
+APPS64.D64                 --convert 2.5--> APPS64_Convert2.5_to_CVT(PRG).D64
+0 "Applications    " ML 2A                  0 "Applications    " ML 2A
+120  "DESK TOP"         USR                 121  "DESK TOP"         PRG  --Star Commander 0.83-->  DESK TOP.prg
+141  "GEOWRITE"         USR                 142  "GEOWRITE"         PRG  --Star Commander 0.83-->  GEOWRITE.prg
+152  "GEOPAINT"         USR                 153  "GEOPAINT"         PRG  --Star Commander 0.83-->  GEOPAINT.prg
+41   "photo manager"    USR                 42   "PHOTO MANAGER"    PRG  --Star Commander 0.83-->  PHOTO MANAGER.prg
+15   "calculator"       USR                 16   "CALCULATOR"       PRG  --Star Commander 0.83-->  CALCULATOR.prg
+19   "note pad"         USR                 20   "NOTE PAD"         PRG  --Star Commander 0.83-->  NOTE PAD.prg
+26   "California"       USR                 27   "CALIFORNIA"       PRG  --Star Commander 0.83-->  CALIFORNIA.prg
+23   "Cory"             USR                 24   "CORY"             PRG  --Star Commander 0.83-->  CORY.prg
+13   "Dwinelle"         USR                 14   "DWINELLE"         PRG  --Star Commander 0.83-->  DWINELLE.prg
+34   "Roma"             USR                 35   "ROMA"             PRG  --Star Commander 0.83-->  ROMA.prg
+40   "University"       USR                 41   "UNIVERSITY"       PRG  --Star Commander 0.83-->  UNIVERSITY.prg
+7    "Commodore"        USR                 8    "COMMODORE"        PRG  --Star Commander 0.83-->  COMMODORE.prg
+9    "ReadMe"           USR                 10   "README"           PRG  --Star Commander 0.83-->  README.prg
+23 BLOCKS FREE.                             10 BLOCKS FREE.
+ 
+GEOS64.D64                 --convert 2.5--> GEOS64_Convert2.5_to_CVT(PRG).D64
+0 "System          " 00 2A                  0 "System          " 00 2A
+2    "GEOS"             PRG Error           2    "GEOS"             PRG  
+86   "GEOBOOT"          PRG Error           86   "GEOBOOT"          PRG  
+78   "CONFIGURE"        USR                 79   "CONFIGURE"        PRG  --Star Commander 0.83-->  CONFIGURE.prg
+120  "DESK TOP"         USR                 121  "DESK TOP"         PRG  --Star Commander 0.83-->  DESK TOP.prg
+3    "JOYSTICK"         USR                 4    "JOYSTICK"         PRG  --Star Commander 0.83-->  JOYSTICK.prg
+5    "MPS-803"          USR                 6    "MPS-803"          PRG  --Star Commander 0.83-->  MPS-803.prg
+22   "preference mgr"   USR                 23   "PREFERENCE MGR"   PRG  --Star Commander 0.83-->  PREFERENCE MGR.prg
+22   "pad color mgr"    USR                 23   "PAD COLOR MGR"    PRG  --Star Commander 0.83-->  PAD COLOR MGR.prg
+13   "alarm clock"      USR                 14   "ALARM CLOCK"      PRG  --Star Commander 0.83-->  ALARM CLOCK.prg
+18   "PAINT DRIVERS"    USR                 19   "PAINT DRIVERS"    PRG  --Star Commander 0.83-->  PAINT DRIVERS.prg
+2    "RBOOT"            PRG Error           2    "RBOOT"            PRG                            
+4    "Star NL-10(com)"  USR                 5    "STAR NL-10(COM)"  PRG  --Star Commander 0.83-->  STAR NL-10(COM).prg
+3    "ASCII Only"       USR                 4    "ASCII ONLY"       PRG  --Star Commander 0.83-->  ASCII ONLY.prg
+3    "COMM 1351"        USR                 4    "COMM 1351"        PRG  --Star Commander 0.83-->  COMM 1351.prg
+3    "COMM 1351(a)"     USR                 4    "COMM 1351(A)"     PRG  --Star Commander 0.83-->  COMM 1351(A).prg
+20   "CONVERT"          USR                 21   "CONVERT"          PRG  --Star Commander 0.83-->  CONVERT.prg
+259 BLOCKS FREE.                            246 BLOCKS FREE.
+
+SPELL64.D64                --convert 2.5--> SPELL64_Convert2.5_to_CVT(PRG).D64
+0 "geoSpell        " 00 2A                  0 "geoSpell        " 00 2A
+120  "DESK TOP"         USR                 121  "DESK TOP"         PRG  --Star Commander 0.83-->  DESK TOP.prg
+111  "GEOSPELL"         USR                 112  "GEOSPELL"         PRG  --Star Commander 0.83-->  GEOSPELL.prg
+387  "GeoDictionary"    USR                 388  "GEODICTIONARY"    PRG  --Star Commander 0.83-->  GEODICTIONARY.prg
+45 BLOCKS FREE.                             42 BLOCKS FREE.
+
+WRUTIL64.D64               --convert 2.5--> WRUTIL64_Convert2.5_to_CVT(PRG).D64
+0 "Write Utilities " 00 2A                  0 "Write Utilities " 00 2A
+120  "DESK TOP"         USR                 121  "DESK TOP"         PRG  --Star Commander 0.83-->  DESK TOP.prg
+67   "TEXT GRABBER"     USR                 68   "TEXT GRABBER"     PRG  --Star Commander 0.83-->  TEXT GRABBER.prg
+60   "GEOLASER"         USR                 61   "GEOLASER"         PRG  --Star Commander 0.83-->  GEOLASER.prg
+67   "GEOMERGE"         USR                 68   "GEOMERGE"         PRG  --Star Commander 0.83-->  GEOMERGE.prg
+38   "text manager"     USR                 39   "TEXT MANAGER"     PRG  --Star Commander 0.83-->  TEXT MANAGER.prg
+4    "EasyScript Form"  USR                 5    "EASYSCRIPT FORM"  PRG  --Star Commander 0.83-->  EASYSCRIPT FORM.prg
+3    "PaperClip Form"   USR                 4    "PAPERCLIP FORM"   PRG  --Star Commander 0.83-->  PAPERCLIP FORM.prg
+2    "SpeedScript Form" USR                 3    "SPEEDSCRIPT FORM" PRG  --Star Commander 0.83-->  SPEEDSCRIPT FORM.prg
+3    "WordWriter Form"  USR                 4    "WORDWRITER FORM"  PRG  --Star Commander 0.83-->  WORDWRITER FORM.prg
+2    "Generic I Form"   USR                 3    "GENERIC I FORM"   PRG  --Star Commander 0.83-->  GENERIC I FORM.prg
+2    "Generic II Form"  USR                 3    "GENERIC II FORM"  PRG  --Star Commander 0.83-->  GENERIC II FORM.prg
+2    "Generic III Form" USR                 3    "GENERIC III FORM" PRG  --Star Commander 0.83-->  GENERIC III FORM.prg
+44   "LW_Roma"          USR                 45   "LW_ROMA"          PRG  --Star Commander 0.83-->  LW_ROMA.prg
+44   "LW_Cal"           USR                 45   "LW_CAL"           PRG  --Star Commander 0.83-->  LW_CAL.prg
+46   "LW_Greek"         USR                 47   "LW_GREEK"         PRG  --Star Commander 0.83-->  LW_GREEK.prg
+49   "LW_Barrows"       USR                 50   "LW_BARROWS"       PRG  --Star Commander 0.83-->  LW_BARROWS.prg
+110 BLOCKS FREE.                            94 BLOCKS FREE.
+
+-----------------------------------------------------------------------------------------------------------------------
+Star Commander 0.83
+-----------------------------------------------------------------------------------------------------------------------
+GEOS SEQ/VLIR                                          CVT Dateien
+in D64 Images                                          als PC Dateien
+---------------------------                            ---------------------------
+APPS64.D64                                           
+0 "Applications    " ML 2A                           
+120  "DESK TOP"         USR  --Star Commander 0.83-->  DESK TOP.cvt
+141  "GEOWRITE"         USR  --Star Commander 0.83-->  GEOPAINT.cvt
+152  "GEOPAINT"         USR  --Star Commander 0.83-->  GEOWRITE.cvt
+41   "photo manager"    USR  --Star Commander 0.83-->  PHOTO MANAGER.CVT
+15   "calculator"       USR  --Star Commander 0.83-->  CALCULATOR.CVT
+19   "note pad"         USR  --Star Commander 0.83-->  NOTE PAD.CVT
+26   "California"       USR  --Star Commander 0.83-->  California.cvt
+23   "Cory"             USR  --Star Commander 0.83-->  Cory.cvt
+13   "Dwinelle"         USR  --Star Commander 0.83-->  Dwinelle.cvt
+34   "Roma"             USR  --Star Commander 0.83-->  Roma.cvt
+40   "University"       USR  --Star Commander 0.83-->  University.cvt
+7    "Commodore"        USR  --Star Commander 0.83-->  Commodore.cvt
+9    "ReadMe"           USR  --Star Commander 0.83-->  ReadMe.cvt
+23 BLOCKS FREE.                                      
+                                                     
+GEOS64.D64                                           
+0 "System          " 00 2A                           
+2    "GEOS"             PRG  --Star Commander 0.83-->  GEOS.cvt
+86   "GEOBOOT"          PRG  --Star Commander 0.83-->  GEOBOOT.cvt
+78   "CONFIGURE"        USR  --Star Commander 0.83-->  CONFIGURE.cvt
+120  "DESK TOP"         USR  --Star Commander 0.83-->  DESK TOP.cvt
+3    "JOYSTICK"         USR  --Star Commander 0.83-->  JOYSTICK.cvt
+5    "MPS-803"          USR  --Star Commander 0.83-->  MPS-803.cvt
+22   "preference mgr"   USR  --Star Commander 0.83-->  PREFERENCE MGR.CVT
+22   "pad color mgr"    USR  --Star Commander 0.83-->  PAD COLOR MGR.CVT
+13   "alarm clock"      USR  --Star Commander 0.83-->  ALARM CLOCK.CVT
+18   "PAINT DRIVERS"    USR  --Star Commander 0.83-->  PAINT DRIVERS.cvt
+2    "RBOOT"            PRG  --Star Commander 0.83-->  RBOOT.cvt
+4    "Star NL-10(com)"  USR  --Star Commander 0.83-->  Star NL-10(com).cvt
+3    "ASCII Only"       USR  --Star Commander 0.83-->  ASCII Only.cvt
+3    "COMM 1351"        USR  --Star Commander 0.83-->  COMM 1351.cvt
+3    "COMM 1351(a)"     USR  --Star Commander 0.83-->  COMM 1351(a).cvt
+20   "CONVERT"          USR  --Star Commander 0.83-->  CONVERT.cvt
+259 BLOCKS FREE.                                     
+                                                     
+SPELL64.D64                                          
+0 "geoSpell        " 00 2A                           
+120  "DESK TOP"         USR  --Star Commander 0.83-->  DESK TOP.cvt
+111  "GEOSPELL"         USR  --Star Commander 0.83-->  GEOSPELL.cvt
+387  "GeoDictionary"    USR  --Star Commander 0.83-->  GeoDictionary.cvt
+45 BLOCKS FREE.                                      
+                                                     
+WRUTIL64.D64                                         
+0 "Write Utilities " 00 2A                           
+120  "DESK TOP"         USR  --Star Commander 0.83-->  DESK TOP.cvt
+67   "TEXT GRABBER"     USR  --Star Commander 0.83-->  TEXT GRABBER.cvt
+60   "GEOLASER"         USR  --Star Commander 0.83-->  GEOLASER.cvt
+67   "GEOMERGE"         USR  --Star Commander 0.83-->  GEOMERGE.cvt
+38   "text manager"     USR  --Star Commander 0.83-->  TEXT MANAGER.CVT
+4    "EasyScript Form"  USR  --Star Commander 0.83-->  EasyScript Form.cvt
+3    "PaperClip Form"   USR  --Star Commander 0.83-->  PaperClip Form.cvt
+2    "SpeedScript Form" USR  --Star Commander 0.83-->  SpeedScript Form.cvt
+3    "WordWriter Form"  USR  --Star Commander 0.83-->  WordWriter Form.cvt
+2    "Generic I Form"   USR  --Star Commander 0.83-->  Generic I Form.cvt
+2    "Generic II Form"  USR  --Star Commander 0.83-->  Generic II Form.cvt
+2    "Generic III Form" USR  --Star Commander 0.83-->  Generic III Form.cvt
+44   "LW_Roma"          USR  --Star Commander 0.83-->  LW_Roma.cvt
+44   "LW_Cal"           USR  --Star Commander 0.83-->  LW_Cal.cvt
+46   "LW_Greek"         USR  --Star Commander 0.83-->  LW_Greek.cvt
+49   "LW_Barrows"       USR  --Star Commander 0.83-->  LW_Barrows.cvt
+110 BLOCKS FREE.     
+
+-----------------------------------------------------------------------------------------------------------------------
+pcGeos 0.3
+-----------------------------------------------------------------------------------------------------------------------
+
+GEOS SEQ/VLIR                                 CVT Dateien
+in D64 Images                                 als PC Dateien
+---------------------------                   ---------------------------
+APPS64.D64                                           
+0 "Applications    " ML 2A                           
+120  "DESK TOP"         USR  --pcGeos 0.3-->  DESK_TOP.CVT
+141  "GEOWRITE"         USR  --pcGeos 0.3-->  GEOWRITE.CVT
+152  "GEOPAINT"         USR  --pcGeos 0.3-->  GEOPAINT.CVT
+41   "photo manager"    USR  --pcGeos 0.3-->  PHOTO_MA.CVT
+15   "calculator"       USR  --pcGeos 0.3-->  CALCULAT.CVT
+19   "note pad"         USR  --pcGeos 0.3-->  NOTE_PAD.CVT
+26   "California"       USR  --pcGeos 0.3-->  CALIFORN.CVT
+23   "Cory"             USR  --pcGeos 0.3-->  CORY.CVT
+13   "Dwinelle"         USR  --pcGeos 0.3-->  DWINELLE.CVT
+34   "Roma"             USR  --pcGeos 0.3-->  ROMA.CVT
+40   "University"       USR  --pcGeos 0.3-->  UNIVERSI.CVT
+7    "Commodore"        USR  --pcGeos 0.3-->  COMMODOR.CVT
+9    "ReadMe"           USR  --pcGeos 0.3-->  README.CVT
+23 BLOCKS FREE.                                      
+                                                     
+GEOS64.D64                                           
+0 "System          " 00 2A                           
+2    "GEOS"             PRG  --pcGeos 0.3-->  GEOS.CVT
+86   "GEOBOOT"          PRG  --pcGeos 0.3-->  GEOBOOT.CVT
+78   "CONFIGURE"        USR  --pcGeos 0.3-->  CONFIGUR.CVT
+120  "DESK TOP"         USR  --pcGeos 0.3-->  DESK_TOP.CVT
+3    "JOYSTICK"         USR  --pcGeos 0.3-->  JOYSTICK.CVT
+5    "MPS-803"          USR  --pcGeos 0.3-->  MPS-803.CVT
+22   "preference mgr"   USR  --pcGeos 0.3-->  PREFEREN.CVT
+22   "pad color mgr"    USR  --pcGeos 0.3-->  PAD_COLO.CVT
+13   "alarm clock"      USR  --pcGeos 0.3-->  ALARM_CL.CVT
+18   "PAINT DRIVERS"    USR  --pcGeos 0.3-->  PAINT_DR.CVT
+2    "RBOOT"            PRG  --pcGeos 0.3-->  RBOOT.CVT
+4    "Star NL-10(com)"  USR  --pcGeos 0.3-->  STAR_NL-.CVT
+3    "ASCII Only"       USR  --pcGeos 0.3-->  ASCII_ON.CVT
+3    "COMM 1351"        USR  --pcGeos 0.3-->  COMM_135.CVT
+3    "COMM 1351(a)"     USR  --pcGeos 0.3-->  COMM_13A.CVT umbenannt
+20   "CONVERT"          USR  --pcGeos 0.3-->  CONVERT.CVT
+259 BLOCKS FREE.                                     
+                                                     
+SPELL64.D64                                          
+0 "geoSpell        " 00 2A                           
+120  "DESK TOP"         USR  --pcGeos 0.3-->  DESK_TOP.CVT
+111  "GEOSPELL"         USR  --pcGeos 0.3-->  GEOSPELL.CVT
+387  "GeoDictionary"    USR  --pcGeos 0.3-->  GEODICTI.CVT
+45 BLOCKS FREE.                                      
+                                                     
+WRUTIL64.D64                                         
+0 "Write Utilities " 00 2A                           
+120  "DESK TOP"         USR  --pcGeos 0.3-->  DESK_TOP.CVT
+67   "TEXT GRABBER"     USR  --pcGeos 0.3-->  TEXT_GRA.CVT
+60   "GEOLASER"         USR  --pcGeos 0.3-->  GEOLASER.CVT
+67   "GEOMERGE"         USR  --pcGeos 0.3-->  GEOMERGE.CVT
+38   "text manager"     USR  --pcGeos 0.3-->  TEXT_MAN.CVT
+4    "EasyScript Form"  USR  --pcGeos 0.3-->  EASYSCRI.CVT
+3    "PaperClip Form"   USR  --pcGeos 0.3-->  PAPERCLI.CVT
+2    "SpeedScript Form" USR  --pcGeos 0.3-->  SPEEDSCR.CVT
+3    "WordWriter Form"  USR  --pcGeos 0.3-->  WORDWRIT.CVT
+2    "Generic I Form"   USR  --pcGeos 0.3-->  GENERIC1.CVT umbenannt
+2    "Generic II Form"  USR  --pcGeos 0.3-->  GENERIC2.CVT umbenannt
+2    "Generic III Form" USR  --pcGeos 0.3-->  GENERIC3.CVT umbenannt
+44   "LW_Roma"          USR  --pcGeos 0.3-->  LW_ROMA.CVT
+44   "LW_Cal"           USR  --pcGeos 0.3-->  LW_CAL.CVT
+46   "LW_Greek"         USR  --pcGeos 0.3-->  LW_GREEK.CVT
+49   "LW_Barrows"       USR  --pcGeos 0.3-->  LW_BARRO.CVT
+110 BLOCKS FREE.                                                                  
+```
+
 # Installationsdokumentation
 
 # ToDo Liste
