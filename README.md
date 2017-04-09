@@ -187,26 +187,26 @@ GEOS SEQ/VLIR                   CVT Dateien                                     
 in D64 Images                   in D64 Images                                       als PC Dateien
 ---------------------------     ---------------------------                         ---------------------------
 APPS64.D64    --convert 2.5-->  APPS64_Convert2.5_to_CVT(PRG).D64
-0 "Applications    " ML 2A      0 "Applications    " ML 2A
-120  "DESK TOP"         USR --> 121  "DESK TOP"         PRG --Star Commander 0.83--> DESK TOP.prg
-141  "GEOWRITE"         USR --> 142  "GEOWRITE"         PRG --Star Commander 0.83--> GEOWRITE.prg
-152  "GEOPAINT"         USR --> 153  "GEOPAINT"         PRG --Star Commander 0.83--> GEOPAINT.prg
-41   "photo manager"    USR --> 42   "PHOTO MANAGER"    PRG --Star Commander 0.83--> PHOTO MANAGER.prg
-15   "calculator"       USR --> 16   "CALCULATOR"       PRG --Star Commander 0.83--> CALCULATOR.prg
-19   "note pad"         USR --> 20   "NOTE PAD"         PRG --Star Commander 0.83--> NOTE PAD.prg
-26   "California"       USR --> 27   "CALIFORNIA"       PRG --Star Commander 0.83--> CALIFORNIA.prg
-23   "Cory"             USR --> 24   "CORY"             PRG --Star Commander 0.83--> CORY.prg
-13   "Dwinelle"         USR --> 14   "DWINELLE"         PRG --Star Commander 0.83--> DWINELLE.prg
-34   "Roma"             USR --> 35   "ROMA"             PRG --Star Commander 0.83--> ROMA.prg
-40   "University"       USR --> 41   "UNIVERSITY"       PRG --Star Commander 0.83--> UNIVERSITY.prg
-7    "Commodore"        USR --> 8    "COMMODORE"        PRG --Star Commander 0.83--> COMMODORE.prg
-9    "ReadMe"           USR --> 10   "README"           PRG --Star Commander 0.83--> README.prg
-23 BLOCKS FREE.                 10 BLOCKS FREE.
+**0 "Applications    " ML 2A **     **0 "Applications    " ML 2A **
+**120  "DESK TOP"         USR** --> **121  "DESK TOP"         PRG** --Star Commander 0.83--> **DESK TOP.prg		**
+**141  "GEOWRITE"         USR** --> **142  "GEOWRITE"         PRG** --Star Commander 0.83--> **GEOWRITE.prg		**
+**152  "GEOPAINT"         USR** --> **153  "GEOPAINT"         PRG** --Star Commander 0.83--> **GEOPAINT.prg		**
+**41   "photo manager"    USR** --> **42   "PHOTO MANAGER"    PRG** --Star Commander 0.83--> **PHOTO MANAGER.prg**
+**15   "calculator"       USR** --> **16   "CALCULATOR"       PRG** --Star Commander 0.83--> **CALCULATOR.prg	**
+**19   "note pad"         USR** --> **20   "NOTE PAD"         PRG** --Star Commander 0.83--> **NOTE PAD.prg		**
+**26   "California"       USR** --> **27   "CALIFORNIA"       PRG** --Star Commander 0.83--> **CALIFORNIA.prg	**
+**23   "Cory"             USR** --> **24   "CORY"             PRG** --Star Commander 0.83--> **CORY.prg			**
+**13   "Dwinelle"         USR** --> **14   "DWINELLE"         PRG** --Star Commander 0.83--> **DWINELLE.prg		**
+**34   "Roma"             USR** --> **35   "ROMA"             PRG** --Star Commander 0.83--> **ROMA.prg			**
+**40   "University"       USR** --> **41   "UNIVERSITY"       PRG** --Star Commander 0.83--> **UNIVERSITY.prg	**
+**7    "Commodore"        USR** --> **8    "COMMODORE"        PRG** --Star Commander 0.83--> **COMMODORE.prg	**
+**9    "ReadMe"           USR** --> **10   "README"           PRG** --Star Commander 0.83--> **README.prg		**
+**23 BLOCKS FREE.            **     **10 BLOCKS FREE.            **
  
 GEOS64.D64    --convert 2.5-->  GEOS64_Convert2.5_to_CVT(PRG).D64
 0 "System          " 00 2A      0 "System          " 00 2A
-2    "GEOS"             PRG Err
-86   "GEOBOOT"          PRG Err
+2    "GEOS"             PRG Err 2    "GEOS"             PRG 
+86   "GEOBOOT"          PRG Err 86   "GEOBOOT"          PRG
 78   "CONFIGURE"        USR --> 79   "CONFIGURE"        PRG --Star Commander 0.83--> CONFIGURE.prg
 120  "DESK TOP"         USR --> 121  "DESK TOP"         PRG --Star Commander 0.83--> DESK TOP.prg
 3    "JOYSTICK"         USR --> 4    "JOYSTICK"         PRG --Star Commander 0.83--> JOYSTICK.prg
@@ -215,7 +215,7 @@ GEOS64.D64    --convert 2.5-->  GEOS64_Convert2.5_to_CVT(PRG).D64
 22   "pad color mgr"    USR --> 23   "PAD COLOR MGR"    PRG --Star Commander 0.83--> PAD COLOR MGR.prg
 13   "alarm clock"      USR --> 14   "ALARM CLOCK"      PRG --Star Commander 0.83--> ALARM CLOCK.prg
 18   "PAINT DRIVERS"    USR --> 19   "PAINT DRIVERS"    PRG --Star Commander 0.83--> PAINT DRIVERS.prg
-2    "RBOOT"            PRG Err 
+2    "RBOOT"            PRG Err 2    "RBOOT"            PRG 
 4    "Star NL-10(com)"  USR --> 5    "STAR NL-10(COM)"  PRG --Star Commander 0.83--> STAR NL-10(COM).prg
 3    "ASCII Only"       USR --> 4    "ASCII ONLY"       PRG --Star Commander 0.83--> ASCII ONLY.prg
 3    "COMM 1351"        USR --> 4    "COMM 1351"        PRG --Star Commander 0.83--> COMM 1351.prg
