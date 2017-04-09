@@ -160,19 +160,22 @@ Commodore DOS Dateien mir der Dateiart REL werden momentan noch nicht unterstüt
 
 # Testdokumentation
 
-In der Solution ist ein Testprojekt enthalten, welches mehrere Testfunktionen zum Testen der Kernfunktionen beinhaltet. Alle verwendet Testdateien wie z.B. 
+In der Solution ist ein Testprojekt enthalten, welches mehrere Testfunktionen zum Testen der Kernfunktionen beinhaltet. Alle verwendet Testdateien wie z.B. D64 Images, CVT Dateien usw. sind als *Resources* im Testprojet eingebettet.
 
 ## Convert 2.5 erstellen
 
-Das Programm CONVERT.BAS (http://cbmfiles.com/geos/geosfiles/CONVERT.BAS) wurde auf einer leeren von Vice (Version 3.0) erstellten Diskette ausgeführt. Es ist wichtig, das die Diskette absolut leer ist.
+Das Programm CONVERT.BAS (http://cbmfiles.com/geos/geosfiles/CONVERT.BAS) wurde auf einer leeren von Vice (Version 3.0) erstellten Diskette ausgeführt. Es ist wichtig, dass die Diskette absolut leer ist.
 Die Diskette wurde anschließend noch in das Geos Format konvertiert.
 
+## Test
 
-http://cbmfiles.com/geos/geosfiles/GEOS64.ZIP
+Für viele Tests werden die D64 Images aus dem Archiv GEOS64.ZIP von der Internetseite cbmfiles.com (http://cbmfiles.com/geos/geosfiles/GEOS64.ZIP) als Grundlage verwendet. Dieses Archiv enthält die folgenden 4 D64 Images.
 * APPS64.D64
 * GEOS64.D64
 * SPELL64.D64
 * WRUTIL64.D64
+
+
 ```
 GEOS SEQ/VLIR                    CVT Dateien                      CVT Dateien
 in D64 Images                    in D64 Images                    als PC Dateien
