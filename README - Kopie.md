@@ -1,4 +1,4 @@
-﻿# CBM Disk Image Tools
+# CBM Disk Image Tools
 
 The CBM Disk Image Tools are a collection of several small programs that can process images of Commodore diskettes. The focus of the tool collection is currently to create checksums of individual files.
 
@@ -160,7 +160,7 @@ Commodore DOS Dateien mir der Dateiart REL werden momentan noch nicht unterstüt
 
 # Testdokumentation
 
-In der Solution ist ein Testprojekt enthalten, welches mehrere Testfunktionen zum Testen der Kernfunktionen beinhaltet. Alle verwendet Testdateien wie z.B. 
+In der Solution ist ein Testprojekt enthalten, welches mehere Testfunktionen zum Testen der Kernfunktionen beinhaltet. Alle verwendet Testdateien wie z.B. 
 
 ## Convert 2.5 erstellen
 
@@ -285,7 +285,7 @@ APPS64.D64
    
 GEOS SEQ/VLIR                                          CVT Dateien
 in D64 Images                                          als PC Dateien
----------------------------                            --------------------
+---------------------------                            --------------------                                                     
 GEOS64.D64                                           
 0 "System          " 00 2A                           
 2    "GEOS"             PRG  --Star Commander 0.83-->  GEOS.cvt
@@ -308,7 +308,7 @@ GEOS64.D64
 
 GEOS SEQ/VLIR                                          CVT Dateien
 in D64 Images                                          als PC Dateien
----------------------------                            --------------------
+---------------------------                            --------------------                                                     
 SPELL64.D64                                          
 0 "geoSpell        " 00 2A                           
 120  "DESK TOP"         USR  --Star Commander 0.83-->  DESK TOP.cvt
@@ -318,7 +318,7 @@ SPELL64.D64
 
 GEOS SEQ/VLIR                                          CVT Dateien
 in D64 Images                                          als PC Dateien
----------------------------                            --------------------
+---------------------------                            --------------------                                                     
 WRUTIL64.D64                                         
 0 "Write Utilities " 00 2A                           
 120  "DESK TOP"         USR  --Star Commander 0.83-->  DESK TOP.cvt
@@ -345,7 +345,7 @@ WRUTIL64.D64
 ```
 GEOS SEQ/VLIR                                 CVT Dateien
 in D64 Images                                 als PC Dateien
----------------------------                   --------------------
+---------------------------                   -------------------- 
 APPS64.D64                                           
 0 "Applications    " ML 2A                           
 120  "DESK TOP"         USR  --pcGeos 0.3-->  DESK_TOP.CVT
@@ -365,7 +365,7 @@ APPS64.D64
     
 GEOS SEQ/VLIR                                 CVT Dateien
 in D64 Images                                 als PC Dateien
----------------------------                   --------------------
+---------------------------                   --------------------	                                                 
 GEOS64.D64                                           
 0 "System          " 00 2A                           
 2    "GEOS"             PRG  --pcGeos 0.3-->  GEOS.CVT
@@ -388,7 +388,7 @@ GEOS64.D64
  
 GEOS SEQ/VLIR                                 CVT Dateien
 in D64 Images                                 als PC Dateien
----------------------------                   --------------------
+---------------------------                   --------------------                                                     
 SPELL64.D64                                          
 0 "geoSpell        " 00 2A                           
 120  "DESK TOP"         USR  --pcGeos 0.3-->  DESK_TOP.CVT
@@ -398,7 +398,7 @@ SPELL64.D64
 
 GEOS SEQ/VLIR                                 CVT Dateien
 in D64 Images                                 als PC Dateien
----------------------------                   --------------------
+---------------------------                   --------------------                                                     
 WRUTIL64.D64                                         
 0 "Write Utilities " 00 2A                           
 120  "DESK TOP"         USR  --pcGeos 0.3-->  DESK_TOP.CVT
@@ -417,7 +417,7 @@ WRUTIL64.D64
 44   "LW_Cal"           USR  --pcGeos 0.3-->  LW_CAL.CVT
 46   "LW_Greek"         USR  --pcGeos 0.3-->  LW_GREEK.CVT
 49   "LW_Barrows"       USR  --pcGeos 0.3-->  LW_BARRO.CVT
-110 BLOCKS FREE. 
+110 BLOCKS FREE.                                                                  
 ```
 
 # Installationsdokumentation
