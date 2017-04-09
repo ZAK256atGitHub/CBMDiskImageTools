@@ -183,72 +183,72 @@ in D64 Images                    in D64 Images                    als PC Dateien
 convert 2.5 (und Star Commander 0.83)
 -----------------------------------------------------------------------------------------------------------------------
 
-GEOS SEQ/VLIR                               CVT Dateien                                            CVT Dateien
-in D64 Images                               in D64 Images                                          als PC Dateien
----------------------------                 ---------------------------                            ---------------------------
-APPS64.D64                 --convert 2.5--> APPS64_Convert2.5_to_CVT(PRG).D64
-0 "Applications    " ML 2A                  0 "Applications    " ML 2A
-120  "DESK TOP"         USR                 121  "DESK TOP"         PRG  --Star Commander 0.83-->  DESK TOP.prg
-141  "GEOWRITE"         USR                 142  "GEOWRITE"         PRG  --Star Commander 0.83-->  GEOWRITE.prg
-152  "GEOPAINT"         USR                 153  "GEOPAINT"         PRG  --Star Commander 0.83-->  GEOPAINT.prg
-41   "photo manager"    USR                 42   "PHOTO MANAGER"    PRG  --Star Commander 0.83-->  PHOTO MANAGER.prg
-15   "calculator"       USR                 16   "CALCULATOR"       PRG  --Star Commander 0.83-->  CALCULATOR.prg
-19   "note pad"         USR                 20   "NOTE PAD"         PRG  --Star Commander 0.83-->  NOTE PAD.prg
-26   "California"       USR                 27   "CALIFORNIA"       PRG  --Star Commander 0.83-->  CALIFORNIA.prg
-23   "Cory"             USR                 24   "CORY"             PRG  --Star Commander 0.83-->  CORY.prg
-13   "Dwinelle"         USR                 14   "DWINELLE"         PRG  --Star Commander 0.83-->  DWINELLE.prg
-34   "Roma"             USR                 35   "ROMA"             PRG  --Star Commander 0.83-->  ROMA.prg
-40   "University"       USR                 41   "UNIVERSITY"       PRG  --Star Commander 0.83-->  UNIVERSITY.prg
-7    "Commodore"        USR                 8    "COMMODORE"        PRG  --Star Commander 0.83-->  COMMODORE.prg
-9    "ReadMe"           USR                 10   "README"           PRG  --Star Commander 0.83-->  README.prg
-23 BLOCKS FREE.                             10 BLOCKS FREE.
+GEOS SEQ/VLIR                   CVT Dateien                                         CVT Dateien
+in D64 Images                   in D64 Images                                       als PC Dateien
+---------------------------     ---------------------------                         ---------------------------
+APPS64.D64    --convert 2.5-->  APPS64_Convert2.5_to_CVT(PRG).D64
+0 "Applications    " ML 2A      0 "Applications    " ML 2A
+120  "DESK TOP"         USR --> 121  "DESK TOP"         PRG --Star Commander 0.83--> DESK TOP.prg
+141  "GEOWRITE"         USR --> 142  "GEOWRITE"         PRG --Star Commander 0.83--> GEOWRITE.prg
+152  "GEOPAINT"         USR --> 153  "GEOPAINT"         PRG --Star Commander 0.83--> GEOPAINT.prg
+41   "photo manager"    USR --> 42   "PHOTO MANAGER"    PRG --Star Commander 0.83--> PHOTO MANAGER.prg
+15   "calculator"       USR --> 16   "CALCULATOR"       PRG --Star Commander 0.83--> CALCULATOR.prg
+19   "note pad"         USR --> 20   "NOTE PAD"         PRG --Star Commander 0.83--> NOTE PAD.prg
+26   "California"       USR --> 27   "CALIFORNIA"       PRG --Star Commander 0.83--> CALIFORNIA.prg
+23   "Cory"             USR --> 24   "CORY"             PRG --Star Commander 0.83--> CORY.prg
+13   "Dwinelle"         USR --> 14   "DWINELLE"         PRG --Star Commander 0.83--> DWINELLE.prg
+34   "Roma"             USR --> 35   "ROMA"             PRG --Star Commander 0.83--> ROMA.prg
+40   "University"       USR --> 41   "UNIVERSITY"       PRG --Star Commander 0.83--> UNIVERSITY.prg
+7    "Commodore"        USR --> 8    "COMMODORE"        PRG --Star Commander 0.83--> COMMODORE.prg
+9    "ReadMe"           USR --> 10   "README"           PRG --Star Commander 0.83--> README.prg
+23 BLOCKS FREE.                 10 BLOCKS FREE.
  
-GEOS64.D64                 --convert 2.5--> GEOS64_Convert2.5_to_CVT(PRG).D64
-0 "System          " 00 2A                  0 "System          " 00 2A
-2    "GEOS"             PRG Error           2    "GEOS"             PRG  
-86   "GEOBOOT"          PRG Error           86   "GEOBOOT"          PRG  
-78   "CONFIGURE"        USR                 79   "CONFIGURE"        PRG  --Star Commander 0.83-->  CONFIGURE.prg
-120  "DESK TOP"         USR                 121  "DESK TOP"         PRG  --Star Commander 0.83-->  DESK TOP.prg
-3    "JOYSTICK"         USR                 4    "JOYSTICK"         PRG  --Star Commander 0.83-->  JOYSTICK.prg
-5    "MPS-803"          USR                 6    "MPS-803"          PRG  --Star Commander 0.83-->  MPS-803.prg
-22   "preference mgr"   USR                 23   "PREFERENCE MGR"   PRG  --Star Commander 0.83-->  PREFERENCE MGR.prg
-22   "pad color mgr"    USR                 23   "PAD COLOR MGR"    PRG  --Star Commander 0.83-->  PAD COLOR MGR.prg
-13   "alarm clock"      USR                 14   "ALARM CLOCK"      PRG  --Star Commander 0.83-->  ALARM CLOCK.prg
-18   "PAINT DRIVERS"    USR                 19   "PAINT DRIVERS"    PRG  --Star Commander 0.83-->  PAINT DRIVERS.prg
-2    "RBOOT"            PRG Error           2    "RBOOT"            PRG                            
-4    "Star NL-10(com)"  USR                 5    "STAR NL-10(COM)"  PRG  --Star Commander 0.83-->  STAR NL-10(COM).prg
-3    "ASCII Only"       USR                 4    "ASCII ONLY"       PRG  --Star Commander 0.83-->  ASCII ONLY.prg
-3    "COMM 1351"        USR                 4    "COMM 1351"        PRG  --Star Commander 0.83-->  COMM 1351.prg
-3    "COMM 1351(a)"     USR                 4    "COMM 1351(A)"     PRG  --Star Commander 0.83-->  COMM 1351(A).prg
-20   "CONVERT"          USR                 21   "CONVERT"          PRG  --Star Commander 0.83-->  CONVERT.prg
-259 BLOCKS FREE.                            246 BLOCKS FREE.
+GEOS64.D64    --convert 2.5-->  GEOS64_Convert2.5_to_CVT(PRG).D64
+0 "System          " 00 2A      0 "System          " 00 2A
+2    "GEOS"             PRG Err
+86   "GEOBOOT"          PRG Err
+78   "CONFIGURE"        USR --> 79   "CONFIGURE"        PRG --Star Commander 0.83--> CONFIGURE.prg
+120  "DESK TOP"         USR --> 121  "DESK TOP"         PRG --Star Commander 0.83--> DESK TOP.prg
+3    "JOYSTICK"         USR --> 4    "JOYSTICK"         PRG --Star Commander 0.83--> JOYSTICK.prg
+5    "MPS-803"          USR --> 6    "MPS-803"          PRG --Star Commander 0.83--> MPS-803.prg
+22   "preference mgr"   USR --> 23   "PREFERENCE MGR"   PRG --Star Commander 0.83--> PREFERENCE MGR.prg
+22   "pad color mgr"    USR --> 23   "PAD COLOR MGR"    PRG --Star Commander 0.83--> PAD COLOR MGR.prg
+13   "alarm clock"      USR --> 14   "ALARM CLOCK"      PRG --Star Commander 0.83--> ALARM CLOCK.prg
+18   "PAINT DRIVERS"    USR --> 19   "PAINT DRIVERS"    PRG --Star Commander 0.83--> PAINT DRIVERS.prg
+2    "RBOOT"            PRG Err 
+4    "Star NL-10(com)"  USR --> 5    "STAR NL-10(COM)"  PRG --Star Commander 0.83--> STAR NL-10(COM).prg
+3    "ASCII Only"       USR --> 4    "ASCII ONLY"       PRG --Star Commander 0.83--> ASCII ONLY.prg
+3    "COMM 1351"        USR --> 4    "COMM 1351"        PRG --Star Commander 0.83--> COMM 1351.prg
+3    "COMM 1351(a)"     USR --> 4    "COMM 1351(A)"     PRG --Star Commander 0.83--> COMM 1351(A).prg
+20   "CONVERT"          USR --> 21   "CONVERT"          PRG --Star Commander 0.83--> CONVERT.prg
+259 BLOCKS FREE.                246 BLOCKS FREE.
 
-SPELL64.D64                --convert 2.5--> SPELL64_Convert2.5_to_CVT(PRG).D64
-0 "geoSpell        " 00 2A                  0 "geoSpell        " 00 2A
-120  "DESK TOP"         USR                 121  "DESK TOP"         PRG  --Star Commander 0.83-->  DESK TOP.prg
-111  "GEOSPELL"         USR                 112  "GEOSPELL"         PRG  --Star Commander 0.83-->  GEOSPELL.prg
-387  "GeoDictionary"    USR                 388  "GEODICTIONARY"    PRG  --Star Commander 0.83-->  GEODICTIONARY.prg
-45 BLOCKS FREE.                             42 BLOCKS FREE.
+SPELL64.D64   --convert 2.5-->  SPELL64_Convert2.5_to_CVT(PRG).D64
+0 "geoSpell        " 00 2A      0 "geoSpell        " 00 2A
+120  "DESK TOP"         USR --> 121  "DESK TOP"         PRG --Star Commander 0.83--> DESK TOP.prg
+111  "GEOSPELL"         USR --> 112  "GEOSPELL"         PRG --Star Commander 0.83--> GEOSPELL.prg
+387  "GeoDictionary"    USR --> 388  "GEODICTIONARY"    PRG --Star Commander 0.83--> GEODICTIONARY.prg
+45 BLOCKS FREE.                 42 BLOCKS FREE.
 
-WRUTIL64.D64               --convert 2.5--> WRUTIL64_Convert2.5_to_CVT(PRG).D64
-0 "Write Utilities " 00 2A                  0 "Write Utilities " 00 2A
-120  "DESK TOP"         USR                 121  "DESK TOP"         PRG  --Star Commander 0.83-->  DESK TOP.prg
-67   "TEXT GRABBER"     USR                 68   "TEXT GRABBER"     PRG  --Star Commander 0.83-->  TEXT GRABBER.prg
-60   "GEOLASER"         USR                 61   "GEOLASER"         PRG  --Star Commander 0.83-->  GEOLASER.prg
-67   "GEOMERGE"         USR                 68   "GEOMERGE"         PRG  --Star Commander 0.83-->  GEOMERGE.prg
-38   "text manager"     USR                 39   "TEXT MANAGER"     PRG  --Star Commander 0.83-->  TEXT MANAGER.prg
-4    "EasyScript Form"  USR                 5    "EASYSCRIPT FORM"  PRG  --Star Commander 0.83-->  EASYSCRIPT FORM.prg
-3    "PaperClip Form"   USR                 4    "PAPERCLIP FORM"   PRG  --Star Commander 0.83-->  PAPERCLIP FORM.prg
-2    "SpeedScript Form" USR                 3    "SPEEDSCRIPT FORM" PRG  --Star Commander 0.83-->  SPEEDSCRIPT FORM.prg
-3    "WordWriter Form"  USR                 4    "WORDWRITER FORM"  PRG  --Star Commander 0.83-->  WORDWRITER FORM.prg
-2    "Generic I Form"   USR                 3    "GENERIC I FORM"   PRG  --Star Commander 0.83-->  GENERIC I FORM.prg
-2    "Generic II Form"  USR                 3    "GENERIC II FORM"  PRG  --Star Commander 0.83-->  GENERIC II FORM.prg
-2    "Generic III Form" USR                 3    "GENERIC III FORM" PRG  --Star Commander 0.83-->  GENERIC III FORM.prg
-44   "LW_Roma"          USR                 45   "LW_ROMA"          PRG  --Star Commander 0.83-->  LW_ROMA.prg
-44   "LW_Cal"           USR                 45   "LW_CAL"           PRG  --Star Commander 0.83-->  LW_CAL.prg
-46   "LW_Greek"         USR                 47   "LW_GREEK"         PRG  --Star Commander 0.83-->  LW_GREEK.prg
-49   "LW_Barrows"       USR                 50   "LW_BARROWS"       PRG  --Star Commander 0.83-->  LW_BARROWS.prg
-110 BLOCKS FREE.                            94 BLOCKS FREE.
+WRUTIL64.D64  --convert 2.5-->  WRUTIL64_Convert2.5_to_CVT(PRG).D64
+0 "Write Utilities " 00 2A      0 "Write Utilities " 00 2A
+120  "DESK TOP"         USR --> 121  "DESK TOP"         PRG --Star Commander 0.83--> DESK TOP.prg
+67   "TEXT GRABBER"     USR --> 68   "TEXT GRABBER"     PRG --Star Commander 0.83--> TEXT GRABBER.prg
+60   "GEOLASER"         USR --> 61   "GEOLASER"         PRG --Star Commander 0.83--> GEOLASER.prg
+67   "GEOMERGE"         USR --> 68   "GEOMERGE"         PRG --Star Commander 0.83--> GEOMERGE.prg
+38   "text manager"     USR --> 39   "TEXT MANAGER"     PRG --Star Commander 0.83--> TEXT MANAGER.prg
+4    "EasyScript Form"  USR --> 5    "EASYSCRIPT FORM"  PRG --Star Commander 0.83--> EASYSCRIPT FORM.prg
+3    "PaperClip Form"   USR --> 4    "PAPERCLIP FORM"   PRG --Star Commander 0.83--> PAPERCLIP FORM.prg
+2    "SpeedScript Form" USR --> 3    "SPEEDSCRIPT FORM" PRG --Star Commander 0.83--> SPEEDSCRIPT FORM.prg
+3    "WordWriter Form"  USR --> 4    "WORDWRITER FORM"  PRG --Star Commander 0.83--> WORDWRITER FORM.prg
+2    "Generic I Form"   USR --> 3    "GENERIC I FORM"   PRG --Star Commander 0.83--> GENERIC I FORM.prg
+2    "Generic II Form"  USR --> 3    "GENERIC II FORM"  PRG --Star Commander 0.83--> GENERIC II FORM.prg
+2    "Generic III Form" USR --> 3    "GENERIC III FORM" PRG --Star Commander 0.83--> GENERIC III FORM.prg
+44   "LW_Roma"          USR --> 45   "LW_ROMA"          PRG --Star Commander 0.83--> LW_ROMA.prg
+44   "LW_Cal"           USR --> 45   "LW_CAL"           PRG --Star Commander 0.83--> LW_CAL.prg
+46   "LW_Greek"         USR --> 47   "LW_GREEK"         PRG --Star Commander 0.83--> LW_GREEK.prg
+49   "LW_Barrows"       USR --> 50   "LW_BARROWS"       PRG --Star Commander 0.83--> LW_BARROWS.prg
+110 BLOCKS FREE.                94 BLOCKS FREE.
 
 -----------------------------------------------------------------------------------------------------------------------
 Star Commander 0.83
