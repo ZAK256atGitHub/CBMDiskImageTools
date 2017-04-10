@@ -518,14 +518,14 @@ Auf der Internetseite cbmfiles.com finden sich eine Vielzahl von Geos Dateien im
 |            |"ASCII Only"       |http://cbmfiles.com/geos/geosfiles/ASC.CVT      |
 |            |"COMM 1351"        |http://cbmfiles.com/geos/geosfiles/COMM1351.CVT |
 |            |"COMM 1351(a)"     |http://cbmfiles.com/geos/geosfiles/COM1351A.CVT |
-|            |"CONVERT"          |                                                |
+|            |"CONVERT"          |*http://cbmfiles.com/geos/geosfiles/CONVERT.BAS*|
 |SPELL64.D64 |                   |                                                |
 |            |"DESK TOP"         |                                                |
 |            |"GEOSPELL"         |http://cbmfiles.com/geos/geosfiles/SPELL64.CVT  |
 |            |"GeoDictionary"    |http://cbmfiles.com/geos/geosfiles/DICT.CVT     |
 |WRUTIL64.D64|                   |                                                |
 |            |"DESK TOP"         |                                                |
-|            |"TEXT GRABBER"     |http://cbmfiles.com/geos/geosfiles/TG64.CVT                                                |
+|            |"TEXT GRABBER"     |http://cbmfiles.com/geos/geosfiles/TG64.CVT     |
 |            |"GEOLASER"         |http://cbmfiles.com/geos/geosfiles/GEOLASER.CVT |
 |            |"GEOMERGE"         |http://cbmfiles.com/geos/geosfiles/GM64.CVT     |
 |            |"text manager"     |http://cbmfiles.com/geos/geosfiles/TXMGR64.CVT  |
