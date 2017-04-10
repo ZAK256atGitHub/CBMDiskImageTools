@@ -156,46 +156,44 @@ Um vergleichbare Prüfsummen für Geos Dateien zu erstellen, werden die Prüfsum
 ## Welche Informationen werden von einer GEOS Datei mit der GEOS Dateistruktur SEQ exportiert bzw. fließen in die Prüfsummenberechnung ein?
 
 * Directory Eintrag
-** Dateiart                              
-** Ersetzungs- Kennung                   
-** Schreibschutz- Kennung                
-** Offen- Kennung                        
-** Dateiname (aufgefüllt mit SHIFT-SPACE)
-** GEOS Dateistruktur                    
-** GEOS Dateiart                         
-** Jahr                                  
-** Monat                                 
-** Tag                                   
-** Stunde                                
-** Minute                                
-** Anzahl der verwendeten Blöcke (Low)   
-** Anzahl der verwendeten Blöcke (High)  
+  * Dateiart                              
+  * Ersetzungs- Kennung                   
+  * Schreibschutz- Kennung                
+  * Offen- Kennung                        
+  * Dateiname (aufgefüllt mit SHIFT-SPACE)
+  * GEOS Dateistruktur                    
+  * GEOS Dateiart                         
+  * Jahr                                  
+  * Monat                                 
+  * Tag                                   
+  * Stunde                                
+  * Minute                                
+  * Anzahl der verwendeten Blöcke (Low)   
+  * Anzahl der verwendeten Blöcke (High)  
 * Info Block (wird 1 zu 1 übernommen)
 * Daten aller Datenblöcke (eine GEOS SEQ Datei besitzt genau nur eine Sektorenkette mit Datenblöcken) 
 
 ## Welche Informationen werden von einer GEOS Datei mit der GEOS Dateistruktur VLIR exportiert bzw. fließen in die Prüfsummenberechnung ein?
 
 * Directory Eintrag
-** Dateiart                              
-** Ersetzungs- Kennung                   
-** Schreibschutz- Kennung                
-** Offen- Kennung                        
-** Dateiname (aufgefüllt mit SHIFT-SPACE)
-** GEOS Dateistruktur                    
-** GEOS Dateiart                         
-** Jahr                                  
-** Monat                                 
-** Tag                                   
-** Stunde                                
-** Minute                                
-** Anzahl der verwendeten Blöcke (Low)   
-** Anzahl der verwendeten Blöcke (High)  
+  * Dateiart                              
+  * Ersetzungs- Kennung                   
+  * Schreibschutz- Kennung                
+  * Offen- Kennung                        
+  * Dateiname (aufgefüllt mit SHIFT-SPACE)
+  * GEOS Dateistruktur                    
+  * GEOS Dateiart                         
+  * Jahr                                  
+  * Monat                                 
+  * Tag                                   
+  * Stunde                                
+  * Minute                                
+  * Anzahl der verwendeten Blöcke (Low)   
+  * Anzahl der verwendeten Blöcke (High)  
 * Info Block (wird 1 zu 1 übernommen)
 * Record Block (entspricht nicht 1 zu 1 dem Record Block der GEOS Datei)
 * Daten von Datensatz 1
-* .
-* .
-* .
+* . . .
 * Daten von Datensatz 127
 
 # Testdokumentation
