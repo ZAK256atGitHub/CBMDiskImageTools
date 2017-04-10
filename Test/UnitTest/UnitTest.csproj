@@ -139,8 +139,45 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\cbmfiles.com_CVT\ALARM64.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\ASC.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\CALC64.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\CALIF.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\COM1351A.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\COMM1351.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\COMMFONT.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\CORY.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\DICT.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\DWIN.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\GEOLASER.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\GM64.CVT" />
     <None Include="Resources\cbmfiles.com_CVT\GPT64.CVT" />
     <None Include="Resources\cbmfiles.com_CVT\GW64.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\JOYSTICK.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\LWBARR.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\LWCAL.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\LWGREEK.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\LWROMA.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\MPS803.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\NOTE64.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\PDMGR64.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\PHMGR64.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\PNTDRVRS.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\PRMGR64.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\RBOOT.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\ROMA.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\SNL10COM.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\SPELL64.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\TG64.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\TGESF64.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\TGG1F64.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\TGG2F64.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\TGG3F64.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\TGPCF64.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\TGSSF64.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\TGWWF64.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\TXMGR64.CVT" />
+    <None Include="Resources\cbmfiles.com_CVT\UNIV.CVT" />
     <None Include="Resources\cbmfiles.com_GEOS64_Convert2_5\APPS64_Convert2_5.D64" />
     <None Include="Resources\cbmfiles.com_GEOS64_Convert2_5\GEOS64_Convert2_5.D64" />
     <None Include="Resources\cbmfiles.com_GEOS64_Convert2_5\SPELL64_Convert2_5.D64" />

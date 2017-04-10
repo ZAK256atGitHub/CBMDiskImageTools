@@ -486,60 +486,60 @@ WRUTIL64.D64  --convert 2.5-->  WRUTIL64_Convert2_5.D64
 
 Auf der Internetseite cbmfiles.com finden sich eine Vielzahl von Geos Dateien im CVT Format. Einige von diesen müssten auch den Dateien auf den 4 D64 Images *APPS64.D64*, *GEOS64.D64*, *SPELL64.D64* und *WRUTIL64.D64* genau entsprechen. Die folgende Tabelle stellt die Dateinamen der 4 D64 Images den entsprechenden CVT Dateinamen gegenüber.
 
-|D64 Image   |Dateiname          |cbmfiles.com Dateiname                          |
-|:-----------|:------------------|:-----------------------------------------------|
-|APPS64.D64  |                   |                                                |
-|            |"DESK TOP"         |                                                |
-|            |"GEOWRITE"         |http://cbmfiles.com/geos/geosfiles/GW64.CVT     |
-|            |"GEOPAINT"         |http://cbmfiles.com/geos/geosfiles/GPT64.CVT    |
-|            |"photo manager"    |http://cbmfiles.com/geos/geosfiles/PHMGR64.CVT  |
-|            |"calculator"       |http://cbmfiles.com/geos/geosfiles/CALC64.CVT   |
-|            |"note pad"         |http://cbmfiles.com/geos/geosfiles/NOTE64.CVT   |
-|            |"California"       |http://cbmfiles.com/geos/geosfiles/CALIF.CVT    |
-|            |"Cory"             |http://cbmfiles.com/geos/geosfiles/CORY.CVT     |
-|            |"Dwinelle"         |http://cbmfiles.com/geos/geosfiles/DWIN.CVT     |
-|            |"Roma"             |http://cbmfiles.com/geos/geosfiles/ROMA.CVT     |
-|            |"University"       |http://cbmfiles.com/geos/geosfiles/UNIV.CVT     |
-|            |"Commodore"        |http://cbmfiles.com/geos/geosfiles/COMMFONT.CVT |
-|            |"ReadMe"           |                                                |
-|GEOS64.D64  |                   |                                                |
-|            |"GEOS"             |                                                |
-|            |"GEOBOOT"          |                                                |
-|            |"CONFIGURE"        |                                                |
-|            |"DESK TOP"         |                                                |
-|            |"JOYSTICK"         |http://cbmfiles.com/geos/geosfiles/JOYSTICK.CVT |
-|            |"MPS-803"          |http://cbmfiles.com/geos/geosfiles/MPS803.CVT   |
-|            |"preference mgr"   |http://cbmfiles.com/geos/geosfiles/PRMGR64.CVT  |
-|            |"pad color mgr"    |http://cbmfiles.com/geos/geosfiles/PDMGR64.CVT  |
-|            |"alarm clock"      |http://cbmfiles.com/geos/geosfiles/ALARM64.CVT  |
-|            |"PAINT DRIVERS"    |http://cbmfiles.com/geos/geosfiles/PNTDRVRS.CVT |
-|            |"RBOOT"            |http://cbmfiles.com/geos/geosfiles/RBOOT.CVT    |
-|            |"Star NL-10(com)"  |http://cbmfiles.com/geos/geosfiles/SNL10COM.CVT |
-|            |"ASCII Only"       |http://cbmfiles.com/geos/geosfiles/ASC.CVT      |
-|            |"COMM 1351"        |http://cbmfiles.com/geos/geosfiles/COMM1351.CVT |
-|            |"COMM 1351(a)"     |http://cbmfiles.com/geos/geosfiles/COM1351A.CVT |
-|            |"CONVERT"          |*http://cbmfiles.com/geos/geosfiles/CONVERT.BAS*|
-|SPELL64.D64 |                   |                                                |
-|            |"DESK TOP"         |                                                |
-|            |"GEOSPELL"         |http://cbmfiles.com/geos/geosfiles/SPELL64.CVT  |
-|            |"GeoDictionary"    |http://cbmfiles.com/geos/geosfiles/DICT.CVT     |
-|WRUTIL64.D64|                   |                                                |
-|            |"DESK TOP"         |                                                |
-|            |"TEXT GRABBER"     |http://cbmfiles.com/geos/geosfiles/TG64.CVT     |
-|            |"GEOLASER"         |http://cbmfiles.com/geos/geosfiles/GEOLASER.CVT |
-|            |"GEOMERGE"         |http://cbmfiles.com/geos/geosfiles/GM64.CVT     |
-|            |"text manager"     |http://cbmfiles.com/geos/geosfiles/TXMGR64.CVT  |
-|            |"EasyScript Form"  |http://cbmfiles.com/geos/geosfiles/TGESF64.CVT  |
-|            |"PaperClip Form"   |http://cbmfiles.com/geos/geosfiles/TGPCF64.CVT  |
-|            |"SpeedScript Form" |http://cbmfiles.com/geos/geosfiles/TGSSF64.CVT  |
-|            |"WordWriter Form"  |http://cbmfiles.com/geos/geosfiles/TGWWF64.CVT  |
-|            |"Generic I Form"   |http://cbmfiles.com/geos/geosfiles/TGG1F64.CVT  |
-|            |"Generic II Form"  |http://cbmfiles.com/geos/geosfiles/TGG2F64.CVT  |
-|            |"Generic III Form" |http://cbmfiles.com/geos/geosfiles/TGG3F64.CVT  |
-|            |"LW_Roma"          |http://cbmfiles.com/geos/geosfiles/LWROMA.CVT   |
-|            |"LW_Cal"           |http://cbmfiles.com/geos/geosfiles/LWCAL.CVT    |
-|            |"LW_Greek"         |http://cbmfiles.com/geos/geosfiles/LWGREEK.CVT  |
-|            |"LW_Barrows"       |http://cbmfiles.com/geos/geosfiles/LWBARR.CVT   |
+|D64 Image   |Dateiname          |cbmfiles.com Dateiname                            |
+|:-----------|:------------------|:-------------------------------------------------|
+|APPS64.D64  |                   |                                                  |
+|            |"DESK TOP"         |                                                  |
+|            |"GEOWRITE"         |http://cbmfiles.com/geos/geosfiles/GW64.CVT       |
+|            |"GEOPAINT"         |http://cbmfiles.com/geos/geosfiles/GPT64.CVT      |
+|            |"photo manager"    |http://cbmfiles.com/geos/geosfiles/PHMGR64.CVT    |
+|            |"calculator"       |http://cbmfiles.com/geos/geosfiles/CALC64.CVT     |
+|            |"note pad"         |http://cbmfiles.com/geos/geosfiles/NOTE64.CVT     |
+|            |"California"       |http://cbmfiles.com/geos/geosfiles/CALIF.CVT      |
+|            |"Cory"             |http://cbmfiles.com/geos/geosfiles/CORY.CVT       |
+|            |"Dwinelle"         |http://cbmfiles.com/geos/geosfiles/DWIN.CVT       |
+|            |"Roma"             |http://cbmfiles.com/geos/geosfiles/ROMA.CVT       |
+|            |"University"       |http://cbmfiles.com/geos/geosfiles/UNIV.CVT       |
+|            |"Commodore"        |http://cbmfiles.com/geos/geosfiles/COMMFONT.CVT   |
+|            |"ReadMe"           |                                                  |
+|GEOS64.D64  |                   |                                                  |
+|            |"GEOS"             |                                                  |
+|            |"GEOBOOT"          |                                                  |
+|            |"CONFIGURE"        |                                                  |
+|            |"DESK TOP"         |                                                  |
+|            |"JOYSTICK"         |http://cbmfiles.com/geos/geosfiles/JOYSTICK.CVT   |
+|            |"MPS-803"          |http://cbmfiles.com/geos/geosfiles/MPS803.CVT     |
+|            |"preference mgr"   |http://cbmfiles.com/geos/geosfiles/PRMGR64.CVT    |
+|            |"pad color mgr"    |http://cbmfiles.com/geos/geosfiles/PDMGR64.CVT    |
+|            |"alarm clock"      |http://cbmfiles.com/geos/geosfiles/ALARM64.CVT    |
+|            |"PAINT DRIVERS"    |http://cbmfiles.com/geos/geosfiles/PNTDRVRS.CVT   |
+|            |"RBOOT"            |http://cbmfiles.com/geos/geosfiles/RBOOT.CVT      |
+|            |"Star NL-10(com)"  |http://cbmfiles.com/geos/geosfiles/SNL10COM.CVT   |
+|            |"ASCII Only"       |http://cbmfiles.com/geos/geosfiles/ASC.CVT        |
+|            |"COMM 1351"        |http://cbmfiles.com/geos/geosfiles/COMM1351.CVT   |
+|            |"COMM 1351(a)"     |http://cbmfiles.com/geos/geosfiles/COM1351A.CVT   |
+|            |"CONVERT"          |~~http://cbmfiles.com/geos/geosfiles/CONVERT.BAS~~|
+|SPELL64.D64 |                   |                                                  |
+|            |"DESK TOP"         |                                                  |
+|            |"GEOSPELL"         |http://cbmfiles.com/geos/geosfiles/SPELL64.CVT    |
+|            |"GeoDictionary"    |http://cbmfiles.com/geos/geosfiles/DICT.CVT       |
+|WRUTIL64.D64|                   |                                                  |
+|            |"DESK TOP"         |                                                  |
+|            |"TEXT GRABBER"     |http://cbmfiles.com/geos/geosfiles/TG64.CVT       |
+|            |"GEOLASER"         |http://cbmfiles.com/geos/geosfiles/GEOLASER.CVT   |
+|            |"GEOMERGE"         |http://cbmfiles.com/geos/geosfiles/GM64.CVT       |
+|            |"text manager"     |http://cbmfiles.com/geos/geosfiles/TXMGR64.CVT    |
+|            |"EasyScript Form"  |http://cbmfiles.com/geos/geosfiles/TGESF64.CVT    |
+|            |"PaperClip Form"   |http://cbmfiles.com/geos/geosfiles/TGPCF64.CVT    |
+|            |"SpeedScript Form" |http://cbmfiles.com/geos/geosfiles/TGSSF64.CVT    |
+|            |"WordWriter Form"  |http://cbmfiles.com/geos/geosfiles/TGWWF64.CVT    |
+|            |"Generic I Form"   |http://cbmfiles.com/geos/geosfiles/TGG1F64.CVT    |
+|            |"Generic II Form"  |http://cbmfiles.com/geos/geosfiles/TGG2F64.CVT    |
+|            |"Generic III Form" |http://cbmfiles.com/geos/geosfiles/TGG3F64.CVT    |
+|            |"LW_Roma"          |http://cbmfiles.com/geos/geosfiles/LWROMA.CVT     |
+|            |"LW_Cal"           |http://cbmfiles.com/geos/geosfiles/LWCAL.CVT      |
+|            |"LW_Greek"         |http://cbmfiles.com/geos/geosfiles/LWGREEK.CVT    |
+|            |"LW_Barrows"       |http://cbmfiles.com/geos/geosfiles/LWBARR.CVT     |
 
 # Installationsdokumentation
 
