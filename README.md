@@ -128,8 +128,8 @@ Der Aufbau der Visual Studio Solution orientierte sich an der Beschreibung von c
 |25       | unbenutzt                              | unbenutzt                              | Tag                                    | Tag                                    |
 |26       | unbenutzt                              | unbenutzt                              | Stunde                                 | Stunde                                 |
 |27       | unbenutzt                              | unbenutzt                              | Minute                                 | Minute                                 |
-|28       | Anzahl der Verwendeten Blöcke (Low)    | Anzahl der Verwendeten Blöcke (Low)    | Anzahl der Verwendeten Blöcke (Low)    | Anzahl der Verwendeten Blöcke (Low)    |
-|29       | Anzahl der Verwendeten Blöcke (High)   | Anzahl der Verwendeten Blöcke (High)   | Anzahl der Verwendeten Blöcke (High)   | Anzahl der Verwendeten Blöcke (High)   |
+|28       | Anzahl der verwendeten Blöcke (Low)    | Anzahl der verwendeten Blöcke (Low)    | Anzahl der verwendeten Blöcke (Low)    | Anzahl der verwendeten Blöcke (Low)    |
+|29       | Anzahl der verwendeten Blöcke (High)   | Anzahl der verwendeten Blöcke (High)   | Anzahl der verwendeten Blöcke (High)   | Anzahl der verwendeten Blöcke (High)   |
 
 
 ## Wann ist eine Datei eine GEOS DATEI?
@@ -143,7 +143,7 @@ Jede GEOS Datei benötigt auch einen gültigen Info Block. GEOS versucht schon b
 
 ## Welche Informationen werden von einer Commodore DOS Datei mit der Dateiart SEQ, PRG, USR exportiert bzw. fließen in die Prüfsummenberechnung ein?
 
-Von Commodore DOS Datei mit der Dateiart SEQ, PRG, USR werden nur die reinen Daten exportiert bzw. fließen in die Prüfsummenberechnung ein. Das bedeutet, dass nur alle Datenblöcke betrachtet werden. Es werden keine weiteren Informationen berücksichtigt.
+Von Commodore DOS Datei mit der Dateiart SEQ, PRG, USR werden nur die reinen Daten exportiert bzw. fließen in die Prüfsummenberechnung ein. Das bedeutet, dass **nur alle Datenblöcke** betrachtet werden. Es werden keine weiteren Informationen berücksichtigt. Das bedeutet, dass Informationen aus Directory Eintrag dem wie z.B. der Dateiname **nicht** in die Prüfsummenberechnung einfließen.
 
 ## Welche Informationen werden von einer Commodore DOS Datei mit der Dateiart REL exportiert bzw. fließen in die Prüfsummenberechnung ein?
 
@@ -151,12 +151,52 @@ Commodore DOS Dateien mir der Dateiart REL werden momentan noch nicht unterstüt
 
 ## Wie werden die Prüfsummen von GEOS Dateien erstellt?
 
+Um vergleichbare Prüfsummen für Geos Dateien zu erstellen, werden die Prüfsummen auf Basis von CleanCVT Dateien erstellt. D.h. die jeweilige Geos Datei wird intern in das CleanCVT Format umgewandelt und aus diesen Daten die Prüfsumme errechnet. Es ist dabei wichtig dass das CleanCVT Format zum Einsatz kommt, da sonst keine vergleichbare Prüfsumme entstehen würde. Unsaubere CVT Dateien von unterschiedlichen Disketten sind nicht vergleichbar, da diese Diskettenrelevante Informationen tragen (z.B. Startspuren und Startsektoren), welche nichts mit der eigentlichen Datei zu tun haben. 
 
 ## Welche Informationen werden von einer GEOS Datei mit der GEOS Dateistruktur SEQ exportiert bzw. fließen in die Prüfsummenberechnung ein?
 
+* Directory Eintrag
+** Dateiart                              
+** Ersetzungs- Kennung                   
+** Schreibschutz- Kennung                
+** Offen- Kennung                        
+** Dateiname (aufgefüllt mit SHIFT-SPACE)
+** GEOS Dateistruktur                    
+** GEOS Dateiart                         
+** Jahr                                  
+** Monat                                 
+** Tag                                   
+** Stunde                                
+** Minute                                
+** Anzahl der verwendeten Blöcke (Low)   
+** Anzahl der verwendeten Blöcke (High)  
+* Info Block (wird 1 zu 1 übernommen)
+* Daten aller Datenblöcke (eine GEOS SEQ Datei besitzt genau nur eine Sektorenkette mit Datenblöcken) 
 
 ## Welche Informationen werden von einer GEOS Datei mit der GEOS Dateistruktur VLIR exportiert bzw. fließen in die Prüfsummenberechnung ein?
 
+* Directory Eintrag
+** Dateiart                              
+** Ersetzungs- Kennung                   
+** Schreibschutz- Kennung                
+** Offen- Kennung                        
+** Dateiname (aufgefüllt mit SHIFT-SPACE)
+** GEOS Dateistruktur                    
+** GEOS Dateiart                         
+** Jahr                                  
+** Monat                                 
+** Tag                                   
+** Stunde                                
+** Minute                                
+** Anzahl der verwendeten Blöcke (Low)   
+** Anzahl der verwendeten Blöcke (High)  
+* Info Block (wird 1 zu 1 übernommen)
+* Record Block (entspricht nicht 1 zu 1 dem Record Block der GEOS Datei)
+* Daten von Datensatz 1
+* .
+* .
+* .
+* Daten von Datensatz 127
 
 # Testdokumentation
 
@@ -196,88 +236,6 @@ Für viele Tests werden die D64 Images aus dem Archiv GEOS64.ZIP von der Interne
 └──────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-#### convert 2.5 (und Star Commander 0.83)
-
-Das wohl bekannteste Programm, welches CVT Dateien erzeugen kann, ist **Convert**, welches direkt unter Geos läuft. Dieses Programm konvertiert Geos SEQ Dateien als auch Geos VLIR in das CVT Format. Die erzeugten CVT Dateien ersetzten dabei die originalen Geos Dateien und befinden sich also immer noch in der D64 Image Datei. Um die Dateien aus den D64 Images zu extrahieren, kann eine Vielzahl von Programmen zum Einsatz kommen. Hier wurde der Star Commander in der Version 0.83 verwendet. Es ist aber z.B. auch 64Copy verwendbar. Die durch **Convert** erzeugten CVT Dateien haben den Nachteil, dass diese etwas *unsauber* (dirty) erstellt werden. CVT Dateien besitzen Datenstellen die für die Wiederherstellung einer Geos Datei, nicht benötigt werden. Diese Datenstellen sind in einem CVT, welches mittels **Convert** erstellt wurde, leider mit zufälligen Informationen gefüllt.
-Alle Dateien der 4 D64 Immages *APPS64.D64*, *GEOS64.D64*, *SPELL64.D64* und *WRUTIL64.D64* wurden also zuerst mit Convert 2.5 in das CVT Format umgewandelt und dann mit dem Star Commander 0.83 aus den Images extrahiert. Die Dateien "GEOS" "GEOBOOT" "RBOOT" aus dem D64 Image GEOS64.D64 konnten dabei, durch **Convert 2.5 ** nicht konvertiert werden. Dies liegt wahrscheinlich daran, dass diese 3 Dateien den falschen GEOS Dateiart besitzen. Dieser Fehler ist wohl entstanden, als der Kopierschutz entfernt wurde.
-
-```
-GEOS SEQ/VLIR                   CVT (dirty) Dateien                                  CVT (dirty) Dateien
-in D64 Images                   in D64 Images                                        als PC Dateien
----------------------------     ---------------------------                          --------------------
-APPS64.D64    --convert 2.5-->  APPS64_Convert2.5_to_CVT(PRG).D64
-0 "Applications    " ML 2A      0 "Applications    " ML 2A
-120  "DESK TOP"         USR --> 121  "DESK TOP"         PRG --Star Commander 0.83--> DESK TOP.prg
-141  "GEOWRITE"         USR --> 142  "GEOWRITE"         PRG --Star Commander 0.83--> GEOWRITE.prg
-152  "GEOPAINT"         USR --> 153  "GEOPAINT"         PRG --Star Commander 0.83--> GEOPAINT.prg
-41   "photo manager"    USR --> 42   "PHOTO MANAGER"    PRG --Star Commander 0.83--> PHOTO MANAGER.prg   
-15   "calculator"       USR --> 16   "CALCULATOR"       PRG --Star Commander 0.83--> CALCULATOR.prg
-19   "note pad"         USR --> 20   "NOTE PAD"         PRG --Star Commander 0.83--> NOTE PAD.prg
-26   "California"       USR --> 27   "CALIFORNIA"       PRG --Star Commander 0.83--> CALIFORNIA.prg
-23   "Cory"             USR --> 24   "CORY"             PRG --Star Commander 0.83--> CORY.prg
-13   "Dwinelle"         USR --> 14   "DWINELLE"         PRG --Star Commander 0.83--> DWINELLE.prg
-34   "Roma"             USR --> 35   "ROMA"             PRG --Star Commander 0.83--> ROMA.prg
-40   "University"       USR --> 41   "UNIVERSITY"       PRG --Star Commander 0.83--> UNIVERSITY.prg
-7    "Commodore"        USR --> 8    "COMMODORE"        PRG --Star Commander 0.83--> COMMODORE.prg
-9    "ReadMe"           USR --> 10   "README"           PRG --Star Commander 0.83--> README.prg
-23 BLOCKS FREE.                 10 BLOCKS FREE.
-
-GEOS SEQ/VLIR                   CVT (dirty) Dateien                                  CVT (dirty) Dateien
-in D64 Images                   in D64 Images                                        als PC Dateien
----------------------------     ---------------------------                          -------------------- 
-GEOS64.D64    --convert 2.5-->  GEOS64_Convert2.5_to_CVT(PRG).D64
-0 "System          " 00 2A      0 "System          " 00 2A
-2    "GEOS"             PRG Err 2    "GEOS"             PRG 
-86   "GEOBOOT"          PRG Err 86   "GEOBOOT"          PRG
-78   "CONFIGURE"        USR --> 79   "CONFIGURE"        PRG --Star Commander 0.83--> CONFIGURE.prg
-120  "DESK TOP"         USR --> 121  "DESK TOP"         PRG --Star Commander 0.83--> DESK TOP.prg
-3    "JOYSTICK"         USR --> 4    "JOYSTICK"         PRG --Star Commander 0.83--> JOYSTICK.prg
-5    "MPS-803"          USR --> 6    "MPS-803"          PRG --Star Commander 0.83--> MPS-803.prg
-22   "preference mgr"   USR --> 23   "PREFERENCE MGR"   PRG --Star Commander 0.83--> PREFERENCE MGR.prg
-22   "pad color mgr"    USR --> 23   "PAD COLOR MGR"    PRG --Star Commander 0.83--> PAD COLOR MGR.prg
-13   "alarm clock"      USR --> 14   "ALARM CLOCK"      PRG --Star Commander 0.83--> ALARM CLOCK.prg
-18   "PAINT DRIVERS"    USR --> 19   "PAINT DRIVERS"    PRG --Star Commander 0.83--> PAINT DRIVERS.prg
-2    "RBOOT"            PRG Err 2    "RBOOT"            PRG 
-4    "Star NL-10(com)"  USR --> 5    "STAR NL-10(COM)"  PRG --Star Commander 0.83--> STAR NL-10(COM).prg
-3    "ASCII Only"       USR --> 4    "ASCII ONLY"       PRG --Star Commander 0.83--> ASCII ONLY.prg
-3    "COMM 1351"        USR --> 4    "COMM 1351"        PRG --Star Commander 0.83--> COMM 1351.prg
-3    "COMM 1351(a)"     USR --> 4    "COMM 1351(A)"     PRG --Star Commander 0.83--> COMM 1351(A).prg
-20   "CONVERT"          USR --> 21   "CONVERT"          PRG --Star Commander 0.83--> CONVERT.prg
-259 BLOCKS FREE.                246 BLOCKS FREE.
-
-GEOS SEQ/VLIR                   CVT (dirty) Dateien                                  CVT (dirty) Dateien
-in D64 Images                   in D64 Images                                        als PC Dateien
----------------------------     ---------------------------                          --------------------
-SPELL64.D64   --convert 2.5-->  SPELL64_Convert2.5_to_CVT(PRG).D64
-0 "geoSpell        " 00 2A      0 "geoSpell        " 00 2A
-120  "DESK TOP"         USR --> 121  "DESK TOP"         PRG --Star Commander 0.83--> DESK TOP.prg
-111  "GEOSPELL"         USR --> 112  "GEOSPELL"         PRG --Star Commander 0.83--> GEOSPELL.prg
-387  "GeoDictionary"    USR --> 388  "GEODICTIONARY"    PRG --Star Commander 0.83--> GEODICTIONARY.prg
-45 BLOCKS FREE.                 42 BLOCKS FREE.
-
-GEOS SEQ/VLIR                   CVT (dirty) Dateien                                  CVT (dirty) Dateien
-in D64 Images                   in D64 Images                                        als PC Dateien
----------------------------     ---------------------------                          --------------------
-WRUTIL64.D64  --convert 2.5-->  WRUTIL64_Convert2.5_to_CVT(PRG).D64
-0 "Write Utilities " 00 2A      0 "Write Utilities " 00 2A
-120  "DESK TOP"         USR --> 121  "DESK TOP"         PRG --Star Commander 0.83--> DESK TOP.prg
-67   "TEXT GRABBER"     USR --> 68   "TEXT GRABBER"     PRG --Star Commander 0.83--> TEXT GRABBER.prg
-60   "GEOLASER"         USR --> 61   "GEOLASER"         PRG --Star Commander 0.83--> GEOLASER.prg
-67   "GEOMERGE"         USR --> 68   "GEOMERGE"         PRG --Star Commander 0.83--> GEOMERGE.prg
-38   "text manager"     USR --> 39   "TEXT MANAGER"     PRG --Star Commander 0.83--> TEXT MANAGER.prg
-4    "EasyScript Form"  USR --> 5    "EASYSCRIPT FORM"  PRG --Star Commander 0.83--> EASYSCRIPT FORM.prg
-3    "PaperClip Form"   USR --> 4    "PAPERCLIP FORM"   PRG --Star Commander 0.83--> PAPERCLIP FORM.prg
-2    "SpeedScript Form" USR --> 3    "SPEEDSCRIPT FORM" PRG --Star Commander 0.83--> SPEEDSCRIPT FORM.prg
-3    "WordWriter Form"  USR --> 4    "WORDWRITER FORM"  PRG --Star Commander 0.83--> WORDWRITER FORM.prg
-2    "Generic I Form"   USR --> 3    "GENERIC I FORM"   PRG --Star Commander 0.83--> GENERIC I FORM.prg
-2    "Generic II Form"  USR --> 3    "GENERIC II FORM"  PRG --Star Commander 0.83--> GENERIC II FORM.prg
-2    "Generic III Form" USR --> 3    "GENERIC III FORM" PRG --Star Commander 0.83--> GENERIC III FORM.prg
-44   "LW_Roma"          USR --> 45   "LW_ROMA"          PRG --Star Commander 0.83--> LW_ROMA.prg
-44   "LW_Cal"           USR --> 45   "LW_CAL"           PRG --Star Commander 0.83--> LW_CAL.prg
-46   "LW_Greek"         USR --> 47   "LW_GREEK"         PRG --Star Commander 0.83--> LW_GREEK.prg
-49   "LW_Barrows"       USR --> 50   "LW_BARROWS"       PRG --Star Commander 0.83--> LW_BARROWS.prg
-110 BLOCKS FREE.                94 BLOCKS FREE.
-```
 
 #### Star Commander 0.83
 
@@ -441,6 +399,89 @@ WRUTIL64.D64
 46   "LW_Greek"         USR  --pcGeos 0.3-->  LW_GREEK.CVT
 49   "LW_Barrows"       USR  --pcGeos 0.3-->  LW_BARRO.CVT
 110 BLOCKS FREE. 
+```
+
+#### convert 2.5 (und Star Commander 0.83)
+
+Das wohl bekannteste Programm, welches CVT Dateien erzeugen kann, ist **Convert**, welches direkt unter Geos läuft. Dieses Programm konvertiert Geos SEQ Dateien als auch Geos VLIR in das CVT Format. Die erzeugten CVT Dateien ersetzten dabei die originalen Geos Dateien und befinden sich also immer noch in der D64 Image Datei. Um die Dateien aus den D64 Images zu extrahieren, kann eine Vielzahl von Programmen zum Einsatz kommen. Hier wurde der Star Commander in der Version 0.83 verwendet. Es ist aber z.B. auch 64Copy verwendbar. Die durch **Convert** erzeugten CVT Dateien haben den Nachteil, dass diese etwas *unsauber* (dirty) erstellt werden. CVT Dateien besitzen Datenstellen die für die Wiederherstellung einer Geos Datei, nicht benötigt werden. Diese Datenstellen sind in einem CVT, welches mittels **Convert** erstellt wurde, leider mit zufälligen Informationen gefüllt.
+Alle Dateien der 4 D64 Immages *APPS64.D64*, *GEOS64.D64*, *SPELL64.D64* und *WRUTIL64.D64* wurden also zuerst mit Convert 2.5 in das CVT Format umgewandelt und dann mit dem Star Commander 0.83 aus den Images extrahiert. Die Dateien "GEOS" "GEOBOOT" "RBOOT" aus dem D64 Image GEOS64.D64 konnten dabei, durch **Convert 2.5** nicht konvertiert werden. Dies liegt wahrscheinlich daran, dass diese 3 Dateien den falschen GEOS Dateiart besitzen. Dieser Fehler ist wohl entstanden, als der Kopierschutz entfernt wurde.
+
+```
+GEOS SEQ/VLIR                   CVT (dirty) Dateien                                  CVT (dirty) Dateien
+in D64 Images                   in D64 Images                                        als PC Dateien
+---------------------------     ---------------------------                          --------------------
+APPS64.D64    --convert 2.5-->  APPS64_Convert2.5_to_CVT(PRG).D64
+0 "Applications    " ML 2A      0 "Applications    " ML 2A
+120  "DESK TOP"         USR --> 121  "DESK TOP"         PRG --Star Commander 0.83--> DESK TOP.prg
+141  "GEOWRITE"         USR --> 142  "GEOWRITE"         PRG --Star Commander 0.83--> GEOWRITE.prg
+152  "GEOPAINT"         USR --> 153  "GEOPAINT"         PRG --Star Commander 0.83--> GEOPAINT.prg
+41   "photo manager"    USR --> 42   "PHOTO MANAGER"    PRG --Star Commander 0.83--> PHOTO MANAGER.prg   
+15   "calculator"       USR --> 16   "CALCULATOR"       PRG --Star Commander 0.83--> CALCULATOR.prg
+19   "note pad"         USR --> 20   "NOTE PAD"         PRG --Star Commander 0.83--> NOTE PAD.prg
+26   "California"       USR --> 27   "CALIFORNIA"       PRG --Star Commander 0.83--> CALIFORNIA.prg
+23   "Cory"             USR --> 24   "CORY"             PRG --Star Commander 0.83--> CORY.prg
+13   "Dwinelle"         USR --> 14   "DWINELLE"         PRG --Star Commander 0.83--> DWINELLE.prg
+34   "Roma"             USR --> 35   "ROMA"             PRG --Star Commander 0.83--> ROMA.prg
+40   "University"       USR --> 41   "UNIVERSITY"       PRG --Star Commander 0.83--> UNIVERSITY.prg
+7    "Commodore"        USR --> 8    "COMMODORE"        PRG --Star Commander 0.83--> COMMODORE.prg
+9    "ReadMe"           USR --> 10   "README"           PRG --Star Commander 0.83--> README.prg
+23 BLOCKS FREE.                 10 BLOCKS FREE.
+
+GEOS SEQ/VLIR                   CVT (dirty) Dateien                                  CVT (dirty) Dateien
+in D64 Images                   in D64 Images                                        als PC Dateien
+---------------------------     ---------------------------                          -------------------- 
+GEOS64.D64    --convert 2.5-->  GEOS64_Convert2.5_to_CVT(PRG).D64
+0 "System          " 00 2A      0 "System          " 00 2A
+2    "GEOS"             PRG Err 2    "GEOS"             PRG 
+86   "GEOBOOT"          PRG Err 86   "GEOBOOT"          PRG
+78   "CONFIGURE"        USR --> 79   "CONFIGURE"        PRG --Star Commander 0.83--> CONFIGURE.prg
+120  "DESK TOP"         USR --> 121  "DESK TOP"         PRG --Star Commander 0.83--> DESK TOP.prg
+3    "JOYSTICK"         USR --> 4    "JOYSTICK"         PRG --Star Commander 0.83--> JOYSTICK.prg
+5    "MPS-803"          USR --> 6    "MPS-803"          PRG --Star Commander 0.83--> MPS-803.prg
+22   "preference mgr"   USR --> 23   "PREFERENCE MGR"   PRG --Star Commander 0.83--> PREFERENCE MGR.prg
+22   "pad color mgr"    USR --> 23   "PAD COLOR MGR"    PRG --Star Commander 0.83--> PAD COLOR MGR.prg
+13   "alarm clock"      USR --> 14   "ALARM CLOCK"      PRG --Star Commander 0.83--> ALARM CLOCK.prg
+18   "PAINT DRIVERS"    USR --> 19   "PAINT DRIVERS"    PRG --Star Commander 0.83--> PAINT DRIVERS.prg
+2    "RBOOT"            PRG Err 2    "RBOOT"            PRG 
+4    "Star NL-10(com)"  USR --> 5    "STAR NL-10(COM)"  PRG --Star Commander 0.83--> STAR NL-10(COM).prg
+3    "ASCII Only"       USR --> 4    "ASCII ONLY"       PRG --Star Commander 0.83--> ASCII ONLY.prg
+3    "COMM 1351"        USR --> 4    "COMM 1351"        PRG --Star Commander 0.83--> COMM 1351.prg
+3    "COMM 1351(a)"     USR --> 4    "COMM 1351(A)"     PRG --Star Commander 0.83--> COMM 1351(A).prg
+20   "CONVERT"          USR --> 21   "CONVERT"          PRG --Star Commander 0.83--> CONVERT.prg
+259 BLOCKS FREE.                246 BLOCKS FREE.
+
+GEOS SEQ/VLIR                   CVT (dirty) Dateien                                  CVT (dirty) Dateien
+in D64 Images                   in D64 Images                                        als PC Dateien
+---------------------------     ---------------------------                          --------------------
+SPELL64.D64   --convert 2.5-->  SPELL64_Convert2.5_to_CVT(PRG).D64
+0 "geoSpell        " 00 2A      0 "geoSpell        " 00 2A
+120  "DESK TOP"         USR --> 121  "DESK TOP"         PRG --Star Commander 0.83--> DESK TOP.prg
+111  "GEOSPELL"         USR --> 112  "GEOSPELL"         PRG --Star Commander 0.83--> GEOSPELL.prg
+387  "GeoDictionary"    USR --> 388  "GEODICTIONARY"    PRG --Star Commander 0.83--> GEODICTIONARY.prg
+45 BLOCKS FREE.                 42 BLOCKS FREE.
+
+GEOS SEQ/VLIR                   CVT (dirty) Dateien                                  CVT (dirty) Dateien
+in D64 Images                   in D64 Images                                        als PC Dateien
+---------------------------     ---------------------------                          --------------------
+WRUTIL64.D64  --convert 2.5-->  WRUTIL64_Convert2.5_to_CVT(PRG).D64
+0 "Write Utilities " 00 2A      0 "Write Utilities " 00 2A
+120  "DESK TOP"         USR --> 121  "DESK TOP"         PRG --Star Commander 0.83--> DESK TOP.prg
+67   "TEXT GRABBER"     USR --> 68   "TEXT GRABBER"     PRG --Star Commander 0.83--> TEXT GRABBER.prg
+60   "GEOLASER"         USR --> 61   "GEOLASER"         PRG --Star Commander 0.83--> GEOLASER.prg
+67   "GEOMERGE"         USR --> 68   "GEOMERGE"         PRG --Star Commander 0.83--> GEOMERGE.prg
+38   "text manager"     USR --> 39   "TEXT MANAGER"     PRG --Star Commander 0.83--> TEXT MANAGER.prg
+4    "EasyScript Form"  USR --> 5    "EASYSCRIPT FORM"  PRG --Star Commander 0.83--> EASYSCRIPT FORM.prg
+3    "PaperClip Form"   USR --> 4    "PAPERCLIP FORM"   PRG --Star Commander 0.83--> PAPERCLIP FORM.prg
+2    "SpeedScript Form" USR --> 3    "SPEEDSCRIPT FORM" PRG --Star Commander 0.83--> SPEEDSCRIPT FORM.prg
+3    "WordWriter Form"  USR --> 4    "WORDWRITER FORM"  PRG --Star Commander 0.83--> WORDWRITER FORM.prg
+2    "Generic I Form"   USR --> 3    "GENERIC I FORM"   PRG --Star Commander 0.83--> GENERIC I FORM.prg
+2    "Generic II Form"  USR --> 3    "GENERIC II FORM"  PRG --Star Commander 0.83--> GENERIC II FORM.prg
+2    "Generic III Form" USR --> 3    "GENERIC III FORM" PRG --Star Commander 0.83--> GENERIC III FORM.prg
+44   "LW_Roma"          USR --> 45   "LW_ROMA"          PRG --Star Commander 0.83--> LW_ROMA.prg
+44   "LW_Cal"           USR --> 45   "LW_CAL"           PRG --Star Commander 0.83--> LW_CAL.prg
+46   "LW_Greek"         USR --> 47   "LW_GREEK"         PRG --Star Commander 0.83--> LW_GREEK.prg
+49   "LW_Barrows"       USR --> 50   "LW_BARROWS"       PRG --Star Commander 0.83--> LW_BARROWS.prg
+110 BLOCKS FREE.                94 BLOCKS FREE.
 ```
 
 # Installationsdokumentation
