@@ -160,7 +160,7 @@ Commodore DOS Dateien mir der Dateiart REL werden momentan noch nicht unterstüt
 
 # Testdokumentation
 
-In der Solution ist ein Testprojekt enthalten, welches mehrere Testfunktionen zum Testen der Kernfunktionen beinhaltet. Alle verwendet Testdateien wie z.B. D64 Images, CVT Dateien usw. sind als *Resources* im Testprojet eingebettet.
+In der Solution ist ein Testprojekt enthalten, welches mehrere Testfunktionen zum Testen der Kernfunktionen beinhaltet. Alle verwendet Testdateien wie z.B. D64 Images, CVT Dateien usw. sind als *Resources* im Testprojekt eingebettet.
 
 ## Convert 2.5 erstellen
 
@@ -178,7 +178,7 @@ Für viele Tests werden die D64 Images aus dem Archiv GEOS64.ZIP von der Interne
 
 ```
 ┌─────────────────┬───────────────────────────┬───────────────────────────┬────────────────────────────────┐
-│  GEOS SEQ/VLIR  │       CVT Dateien         │     CVT (dirty) Dateien   │     Clean CVT Dateien          │
+│  GEOS SEQ/VLIR  │    CVT (dirty) Dateien    │     CVT (dirty) Dateien   │     Clean CVT Dateien          │
 │  in D64 Images  │       in D64 Images       │     als PC Dateien        │     als PC Dateien             │
 ├─────────────────┴───────────────────────────┴───────────────────────────┴────────────────────────────────┤
 │    O────────────────────────────────CDIExtract─────────────────────────────────────►O                    │
@@ -192,11 +192,14 @@ Für viele Tests werden die D64 Images aus dem Archiv GEOS64.ZIP von der Interne
 │    ║CDIDir                                                 ║CVTChecksum             ║zum Erzeugen von MD5│
 │    ║                                                       ║                        ║Prüfsummen          │
 │    ▼                                                       ▼                        ▼                    │
-│   MD5                                                     MD5                      MD5                   │
+│   MD5 ◄∙─∙─∙─∙─∙─∙─∙─∙─∙─vergleichbar─∙─∙─∙─∙─∙─∙─∙─∙─∙─► MD5 ◄─∙─vergleichbar─∙─► MD5                   │
 └──────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 #### convert 2.5 (und Star Commander 0.83)
+
+Das wohl bekannteste Programm, welches CVT Dateien erzeugen kann, ist **Convert**, welches direkt unter Geos läuft. Dieses Programm konvertiert Geos SEQ Dateien als auch Geos VLIR in das CVT Format. Die erzeugten CVT Dateien ersetzten dabei die originalen Geos Dateien und befinden sich also immer noch in der D64 Image Datei. Um die Dateien aus den D64 Images zu extrahieren, kann eine Vielzahl von Programmen zum Einsatz kommen. Hier wurde der Star Commander in der Version 0.83 verwendet. Es ist aber z.B. auch 64Copy verwendbar. Die durch **Convert** erzeugten CVT Dateien haben den Nachteil, dass diese etwas *unsauber* (dirty) erstellt werden. CVT Dateien besitzen Datenstellen die für die Wiederherstellung einer Geos Datei, nicht benötigt werden. Diese Datenstellen sind in einem CVT, welches mittels **Convert** erstellt wurde, leider mit zufälligen Informationen gefüllt.
+Alle Dateien der 4 D64 Immages *APPS64.D64*, *GEOS64.D64*, *SPELL64.D64* und *WRUTIL64.D64* wurden also zuerst mit Convert 2.5 in das CVT Format umgewandelt und dann mit dem Star Commander 0.83 aus den Images extrahiert. Die Dateien "GEOS" "GEOBOOT" "RBOOT" aus dem D64 Image GEOS64.D64 konnten dabei, durch **Convert 2.5 ** nicht konvertiert werden. Dies liegt wahrscheinlich daran, dass diese 3 Dateien den falschen GEOS Dateiart besitzen. Dieser Fehler ist wohl entstanden, als der Kopierschutz entfernt wurde.
 
 ```
 GEOS SEQ/VLIR                   CVT (dirty) Dateien                                  CVT (dirty) Dateien
@@ -278,6 +281,8 @@ WRUTIL64.D64  --convert 2.5-->  WRUTIL64_Convert2.5_to_CVT(PRG).D64
 
 #### Star Commander 0.83
 
+Der **Star Commander** ist in der Lage, Geos Dateien aus D64 Images als CVT Dateien direkt zu extrahieren. Die dabei entstehenden CVT Dateien entsprechen wohl sogar dem CleanCVT Format.  Alle Dateien der 4 D64 Immages *APPS64.D64*, *GEOS64.D64*, *SPELL64.D64* und *WRUTIL64.D64* wurden mit dem Star Commander 0.83 in CVT Dateien umgewandelt. Der Star Commander 0.83 konnte dabei auch die Dateien "GEOS" "GEOBOOT" "RBOOT" aus dem D64 Image GEOS64.D64 umwandeln, bei denen das Programm *Convert* Probleme hatte.
+
 ```
 GEOS SEQ/VLIR                                          Clean CVT Dateien
 in D64 Images                                          als PC Dateien
@@ -357,6 +362,8 @@ WRUTIL64.D64
 ```
 
 #### pcGeos 0.3 – GGET.EXE
+
+Das Programm **GGET.EXE** aus der Programmsammlung **pcGeos 0.3** ist, wie der *Star Commander*, in der Lage Geos Dateien aus D64 Images als CVT Dateien direkt zu extrahieren. Diese CVT Dateien werden leider *unsauber* (dirty) erstellt. Die Programme der Programmsammlung **pcGeos 0.3** haben auch noch einen weiteren Nachteil, diese können nur mit 8.3 Dateinamen im DOS Bereich arbeiten. Diese Einschränkung macht sich schon bei der Extraktion der Dateien der 4 D64 Immages *APPS64.D64*, *GEOS64.D64*, *SPELL64.D64* und *WRUTIL64.D64* bemerkbar. Einige Dateien ergaben dabei die gleichen 8.3 Dateinamen, so dass diese manuell umbenannt werden mussten.
 
 ```
 GEOS SEQ/VLIR                                 CVT (dirty) Dateien
