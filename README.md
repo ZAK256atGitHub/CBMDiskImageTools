@@ -171,7 +171,7 @@ Um vergleichbare Prüfsummen für Geos Dateien zu erstellen, werden die Prüfsum
   * Anzahl der verwendeten Blöcke (Low)   
   * Anzahl der verwendeten Blöcke (High)  
 * Info Block (wird 1 zu 1 übernommen)
-* Daten aller Datenblöcke (eine GEOS SEQ Datei besitzt genau nur eine Sektorenkette mit Datenblöcken) 
+* Daten aller Datenblöcke (eine GEOS SEQ Datei besitzt nur genau eine Sektorenkette mit Datenblöcken) 
 
 ## Welche Informationen werden von einer GEOS Datei mit der GEOS Dateistruktur VLIR exportiert bzw. fließen in die Prüfsummenberechnung ein?
 
@@ -237,7 +237,7 @@ Für viele Tests werden die D64 Images aus dem Archiv GEOS64.ZIP von der Interne
 
 #### Star Commander 0.83
 
-Der **Star Commander** ist in der Lage, Geos Dateien aus D64 Images als CVT Dateien direkt zu extrahieren. Die dabei entstehenden CVT Dateien entsprechen wohl sogar dem CleanCVT Format.  Alle Dateien der 4 D64 Immages *APPS64.D64*, *GEOS64.D64*, *SPELL64.D64* und *WRUTIL64.D64* wurden mit dem Star Commander 0.83 in CVT Dateien umgewandelt. Der Star Commander 0.83 konnte dabei auch die Dateien "GEOS" "GEOBOOT" "RBOOT" aus dem D64 Image GEOS64.D64 umwandeln, bei denen das Programm *Convert* Probleme hatte.
+Der **Star Commander** ist in der Lage, Geos Dateien aus D64 Images als CVT Dateien direkt zu extrahieren. Die dabei entstehenden CVT Dateien entsprechen wohl sogar dem CleanCVT Format.  Alle Dateien der 4 D64 Images *APPS64.D64*, *GEOS64.D64*, *SPELL64.D64* und *WRUTIL64.D64* wurden mit dem Star Commander 0.83 in CVT Dateien umgewandelt. Der Star Commander 0.83 konnte dabei auch die Dateien "GEOS" "GEOBOOT" "RBOOT" aus dem D64 Image GEOS64.D64 umwandeln, bei denen das Programm *Convert* Probleme hatte.
 
 ```
 GEOS SEQ/VLIR                                          Clean CVT Dateien
@@ -319,7 +319,7 @@ WRUTIL64.D64
 
 #### pcGeos 0.3 – GGET.EXE
 
-Das Programm **GGET.EXE** aus der Programmsammlung **pcGeos 0.3** ist, wie der *Star Commander*, in der Lage Geos Dateien aus D64 Images als CVT Dateien direkt zu extrahieren. Diese CVT Dateien werden leider *unsauber* (dirty) erstellt. Die Programme der Programmsammlung **pcGeos 0.3** haben auch noch einen weiteren Nachteil, diese können nur mit 8.3 Dateinamen im DOS Bereich arbeiten. Diese Einschränkung macht sich schon bei der Extraktion der Dateien der 4 D64 Immages *APPS64.D64*, *GEOS64.D64*, *SPELL64.D64* und *WRUTIL64.D64* bemerkbar. Einige Dateien ergaben dabei die gleichen 8.3 Dateinamen, so dass diese manuell umbenannt werden mussten.
+Das Programm **GGET.EXE** aus der Programmsammlung **pcGeos 0.3** ist, wie der *Star Commander*, in der Lage Geos Dateien aus D64 Images als CVT Dateien direkt zu extrahieren. Diese CVT Dateien werden leider *unsauber* (dirty) erstellt. Die Programme der Programmsammlung **pcGeos 0.3** haben auch noch einen weiteren Nachteil, diese können nur mit 8.3 Dateinamen im DOS Bereich arbeiten. Diese Einschränkung macht sich schon bei der Extraktion der Dateien der 4 D64 Images *APPS64.D64*, *GEOS64.D64*, *SPELL64.D64* und *WRUTIL64.D64* bemerkbar. Einige Dateien ergaben dabei die gleichen 8.3 Dateinamen, so dass diese manuell umbenannt werden mussten.
 
 ```
 GEOS SEQ/VLIR                                 CVT (dirty) Dateien
@@ -402,13 +402,13 @@ WRUTIL64.D64
 #### convert 2.5 (und Star Commander 0.83)
 
 Das wohl bekannteste Programm, welches CVT Dateien erzeugen kann, ist **Convert**, welches direkt unter Geos läuft. Dieses Programm konvertiert Geos SEQ Dateien als auch Geos VLIR in das CVT Format. Die erzeugten CVT Dateien ersetzten dabei die originalen Geos Dateien und befinden sich also immer noch in der D64 Image Datei. Um die Dateien aus den D64 Images zu extrahieren, kann eine Vielzahl von Programmen zum Einsatz kommen. Hier wurde der Star Commander in der Version 0.83 verwendet. Es ist aber z.B. auch 64Copy verwendbar. Die durch **Convert** erzeugten CVT Dateien haben den Nachteil, dass diese etwas *unsauber* (dirty) erstellt werden. CVT Dateien besitzen Datenstellen die für die Wiederherstellung einer Geos Datei, nicht benötigt werden. Diese Datenstellen sind in einem CVT, welches mittels **Convert** erstellt wurde, leider mit zufälligen Informationen gefüllt.
-Alle Dateien der 4 D64 Immages *APPS64.D64*, *GEOS64.D64*, *SPELL64.D64* und *WRUTIL64.D64* wurden also zuerst mit Convert 2.5 in das CVT Format umgewandelt und dann mit dem Star Commander 0.83 aus den Images extrahiert. Die Dateien "GEOS" "GEOBOOT" "RBOOT" aus dem D64 Image GEOS64.D64 konnten dabei, durch **Convert 2.5** nicht konvertiert werden. Dies liegt wahrscheinlich daran, dass diese 3 Dateien den falschen GEOS Dateiart besitzen. Dieser Fehler ist wohl entstanden, als der Kopierschutz entfernt wurde.
+Alle Dateien der 4 D64 Images *APPS64.D64*, *GEOS64.D64*, *SPELL64.D64* und *WRUTIL64.D64* wurden also zuerst mit Convert 2.5 in das CVT Format umgewandelt und dann mit dem Star Commander 0.83 aus den Images extrahiert. Die Dateien "GEOS" "GEOBOOT" "RBOOT" aus dem D64 Image GEOS64.D64 konnten dabei, durch **Convert 2.5** nicht konvertiert werden. Dies liegt wahrscheinlich daran, dass diese 3 Dateien den falschen GEOS Dateiart besitzen. Dieser Fehler ist wohl entstanden, als der Kopierschutz entfernt wurde.
 
 ```
 GEOS SEQ/VLIR                   CVT (dirty) Dateien                                  CVT (dirty) Dateien
 in D64 Images                   in D64 Images                                        als PC Dateien
 ---------------------------     ---------------------------                          --------------------
-APPS64.D64    --convert 2.5-->  APPS64_Convert2.5_to_CVT(PRG).D64
+APPS64.D64    --convert 2.5-->  APPS64_Convert2_5.D64                                
 0 "Applications    " ML 2A      0 "Applications    " ML 2A
 120  "DESK TOP"         USR --> 121  "DESK TOP"         PRG --Star Commander 0.83--> DESK TOP.prg
 141  "GEOWRITE"         USR --> 142  "GEOWRITE"         PRG --Star Commander 0.83--> GEOWRITE.prg
@@ -428,7 +428,7 @@ APPS64.D64    --convert 2.5-->  APPS64_Convert2.5_to_CVT(PRG).D64
 GEOS SEQ/VLIR                   CVT (dirty) Dateien                                  CVT (dirty) Dateien
 in D64 Images                   in D64 Images                                        als PC Dateien
 ---------------------------     ---------------------------                          -------------------- 
-GEOS64.D64    --convert 2.5-->  GEOS64_Convert2.5_to_CVT(PRG).D64
+GEOS64.D64    --convert 2.5-->  GEOS64_Convert2_5.D64
 0 "System          " 00 2A      0 "System          " 00 2A
 2    "GEOS"             PRG Err 2    "GEOS"             PRG 
 86   "GEOBOOT"          PRG Err 86   "GEOBOOT"          PRG
@@ -451,7 +451,7 @@ GEOS64.D64    --convert 2.5-->  GEOS64_Convert2.5_to_CVT(PRG).D64
 GEOS SEQ/VLIR                   CVT (dirty) Dateien                                  CVT (dirty) Dateien
 in D64 Images                   in D64 Images                                        als PC Dateien
 ---------------------------     ---------------------------                          --------------------
-SPELL64.D64   --convert 2.5-->  SPELL64_Convert2.5_to_CVT(PRG).D64
+SPELL64.D64   --convert 2.5-->  SPELL64_Convert2_5.D64
 0 "geoSpell        " 00 2A      0 "geoSpell        " 00 2A
 120  "DESK TOP"         USR --> 121  "DESK TOP"         PRG --Star Commander 0.83--> DESK TOP.prg
 111  "GEOSPELL"         USR --> 112  "GEOSPELL"         PRG --Star Commander 0.83--> GEOSPELL.prg
@@ -461,7 +461,7 @@ SPELL64.D64   --convert 2.5-->  SPELL64_Convert2.5_to_CVT(PRG).D64
 GEOS SEQ/VLIR                   CVT (dirty) Dateien                                  CVT (dirty) Dateien
 in D64 Images                   in D64 Images                                        als PC Dateien
 ---------------------------     ---------------------------                          --------------------
-WRUTIL64.D64  --convert 2.5-->  WRUTIL64_Convert2.5_to_CVT(PRG).D64
+WRUTIL64.D64  --convert 2.5-->  WRUTIL64_Convert2_5.D64
 0 "Write Utilities " 00 2A      0 "Write Utilities " 00 2A
 120  "DESK TOP"         USR --> 121  "DESK TOP"         PRG --Star Commander 0.83--> DESK TOP.prg
 67   "TEXT GRABBER"     USR --> 68   "TEXT GRABBER"     PRG --Star Commander 0.83--> TEXT GRABBER.prg
@@ -481,6 +481,65 @@ WRUTIL64.D64  --convert 2.5-->  WRUTIL64_Convert2.5_to_CVT(PRG).D64
 49   "LW_Barrows"       USR --> 50   "LW_BARROWS"       PRG --Star Commander 0.83--> LW_BARROWS.prg
 110 BLOCKS FREE.                94 BLOCKS FREE.
 ```
+
+#### CVT von der Internetseite cbmfiles.com
+
+Auf der Internetseite cbmfiles.com finden sich eine Vielzahl von Geos Dateien im CVT Format. Einige von diesen müssten auch den Dateien auf den 4 D64 Images *APPS64.D64*, *GEOS64.D64*, *SPELL64.D64* und *WRUTIL64.D64* genau entsprechen. Die folgende Tabelle stellt die Dateinamen der 4 D64 Images den entsprechenden CVT Dateinamen gegenüber.
+
+|D64 Image   |Dateiname          |cbmfiles.com Dateiname                          |
+|:-----------|:------------------|:-----------------------------------------------|
+|APPS64.D64  |                   |                                                |
+|            |"DESK TOP"         |                                                |
+|            |"GEOWRITE"         |http://cbmfiles.com/geos/geosfiles/GW64.CVT     |
+|            |"GEOPAINT"         |http://cbmfiles.com/geos/geosfiles/GPT64.CVT    |
+|            |"photo manager"    |http://cbmfiles.com/geos/geosfiles/PHMGR64.CVT  |
+|            |"calculator"       |http://cbmfiles.com/geos/geosfiles/CALC64.CVT   |
+|            |"note pad"         |http://cbmfiles.com/geos/geosfiles/NOTE64.CVT   |
+|            |"California"       |http://cbmfiles.com/geos/geosfiles/CALIF.CVT    |
+|            |"Cory"             |http://cbmfiles.com/geos/geosfiles/CORY.CVT     |
+|            |"Dwinelle"         |http://cbmfiles.com/geos/geosfiles/DWIN.CVT     |
+|            |"Roma"             |http://cbmfiles.com/geos/geosfiles/ROMA.CVT     |
+|            |"University"       |http://cbmfiles.com/geos/geosfiles/UNIV.CVT     |
+|            |"Commodore"        |http://cbmfiles.com/geos/geosfiles/COMMFONT.CVT |
+|            |"ReadMe"           |                                                |
+|GEOS64.D64  |                   |                                                |
+|            |"GEOS"             |                                                |
+|            |"GEOBOOT"          |                                                |
+|            |"CONFIGURE"        |                                                |
+|            |"DESK TOP"         |                                                |
+|            |"JOYSTICK"         |http://cbmfiles.com/geos/geosfiles/JOYSTICK.CVT |
+|            |"MPS-803"          |http://cbmfiles.com/geos/geosfiles/MPS803.CVT   |
+|            |"preference mgr"   |http://cbmfiles.com/geos/geosfiles/PRMGR64.CVT  |
+|            |"pad color mgr"    |http://cbmfiles.com/geos/geosfiles/PDMGR64.CVT  |
+|            |"alarm clock"      |http://cbmfiles.com/geos/geosfiles/ALARM64.CVT  |
+|            |"PAINT DRIVERS"    |http://cbmfiles.com/geos/geosfiles/PNTDRVRS.CVT |
+|            |"RBOOT"            |http://cbmfiles.com/geos/geosfiles/RBOOT.CVT    |
+|            |"Star NL-10(com)"  |http://cbmfiles.com/geos/geosfiles/SNL10COM.CVT |
+|            |"ASCII Only"       |http://cbmfiles.com/geos/geosfiles/ASC.CVT      |
+|            |"COMM 1351"        |http://cbmfiles.com/geos/geosfiles/COMM1351.CVT |
+|            |"COMM 1351(a)"     |http://cbmfiles.com/geos/geosfiles/COM1351A.CVT |
+|            |"CONVERT"          |                                                |
+|SPELL64.D64 |                   |                                                |
+|            |"DESK TOP"         |                                                |
+|            |"GEOSPELL"         |http://cbmfiles.com/geos/geosfiles/SPELL64.CVT  |
+|            |"GeoDictionary"    |http://cbmfiles.com/geos/geosfiles/DICT.CVT     |
+|WRUTIL64.D64|                   |                                                |
+|            |"DESK TOP"         |                                                |
+|            |"TEXT GRABBER"     |http://cbmfiles.com/geos/geosfiles/TG64.CVT                                                |
+|            |"GEOLASER"         |http://cbmfiles.com/geos/geosfiles/GEOLASER.CVT |
+|            |"GEOMERGE"         |http://cbmfiles.com/geos/geosfiles/GM64.CVT     |
+|            |"text manager"     |http://cbmfiles.com/geos/geosfiles/TXMGR64.CVT  |
+|            |"EasyScript Form"  |http://cbmfiles.com/geos/geosfiles/TGESF64.CVT  |
+|            |"PaperClip Form"   |http://cbmfiles.com/geos/geosfiles/TGPCF64.CVT  |
+|            |"SpeedScript Form" |http://cbmfiles.com/geos/geosfiles/TGSSF64.CVT  |
+|            |"WordWriter Form"  |http://cbmfiles.com/geos/geosfiles/TGWWF64.CVT  |
+|            |"Generic I Form"   |http://cbmfiles.com/geos/geosfiles/TGG1F64.CVT  |
+|            |"Generic II Form"  |http://cbmfiles.com/geos/geosfiles/TGG2F64.CVT  |
+|            |"Generic III Form" |http://cbmfiles.com/geos/geosfiles/TGG3F64.CVT  |
+|            |"LW_Roma"          |http://cbmfiles.com/geos/geosfiles/LWROMA.CVT   |
+|            |"LW_Cal"           |http://cbmfiles.com/geos/geosfiles/LWCAL.CVT    |
+|            |"LW_Greek"         |http://cbmfiles.com/geos/geosfiles/LWGREEK.CVT  |
+|            |"LW_Barrows"       |http://cbmfiles.com/geos/geosfiles/LWBARR.CVT   |
 
 # Installationsdokumentation
 
