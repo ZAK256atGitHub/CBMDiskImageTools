@@ -21,13 +21,13 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest
         public void TestMethod_GEOS64_D64()
         {
             ResourceManager LocRM = new ResourceManager("ZAK256.CBMDiskImageTools.Test.UnitTest.Resources.cbmfiles.com_GEOS64_ZIP", System.Reflection.Assembly.GetExecutingAssembly());
-            
+
             byte[] imageData = (byte[])LocRM.GetObject("GEOS64_D64");
-            
+
             ArrayList dirEntryList = new ArrayList();
             //byte[] imageData = Properties.Resources.GEOS64_D64;
 
-            Assert.AreEqual("F004B907634A30C21D4DF39E362C0789", Core.GetMD5Hash(imageData),"The test file is incorrect!");
+            Assert.AreEqual("F004B907634A30C21D4DF39E362C0789", Core.GetMD5Hash(imageData), "The test file is incorrect!");
             int imageDataType = 0; // sorry hard coding 0 = D64
             byte[] bamBlock = DOSDisk.ReadBAMBlock(imageData, imageDataType);
             dirEntryList = DOSDisk.GetDirEntryList(bamBlock, imageData, imageDataType);
@@ -169,6 +169,249 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest
             Assert.AreEqual("5518FA80D16F09EB8DF16749423FE74A", Core.GetMD5Hash((byte[])ResMgrCVT.GetObject("GPT64_CVT")), "The test file is incorrect!");
             cvtMD5 = Core.GetMD5Hash(cleanCvt);
             Assert.AreEqual(expectedMd5, cvtMD5, "The MD5 checksum of CVT file is incorrect.");
+        }
+        [TestMethod]
+        public void TestMethod_GEOS64_ZIP_vs_CVT()
+        {
+            // Ein Dictionary mit den MD5 Prüfsummen aller CVT Datein wird anlegen.
+            Dictionary<string, string> cvtMD5Dict = new Dictionary<string, string>();
+            cvtMD5Dict.Add("ALARM64_CVT", "379562fce34ff3aa92ac1bf94ab0c82a");
+            cvtMD5Dict.Add("ASC_CVT", "9e50e4f08f6362684ccc0b2c40f5bacd");
+            cvtMD5Dict.Add("CALC64_CVT", "a64b5be35b6ecdfb73d36b6af2037ee7");
+            cvtMD5Dict.Add("CALIF_CVT", "63774ddbd94c6d3c84021b540a5cc352");
+            cvtMD5Dict.Add("COM1351A_CVT", "36e9ce9693babce60c22f6418e884cdf");
+            cvtMD5Dict.Add("COMM1351_CVT", "b84b6ca934d95399d4f23fd719d27135");
+            cvtMD5Dict.Add("COMMFONT_CVT", "ae09c60ed90700b37c0db1043bc1da7b");
+            cvtMD5Dict.Add("CORY_CVT", "c25d5fb668ce7913dd5f78bafd5f861b");
+            cvtMD5Dict.Add("DICT_CVT", "8b064b856eba099bb639265a09e9935f");
+            cvtMD5Dict.Add("DWIN_CVT", "eb734844875c33d4b225cfa4c6cfbb73");
+            cvtMD5Dict.Add("GEOLASER_CVT", "93b40e916e698d0a47f0d5d8d28a0d00");
+            cvtMD5Dict.Add("GM64_CVT", "7de625e9d7717d57774ac7fae7860d0e");
+            cvtMD5Dict.Add("GPT64_CVT", "5518fa80d16f09eb8df16749423fe74a");
+            cvtMD5Dict.Add("GW64_CVT", "7bb3438cbe86a08448bb03585af68787");
+            cvtMD5Dict.Add("JOYSTICK_CVT", "9e35f7d3c2183fa1a3a9caaa551ea342");
+            cvtMD5Dict.Add("LWBARR_CVT", "7a9a5764bc4fb097ba95d549a26ebc7b");
+            cvtMD5Dict.Add("LWCAL_CVT", "57770a581fda04cd57e804f7d6a0731e");
+            cvtMD5Dict.Add("LWGREEK_CVT", "95bca643dc832d061a7601dd4ce8dc48");
+            cvtMD5Dict.Add("LWROMA_CVT", "bfc38a9c73fd4e348b136a35b58a8311");
+            cvtMD5Dict.Add("MPS803_CVT", "b322c99316a0e3c34be6bd8cbfb0a571");
+            cvtMD5Dict.Add("NOTE64_CVT", "c311d37f2b19e28115b54989511ca7ec");
+            cvtMD5Dict.Add("PDMGR64_CVT", "d23fddc59754fc9cc352b5fe81728996");
+            cvtMD5Dict.Add("PHMGR64_CVT", "97420e1433004b66e2688afeac3e20ea");
+            cvtMD5Dict.Add("PNTDRVRS_CVT", "24a38885fcd5a3338ccc2acf666a0862");
+            cvtMD5Dict.Add("PRMGR64_CVT", "c119773201639db0e144e1a88858b8e7");
+            cvtMD5Dict.Add("RBOOT_CVT", "4f47c60627388f4cd4b2790b4885c9fb");
+            cvtMD5Dict.Add("ROMA_CVT", "1a8ad4d1afb18dba780fe26abd6fcd87");
+            cvtMD5Dict.Add("SNL10COM_CVT", "4333aaddb404780978d546961ff97b01");
+            cvtMD5Dict.Add("SPELL64_CVT", "66d08a0603b9fad4f2f9aaa7162a82ec");
+            cvtMD5Dict.Add("TG64_CVT", "8a009581e8ad1929963edf257b753b12");
+            cvtMD5Dict.Add("TGESF64_CVT", "472b7dff778c44d73c160c8e8bd5b6f7");
+            cvtMD5Dict.Add("TGG1F64_CVT", "da9d506fd586976dc8bea41588a3f895");
+            cvtMD5Dict.Add("TGG2F64_CVT", "1e710083dab4c15f64cc6259b077ed2d");
+            cvtMD5Dict.Add("TGG3F64_CVT", "94ec38829b83232d6582ac32a11e74a6");
+            cvtMD5Dict.Add("TGPCF64_CVT", "8eadca507e1d249582ce54a4ab84673d");
+            cvtMD5Dict.Add("TGSSF64_CVT", "1f898e2b53c3a6b2a07a42063d7971a1");
+            cvtMD5Dict.Add("TGWWF64_CVT", "aed320a2a2c31c12e0f8eb4e251fc047");
+            cvtMD5Dict.Add("TXMGR64_CVT", "ac929f4df22ab959c7a8228d15bfc004");
+            cvtMD5Dict.Add("UNIV_CVT", "cb853b51ffde80b1cd8b192dca5ce4d8");
+
+            // Um leichter auf die Resources Dateien zugreifen zu können, werden diese in ein Dictionary gelesen.
+            // Speicher spielt dabei keine Rolle!
+            Dictionary<string, byte[]> cvtFileDataDict = new Dictionary<string, byte[]>();
+            {
+                ResourceManager resMgr = new ResourceManager("ZAK256.CBMDiskImageTools.Test.UnitTest.Resources.cbmfiles.com_CVT", System.Reflection.Assembly.GetExecutingAssembly());
+                foreach (KeyValuePair<string, string> kp in cvtMD5Dict)
+                {
+                    byte[] fileData = (byte[])resMgr.GetObject(kp.Key);
+                    if (fileData == null)
+                    {
+                        throw new Exception("The test file is incorrect!");
+                    }
+                    cvtFileDataDict.Add(kp.Key, fileData);
+                }
+            }
+            
+            // Prüfen, ob die Ausgangs CVT Dateien korrekt sind. Dazu werden die MD5 Prüfsummen der Dateien
+            // errechnet und mit den vorgebnen (hart codierten) MD5 Prüfsummen verglichen.
+            foreach (KeyValuePair<string, string> kp in cvtMD5Dict)
+            {
+                byte[] imageData = cvtFileDataDict[kp.Key];
+                Assert.AreEqual(kp.Value.ToUpper(), Core.GetMD5Hash(imageData), "The test file is incorrect!");
+            }
+
+            // Ein Dictionary mit den MD5 Prüfsummen für die 4 D64 Images aus dem Archiv GEOS64.ZIP.
+            Dictionary<string, string> geos64ZIPD64Images = new Dictionary<string, string>();
+            geos64ZIPD64Images.Add("APPS64_D64", "8EB414AB37B23A1D1D348D456896A1B0");
+            geos64ZIPD64Images.Add("GEOS64_D64", "F004B907634A30C21D4DF39E362C0789");
+            geos64ZIPD64Images.Add("SPELL64_D64", "05425BE1824E99534CC30E60EDFF49C7");
+            geos64ZIPD64Images.Add("WRUTIL64_D64", "3B52C7A91F794C0E5599AF804A515878");
+
+            // Um leichter auf die Resources Dateien zugreifen zu können, werden diese in ein Dictionary gelesen.
+            // Speicher spielt dabei keine Rolle!
+            Dictionary<string, byte[]> geos64ZIPD64ImagesData = new Dictionary<string, byte[]>();
+            {
+                ResourceManager resMgr = new ResourceManager("ZAK256.CBMDiskImageTools.Test.UnitTest.Resources.cbmfiles.com_GEOS64_ZIP", System.Reflection.Assembly.GetExecutingAssembly());
+                foreach (KeyValuePair<string, string> kp in geos64ZIPD64Images)
+                {
+                    byte[] fileData = (byte[])resMgr.GetObject(kp.Key);
+                    if (fileData == null)
+                    {
+                        throw new Exception("The test file is incorrect!");
+                    }
+                    geos64ZIPD64ImagesData.Add(kp.Key, fileData);
+                }
+            }
+            // Prüfen, ob die Ausgangs Dateien korrekt sind. Dazu werden die MD5 Prüfsummen der Dateien
+            // errechnet und mit den vorgebnen (hart codierten) MD5 Prüfsummen verglichen.
+            foreach (KeyValuePair<string, string> kp in geos64ZIPD64Images)
+            {
+                byte[] imageData = geos64ZIPD64ImagesData[kp.Key];
+                Assert.AreEqual(kp.Value.ToUpper(), Core.GetMD5Hash(imageData), "The test file is incorrect!");
+            }
+
+            //
+            Dictionary<string, string> assignFileToCVT = new Dictionary<string, string>();
+            assignFileToCVT.Add("GW64_CVT", "GEOWRITE");
+            assignFileToCVT.Add("GPT64_CVT", "GEOPAINT");
+            assignFileToCVT.Add("PHMGR64_CVT", "photo manager");
+            assignFileToCVT.Add("CALC64_CVT", "calculator");
+            assignFileToCVT.Add("NOTE64_CVT", "note pad");
+            assignFileToCVT.Add("CALIF_CVT", "California");
+            assignFileToCVT.Add("CORY_CVT", "Cory");
+            assignFileToCVT.Add("DWIN_CVT", "Dwinelle");
+            assignFileToCVT.Add("ROMA_CVT", "Roma");
+            assignFileToCVT.Add("UNIV_CVT", "University");
+            assignFileToCVT.Add("COMMFONT_CVT", "Commodore");
+            assignFileToCVT.Add("JOYSTICK_CVT", "JOYSTICK");
+            assignFileToCVT.Add("MPS803_CVT", "MPS-803");
+            assignFileToCVT.Add("PRMGR64_CVT", "preference mgr");
+            assignFileToCVT.Add("PDMGR64_CVT", "pad color mgr");
+            assignFileToCVT.Add("ALARM64_CVT", "alarm clock");
+            assignFileToCVT.Add("PNTDRVRS_CVT", "PAINT DRIVERS");
+            assignFileToCVT.Add("RBOOT_CVT", "RBOOT");
+            assignFileToCVT.Add("SNL10COM_CVT", "Star NL-10(com)");
+            assignFileToCVT.Add("ASC_CVT", "ASCII Only");
+            assignFileToCVT.Add("COMM1351_CVT", "COMM 1351");
+            assignFileToCVT.Add("COM1351A_CVT", "COMM 1351(a)");
+            assignFileToCVT.Add("SPELL64_CVT", "GEOSPELL");
+            assignFileToCVT.Add("DICT_CVT", "GeoDictionary");
+            assignFileToCVT.Add("TG64_CVT", "TEXT GRABBER");
+            assignFileToCVT.Add("GEOLASER_CVT", "GEOLASER");
+            assignFileToCVT.Add("GM64_CVT", "GEOMERGE");
+            assignFileToCVT.Add("TXMGR64_CVT", "text manager");
+            assignFileToCVT.Add("TGESF64_CVT", "EasyScript Form");
+            assignFileToCVT.Add("TGPCF64_CVT", "PaperClip Form");
+            assignFileToCVT.Add("TGSSF64_CVT", "SpeedScript Form");
+            assignFileToCVT.Add("TGWWF64_CVT", "WordWriter Form");
+            assignFileToCVT.Add("TGG1F64_CVT", "Generic I Form");
+            assignFileToCVT.Add("TGG2F64_CVT", "Generic II Form");
+            assignFileToCVT.Add("TGG3F64_CVT", "Generic III Form");
+            assignFileToCVT.Add("LWROMA_CVT", "LW_Roma");
+            assignFileToCVT.Add("LWCAL_CVT", "LW_Cal");
+            assignFileToCVT.Add("LWGREEK_CVT", "LW_Greek");
+            assignFileToCVT.Add("LWBARR_CVT", "LW_Barrows");
+
+            Dictionary<string, int> assignFileIndexToCVT = new Dictionary<string, int>();
+            assignFileIndexToCVT.Add("GW64_CVT", 2); // "GEOWRITE"
+            assignFileIndexToCVT.Add("GPT64_CVT", 3); // "GEOPAINT"
+            assignFileIndexToCVT.Add("PHMGR64_CVT", 4); // "photo manager"
+            assignFileIndexToCVT.Add("CALC64_CVT", 5); // "calculator"
+            assignFileIndexToCVT.Add("NOTE64_CVT", 6); // "note pad"
+            assignFileIndexToCVT.Add("CALIF_CVT", 7); // "California"
+            assignFileIndexToCVT.Add("CORY_CVT", 8); // "Cory"
+            assignFileIndexToCVT.Add("DWIN_CVT", 9); // "Dwinelle"
+            assignFileIndexToCVT.Add("ROMA_CVT", 10); // "Roma"
+            assignFileIndexToCVT.Add("UNIV_CVT", 11); // "University"
+            assignFileIndexToCVT.Add("COMMFONT_CVT", 12); // "Commodore"
+            assignFileIndexToCVT.Add("JOYSTICK_CVT", 5); // "JOYSTICK"
+            assignFileIndexToCVT.Add("MPS803_CVT", 6); // "MPS-803"
+            assignFileIndexToCVT.Add("PRMGR64_CVT", 7); // "preference mgr"
+            assignFileIndexToCVT.Add("PDMGR64_CVT", 8); // "pad color mgr"
+            assignFileIndexToCVT.Add("ALARM64_CVT", 9); // "alarm clock"
+            assignFileIndexToCVT.Add("PNTDRVRS_CVT", 10); // "PAINT DRIVERS"
+            assignFileIndexToCVT.Add("RBOOT_CVT", 11); // "RBOOT"
+            assignFileIndexToCVT.Add("SNL10COM_CVT", 12); // "Star NL-10(com)"
+            assignFileIndexToCVT.Add("ASC_CVT", 13); // "ASCII Only"
+            assignFileIndexToCVT.Add("COMM1351_CVT", 14); // "COMM 1351"
+            assignFileIndexToCVT.Add("COM1351A_CVT", 15); // "COMM 1351(a)"
+            assignFileIndexToCVT.Add("SPELL64_CVT", 2); // "GEOSPELL"
+            assignFileIndexToCVT.Add("DICT_CVT", 3); // "GeoDictionary"
+            assignFileIndexToCVT.Add("TG64_CVT", 2); // "TEXT GRABBER"
+            assignFileIndexToCVT.Add("GEOLASER_CVT", 3); // "GEOLASER"
+            assignFileIndexToCVT.Add("GM64_CVT", 4); // "GEOMERGE"
+            assignFileIndexToCVT.Add("TXMGR64_CVT", 5); // "text manager"
+            assignFileIndexToCVT.Add("TGESF64_CVT", 6); // "EasyScript Form"
+            assignFileIndexToCVT.Add("TGPCF64_CVT", 7); // "PaperClip Form"
+            assignFileIndexToCVT.Add("TGSSF64_CVT", 8); // "SpeedScript Form"
+            assignFileIndexToCVT.Add("TGWWF64_CVT", 9); // "WordWriter Form"
+            assignFileIndexToCVT.Add("TGG1F64_CVT", 10); // "Generic I Form"
+            assignFileIndexToCVT.Add("TGG2F64_CVT", 11); // "Generic II Form"
+            assignFileIndexToCVT.Add("TGG3F64_CVT", 12); // "Generic III Form"
+            assignFileIndexToCVT.Add("LWROMA_CVT", 13); // "LW_Roma"
+            assignFileIndexToCVT.Add("LWCAL_CVT", 14); // "LW_Cal"
+            assignFileIndexToCVT.Add("LWGREEK_CVT", 15); // "LW_Greek"
+            assignFileIndexToCVT.Add("LWBARR_CVT", 16); // "LW_Barrows"
+
+            Dictionary<string, string> assignDiskToCVT = new Dictionary<string, string>();
+            assignDiskToCVT.Add("GW64_CVT", "APPS64_D64");
+            assignDiskToCVT.Add("GPT64_CVT", "APPS64_D64");
+            assignDiskToCVT.Add("PHMGR64_CVT", "APPS64_D64");
+            assignDiskToCVT.Add("CALC64_CVT", "APPS64_D64");
+            assignDiskToCVT.Add("NOTE64_CVT", "APPS64_D64");
+            assignDiskToCVT.Add("CALIF_CVT", "APPS64_D64");
+            assignDiskToCVT.Add("CORY_CVT", "APPS64_D64");
+            assignDiskToCVT.Add("DWIN_CVT", "APPS64_D64");
+            assignDiskToCVT.Add("ROMA_CVT", "APPS64_D64");
+            assignDiskToCVT.Add("UNIV_CVT", "APPS64_D64");
+            assignDiskToCVT.Add("COMMFONT_CVT", "APPS64_D64");
+            assignDiskToCVT.Add("JOYSTICK_CVT", "GEOS64_D64");
+            assignDiskToCVT.Add("MPS803_CVT", "GEOS64_D64");
+            assignDiskToCVT.Add("PRMGR64_CVT", "GEOS64_D64");
+            assignDiskToCVT.Add("PDMGR64_CVT", "GEOS64_D64");
+            assignDiskToCVT.Add("ALARM64_CVT", "GEOS64_D64");
+            assignDiskToCVT.Add("PNTDRVRS_CVT", "GEOS64_D64");
+            assignDiskToCVT.Add("RBOOT_CVT", "GEOS64_D64");
+            assignDiskToCVT.Add("SNL10COM_CVT", "GEOS64_D64");
+            assignDiskToCVT.Add("ASC_CVT", "GEOS64_D64");
+            assignDiskToCVT.Add("COMM1351_CVT", "GEOS64_D64");
+            assignDiskToCVT.Add("COM1351A_CVT", "GEOS64_D64");
+            assignDiskToCVT.Add("SPELL64_CVT", "SPELL64_D64");
+            assignDiskToCVT.Add("DICT_CVT", "SPELL64_D64");
+            assignDiskToCVT.Add("TG64_CVT", "WRUTIL64_D64");
+            assignDiskToCVT.Add("GEOLASER_CVT", "WRUTIL64_D64");
+            assignDiskToCVT.Add("GM64_CVT", "WRUTIL64_D64");
+            assignDiskToCVT.Add("TXMGR64_CVT", "WRUTIL64_D64");
+            assignDiskToCVT.Add("TGESF64_CVT", "WRUTIL64_D64");
+            assignDiskToCVT.Add("TGPCF64_CVT", "WRUTIL64_D64");
+            assignDiskToCVT.Add("TGSSF64_CVT", "WRUTIL64_D64");
+            assignDiskToCVT.Add("TGWWF64_CVT", "WRUTIL64_D64");
+            assignDiskToCVT.Add("TGG1F64_CVT", "WRUTIL64_D64");
+            assignDiskToCVT.Add("TGG2F64_CVT", "WRUTIL64_D64");
+            assignDiskToCVT.Add("TGG3F64_CVT", "WRUTIL64_D64");
+            assignDiskToCVT.Add("LWROMA_CVT", "WRUTIL64_D64");
+            assignDiskToCVT.Add("LWCAL_CVT", "WRUTIL64_D64");
+            assignDiskToCVT.Add("LWGREEK_CVT", "WRUTIL64_D64");
+            assignDiskToCVT.Add("LWBARR_CVT", "WRUTIL64_D64");
+
+
+
+            foreach (KeyValuePair<string, string> kp in cvtMD5Dict)
+            {
+                ArrayList dirEntryList = new ArrayList();
+                byte[] imageData = geos64ZIPD64ImagesData[assignDiskToCVT[kp.Key]];
+                int imageDataType = 0; // sorry hard coding 0 = D64
+                byte[] bamBlock = DOSDisk.ReadBAMBlock(imageData, imageDataType);
+                dirEntryList = DOSDisk.GetDirEntryList(bamBlock, imageData, imageDataType);
+
+                byte[] dirEntry = (byte[])dirEntryList[assignFileIndexToCVT[kp.Key] - 1];
+                string filename = Core.ConvertPETSCII2ASCII(DOSDisk.GetFilename(dirEntry));
+                //string expectedMd5 = ;
+
+                string md5 = DOSDisk.GetMD5ByFile(dirEntry, imageData, imageDataType);
+                Assert.AreEqual(expectedMd5, md5, "The MD5 checksum is incorrect.");
+                Console.WriteLine("Filename = {0}", filename);
+                Console.WriteLine("MD5 {0} = {1}", expectedMd5, md5); // see at test explorer --> "output"
+            }
         }
     }
 }

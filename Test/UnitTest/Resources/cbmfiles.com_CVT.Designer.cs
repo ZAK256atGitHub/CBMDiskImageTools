@@ -63,9 +63,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] ALARM64 {
+        internal static byte[] ALARM64_CVT {
             get {
-                object obj = ResourceManager.GetObject("ALARM64", resourceCulture);
+                object obj = ResourceManager.GetObject("ALARM64_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] ASC {
+        internal static byte[] ASC_CVT {
             get {
-                object obj = ResourceManager.GetObject("ASC", resourceCulture);
+                object obj = ResourceManager.GetObject("ASC_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] CALC64 {
+        internal static byte[] CALC64_CVT {
             get {
-                object obj = ResourceManager.GetObject("CALC64", resourceCulture);
+                object obj = ResourceManager.GetObject("CALC64_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] CALIF {
+        internal static byte[] CALIF_CVT {
             get {
-                object obj = ResourceManager.GetObject("CALIF", resourceCulture);
+                object obj = ResourceManager.GetObject("CALIF_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] COM1351A {
+        internal static byte[] COM1351A_CVT {
             get {
-                object obj = ResourceManager.GetObject("COM1351A", resourceCulture);
+                object obj = ResourceManager.GetObject("COM1351A_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] COMM1351 {
+        internal static byte[] COMM1351_CVT {
             get {
-                object obj = ResourceManager.GetObject("COMM1351", resourceCulture);
+                object obj = ResourceManager.GetObject("COMM1351_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -123,9 +123,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] COMMFONT {
+        internal static byte[] COMMFONT_CVT {
             get {
-                object obj = ResourceManager.GetObject("COMMFONT", resourceCulture);
+                object obj = ResourceManager.GetObject("COMMFONT_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -133,9 +133,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] CORY {
+        internal static byte[] CORY_CVT {
             get {
-                object obj = ResourceManager.GetObject("CORY", resourceCulture);
+                object obj = ResourceManager.GetObject("CORY_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -143,9 +143,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] DICT {
+        internal static byte[] DICT_CVT {
             get {
-                object obj = ResourceManager.GetObject("DICT", resourceCulture);
+                object obj = ResourceManager.GetObject("DICT_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -153,9 +153,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] DWIN {
+        internal static byte[] DWIN_CVT {
             get {
-                object obj = ResourceManager.GetObject("DWIN", resourceCulture);
+                object obj = ResourceManager.GetObject("DWIN_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -163,9 +163,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] GEOLASER {
+        internal static byte[] GEOLASER_CVT {
             get {
-                object obj = ResourceManager.GetObject("GEOLASER", resourceCulture);
+                object obj = ResourceManager.GetObject("GEOLASER_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -173,9 +173,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] GM64 {
+        internal static byte[] GM64_CVT {
             get {
-                object obj = ResourceManager.GetObject("GM64", resourceCulture);
+                object obj = ResourceManager.GetObject("GM64_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -183,9 +183,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] GPT64 {
+        internal static byte[] GPT64_CVT {
             get {
-                object obj = ResourceManager.GetObject("GPT64", resourceCulture);
+                object obj = ResourceManager.GetObject("GPT64_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -193,9 +193,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] GW64 {
+        internal static byte[] GW64_CVT {
             get {
-                object obj = ResourceManager.GetObject("GW64", resourceCulture);
+                object obj = ResourceManager.GetObject("GW64_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -203,9 +203,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] JOYSTICK {
+        internal static byte[] JOYSTICK_CVT {
             get {
-                object obj = ResourceManager.GetObject("JOYSTICK", resourceCulture);
+                object obj = ResourceManager.GetObject("JOYSTICK_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -213,9 +213,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] LWBARR {
+        internal static byte[] LWBARR_CVT {
             get {
-                object obj = ResourceManager.GetObject("LWBARR", resourceCulture);
+                object obj = ResourceManager.GetObject("LWBARR_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -223,9 +223,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] LWCAL {
+        internal static byte[] LWCAL_CVT {
             get {
-                object obj = ResourceManager.GetObject("LWCAL", resourceCulture);
+                object obj = ResourceManager.GetObject("LWCAL_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -233,9 +233,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] LWGREEK {
+        internal static byte[] LWGREEK_CVT {
             get {
-                object obj = ResourceManager.GetObject("LWGREEK", resourceCulture);
+                object obj = ResourceManager.GetObject("LWGREEK_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -243,9 +243,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] LWROMA {
+        internal static byte[] LWROMA_CVT {
             get {
-                object obj = ResourceManager.GetObject("LWROMA", resourceCulture);
+                object obj = ResourceManager.GetObject("LWROMA_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -253,9 +253,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] MPS803 {
+        internal static byte[] MPS803_CVT {
             get {
-                object obj = ResourceManager.GetObject("MPS803", resourceCulture);
+                object obj = ResourceManager.GetObject("MPS803_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -263,9 +263,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] NOTE64 {
+        internal static byte[] NOTE64_CVT {
             get {
-                object obj = ResourceManager.GetObject("NOTE64", resourceCulture);
+                object obj = ResourceManager.GetObject("NOTE64_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -273,9 +273,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] PDMGR64 {
+        internal static byte[] PDMGR64_CVT {
             get {
-                object obj = ResourceManager.GetObject("PDMGR64", resourceCulture);
+                object obj = ResourceManager.GetObject("PDMGR64_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -283,9 +283,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] PHMGR64 {
+        internal static byte[] PHMGR64_CVT {
             get {
-                object obj = ResourceManager.GetObject("PHMGR64", resourceCulture);
+                object obj = ResourceManager.GetObject("PHMGR64_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -293,9 +293,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] PNTDRVRS {
+        internal static byte[] PNTDRVRS_CVT {
             get {
-                object obj = ResourceManager.GetObject("PNTDRVRS", resourceCulture);
+                object obj = ResourceManager.GetObject("PNTDRVRS_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -303,9 +303,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] PRMGR64 {
+        internal static byte[] PRMGR64_CVT {
             get {
-                object obj = ResourceManager.GetObject("PRMGR64", resourceCulture);
+                object obj = ResourceManager.GetObject("PRMGR64_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -313,9 +313,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] RBOOT {
+        internal static byte[] RBOOT_CVT {
             get {
-                object obj = ResourceManager.GetObject("RBOOT", resourceCulture);
+                object obj = ResourceManager.GetObject("RBOOT_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -323,9 +323,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] ROMA {
+        internal static byte[] ROMA_CVT {
             get {
-                object obj = ResourceManager.GetObject("ROMA", resourceCulture);
+                object obj = ResourceManager.GetObject("ROMA_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -333,9 +333,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] SNL10COM {
+        internal static byte[] SNL10COM_CVT {
             get {
-                object obj = ResourceManager.GetObject("SNL10COM", resourceCulture);
+                object obj = ResourceManager.GetObject("SNL10COM_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -343,9 +343,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] SPELL64 {
+        internal static byte[] SPELL64_CVT {
             get {
-                object obj = ResourceManager.GetObject("SPELL64", resourceCulture);
+                object obj = ResourceManager.GetObject("SPELL64_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -353,9 +353,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] TG64 {
+        internal static byte[] TG64_CVT {
             get {
-                object obj = ResourceManager.GetObject("TG64", resourceCulture);
+                object obj = ResourceManager.GetObject("TG64_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -363,9 +363,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] TGESF64 {
+        internal static byte[] TGESF64_CVT {
             get {
-                object obj = ResourceManager.GetObject("TGESF64", resourceCulture);
+                object obj = ResourceManager.GetObject("TGESF64_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -373,9 +373,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] TGG1F64 {
+        internal static byte[] TGG1F64_CVT {
             get {
-                object obj = ResourceManager.GetObject("TGG1F64", resourceCulture);
+                object obj = ResourceManager.GetObject("TGG1F64_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -383,9 +383,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] TGG2F64 {
+        internal static byte[] TGG2F64_CVT {
             get {
-                object obj = ResourceManager.GetObject("TGG2F64", resourceCulture);
+                object obj = ResourceManager.GetObject("TGG2F64_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -393,9 +393,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] TGG3F64 {
+        internal static byte[] TGG3F64_CVT {
             get {
-                object obj = ResourceManager.GetObject("TGG3F64", resourceCulture);
+                object obj = ResourceManager.GetObject("TGG3F64_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -403,9 +403,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] TGPCF64 {
+        internal static byte[] TGPCF64_CVT {
             get {
-                object obj = ResourceManager.GetObject("TGPCF64", resourceCulture);
+                object obj = ResourceManager.GetObject("TGPCF64_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -413,9 +413,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] TGSSF64 {
+        internal static byte[] TGSSF64_CVT {
             get {
-                object obj = ResourceManager.GetObject("TGSSF64", resourceCulture);
+                object obj = ResourceManager.GetObject("TGSSF64_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -423,9 +423,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] TGWWF64 {
+        internal static byte[] TGWWF64_CVT {
             get {
-                object obj = ResourceManager.GetObject("TGWWF64", resourceCulture);
+                object obj = ResourceManager.GetObject("TGWWF64_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -433,9 +433,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] TXMGR64 {
+        internal static byte[] TXMGR64_CVT {
             get {
-                object obj = ResourceManager.GetObject("TXMGR64", resourceCulture);
+                object obj = ResourceManager.GetObject("TXMGR64_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -443,9 +443,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] UNIV {
+        internal static byte[] UNIV_CVT {
             get {
-                object obj = ResourceManager.GetObject("UNIV", resourceCulture);
+                object obj = ResourceManager.GetObject("UNIV_CVT", resourceCulture);
                 return ((byte[])(obj));
             }
         }

@@ -118,121 +118,121 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ALARM64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="ALARM64_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\ALARM64.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="ASC" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="ASC_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\ASC.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="CALC64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="CALC64_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\CALC64.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="CALIF" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="CALIF_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\CALIF.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="COM1351A" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="COM1351A_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\COM1351A.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="COMM1351" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="COMM1351_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\COMM1351.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="COMMFONT" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="COMMFONT_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\COMMFONT.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="CORY" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="CORY_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\CORY.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="DICT" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="DICT_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\DICT.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="DWIN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="DWIN_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\DWIN.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="GEOLASER" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="GEOLASER_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\GEOLASER.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="GM64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="GM64_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\GM64.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="GPT64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="GPT64_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\GPT64.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="GW64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="GW64_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\GW64.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="JOYSTICK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="JOYSTICK_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\JOYSTICK.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="LWBARR" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="LWBARR_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\LWBARR.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="LWCAL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="LWCAL_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\LWCAL.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="LWGREEK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="LWGREEK_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\LWGREEK.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="LWROMA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="LWROMA_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\LWROMA.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="MPS803" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="MPS803_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\MPS803.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="NOTE64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="NOTE64_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\NOTE64.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="PDMGR64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="PDMGR64_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\PDMGR64.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="PHMGR64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="PHMGR64_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\PHMGR64.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="PNTDRVRS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="PNTDRVRS_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\PNTDRVRS.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="PRMGR64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="PRMGR64_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\PRMGR64.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="RBOOT" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="RBOOT_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\RBOOT.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="ROMA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="ROMA_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\ROMA.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="SNL10COM" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="SNL10COM_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\SNL10COM.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="SPELL64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="SPELL64_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\SPELL64.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="TG64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="TG64_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\TG64.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="TGESF64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="TGESF64_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\TGESF64.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="TGG1F64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="TGG1F64_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\TGG1F64.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="TGG2F64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="TGG2F64_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\TGG2F64.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="TGG3F64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="TGG3F64_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\TGG3F64.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="TGPCF64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="TGPCF64_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\TGPCF64.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="TGSSF64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="TGSSF64_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\TGSSF64.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="TGWWF64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="TGWWF64_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\TGWWF64.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="TXMGR64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="TXMGR64_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\TXMGR64.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="UNIV" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="UNIV_CVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_CVT\UNIV.CVT;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

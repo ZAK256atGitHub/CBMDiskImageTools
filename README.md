@@ -19,6 +19,7 @@ NOTE: Be sure to merge the latest from "upstream" before making a pull request!
 CBM Disk Image Tools is licensed under the [MIT license](LICENSE).
 
 # Benutzerdokumentation
+
 ## CBM Disk Image Tools
 
 Die CBM Disk Image Tools sind eine Sammlung von mehreren kleinen Programmen, welche Abbildungen (Images) von Commodore Disketten verarbeiten können. Der Schwerpunkt der Toolsammlung liegt momentan auf dem Erstellen von Prüfsummen von einzelnen Dateien. Diese Prüfsummen sollen den Vergleich von einzelnen Dateien vereinfachen. Es sollen dabei zum einen Commodore DOS Dateien und zum anderen Geos Dateien verarbeitet werden.
@@ -196,6 +197,10 @@ Um vergleichbare Prüfsummen für Geos Dateien zu erstellen, werden die Prüfsum
 * . . .
 * Daten von Datensatz 127
 
+# Welcher Algorithmus wird für das Erstellen der Prüfsumme verwendet und warum?
+
+Die Prüfsummen werden mit Algorithmus **Message-Digest Algorithm 5** (kurz. **MD5**) berechnet. Dieser wird verwandt, da der Algorithmus Bestandteil des .NET Frameworks ist. Leider gibt es im .NET Framework keine CRC32 Implementierung, welche ansonsten zum Einsatz gekommen wäre. Eine eigene CRC32 Klasse bzw. Methode sollte absichtlich nicht in das Projekt aufgenommen werden, da diese Fehleranfällig sein könnte. Eine SHA-1 Prüfsumme wiederum ist einfach zu lang. 
+
 # Testdokumentation
 
 In der Solution ist ein Testprojekt enthalten, welches mehrere Testfunktionen zum Testen der Kernfunktionen beinhaltet. Alle verwendet Testdateien wie z.B. D64 Images, CVT Dateien usw. sind als *Resources* im Testprojekt eingebettet.
@@ -212,7 +217,6 @@ Für viele Tests werden die D64 Images aus dem Archiv GEOS64.ZIP von der Interne
 * GEOS64.D64
 * SPELL64.D64
 * WRUTIL64.D64
-
 
 ```
 ┌─────────────────┬───────────────────────────┬───────────────────────────┬────────────────────────────────┐
@@ -233,7 +237,6 @@ Für viele Tests werden die D64 Images aus dem Archiv GEOS64.ZIP von der Interne
 │   MD5 ◄∙─∙─∙─∙─∙─∙─∙─∙─∙─vergleichbar─∙─∙─∙─∙─∙─∙─∙─∙─∙─► MD5 ◄─∙─vergleichbar─∙─► MD5                   │
 └──────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
-
 
 #### Star Commander 0.83
 
@@ -541,9 +544,79 @@ Auf der Internetseite cbmfiles.com finden sich eine Vielzahl von Geos Dateien im
 |            |"LW_Greek"         |http://cbmfiles.com/geos/geosfiles/LWGREEK.CVT    |
 |            |"LW_Barrows"       |http://cbmfiles.com/geos/geosfiles/LWBARR.CVT     |
 
+```
+┌────────────────┬──────────────────────┬─────────────────────┬─────────────────────┐
+│ GEOS SEQ/VLIR  │  CVT (dirty) Dateien │ CVT (dirty) Dateien │  Clean CVT Dateien  │
+│ in D64 Images  │     in D64 Images    │   als PC Dateien    │   als PC Dateien    │
+├────────────────┴──────────────────────┴─────────────────────┴─────────────────────┤
+│╔══════════════╗                                                                   │
+│║4 D64 Images  ║                                                                   │
+│║aus GEOS64.ZIP║                                                                   │
+│╚═══╤═══╦══════╝                     Test                                          │
+│    │   ╚═════════════════════════CDIExtract═══════════════════════════════►O      │
+│    │                                                                       ▲      │
+│    │                                                                       │      │
+│    │                                                                 vergleichbar │
+│    │                                                                       │      │
+│    │                                                                       ▼      │
+│    │                                                             ┌──────────────┐ │
+│    │                                                             │Alle Dateien  │ │
+│    ├────────────────Star Commander 0.83─────────────────────────►│der 4 Images  │ │
+│    │                                                             │als CleanCVT  │ │
+│    │                                                             └──────────────┘ │
+│    │                                                                       ▲      │
+│    │                                                                       │      │
+│    │                                                                 vergleichbar │
+│    │                                      ┌──────────────┐                 │      │
+│    │                pcGeos 0.3            │Alle Dateien  │      Test       ▼      │
+│    ├─────────────────GGET.EXE────────────►│der 4 Images  │══CVT2CleanCVT══►O      │
+│    │                                      │als CVT       │                 ▲      │
+│    │                                      └──────────────┘                 │      │
+│    │                                             ▲                         │      │
+│    │                                             │                         │      │
+│    │                                     nicht vergleichbar          vergleichbar │
+│    │                                             │                         │      │
+│    │                                             ▼                         │      │
+│    │                                      ┌──────────────┐                 │      │
+│    │                            Star      │Alle Dateien  │      Test       ▼      │
+│    └──convert 2.5─────────►───Commander──►│der 4 Images  │══CVT2CleanCVT══►O      │
+│                                 0.83      │als CVT       │                 ▲      │
+│                                           └──────────────┘                 │      │
+│                                                  ▲                         │      │
+│                                                  │                         │      │
+│                                             vergleichbar             vergleichbar │
+│                                                  │                         │      │
+│                                                  ▼                         │      │
+│                                           ╔══════════════╗                 │      │
+│                                           ║viele Dateien ║      Test       ▼      │
+│                                           ║der 4 Images  ║══CVT2CleanCVT══►O      │
+│                                           ║als CVT       ║                        │
+│                                           ╚══════════════╝                        │
+│                                                                                   │
+└───────────────────────────────────────────────────────────────────────────────────┘
+Legende:
+  ╔═╗
+  ║ ║ Dateien stammen von der Internetseite cbmfiles.com
+  ╚═╝
+  ┌─┐
+  │ │ Dateien befinden sich in den Resources des Test Projektes
+  └─┘
+   O  Dateien werden zur Laufzeit des Tests erzeugt
+  ══► Berechnung erfolgt zur Laufzeit der Test-Metoden
+  ──► Berechnung ist vor dem Test durchgeführt worden, die entstanden Dateien
+      befinden sich in den Resources des Test Projektes
+   ▲
+   │  vergleichbar / nicht vergleichbar
+   ▼
+```
+
 # Installationsdokumentation
 
 # ToDo Liste
 
 * G64 Unterstützung
+* D71 Unterstützung
+* D81 Unterstützung
+* .MD5 Dateien erstellen
+* .MD5 Dateien überprüfen
 * CleanCVT für CVT Dateien mit SEQ Dateien (Umwandlung von SEQ in PRG)
