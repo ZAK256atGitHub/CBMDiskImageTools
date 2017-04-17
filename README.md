@@ -521,7 +521,7 @@ Auf der Internetseite cbmfiles.com finden sich eine Vielzahl von Geos Dateien im
 |            |26 |"ASCII Only"      |http://cbmfiles.com/geos/geosfiles/ASC.CVT        |
 |            |27 |"COMM 1351"       |http://cbmfiles.com/geos/geosfiles/COMM1351.CVT   |
 |            |28 |"COMM 1351(a)"    |http://cbmfiles.com/geos/geosfiles/COM1351A.CVT   |
-|            |29 |"CONVERT"         |~~http://cbmfiles.com/geos/geosfiles/CONVERT.BAS~~|
+|            |29 |"CONVERT"         |CONVERT.CVT                                       |
 |SPELL64.D64 |   |                  |                                                  |
 |            |30 |"DESK TOP"        |SPEL64DT.CVT                                      |
 |            |31 |"GEOSPELL"        |http://cbmfiles.com/geos/geosfiles/SPELL64.CVT    |
