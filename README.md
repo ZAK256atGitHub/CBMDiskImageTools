@@ -612,11 +612,11 @@ Legende:
 ```
 #### Problem mit der Datei http://cbmfiles.com/geos/geosfiles/COM1351A.CVT   
 
-Die Datei COM1351A.CVT hat ein falsches Byte an Position 29, was der Position 28 des Directory Eintrags (Anzahl der verwendeten Blöcke (Low)) entspricht. Die Datei COM1351A.CVT besitzt den Wert $00 an dieser Position. Korrekt wäre wohl der Wert 0x03. Ob dies das korrekte Wiederherstellen der Datei "COMM 1351(a)" verhindert ist momentan nicht bekannt.
+Die Datei COM1351A.CVT hat ein falsches Byte an Position 29, was der Position 28 des Directory Eintrags (Anzahl der verwendeten Blöcke (Low)) entspricht. Die Datei COM1351A.CVT besitzt den Wert $00 an dieser Position. Korrekt wäre wohl der Wert 0x03. Ob dies das korrekte Wiederherstellen der Datei "COMM 1351(a)" verhindert, ist momentan nicht bekannt.
 
-#### Problem mit den Dateien "GEOS", "GEOBOOT" und "RBOOT" vom Images GEOS64.D64  
+#### Problem mit den Dateien "GEOS", "GEOBOOT" und "RBOOT" vom Image GEOS64.D64  
 
-Die Dateien "GEOS", "GEOBOOT" und "RBOOT" besitzen die falsche falschen GEOS Dateiart. Mit der falschen GEOS Dateiart schein Convert 2.5 Probleme zu haben.
+Die Dateien "GEOS", "GEOBOOT" und "RBOOT" besitzen die falsche falschen GEOS Dateiart. Mit der falschen GEOS Dateiart scheint Convert 2.5 Probleme zu haben.
 
 # Installationsdokumentation
 
