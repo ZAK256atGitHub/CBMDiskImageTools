@@ -4,16 +4,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections;
 using ZAK256.CBMDiskImageTools.Logic.Core;
 using System.Collections.Generic;
-using System.Resources;
 using System.Linq;
 namespace ZAK256.CBMDiskImageTools.Test.UnitTest
 {
-    // Test files:
-    // 8EB414AB37B23A1D1D348D456896A1B0* APPS64.D64
-    // F004B907634A30C21D4DF39E362C0789* GEOS64.D64
-    // 5518FA80D16F09EB8DF16749423FE74A* GPT64.CVT
-    // 7BB3438CBE86A08448BB03585AF68787* GW64.CVT
-
     [TestClass]
     public class UnitTestCore
     {

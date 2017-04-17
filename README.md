@@ -492,7 +492,7 @@ Auf der Internetseite cbmfiles.com finden sich eine Vielzahl von Geos Dateien im
 |D64 Image   |Nr.|Dateiname         |cbmfiles.com Dateiname                            |
 |:-----------|:-:|:-----------------|:-------------------------------------------------|
 |APPS64.D64  |   |                  |                                                  |
-|            |1  |"DESK TOP"        |APPS64DT.CVT                                      |
+|            |1  |"DESK TOP"        |*APPS64DT.CVT*                                    |
 |            |2  |"GEOWRITE"        |http://cbmfiles.com/geos/geosfiles/GW64.CVT       |
 |            |3  |"GEOPAINT"        |http://cbmfiles.com/geos/geosfiles/GPT64.CVT      |
 |            |4  |"photo manager"   |http://cbmfiles.com/geos/geosfiles/PHMGR64.CVT    |
@@ -506,10 +506,10 @@ Auf der Internetseite cbmfiles.com finden sich eine Vielzahl von Geos Dateien im
 |            |12 |"Commodore"       |http://cbmfiles.com/geos/geosfiles/COMMFONT.CVT   |
 |            |13 |"ReadMe"          |README.CVT                                        |
 |GEOS64.D64  |   |                  |                                                  |
-|            |14 |"GEOS"            |GEOS64.CVT                                        |
-|            |15 |"GEOBOOT"         |BOOT64.CVT                                        |
-|            |16 |"CONFIGURE"       |CONF64.CVT                                        |
-|            |17 |"DESK TOP"        |GEOS64DT.CVT                                      |
+|            |14 |"GEOS"            |*GEOS64.CVT*                                      |
+|            |15 |"GEOBOOT"         |*BOOT64.CVT*                                      |
+|            |16 |"CONFIGURE"       |*CONF64.CVT*                                      |
+|            |17 |"DESK TOP"        |*GEOS64DT.CVT*                                    |
 |            |18 |"JOYSTICK"        |http://cbmfiles.com/geos/geosfiles/JOYSTICK.CVT   |
 |            |19 |"MPS-803"         |http://cbmfiles.com/geos/geosfiles/MPS803.CVT     |
 |            |20 |"preference mgr"  |http://cbmfiles.com/geos/geosfiles/PRMGR64.CVT    |
@@ -521,13 +521,13 @@ Auf der Internetseite cbmfiles.com finden sich eine Vielzahl von Geos Dateien im
 |            |26 |"ASCII Only"      |http://cbmfiles.com/geos/geosfiles/ASC.CVT        |
 |            |27 |"COMM 1351"       |http://cbmfiles.com/geos/geosfiles/COMM1351.CVT   |
 |            |28 |"COMM 1351(a)"    |http://cbmfiles.com/geos/geosfiles/COM1351A.CVT   |
-|            |29 |"CONVERT"         |CONVERT.CVT                                       |
+|            |29 |"CONVERT"         |*CONVERT.CVT*                                     |
 |SPELL64.D64 |   |                  |                                                  |
-|            |30 |"DESK TOP"        |SPEL64DT.CVT                                      |
+|            |30 |"DESK TOP"        |*SPEL64DT.CVT*                                    |
 |            |31 |"GEOSPELL"        |http://cbmfiles.com/geos/geosfiles/SPELL64.CVT    |
 |            |32 |"GeoDictionary"   |http://cbmfiles.com/geos/geosfiles/DICT.CVT       |
 |WRUTIL64.D64|   |                  |                                                  |
-|            |33 |"DESK TOP"        |WRUT64DT.CVT                                      |
+|            |33 |"DESK TOP"        |*WRUT64DT.CVT*                                    |
 |            |34 |"TEXT GRABBER"    |http://cbmfiles.com/geos/geosfiles/TG64.CVT       |
 |            |35 |"GEOLASER"        |http://cbmfiles.com/geos/geosfiles/GEOLASER.CVT   |
 |            |36 |"GEOMERGE"        |http://cbmfiles.com/geos/geosfiles/GM64.CVT       |
@@ -596,19 +596,27 @@ Auf der Internetseite cbmfiles.com finden sich eine Vielzahl von Geos Dateien im
 └───────────────────────────────────────────────────────────────────────────────────────┘
 Legende:
   ╔═╗
-  ║ ║ Dateien stammen von der Internetseite cbmfiles.com
+  ║ ║ Dateien stammen von der Internetseite cbmfiles.com und befinden sich in den 
+  ║ ║ Resources des Test Projektes
   ╚═╝
   ┌─┐
   │ │ Dateien befinden sich in den Resources des Test Projektes
   └─┘
    O  Dateien werden zur Laufzeit des Tests erzeugt
-  ══► Berechnung erfolgt zur Laufzeit der Test-Metoden
+  ══► Berechnung erfolgt zur Laufzeit der Test-Methoden
   ──► Berechnung ist vor dem Test durchgeführt worden, die entstanden Dateien
       befinden sich in den Resources des Test Projektes
    ▲
    │  vergleichbar / nicht vergleichbar
    ▼
 ```
+#### Problem mit der Datei http://cbmfiles.com/geos/geosfiles/COM1351A.CVT   
+
+Die Datei COM1351A.CVT hat ein falsches Byte an Position 29, was der Position 28 des Directory Eintrags (Anzahl der verwendeten Blöcke (Low)) entspricht. Die Datei COM1351A.CVT besitzt den Wert $00 an dieser Position. Korrekt wäre wohl der Wert 0x03. Ob dies das korrekte Wiederherstellen der Datei "COMM 1351(a)" verhindert ist momentan nicht bekannt.
+
+#### Problem mit den Dateien "GEOS", "GEOBOOT" und "RBOOT" vom Images GEOS64.D64  
+
+Die Dateien "GEOS", "GEOBOOT" und "RBOOT" besitzen die falsche falschen GEOS Dateiart. Mit der falschen GEOS Dateiart schein Convert 2.5 Probleme zu haben.
 
 # Installationsdokumentation
 
