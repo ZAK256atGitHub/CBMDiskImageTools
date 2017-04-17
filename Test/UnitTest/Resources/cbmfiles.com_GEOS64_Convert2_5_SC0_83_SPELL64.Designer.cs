@@ -64,9 +64,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] DESK_TOP {
+        internal static byte[] DESK_TOP_PRG {
             get {
-                object obj = ResourceManager.GetObject("DESK_TOP", resourceCulture);
+                object obj = ResourceManager.GetObject("DESK_TOP_PRG", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -74,9 +74,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] GEODICTIONARY {
+        internal static byte[] GEODICTIONARY_PRG {
             get {
-                object obj = ResourceManager.GetObject("GEODICTIONARY", resourceCulture);
+                object obj = ResourceManager.GetObject("GEODICTIONARY_PRG", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -84,9 +84,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] GEOSPELL {
+        internal static byte[] GEOSPELL_PRG {
             get {
-                object obj = ResourceManager.GetObject("GEOSPELL", resourceCulture);
+                object obj = ResourceManager.GetObject("GEOSPELL_PRG", resourceCulture);
                 return ((byte[])(obj));
             }
         }

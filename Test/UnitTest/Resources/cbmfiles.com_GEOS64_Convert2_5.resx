@@ -118,16 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="APPS64_Convert2_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="APPS64_Convert2_5_D64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5\APPS64_Convert2_5.D64;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="GEOS64_Convert2_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="GEOS64_Convert2_5_D64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5\GEOS64_Convert2_5.D64;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="SPELL64_Convert2_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="SPELL64_Convert2_5_D64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5\SPELL64_Convert2_5.D64;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="WRUTIL64_Convert2_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="WRUTIL64_Convert2_5_D64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5\WRUTIL64_Convert2_5.D64;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

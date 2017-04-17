@@ -213,10 +213,10 @@ Die Diskette wurde anschließend noch in das Geos Format konvertiert.
 ## Test
 
 Für viele Tests werden die D64 Images aus dem Archiv GEOS64.ZIP von der Internetseite cbmfiles.com (http://cbmfiles.com/geos/geosfiles/GEOS64.ZIP) als Grundlage verwendet. Dieses Archiv enthält die folgenden 4 D64 Images.
-* APPS64.D64
-* GEOS64.D64
-* SPELL64.D64
-* WRUTIL64.D64
+*APPS64.D64  (MD5: 8EB414AB37B23A1D1D348D456896A1B0)
+*GEOS64.D64  (MD5: F004B907634A30C21D4DF39E362C0789)
+*SPELL64.D64  (MD5: 05425BE1824E99534CC30E60EDFF49C7)
+*WRUTIL64.D64  (MD5: 3B52C7A91F794C0E5599AF804A515878)
 
 ```
 ┌─────────────────┬───────────────────────────┬───────────────────────────┬────────────────────────────────┐
@@ -489,111 +489,111 @@ WRUTIL64.D64  --convert 2.5-->  WRUTIL64_Convert2_5.D64
 
 Auf der Internetseite cbmfiles.com finden sich eine Vielzahl von Geos Dateien im CVT Format. Einige von diesen müssten auch den Dateien auf den 4 D64 Images *APPS64.D64*, *GEOS64.D64*, *SPELL64.D64* und *WRUTIL64.D64* genau entsprechen. Die folgende Tabelle stellt die Dateinamen der 4 D64 Images den entsprechenden CVT Dateinamen gegenüber.
 
-|D64 Image   |Dateiname          |cbmfiles.com Dateiname                            |
-|:-----------|:------------------|:-------------------------------------------------|
-|APPS64.D64  |                   |                                                  |
-|            |"DESK TOP"         |                                                  |
-|            |"GEOWRITE"         |http://cbmfiles.com/geos/geosfiles/GW64.CVT       |
-|            |"GEOPAINT"         |http://cbmfiles.com/geos/geosfiles/GPT64.CVT      |
-|            |"photo manager"    |http://cbmfiles.com/geos/geosfiles/PHMGR64.CVT    |
-|            |"calculator"       |http://cbmfiles.com/geos/geosfiles/CALC64.CVT     |
-|            |"note pad"         |http://cbmfiles.com/geos/geosfiles/NOTE64.CVT     |
-|            |"California"       |http://cbmfiles.com/geos/geosfiles/CALIF.CVT      |
-|            |"Cory"             |http://cbmfiles.com/geos/geosfiles/CORY.CVT       |
-|            |"Dwinelle"         |http://cbmfiles.com/geos/geosfiles/DWIN.CVT       |
-|            |"Roma"             |http://cbmfiles.com/geos/geosfiles/ROMA.CVT       |
-|            |"University"       |http://cbmfiles.com/geos/geosfiles/UNIV.CVT       |
-|            |"Commodore"        |http://cbmfiles.com/geos/geosfiles/COMMFONT.CVT   |
-|            |"ReadMe"           |                                                  |
-|GEOS64.D64  |                   |                                                  |
-|            |"GEOS"             |                                                  |
-|            |"GEOBOOT"          |                                                  |
-|            |"CONFIGURE"        |                                                  |
-|            |"DESK TOP"         |                                                  |
-|            |"JOYSTICK"         |http://cbmfiles.com/geos/geosfiles/JOYSTICK.CVT   |
-|            |"MPS-803"          |http://cbmfiles.com/geos/geosfiles/MPS803.CVT     |
-|            |"preference mgr"   |http://cbmfiles.com/geos/geosfiles/PRMGR64.CVT    |
-|            |"pad color mgr"    |http://cbmfiles.com/geos/geosfiles/PDMGR64.CVT    |
-|            |"alarm clock"      |http://cbmfiles.com/geos/geosfiles/ALARM64.CVT    |
-|            |"PAINT DRIVERS"    |http://cbmfiles.com/geos/geosfiles/PNTDRVRS.CVT   |
-|            |"RBOOT"            |http://cbmfiles.com/geos/geosfiles/RBOOT.CVT      |
-|            |"Star NL-10(com)"  |http://cbmfiles.com/geos/geosfiles/SNL10COM.CVT   |
-|            |"ASCII Only"       |http://cbmfiles.com/geos/geosfiles/ASC.CVT        |
-|            |"COMM 1351"        |http://cbmfiles.com/geos/geosfiles/COMM1351.CVT   |
-|            |"COMM 1351(a)"     |http://cbmfiles.com/geos/geosfiles/COM1351A.CVT   |
-|            |"CONVERT"          |~~http://cbmfiles.com/geos/geosfiles/CONVERT.BAS~~|
-|SPELL64.D64 |                   |                                                  |
-|            |"DESK TOP"         |                                                  |
-|            |"GEOSPELL"         |http://cbmfiles.com/geos/geosfiles/SPELL64.CVT    |
-|            |"GeoDictionary"    |http://cbmfiles.com/geos/geosfiles/DICT.CVT       |
-|WRUTIL64.D64|                   |                                                  |
-|            |"DESK TOP"         |                                                  |
-|            |"TEXT GRABBER"     |http://cbmfiles.com/geos/geosfiles/TG64.CVT       |
-|            |"GEOLASER"         |http://cbmfiles.com/geos/geosfiles/GEOLASER.CVT   |
-|            |"GEOMERGE"         |http://cbmfiles.com/geos/geosfiles/GM64.CVT       |
-|            |"text manager"     |http://cbmfiles.com/geos/geosfiles/TXMGR64.CVT    |
-|            |"EasyScript Form"  |http://cbmfiles.com/geos/geosfiles/TGESF64.CVT    |
-|            |"PaperClip Form"   |http://cbmfiles.com/geos/geosfiles/TGPCF64.CVT    |
-|            |"SpeedScript Form" |http://cbmfiles.com/geos/geosfiles/TGSSF64.CVT    |
-|            |"WordWriter Form"  |http://cbmfiles.com/geos/geosfiles/TGWWF64.CVT    |
-|            |"Generic I Form"   |http://cbmfiles.com/geos/geosfiles/TGG1F64.CVT    |
-|            |"Generic II Form"  |http://cbmfiles.com/geos/geosfiles/TGG2F64.CVT    |
-|            |"Generic III Form" |http://cbmfiles.com/geos/geosfiles/TGG3F64.CVT    |
-|            |"LW_Roma"          |http://cbmfiles.com/geos/geosfiles/LWROMA.CVT     |
-|            |"LW_Cal"           |http://cbmfiles.com/geos/geosfiles/LWCAL.CVT      |
-|            |"LW_Greek"         |http://cbmfiles.com/geos/geosfiles/LWGREEK.CVT    |
-|            |"LW_Barrows"       |http://cbmfiles.com/geos/geosfiles/LWBARR.CVT     |
+|D64 Image   |Nr.|Dateiname         |cbmfiles.com Dateiname                            |
+|:-----------|:-:|:-----------------|:-------------------------------------------------|
+|APPS64.D64  |   |                  |                                                  |
+|            |1  |"DESK TOP"        |APPS64DT.CVT                                      |
+|            |2  |"GEOWRITE"        |http://cbmfiles.com/geos/geosfiles/GW64.CVT       |
+|            |3  |"GEOPAINT"        |http://cbmfiles.com/geos/geosfiles/GPT64.CVT      |
+|            |4  |"photo manager"   |http://cbmfiles.com/geos/geosfiles/PHMGR64.CVT    |
+|            |5  |"calculator"      |http://cbmfiles.com/geos/geosfiles/CALC64.CVT     |
+|            |6  |"note pad"        |http://cbmfiles.com/geos/geosfiles/NOTE64.CVT     |
+|            |7  |"California"      |http://cbmfiles.com/geos/geosfiles/CALIF.CVT      |
+|            |8  |"Cory"            |http://cbmfiles.com/geos/geosfiles/CORY.CVT       |
+|            |9  |"Dwinelle"        |http://cbmfiles.com/geos/geosfiles/DWIN.CVT       |
+|            |10 |"Roma"            |http://cbmfiles.com/geos/geosfiles/ROMA.CVT       |
+|            |11 |"University"      |http://cbmfiles.com/geos/geosfiles/UNIV.CVT       |
+|            |12 |"Commodore"       |http://cbmfiles.com/geos/geosfiles/COMMFONT.CVT   |
+|            |13 |"ReadMe"          |README.CVT                                        |
+|GEOS64.D64  |   |                  |                                                  |
+|            |14 |"GEOS"            |GEOS64.CVT                                        |
+|            |15 |"GEOBOOT"         |BOOT64.CVT                                        |
+|            |16 |"CONFIGURE"       |CONF64.CVT                                        |
+|            |17 |"DESK TOP"        |GEOS64DT.CVT                                      |
+|            |18 |"JOYSTICK"        |http://cbmfiles.com/geos/geosfiles/JOYSTICK.CVT   |
+|            |19 |"MPS-803"         |http://cbmfiles.com/geos/geosfiles/MPS803.CVT     |
+|            |20 |"preference mgr"  |http://cbmfiles.com/geos/geosfiles/PRMGR64.CVT    |
+|            |21 |"pad color mgr"   |http://cbmfiles.com/geos/geosfiles/PDMGR64.CVT    |
+|            |22 |"alarm clock"     |http://cbmfiles.com/geos/geosfiles/ALARM64.CVT    |
+|            |23 |"PAINT DRIVERS"   |http://cbmfiles.com/geos/geosfiles/PNTDRVRS.CVT   |
+|            |24 |"RBOOT"           |http://cbmfiles.com/geos/geosfiles/RBOOT.CVT      |
+|            |25 |"Star NL-10(com)" |http://cbmfiles.com/geos/geosfiles/SNL10COM.CVT   |
+|            |26 |"ASCII Only"      |http://cbmfiles.com/geos/geosfiles/ASC.CVT        |
+|            |27 |"COMM 1351"       |http://cbmfiles.com/geos/geosfiles/COMM1351.CVT   |
+|            |28 |"COMM 1351(a)"    |http://cbmfiles.com/geos/geosfiles/COM1351A.CVT   |
+|            |29 |"CONVERT"         |~~http://cbmfiles.com/geos/geosfiles/CONVERT.BAS~~|
+|SPELL64.D64 |   |                  |                                                  |
+|            |30 |"DESK TOP"        |SPEL64DT.CVT                                      |
+|            |31 |"GEOSPELL"        |http://cbmfiles.com/geos/geosfiles/SPELL64.CVT    |
+|            |32 |"GeoDictionary"   |http://cbmfiles.com/geos/geosfiles/DICT.CVT       |
+|WRUTIL64.D64|   |                  |                                                  |
+|            |33 |"DESK TOP"        |WRUT64DT.CVT                                      |
+|            |34 |"TEXT GRABBER"    |http://cbmfiles.com/geos/geosfiles/TG64.CVT       |
+|            |35 |"GEOLASER"        |http://cbmfiles.com/geos/geosfiles/GEOLASER.CVT   |
+|            |36 |"GEOMERGE"        |http://cbmfiles.com/geos/geosfiles/GM64.CVT       |
+|            |37 |"text manager"    |http://cbmfiles.com/geos/geosfiles/TXMGR64.CVT    |
+|            |38 |"EasyScript Form" |http://cbmfiles.com/geos/geosfiles/TGESF64.CVT    |
+|            |39 |"PaperClip Form"  |http://cbmfiles.com/geos/geosfiles/TGPCF64.CVT    |
+|            |40 |"SpeedScript Form"|http://cbmfiles.com/geos/geosfiles/TGSSF64.CVT    |
+|            |41 |"WordWriter Form" |http://cbmfiles.com/geos/geosfiles/TGWWF64.CVT    |
+|            |42 |"Generic I Form"  |http://cbmfiles.com/geos/geosfiles/TGG1F64.CVT    |
+|            |43 |"Generic II Form" |http://cbmfiles.com/geos/geosfiles/TGG2F64.CVT    |
+|            |44 |"Generic III Form"|http://cbmfiles.com/geos/geosfiles/TGG3F64.CVT    |
+|            |45 |"LW_Roma"         |http://cbmfiles.com/geos/geosfiles/LWROMA.CVT     |
+|            |46 |"LW_Cal"          |http://cbmfiles.com/geos/geosfiles/LWCAL.CVT      |
+|            |47 |"LW_Greek"        |http://cbmfiles.com/geos/geosfiles/LWGREEK.CVT    |
+|            |48 |"LW_Barrows"      |http://cbmfiles.com/geos/geosfiles/LWBARR.CVT     |
 
 ```
-┌────────────────┬──────────────────────┬─────────────────────┬─────────────────────┐
-│ GEOS SEQ/VLIR  │  CVT (dirty) Dateien │ CVT (dirty) Dateien │  Clean CVT Dateien  │
-│ in D64 Images  │     in D64 Images    │   als PC Dateien    │   als PC Dateien    │
-├────────────────┴──────────────────────┴─────────────────────┴─────────────────────┤
-│╔══════════════╗                                                                   │
-│║4 D64 Images  ║                                                                   │
-│║aus GEOS64.ZIP║                                                                   │
-│╚═══╤═══╦══════╝                     Test                                          │
-│    │   ╚═════════════════════════CDIExtract═══════════════════════════════►O      │
-│    │                                                                       ▲      │
-│    │                                                                       │      │
-│    │                                                                 vergleichbar │
-│    │                                                                       │      │
-│    │                                                                       ▼      │
-│    │                                                             ┌──────────────┐ │
-│    │                                                             │Alle Dateien  │ │
-│    ├────────────────Star Commander 0.83─────────────────────────►│der 4 Images  │ │
-│    │                                                             │als CleanCVT  │ │
-│    │                                                             └──────────────┘ │
-│    │                                                                       ▲      │
-│    │                                                                       │      │
-│    │                                                                 vergleichbar │
-│    │                                      ┌──────────────┐                 │      │
-│    │                pcGeos 0.3            │Alle Dateien  │      Test       ▼      │
-│    ├─────────────────GGET.EXE────────────►│der 4 Images  │══CVT2CleanCVT══►O      │
-│    │                                      │als CVT       │                 ▲      │
-│    │                                      └──────────────┘                 │      │
-│    │                                             ▲                         │      │
-│    │                                             │                         │      │
-│    │                                     nicht vergleichbar          vergleichbar │
-│    │                                             │                         │      │
-│    │                                             ▼                         │      │
-│    │                                      ┌──────────────┐                 │      │
-│    │                            Star      │Alle Dateien  │      Test       ▼      │
-│    └──convert 2.5─────────►───Commander──►│der 4 Images  │══CVT2CleanCVT══►O      │
-│                                 0.83      │als CVT       │                 ▲      │
-│                                           └──────────────┘                 │      │
-│                                                  ▲                         │      │
-│                                                  │                         │      │
-│                                             vergleichbar             vergleichbar │
-│                                                  │                         │      │
-│                                                  ▼                         │      │
-│                                           ╔══════════════╗                 │      │
-│                                           ║viele Dateien ║      Test       ▼      │
-│                                           ║der 4 Images  ║══CVT2CleanCVT══►O      │
-│                                           ║als CVT       ║                        │
-│                                           ╚══════════════╝                        │
-│                                                                                   │
-└───────────────────────────────────────────────────────────────────────────────────┘
+┌────────────────┬──────────────────────┬─────────────────────┬─────────────────────────┐
+│ GEOS SEQ/VLIR  │  CVT (dirty) Dateien │ CVT (dirty) Dateien │    Clean CVT Dateien    │
+│ in D64 Images  │     in D64 Images    │   als PC Dateien    │     als PC Dateien      │
+├────────────────┴──────────────────────┴─────────────────────┴─────────────────────────┤
+│╔══════════════╗                                                                       │
+│║4 D64 Images  ║                                                                       │
+│║aus GEOS64.ZIP║                                                                       │
+│╚═══╤═══╦══════╝                     Test                                              │
+│    │   ╚═════════════════════════CDIExtract═══════════════════════════════►O          │
+│    │                                                                       ▲          │
+│    │                                                                       │          │
+│    │                                                                 vergleichbar     │
+│    │                                                                       │          │
+│    │                                                                       ▼          │
+│    │                                                                ┌──────────────┐  │
+│    │                                                                │Alle Dateien  │  │
+│    ├────────────────Star Commander 0.83────────────────────────────►│der 4 Images  │  │
+│    │                                                                │als CleanCVT  │  │
+│    │                                                                └──────────────┘  │
+│    │                                                                       ▲          │
+│    │                                                                       │          │
+│    │                                                                 vergleichbar     │
+│    │                                      ┌──────────────┐                 │          │
+│    │                pcGeos 0.3            │Alle Dateien  │      Test       ▼          │
+│    ├─────────────────GGET.EXE────────────►│der 4 Images  │══CVT2CleanCVT══►O          │
+│    │                                      │als CVT       │                 ▲          │
+│    │                                      └──────────────┘                 │          │
+│    │                                             ▲                         │          │
+│    │                                             │                         │          │
+│    │                                     nicht vergleichbar          vergleichbar     │
+│    │                                             │                         │          │
+│    │                                             ▼                         │          │
+│    │                                      ┌──────────────┐                 │          │
+│    │                            Star      │Alle Dateien  │      Test       ▼          │
+│    └──convert 2.5─────────►───Commander──►│der 4 Images  │══CVT2CleanCVT══►O          │
+│                                 0.83      │als CVT       │                 ▲          │
+│                                           └──────────────┘                 │          │
+│                                                  ▲                         │          │
+│                                                  │                         │          │
+│                                             vergleichbar             vergleichbar     │
+│                                                  │                         │          │
+│                                                  ▼                         │          │
+│                                           ╔══════════════╗                 │          │
+│                                           ║viele Dateien ║      Test       ▼          │
+│                                           ║der 4 Images  ║══CVT2CleanCVT══►O          │
+│                                           ║als CVT       ║                            │
+│                                           ╚══════════════╝                            │
+│                                                                                       │
+└───────────────────────────────────────────────────────────────────────────────────────┘
 Legende:
   ╔═╗
   ║ ║ Dateien stammen von der Internetseite cbmfiles.com

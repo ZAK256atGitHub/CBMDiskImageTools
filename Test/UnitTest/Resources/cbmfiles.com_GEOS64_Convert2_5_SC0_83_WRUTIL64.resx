@@ -118,52 +118,52 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="DESK_TOP" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="DESK_TOP_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_WRUTIL64\DESK TOP.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="EASYSCRIPT_FORM" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="EASYSCRIPT_FORM_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_WRUTIL64\EASYSCRIPT FORM.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="GENERIC_III_FORM" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="GENERIC_III_FORM_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_WRUTIL64\GENERIC III FORM.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="GENERIC_II_FORM" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="GENERIC_II_FORM_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_WRUTIL64\GENERIC II FORM.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="GENERIC_I_FORM" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="GENERIC_I_FORM_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_WRUTIL64\GENERIC I FORM.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="GEOLASER" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="GEOLASER_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_WRUTIL64\GEOLASER.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="GEOMERGE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="GEOMERGE_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_WRUTIL64\GEOMERGE.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="LW_BARROWS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="LW_BARROWS_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_WRUTIL64\LW_BARROWS.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="LW_CAL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="LW_CAL_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_WRUTIL64\LW_CAL.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="LW_GREEK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="LW_GREEK_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_WRUTIL64\LW_GREEK.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="LW_ROMA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="LW_ROMA_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_WRUTIL64\LW_ROMA.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="PAPERCLIP_FORM" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="PAPERCLIP_FORM_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_WRUTIL64\PAPERCLIP FORM.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="SPEEDSCRIPT_FORM" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="SPEEDSCRIPT_FORM_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_WRUTIL64\SPEEDSCRIPT FORM.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="TEXT_GRABBER" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="TEXT_GRABBER_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_WRUTIL64\TEXT GRABBER.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="TEXT_MANAGER" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="TEXT_MANAGER_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_WRUTIL64\TEXT MANAGER.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="WORDWRITER_FORM" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="WORDWRITER_FORM_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_WRUTIL64\WORDWRITER FORM.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

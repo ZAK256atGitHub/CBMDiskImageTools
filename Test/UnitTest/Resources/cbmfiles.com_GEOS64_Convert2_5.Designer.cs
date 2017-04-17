@@ -63,9 +63,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] APPS64_Convert2_5 {
+        internal static byte[] APPS64_Convert2_5_D64 {
             get {
-                object obj = ResourceManager.GetObject("APPS64_Convert2_5", resourceCulture);
+                object obj = ResourceManager.GetObject("APPS64_Convert2_5_D64", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] GEOS64_Convert2_5 {
+        internal static byte[] GEOS64_Convert2_5_D64 {
             get {
-                object obj = ResourceManager.GetObject("GEOS64_Convert2_5", resourceCulture);
+                object obj = ResourceManager.GetObject("GEOS64_Convert2_5_D64", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] SPELL64_Convert2_5 {
+        internal static byte[] SPELL64_Convert2_5_D64 {
             get {
-                object obj = ResourceManager.GetObject("SPELL64_Convert2_5", resourceCulture);
+                object obj = ResourceManager.GetObject("SPELL64_Convert2_5_D64", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] WRUTIL64_Convert2_5 {
+        internal static byte[] WRUTIL64_Convert2_5_D64 {
             get {
-                object obj = ResourceManager.GetObject("WRUTIL64_Convert2_5", resourceCulture);
+                object obj = ResourceManager.GetObject("WRUTIL64_Convert2_5_D64", resourceCulture);
                 return ((byte[])(obj));
             }
         }

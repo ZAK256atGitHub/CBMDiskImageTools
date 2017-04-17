@@ -118,43 +118,43 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ALARM_CLOCK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="ALARM_CLOCK_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_GEOS64\ALARM CLOCK.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="ASCII_ONLY" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="ASCII_ONLY_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_GEOS64\ASCII ONLY.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="COMM_1351" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_GEOS64\COMM 1351.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="COMM_1351_A_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="COMM_1351_A__PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_GEOS64\COMM 1351(A).prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="CONFIGURE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="COMM_1351_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_GEOS64\COMM 1351.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="CONFIGURE_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_GEOS64\CONFIGURE.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="CONVERT" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="CONVERT_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_GEOS64\CONVERT.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="DESK_TOP" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="DESK_TOP_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_GEOS64\DESK TOP.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="JOYSTICK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="JOYSTICK_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_GEOS64\JOYSTICK.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="MPS_803" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="MPS_803_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_GEOS64\MPS-803.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="PAD_COLOR_MGR" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="PAD_COLOR_MGR_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_GEOS64\PAD COLOR MGR.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="PAINT_DRIVERS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="PAINT_DRIVERS_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_GEOS64\PAINT DRIVERS.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="PREFERENCE_MGR" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="PREFERENCE_MGR_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_GEOS64\PREFERENCE MGR.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="STAR_NL_10_COM_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="STAR_NL_10_COM__PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_GEOS64\STAR NL-10(COM).prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

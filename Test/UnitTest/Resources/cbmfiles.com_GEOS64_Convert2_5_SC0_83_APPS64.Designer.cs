@@ -64,9 +64,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] CALCULATOR {
+        internal static byte[] CALCULATOR_PRG {
             get {
-                object obj = ResourceManager.GetObject("CALCULATOR", resourceCulture);
+                object obj = ResourceManager.GetObject("CALCULATOR_PRG", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -74,9 +74,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] CALIFORNIA {
+        internal static byte[] CALIFORNIA_PRG {
             get {
-                object obj = ResourceManager.GetObject("CALIFORNIA", resourceCulture);
+                object obj = ResourceManager.GetObject("CALIFORNIA_PRG", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -84,9 +84,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] COMMODORE {
+        internal static byte[] COMMODORE_PRG {
             get {
-                object obj = ResourceManager.GetObject("COMMODORE", resourceCulture);
+                object obj = ResourceManager.GetObject("COMMODORE_PRG", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -94,9 +94,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] CORY {
+        internal static byte[] CORY_PRG {
             get {
-                object obj = ResourceManager.GetObject("CORY", resourceCulture);
+                object obj = ResourceManager.GetObject("CORY_PRG", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -104,9 +104,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] DESK_TOP {
+        internal static byte[] DESK_TOP_PRG {
             get {
-                object obj = ResourceManager.GetObject("DESK_TOP", resourceCulture);
+                object obj = ResourceManager.GetObject("DESK_TOP_PRG", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -114,9 +114,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] DWINELLE {
+        internal static byte[] DWINELLE_PRG {
             get {
-                object obj = ResourceManager.GetObject("DWINELLE", resourceCulture);
+                object obj = ResourceManager.GetObject("DWINELLE_PRG", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -124,9 +124,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] GEOPAINT {
+        internal static byte[] GEOPAINT_PRG {
             get {
-                object obj = ResourceManager.GetObject("GEOPAINT", resourceCulture);
+                object obj = ResourceManager.GetObject("GEOPAINT_PRG", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -134,9 +134,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] GEOWRITE {
+        internal static byte[] GEOWRITE_PRG {
             get {
-                object obj = ResourceManager.GetObject("GEOWRITE", resourceCulture);
+                object obj = ResourceManager.GetObject("GEOWRITE_PRG", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -144,9 +144,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] NOTE_PAD {
+        internal static byte[] NOTE_PAD_PRG {
             get {
-                object obj = ResourceManager.GetObject("NOTE_PAD", resourceCulture);
+                object obj = ResourceManager.GetObject("NOTE_PAD_PRG", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -154,9 +154,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] PHOTO_MANAGER {
+        internal static byte[] PHOTO_MANAGER_PRG {
             get {
-                object obj = ResourceManager.GetObject("PHOTO_MANAGER", resourceCulture);
+                object obj = ResourceManager.GetObject("PHOTO_MANAGER_PRG", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -164,9 +164,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] README {
+        internal static byte[] README_PRG {
             get {
-                object obj = ResourceManager.GetObject("README", resourceCulture);
+                object obj = ResourceManager.GetObject("README_PRG", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -174,9 +174,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] ROMA {
+        internal static byte[] ROMA_PRG {
             get {
-                object obj = ResourceManager.GetObject("ROMA", resourceCulture);
+                object obj = ResourceManager.GetObject("ROMA_PRG", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -184,9 +184,9 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] UNIVERSITY {
+        internal static byte[] UNIVERSITY_PRG {
             get {
-                object obj = ResourceManager.GetObject("UNIVERSITY", resourceCulture);
+                object obj = ResourceManager.GetObject("UNIVERSITY_PRG", resourceCulture);
                 return ((byte[])(obj));
             }
         }

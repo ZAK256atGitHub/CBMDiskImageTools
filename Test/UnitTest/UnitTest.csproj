@@ -89,6 +89,46 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>cbmfiles.com_GEOS64_Convert2_5_SC0_83_WRUTIL64.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_APPS64.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cbmfiles.com_GEOS64_pcGeos0_3_APPS64.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_GEOS64.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cbmfiles.com_GEOS64_pcGeos0_3_GEOS64.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_SPELL64.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cbmfiles.com_GEOS64_pcGeos0_3_SPELL64.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_WRUTIL64.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cbmfiles.com_GEOS64_pcGeos0_3_WRUTIL64.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\cbmfiles.com_GEOS64_SC0_83_APPS64.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cbmfiles.com_GEOS64_SC0_83_APPS64.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\cbmfiles.com_GEOS64_SC0_83_GEOS64.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cbmfiles.com_GEOS64_SC0_83_GEOS64.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\cbmfiles.com_GEOS64_SC0_83_SPELL64.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cbmfiles.com_GEOS64_SC0_83_SPELL64.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\cbmfiles.com_GEOS64_SC0_83_WRUTIL64.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cbmfiles.com_GEOS64_SC0_83_WRUTIL64.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\cbmfiles.com_GEOS64_ZIP.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -131,6 +171,38 @@
     <EmbeddedResource Include="Resources\cbmfiles.com_GEOS64_Convert2_5_SC0_83_WRUTIL64.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>cbmfiles.com_GEOS64_Convert2_5_SC0_83_WRUTIL64.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_APPS64.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>cbmfiles.com_GEOS64_pcGeos0_3_APPS64.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_GEOS64.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>cbmfiles.com_GEOS64_pcGeos0_3_GEOS64.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_SPELL64.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>cbmfiles.com_GEOS64_pcGeos0_3_SPELL64.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_WRUTIL64.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>cbmfiles.com_GEOS64_pcGeos0_3_WRUTIL64.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\cbmfiles.com_GEOS64_SC0_83_APPS64.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>cbmfiles.com_GEOS64_SC0_83_APPS64.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\cbmfiles.com_GEOS64_SC0_83_GEOS64.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>cbmfiles.com_GEOS64_SC0_83_GEOS64.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\cbmfiles.com_GEOS64_SC0_83_SPELL64.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>cbmfiles.com_GEOS64_SC0_83_SPELL64.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\cbmfiles.com_GEOS64_SC0_83_WRUTIL64.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>cbmfiles.com_GEOS64_SC0_83_WRUTIL64.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\cbmfiles.com_GEOS64_ZIP.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -227,6 +299,102 @@
     <None Include="Resources\cbmfiles.com_GEOS64_Convert2_5_SC0_83_WRUTIL64\TEXT GRABBER.prg" />
     <None Include="Resources\cbmfiles.com_GEOS64_Convert2_5_SC0_83_WRUTIL64\TEXT MANAGER.prg" />
     <None Include="Resources\cbmfiles.com_GEOS64_Convert2_5_SC0_83_WRUTIL64\WORDWRITER FORM.prg" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_APPS64\CALCULAT.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_APPS64\CALIFORN.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_APPS64\COMMODOR.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_APPS64\CORY.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_APPS64\DESK_TOP.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_APPS64\DWINELLE.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_APPS64\GEOPAINT.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_APPS64\GEOWRITE.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_APPS64\NOTE_PAD.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_APPS64\PHOTO_MA.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_APPS64\README.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_APPS64\ROMA.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_APPS64\UNIVERSI.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_GEOS64\ALARM_CL.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_GEOS64\ASCII_ON.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_GEOS64\COMM_135.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_GEOS64\COMM_13A.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_GEOS64\CONFIGUR.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_GEOS64\CONVERT.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_GEOS64\DESK_TOP.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_GEOS64\GEOBOOT.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_GEOS64\GEOS.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_GEOS64\JOYSTICK.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_GEOS64\MPS-803.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_GEOS64\PAD_COLO.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_GEOS64\PAINT_DR.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_GEOS64\PREFEREN.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_GEOS64\RBOOT.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_GEOS64\STAR_NL-.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_SPELL64\DESK_TOP.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_SPELL64\GEODICTI.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_SPELL64\GEOSPELL.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_WRUTIL64\DESK_TOP.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_WRUTIL64\EASYSCRI.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_WRUTIL64\GENERIC1.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_WRUTIL64\GENERIC2.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_WRUTIL64\GENERIC3.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_WRUTIL64\GEOLASER.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_WRUTIL64\GEOMERGE.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_WRUTIL64\LW_BARRO.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_WRUTIL64\LW_CAL.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_WRUTIL64\LW_GREEK.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_WRUTIL64\LW_ROMA.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_WRUTIL64\PAPERCLI.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_WRUTIL64\SPEEDSCR.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_WRUTIL64\TEXT_GRA.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_WRUTIL64\TEXT_MAN.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_pcGeos0_3_WRUTIL64\WORDWRIT.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_APPS64\CALCULATOR.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_APPS64\California.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_APPS64\Commodore.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_APPS64\Cory.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_APPS64\DESK TOP.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_APPS64\Dwinelle.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_APPS64\GEOPAINT.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_APPS64\GEOWRITE.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_APPS64\NOTE PAD.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_APPS64\PHOTO MANAGER.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_APPS64\ReadMe.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_APPS64\Roma.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_APPS64\University.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_GEOS64\ALARM CLOCK.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_GEOS64\ASCII Only.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_GEOS64\COMM 1351%28a%29.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_GEOS64\COMM 1351.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_GEOS64\CONFIGURE.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_GEOS64\CONVERT.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_GEOS64\DESK TOP.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_GEOS64\GEOBOOT.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_GEOS64\GEOS.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_GEOS64\JOYSTICK.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_GEOS64\MPS-803.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_GEOS64\PAD COLOR MGR.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_GEOS64\PAINT DRIVERS.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_GEOS64\PREFERENCE MGR.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_GEOS64\RBOOT.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_GEOS64\Star NL-10%28com%29.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_SPELL64\DESK TOP.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_SPELL64\GeoDictionary.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_SPELL64\GEOSPELL.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_WRUTIL64\DESK TOP.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_WRUTIL64\EasyScript Form.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_WRUTIL64\Generic I Form.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_WRUTIL64\Generic II Form.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_WRUTIL64\Generic III Form.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_WRUTIL64\GEOLASER.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_WRUTIL64\GEOMERGE.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_WRUTIL64\LW_Barrows.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_WRUTIL64\LW_Cal.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_WRUTIL64\LW_Greek.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_WRUTIL64\LW_Roma.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_WRUTIL64\PaperClip Form.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_WRUTIL64\SpeedScript Form.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_WRUTIL64\TEXT GRABBER.cvt" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_WRUTIL64\TEXT MANAGER.CVT" />
+    <None Include="Resources\cbmfiles.com_GEOS64_SC0_83_WRUTIL64\WordWriter Form.cvt" />
     <None Include="Resources\cbmfiles.com_GEOS64_ZIP\APPS64.D64" />
     <None Include="Resources\cbmfiles.com_GEOS64_ZIP\GEOS64.D64" />
     <None Include="Resources\cbmfiles.com_GEOS64_ZIP\GEOS64.ZIP" />

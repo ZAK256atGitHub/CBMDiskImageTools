@@ -118,43 +118,43 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="CALCULATOR" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="CALCULATOR_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_APPS64\CALCULATOR.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="CALIFORNIA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="CALIFORNIA_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_APPS64\CALIFORNIA.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="COMMODORE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="COMMODORE_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_APPS64\COMMODORE.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="CORY" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="CORY_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_APPS64\CORY.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="DESK_TOP" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="DESK_TOP_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_APPS64\DESK TOP.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="DWINELLE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="DWINELLE_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_APPS64\DWINELLE.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="GEOPAINT" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="GEOPAINT_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_APPS64\GEOPAINT.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="GEOWRITE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="GEOWRITE_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_APPS64\GEOWRITE.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="NOTE_PAD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="NOTE_PAD_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_APPS64\NOTE PAD.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="PHOTO_MANAGER" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="PHOTO_MANAGER_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_APPS64\PHOTO MANAGER.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="README" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="README_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_APPS64\README.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="ROMA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="ROMA_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_APPS64\ROMA.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="UNIVERSITY" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="UNIVERSITY_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_APPS64\UNIVERSITY.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

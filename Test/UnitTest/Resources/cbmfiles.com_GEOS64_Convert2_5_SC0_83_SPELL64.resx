@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="DESK_TOP" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="DESK_TOP_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_SPELL64\DESK TOP.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="GEODICTIONARY" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="GEODICTIONARY_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_SPELL64\GEODICTIONARY.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="GEOSPELL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="GEOSPELL_PRG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cbmfiles.com_GEOS64_Convert2_5_SC0_83_SPELL64\GEOSPELL.prg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>
