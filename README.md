@@ -504,7 +504,7 @@ Auf der Internetseite cbmfiles.com finden sich eine Vielzahl von Geos Dateien im
 |            |10 |"Roma"            |http://cbmfiles.com/geos/geosfiles/ROMA.CVT       |
 |            |11 |"University"      |http://cbmfiles.com/geos/geosfiles/UNIV.CVT       |
 |            |12 |"Commodore"       |http://cbmfiles.com/geos/geosfiles/COMMFONT.CVT   |
-|            |13 |"ReadMe"          |README.CVT                                        |
+|            |13 |"ReadMe"          |*README.CVT*                                      |
 |GEOS64.D64  |   |                  |                                                  |
 |            |14 |"GEOS"            |*GEOS64.CVT*                                      |
 |            |15 |"GEOBOOT"         |*BOOT64.CVT*                                      |

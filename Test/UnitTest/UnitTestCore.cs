@@ -11,7 +11,7 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest
     public class UnitTestCore
     {
         [TestMethod]
-        public void TestFiesOf4Images()
+        public void TestTheFilesOfCbmFilesDotCom()
         {
             // Test 1 - Data GEOS64.ZIP
             Console.WriteLine("Check the data of GEOS64.ZIP");
