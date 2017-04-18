@@ -610,6 +610,33 @@ Legende:
    │  vergleichbar / nicht vergleichbar
    ▼
 ```
+
+#### Die Testmethode "TestTheFilesOfCbmFilesDotCom"
+
+Die Testmethode "TestTheFilesOfCbmFilesDotCom" führt umfassende Tests anhand der Dateien von der Internetseite cbmfiles.com durch. In den Ressourcen des Testprojektes befinden sich
+
+* Die 4 Images "APPS64.D64", "GEOS64.D64", "SPELL64.D64", "WRUTIL64.D64" aus dem Archiv GEOS64.ZIP.
+* Die Dateien der 4 Archive extrahiert mit dem Star Commander 0.83.
+* Die Dateien der 4 Archive extrahiert mit pcGeos 0.03 (genauer mit dem Kommandozeilenprogramm "GGET").
+* Die Dateien der 4 Archive, welche mit Convert 2.5 konvertiert und dann mit dem Star Commander 0.83 extrahiert wurden.
+* Die CVT Dateien von der Internetseite cbmfiles.com, welche den Dateien der 4 Archive entsprechen.
+
+Die Testmethode überprüft im ersten Teil alle Ressourcendateien mittels im Quellcode gespeicherter MD5 Checksummen. Dies soll sicherstellen, dass die Ressourcen korrekt sind. Um die Dateien miteinander Vergleichen zu können, werden zu allen Dateien die CleanCVT Dateien ermitteltet. Bis auf den Star Commander liefern alle Programme nur unsaubere CVT Dateien, deshalb müssen diese gesäubert werden, um einen Vergleich zu ermöglichen. Die Säuberung erfolgt mit der Methode GetCleanCvtFromCvt(byte[] cvtData), welche ein Byte Array, mit den gesäuberten CVT Daten, zurückgibt. Dadurch soll die korrekte Funktionsweise dieser Methode getestet werden. Als nächstes werden alle Dateien der 4 Images mit der Methode getFileData(byte[] dirEntry, byte[] imageData, int imageDataType), welche ein Byte Array mit CleanCVT Daten zurückgibt, extrahiert. Im letzten Teil der Testmethode, werden die vorhanden Dateien mit den erstellten Dateien verglichen.
+
+**Folgende Vergleiche werden durchgeführt:**
+* Die CDIExtract/CDIDir (Methode GetCleanCvtFromCvt) Dateien gegen die Star Commander 0.83 Dateien
+* Die CDIExtract/CDIDir (Methode GetCleanCvtFromCvt) Dateien gegen die CVT Dateien von der Internetseite cbmfiles.com (welche durch die Methode GetCleanCvtFromCvt gesäubert wurden)
+* Die pcGeos 0.3 Dateien (welche durch die Methode GetCleanCvtFromCvt gesäubert wurden) gegen die Star Commander 0.83 Dateien
+* Die Dateien welche mit Convert 2.5 konvertiert dann mit dem Star Commander 0.83 extrahiert und abschließend mit der Methode GetCleanCvtFromCvt gesäubert wurden gegen die Star Commander 0.83 Dateien
+
+**Die Tests der Testmethode "TestTheFilesOfCbmFilesDotCom" haben folgendes gezeigt:**
+* Der Star Commander 0.83 extrahiert Geos Dateien als **Clean**CVT Dateien.
+* Durch die Säuberung der vorhanden CVT Dateien von der Internetseite cbmfiles.com sind diese mit den Dateien auf den 4 Images "APPS64.D64", "GEOS64.D64", "SPELL64.D64", "WRUTIL64.D64" aus dem Archiv GEOS64.ZIP vergleichbar.
+* Die CVT Dateien entsprechen genau den Dateien 4 Images, wenn beide Seiten mittels CleanCVT Format verglichen werden.
+* Die Datei http://cbmfiles.com/geos/geosfiles/COM1351A.CVT hat einen falschen Wert.
+* Die Dateien "GEOS", "GEOBOOT" und "RBOOT" vom Image GEOS64.D64 besitzen die falsche GEOS Dateiart.
+* Die Methoden GetCleanCvtFromCvt(byte[] cvtData) und getFileData(byte[] dirEntry, byte[] imageData, int imageDataType), welche die Grundlage der CBM Disk Image Tools bilden arbeiten hier völlig korrekt.
+
 #### Problem mit der Datei http://cbmfiles.com/geos/geosfiles/COM1351A.CVT   
 
 Die Datei COM1351A.CVT hat ein falsches Byte an Position 29, was der Position 28 des Directory Eintrags (Anzahl der verwendeten Blöcke (Low)) entspricht. Die Datei COM1351A.CVT besitzt den Wert $00 an dieser Position. Korrekt wäre wohl der Wert 0x03. Ob dies das korrekte Wiederherstellen der Datei "COMM 1351(a)" verhindert, ist momentan nicht bekannt.

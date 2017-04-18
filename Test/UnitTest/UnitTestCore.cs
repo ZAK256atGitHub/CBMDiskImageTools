@@ -156,7 +156,7 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest
             Console.WriteLine();
 
             // Test 4
-            Console.WriteLine("Check the data of the files which were extract by Convert 2.05 + Star Commander 0.83");
+            Console.WriteLine("Check the data of the files which were extract by Convert 2.5 + Star Commander 0.83");
             Dictionary<int, TestFile> dictGeos64Convert25SC083 = new Dictionary<int, TestFile>();
             dictGeos64Convert25SC083.Add(1, new TestFile("DESK TOP.prg", Resources.cbmfiles_com_GEOS64_Convert2_5_SC0_83_APPS64.DESK_TOP_PRG, "7EBA4AF5C4553D8D498C10DC8FA7A90C"));
             dictGeos64Convert25SC083.Add(2, new TestFile("GEOWRITE.prg", Resources.cbmfiles_com_GEOS64_Convert2_5_SC0_83_APPS64.GEOWRITE_PRG, "282836DD70C1AA43C925D26CC50922D1"));
