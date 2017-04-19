@@ -613,8 +613,9 @@ Legende:
 
 #### Die Testmethode "TestTheFilesOfCbmFilesDotCom"
 
-Die Testmethode "TestTheFilesOfCbmFilesDotCom" führt umfassende Tests anhand der Dateien von der Internetseite cbmfiles.com durch. In den Ressourcen des Testprojektes befinden sich
+Die Testmethode "TestTheFilesOfCbmFilesDotCom" führt umfassende Tests anhand der Dateien von der Internetseite cbmfiles.com durch.
 
+**In den Ressourcen des Testprojektes befinden sich, folgende Dateien:**
 * Die 4 Images "APPS64.D64", "GEOS64.D64", "SPELL64.D64", "WRUTIL64.D64" aus dem Archiv GEOS64.ZIP.
 * Die Dateien der 4 Archive extrahiert mit dem Star Commander 0.83.
 * Die Dateien der 4 Archive extrahiert mit pcGeos 0.03 (genauer mit dem Kommandozeilenprogramm "GGET").
