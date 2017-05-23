@@ -141,6 +141,8 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
         public static string byteArrayToString(byte[] byteArray)
         {
             StringBuilder sb = new StringBuilder();
+            sb.Append("Address  00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F");
+
             int lineCount = 0;
             foreach (byte b in byteArray)
             {
@@ -971,4 +973,7 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
             arguments.Add(argKey, newValue);
         }
     }
+
+    /////////////////////////////////////////////////////////////////////////
+    //public static class 
 }
