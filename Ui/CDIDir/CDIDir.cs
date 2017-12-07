@@ -68,7 +68,7 @@ namespace ZAK256.CBMDiskImageTools.Ui.CDIDir
             foreach (byte[] de in dirEntryList)
             {
                 dirIndex++;
-                if (DOSDisk.GetFileType(de) != 0)
+                if (!DOSDisk.IsDirEntryEmpty(de))
                 {
                     string filename = Core.ConvertPETSCII2ASCII(DOSDisk.GetFilename(de));
                     Console.Write("{0,-5}\"{1}\"{2}{3}{4}{5}"
