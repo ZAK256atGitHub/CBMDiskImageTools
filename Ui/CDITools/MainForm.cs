@@ -47,7 +47,7 @@ namespace ZAK256.CBMDiskImageTools.Ui.CDITools
                 foreach (byte[] de in dirEntryList)
                 {
                     dirIndex++;
-                    if (DOSDisk.GetFileType(de) != 0)
+                    if (!DOSDisk.IsDirEntryEmpty(de))
                     {
                         ListViewItem listViewItem = new ListViewItem(Core.ConvertPETSCII2ASCII(DOSDisk.GetFilename(de)) + Core.ConvertPETSCII2ASCII(DOSDisk.GetPartAfterFilename(de))); // first col
                         listViewItem.SubItems.Add(DOSDisk.GetFileSizeInBlocks(de).ToString());                        
@@ -62,6 +62,11 @@ namespace ZAK256.CBMDiskImageTools.Ui.CDITools
                     }
                 }
             }
+        }
+
+        private void exportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

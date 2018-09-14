@@ -595,6 +595,14 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
             //  from 0-7.
             return (int)(dirEntry[0] & Const.FILE_TYPE_BIT_MASK); // 0x07 = 0b00000111
         }
+        public static bool IsDirEntryEmpty(byte[] dirEntry)
+        {
+            if (dirEntry[0] == 0)
+            {
+                return true;
+            }
+            return false;
+        }
         public static byte[] GetFilename(byte[] dirEntry)
         {
             byte[] fullFilename = GetFullFilename(dirEntry);
