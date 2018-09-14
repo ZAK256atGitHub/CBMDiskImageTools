@@ -29,44 +29,75 @@ namespace ZAK256.CBMDiskImageTools.Ui.CDITools
             openFileDialog1.RestoreDirectory = true;
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                listView1.Items.Clear();
-                listView1.Columns[0].TextAlign = HorizontalAlignment.Right;
-                string imagePathFilename = openFileDialog1.FileName;
-                byte[] bamBlock;
-                ArrayList dirEntryList = new ArrayList();
-                byte[] imageData = DiskImageFile.ReadFile(imagePathFilename);
-                int imageDataType = DiskImageFile.GetImageDataType(imagePathFilename);
-                bamBlock = DOSDisk.ReadBAMBlock(imageData, imageDataType);
-                textBoxDiskLabel.Text = String.Format("0 \"{0}\" {1} {2}"
-                    , Core.ConvertPETSCII2ASCII(DOSDisk.GetDiskName(bamBlock, imageDataType))
-                    , Core.ConvertPETSCII2ASCII(DOSDisk.GetDiskID(bamBlock, imageDataType))
-                    , Core.ConvertPETSCII2ASCII(DOSDisk.GetDOSType(bamBlock, imageDataType)));
+                doOpenFile(openFileDialog1.FileName);
+            }
+        }
+        private void doOpenFile(string fileName)
+        {
+            listView1.Items.Clear();
+            listView1.Columns[0].TextAlign = HorizontalAlignment.Right;
+            string imagePathFilename = fileName;
+            byte[] bamBlock;
+            ArrayList dirEntryList = new ArrayList();
+            byte[] imageData = DiskImageFile.ReadFile(imagePathFilename);
+            int imageDataType = DiskImageFile.GetImageDataType(imagePathFilename);
+            bamBlock = DOSDisk.ReadBAMBlock(imageData, imageDataType);
+            textBoxDiskLabel.Text = String.Format("0 \"{0}\" {1} {2}"
+                , Core.ConvertPETSCII2ASCII(DOSDisk.GetDiskName(bamBlock, imageDataType))
+                , Core.ConvertPETSCII2ASCII(DOSDisk.GetDiskID(bamBlock, imageDataType))
+                , Core.ConvertPETSCII2ASCII(DOSDisk.GetDOSType(bamBlock, imageDataType)));
 
-                dirEntryList = DOSDisk.GetDirEntryList(bamBlock, imageData, imageDataType);
-                int dirIndex = 0;
-                foreach (byte[] de in dirEntryList)
+            dirEntryList = DOSDisk.GetDirEntryList(bamBlock, imageData, imageDataType);
+            int dirIndex = 0;
+            foreach (byte[] de in dirEntryList)
+            {
+                dirIndex++;
+                if (!DOSDisk.IsDirEntryEmpty(de))
                 {
-                    dirIndex++;
-                    if (!DOSDisk.IsDirEntryEmpty(de))
-                    {
-                        ListViewItem listViewItem = new ListViewItem(Core.ConvertPETSCII2ASCII(DOSDisk.GetFilename(de)) + Core.ConvertPETSCII2ASCII(DOSDisk.GetPartAfterFilename(de))); // first col
-                        listViewItem.SubItems.Add(DOSDisk.GetFileSizeInBlocks(de).ToString());                        
-                        listViewItem.SubItems.Add(DOSDisk.GetSplatFileSign(de));
-                        listViewItem.SubItems.Add(DOSDisk.GetFileTypeExt(de));
-                        listViewItem.SubItems.Add(DOSDisk.GetLockFlagSign(de));
-                        listViewItem.SubItems.Add(dirIndex.ToString());
-                        listViewItem.SubItems.Add((GEOSDisk.IsGeosFile(de) ? GEOSDisk.GetGEOSFiletypeName(de) : "   "));
-                        listViewItem.SubItems.Add((GEOSDisk.IsGeosFile(de) ? GEOSDisk.GetGEOSFileStructureName(de) : "    "));
-                        listViewItem.SubItems.Add(DOSDisk.GetMD5ByFile(de, imageData, imageDataType));
-                        listView1.Items.Add(listViewItem);                        
-                    }
+                    ListViewItem listViewItem = new ListViewItem(Core.ConvertPETSCII2ASCII(DOSDisk.GetFilename(de)) + Core.ConvertPETSCII2ASCII(DOSDisk.GetPartAfterFilename(de))); // first col
+                    listViewItem.SubItems.Add(DOSDisk.GetFileSizeInBlocks(de).ToString());
+                    listViewItem.SubItems.Add(DOSDisk.GetSplatFileSign(de));
+                    listViewItem.SubItems.Add(DOSDisk.GetFileTypeExt(de));
+                    listViewItem.SubItems.Add(DOSDisk.GetLockFlagSign(de));
+                    listViewItem.SubItems.Add(dirIndex.ToString());
+                    listViewItem.SubItems.Add((GEOSDisk.IsGeosFile(de) ? GEOSDisk.GetGEOSFiletypeName(de) : "   "));
+                    listViewItem.SubItems.Add((GEOSDisk.IsGeosFile(de) ? GEOSDisk.GetGEOSFileStructureName(de) : "    "));
+                    listViewItem.SubItems.Add(DOSDisk.GetMD5ByFile(de, imageData, imageDataType));
+                    listView1.Items.Add(listViewItem);
                 }
             }
         }
-
         private void exportToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void MainForm_DragEnter(object sender, DragEventArgs e)
+        {
+            // if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Copy;
+            if (!e.Data.GetDataPresent(DataFormats.FileDrop)) return;
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            if (files.Length > 0)
+            {
+                var ext = System.IO.Path.GetExtension(files[0]);
+                if (
+                    ext.Equals(".D64", StringComparison.CurrentCultureIgnoreCase) ||
+                    ext.Equals(".D71", StringComparison.CurrentCultureIgnoreCase) ||
+                    ext.Equals(".D81", StringComparison.CurrentCultureIgnoreCase)
+                    )
+                {
+                    e.Effect = DragDropEffects.Copy;
+                }                    
+            }
+        }
+
+        private void MainForm_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            if (files.Length > 0)
+            {                
+                doOpenFile(files[0]);
+            }
         }
     }
 }

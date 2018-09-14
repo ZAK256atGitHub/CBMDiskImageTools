@@ -49,6 +49,9 @@
             // 
             // listView1
             // 
+            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
@@ -137,14 +140,14 @@
             // openToolStripMenuItem1
             // 
             this.openToolStripMenuItem1.Name = "openToolStripMenuItem1";
-            this.openToolStripMenuItem1.Size = new System.Drawing.Size(152, 24);
+            this.openToolStripMenuItem1.Size = new System.Drawing.Size(117, 24);
             this.openToolStripMenuItem1.Text = "Open";
             this.openToolStripMenuItem1.Click += new System.EventHandler(this.openToolStripMenuItem1_Click_1);
             // 
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(117, 24);
             this.exportToolStripMenuItem.Text = "Export";
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
             // 
@@ -155,6 +158,8 @@
             // 
             // textBoxDiskLabel
             // 
+            this.textBoxDiskLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxDiskLabel.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxDiskLabel.Location = new System.Drawing.Point(12, 30);
             this.textBoxDiskLabel.Name = "textBoxDiskLabel";
@@ -164,6 +169,7 @@
             // 
             // MainForm
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(893, 509);
@@ -173,6 +179,8 @@
             this.MainMenuStrip = this.menuStrip2;
             this.Name = "MainForm";
             this.Text = "CBM Disk Image Tool";
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainForm_DragEnter);
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             this.ResumeLayout(false);
