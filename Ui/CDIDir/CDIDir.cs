@@ -55,9 +55,9 @@ namespace ZAK256.CBMDiskImageTools.Ui.CDIDir
             int imageDataType = DiskImageFile.GetImageDataType(imagePathFilename);
             bamBlock = DOSDisk.ReadBAMBlock(imageData, imageDataType);
             Console.Write("0 \"{0}\" {1} {2}"
-                , Core.ConvertPETSCII2ASCII(DOSDisk.GetDiskName(bamBlock))
-                , Core.ConvertPETSCII2ASCII(DOSDisk.GetDiskID(bamBlock))
-                , Core.ConvertPETSCII2ASCII(DOSDisk.GetDOSType(bamBlock)));
+                , Core.ConvertPETSCII2ASCII(DOSDisk.GetDiskName(bamBlock, imageDataType))
+                , Core.ConvertPETSCII2ASCII(DOSDisk.GetDiskID(bamBlock, imageDataType))
+                , Core.ConvertPETSCII2ASCII(DOSDisk.GetDOSType(bamBlock, imageDataType)));
             Console.Write("    ");
             Console.Write("|{0}", "DirIndex");
             Console.Write("|{0}", "  GEOS  ");

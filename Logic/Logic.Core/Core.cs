@@ -53,11 +53,17 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
         internal const int BAM_SECTOR_D71 = 0; // D71
         internal const int BAM_TRACK_D81 = 40; // D81
         internal const int BAM_SECTOR_D81 = 0; // D81
-        internal const int DOS_TYPE_POS_IN_BAM_BLOCK = 165;
+        internal const int DOS_TYPE_POS_IN_BAM_BLOCK_D64 = 165;
+        internal const int DOS_TYPE_POS_IN_BAM_BLOCK_D71 = 165; // D71
+        internal const int DOS_TYPE_POS_IN_BAM_BLOCK_D81 = 25; // 81
         internal const int DOS_TYPE_LEN = 2;
-        internal const int DISK_ID_POS_IN_BAM_BLOCK = 162;
+        internal const int DISK_ID_POS_IN_BAM_BLOCK_D64 = 162;
+        internal const int DISK_ID_POS_IN_BAM_BLOCK_D71 = 162; // D71
+        internal const int DISK_ID_POS_IN_BAM_BLOCK_D81 = 22; // D81
         internal const int DISK_ID_LEN = 2;
-        internal const int DISK_NAME_POS_IN_BAM_BLOCK = 144;
+        internal const int DISK_NAME_POS_IN_BAM_BLOCK_D64 = 144;
+        internal const int DISK_NAME_POS_IN_BAM_BLOCK_D71 = 144; // D71
+        internal const int DISK_NAME_POS_IN_BAM_BLOCK_D81 = 4; // D81
         internal const int DISK_NAME_LEN = 16;
         internal const int FILENAME_POS_IN_DIR_ENTRY = 3;
         internal const int FILENAME_LEN = 16;
@@ -698,17 +704,56 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
             }
             return freeBlocks;
         }
-        public static byte[] GetDOSType(byte[] bamBlock)
+        public static byte[] GetDOSType(byte[] bamBlock, int imageDataType)
         {
-            return bamBlock.Skip(Const.DOS_TYPE_POS_IN_BAM_BLOCK).Take(Const.DOS_TYPE_LEN).ToArray();
+            switch (imageDataType)
+            {
+                case (int)Const.IMAGE_DATA_TYPE.D64:
+                    return bamBlock.Skip(Const.DOS_TYPE_POS_IN_BAM_BLOCK_D64).Take(Const.DOS_TYPE_LEN).ToArray();
+                // D71
+                case (int)Const.IMAGE_DATA_TYPE.D71:
+                    return bamBlock.Skip(Const.DOS_TYPE_POS_IN_BAM_BLOCK_D71).Take(Const.DOS_TYPE_LEN).ToArray();
+                // D81
+                case (int)Const.IMAGE_DATA_TYPE.D81:
+                    return bamBlock.Skip(Const.DOS_TYPE_POS_IN_BAM_BLOCK_D81).Take(Const.DOS_TYPE_LEN).ToArray();
+                default:
+                    throw new Exception(String.Format("Image data type {0} is not supported!", imageDataType.ToString()));
+            }
+            
         }
-        public static byte[] GetDiskID(byte[] bamBlock)
+        public static byte[] GetDiskID(byte[] bamBlock, int imageDataType)
         {
-            return bamBlock.Skip(Const.DISK_ID_POS_IN_BAM_BLOCK).Take(Const.DISK_ID_LEN).ToArray();
+            switch (imageDataType)
+            {
+                case (int)Const.IMAGE_DATA_TYPE.D64:
+                    return bamBlock.Skip(Const.DISK_ID_POS_IN_BAM_BLOCK_D64).Take(Const.DISK_ID_LEN).ToArray();
+                // D71
+                case (int)Const.IMAGE_DATA_TYPE.D71:
+                    return bamBlock.Skip(Const.DISK_ID_POS_IN_BAM_BLOCK_D71).Take(Const.DISK_ID_LEN).ToArray();
+                // D81
+                case (int)Const.IMAGE_DATA_TYPE.D81:
+                    return bamBlock.Skip(Const.DISK_ID_POS_IN_BAM_BLOCK_D81).Take(Const.DISK_ID_LEN).ToArray();
+                default:
+                    throw new Exception(String.Format("Image data type {0} is not supported!", imageDataType.ToString()));
+            }
+            
         }
-        public static byte[] GetDiskName(byte[] bamBlock)
+        public static byte[] GetDiskName(byte[] bamBlock, int imageDataType)
         {
-            return bamBlock.Skip(Const.DISK_NAME_POS_IN_BAM_BLOCK).Take(Const.DISK_NAME_LEN).ToArray();
+            switch (imageDataType)
+            {
+                case (int)Const.IMAGE_DATA_TYPE.D64:
+                    return bamBlock.Skip(Const.DISK_NAME_POS_IN_BAM_BLOCK_D64).Take(Const.DISK_NAME_LEN).ToArray();
+                // D71
+                case (int)Const.IMAGE_DATA_TYPE.D71:
+                    return bamBlock.Skip(Const.DISK_NAME_POS_IN_BAM_BLOCK_D71).Take(Const.DISK_NAME_LEN).ToArray();
+                // D81
+                case (int)Const.IMAGE_DATA_TYPE.D81:
+                    return bamBlock.Skip(Const.DISK_NAME_POS_IN_BAM_BLOCK_D81).Take(Const.DISK_NAME_LEN).ToArray();
+                default:
+                    throw new Exception(String.Format("Image data type {0} is not supported!", imageDataType.ToString()));
+            }
+           
         }
         #endregion
 

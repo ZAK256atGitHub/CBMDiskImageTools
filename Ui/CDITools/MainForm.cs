@@ -38,9 +38,9 @@ namespace ZAK256.CBMDiskImageTools.Ui.CDITools
                 int imageDataType = DiskImageFile.GetImageDataType(imagePathFilename);
                 bamBlock = DOSDisk.ReadBAMBlock(imageData, imageDataType);
                 textBoxDiskLabel.Text = String.Format("0 \"{0}\" {1} {2}"
-                    , Core.ConvertPETSCII2ASCII(DOSDisk.GetDiskName(bamBlock))
-                    , Core.ConvertPETSCII2ASCII(DOSDisk.GetDiskID(bamBlock))
-                    , Core.ConvertPETSCII2ASCII(DOSDisk.GetDOSType(bamBlock)));
+                    , Core.ConvertPETSCII2ASCII(DOSDisk.GetDiskName(bamBlock, imageDataType))
+                    , Core.ConvertPETSCII2ASCII(DOSDisk.GetDiskID(bamBlock, imageDataType))
+                    , Core.ConvertPETSCII2ASCII(DOSDisk.GetDOSType(bamBlock, imageDataType)));
 
                 dirEntryList = DOSDisk.GetDirEntryList(bamBlock, imageData, imageDataType);
                 int dirIndex = 0;
