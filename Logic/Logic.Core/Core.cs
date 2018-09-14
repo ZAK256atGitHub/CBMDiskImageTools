@@ -18,7 +18,7 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
             G64 = 1,
             unknown = -1
         };
-        internal static readonly string D64_IMAGE_FILE_EXTENSION = ".D64";
+        internal static readonly string D64_IMAGE_FILE_EXTENSION = ".D64";        
         internal static readonly string G64_IMAGE_FILE_EXTENSION = ".G64";
         internal static readonly string CVT_FILE_EXTENSION = ".CVT";
         internal const int MIN_TRACK = 1;
