@@ -24,7 +24,7 @@ namespace ZAK256.CBMDiskImageTools.Ui.CDITools
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
             openFileDialog1.InitialDirectory = "c:\\";
-            openFileDialog1.Filter = "D64 image (*.D64)|*.d64|All files (*.*)|*.*";
+            openFileDialog1.Filter = "D64 image (*.D64)|*.d64|D71 image (*.D71)|*.d71|D81 image (*.D81)|*.d81|All files (*.*)|*.*"; // D71 D81
             openFileDialog1.FilterIndex = 1;
             openFileDialog1.RestoreDirectory = true;
             if (openFileDialog1.ShowDialog() == DialogResult.OK)

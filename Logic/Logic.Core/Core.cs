@@ -16,14 +16,21 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
         {
             D64 = 0,
             G64 = 1,
+            D71 = 3, // D71
+            D81 = 4, // D81
             unknown = -1
         };
-        internal static readonly string D64_IMAGE_FILE_EXTENSION = ".D64";        
+        internal static readonly string D64_IMAGE_FILE_EXTENSION = ".D64";
+        internal static readonly string D71_IMAGE_FILE_EXTENSION = ".D71"; // D71
+        internal static readonly string D81_IMAGE_FILE_EXTENSION = ".D81"; // D81
         internal static readonly string G64_IMAGE_FILE_EXTENSION = ".G64";
         internal static readonly string CVT_FILE_EXTENSION = ".CVT";
         internal const int MIN_TRACK = 1;
-        internal const int MAX_TRACK = 35;
+        internal const int MAX_TRACK_D64 = 35;
+        internal const int MAX_TRACK_D71 = 70; // D71
+        internal const int MAX_TRACK_D81 = 80; // D81
         internal const int MIN_SECTOR = 0;
+        internal const int MAX_SECTOR_D81 = 40; // D81
         internal const int BLOCK_LEN = 256;
         internal const int DATA_BLOCK_LEN = 254;
         internal const char LOCK_FLAG_SIGN = '<';
@@ -40,8 +47,12 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
         internal const int FIRST_DIR_ENTRY_POS_IN_DIR_BLOCK = 2;
         internal const int NUM_OF_FILL_BYTES_BETWEEN_DIR_ENTRIES = 2;
         internal const int NUM_OF_DIR_ENTRIES_IN_DIR_BLOCK = 8;
-        internal const int BAM_TRACK = 18;
-        internal const int BAM_SECTOR = 0;
+        internal const int BAM_TRACK_D64 = 18;
+        internal const int BAM_SECTOR_D64 = 0;
+        internal const int BAM_TRACK_D71 = 18; // D71
+        internal const int BAM_SECTOR_D71 = 0; // D71
+        internal const int BAM_TRACK_D81 = 40; // D81
+        internal const int BAM_SECTOR_D81 = 0; // D81
         internal const int DOS_TYPE_POS_IN_BAM_BLOCK = 165;
         internal const int DOS_TYPE_LEN = 2;
         internal const int DISK_ID_POS_IN_BAM_BLOCK = 162;
@@ -71,14 +82,25 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
             "REL",  // 4 - REL
                     // Values 5-15 are illegal
         };
-        internal readonly static int[] NUM_OF_SECTORS_PER_TRACK = {
+        internal readonly static int[] NUM_OF_SECTORS_PER_TRACK_D64 = {
             0,
             21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21, // Zone 1
 	        19,19,19,19,19,19,19,                               // Zone 2
 	        18,18,18,18,18,18,                                  // Zone 3
 	        17,17,17,17,17                                      // Zone 4
         };
-
+        // D71
+        internal readonly static int[] NUM_OF_SECTORS_PER_TRACK_D71 = {
+            0,
+            21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21, // Zone 1
+	        19,19,19,19,19,19,19,                               // Zone 2
+	        18,18,18,18,18,18,                                  // Zone 3
+	        17,17,17,17,17,                                     // Zone 4
+            21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21, // Zone 1 Seite 2
+	        19,19,19,19,19,19,19,                               // Zone 2 Seite 2
+	        18,18,18,18,18,18,                                  // Zone 3 Seite 2
+	        17,17,17,17,17                                      // Zone 4 Seite 2
+        };
         internal const int GEOS_INFO_BLOCK_TRACK_POS_IN_DIR_ENTRY = 19;
         internal const int GEOS_INFO_BLOCK_SECTOR_POS_IN_DIR_ENTRY = 20;
         internal const int GEOS_RECORD_BLOCK_TRACK_POS_IN_DIR_ENTRY = 1;
@@ -667,9 +689,9 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
         {
             // only for single sided d64 images
             int freeBlocks = 0;
-            for (int i = 1; i <= Const.MAX_TRACK; i++) // MAX_TRACK muss hier 35 sein
+            for (int i = 1; i <= Const.MAX_TRACK_D64; i++) // MAX_TRACK muss hier 35 sein
             {
-                if (i != Const.BAM_TRACK) // Die freien Blöcke auf Track 18 nicht mit zählen
+                if (i != Const.BAM_TRACK_D64) // Die freien Blöcke auf Track 18 nicht mit zählen
                 {
                     freeBlocks += bamBlock[4 * i];
                 }
@@ -693,7 +715,19 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
         #region [DISK] BLOCK / BAM-BLOCK
         public static byte[] ReadBAMBlock(byte[] imageData, int imageDataType)
         {
-            return ReadBlock(Const.BAM_TRACK, Const.BAM_SECTOR, imageData, imageDataType);
+            switch (imageDataType)
+            {
+                case (int)Const.IMAGE_DATA_TYPE.D64:
+                    return ReadBlock(Const.BAM_TRACK_D64, Const.BAM_SECTOR_D64, imageData, imageDataType);
+                // D71
+                case (int)Const.IMAGE_DATA_TYPE.D71:
+                    return ReadBlock(Const.BAM_TRACK_D71, Const.BAM_SECTOR_D71, imageData, imageDataType);
+                // D81
+                case (int)Const.IMAGE_DATA_TYPE.D81:
+                    return ReadBlock(Const.BAM_TRACK_D81, Const.BAM_SECTOR_D81, imageData, imageDataType);
+                default:
+                    throw new Exception(String.Format("Image data type {0} is not supported!", imageDataType.ToString()));
+            }            
         }
         #endregion
 
@@ -735,6 +769,14 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
                 case (int)Const.IMAGE_DATA_TYPE.D64:
                     blockData = DiskImageFile.ReadBlockD64(track, sector, imageData);
                     break;
+                // D71
+                case (int)Const.IMAGE_DATA_TYPE.D71:
+                    blockData = DiskImageFile.ReadBlockD71(track, sector, imageData);
+                    break;
+                // D81
+                case (int)Const.IMAGE_DATA_TYPE.D81:
+                    blockData = DiskImageFile.ReadBlockD81(track, sector, imageData);
+                    break;
                 default:
                     throw new Exception(String.Format("Image data type {0} is not supported!", imageDataType.ToString()));
             }
@@ -769,6 +811,16 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
             { 
                 return (int)Const.IMAGE_DATA_TYPE.G64;
             }
+            // D71
+            if (fileExt == Const.D71_IMAGE_FILE_EXTENSION)
+            {
+                return (int)Const.IMAGE_DATA_TYPE.D71;
+            }
+            // D81
+            if (fileExt == Const.D81_IMAGE_FILE_EXTENSION)
+            {
+                return (int)Const.IMAGE_DATA_TYPE.D81;
+            }
             return (int)Const.IMAGE_DATA_TYPE.unknown;
         }
         #endregion
@@ -784,15 +836,59 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
             }
             return blockData;
         }
+        // D71
+        public static byte[] ReadBlockD71(int track, int sector, byte[] imageData)
+        {
+            byte[] blockData = null;
+            // convert track/sector to byte offset in file
+            int offset = GetD71Offset(track, sector);
+            if (offset >= 0)
+            {
+                blockData = imageData.Skip(offset).Take(Const.BLOCK_LEN).ToArray();
+            }
+            return blockData;
+        }
+        // D81
+        public static byte[] ReadBlockD81(int track, int sector, byte[] imageData)
+        {
+            byte[] blockData = null;
+            // convert track/sector to byte offset in file
+            int offset = GetD81Offset(track, sector);
+            if (offset >= 0)
+            {
+                blockData = imageData.Skip(offset).Take(Const.BLOCK_LEN).ToArray();
+            }
+            return blockData;
+        }
         public static int GetD64Offset(int track, int sector)
         {
-            if ((track < Const.MIN_TRACK) || (track > Const.MAX_TRACK) || (sector < Const.MIN_SECTOR) || (sector >= Const.NUM_OF_SECTORS_PER_TRACK[track]))
+            if ((track < Const.MIN_TRACK) || (track > Const.MAX_TRACK_D64) || (sector < Const.MIN_SECTOR) || (sector >= Const.NUM_OF_SECTORS_PER_TRACK_D64[track]))
             {
                 return -1;
             }
-            int SumOfSectorsToTrack = Const.NUM_OF_SECTORS_PER_TRACK.Take(track).Sum(); // used System.Linq;
+            int SumOfSectorsToTrack = Const.NUM_OF_SECTORS_PER_TRACK_D64.Take(track).Sum(); // used System.Linq;
             return (SumOfSectorsToTrack + sector) * Const.BLOCK_LEN;
         }
+        // D71
+        public static int GetD71Offset(int track, int sector)
+        {
+            if ((track < Const.MIN_TRACK) || (track > Const.MAX_TRACK_D71) || (sector < Const.MIN_SECTOR) || (sector >= Const.NUM_OF_SECTORS_PER_TRACK_D71[track]))
+            {
+                return -1;
+            }
+            int SumOfSectorsToTrack = Const.NUM_OF_SECTORS_PER_TRACK_D71.Take(track).Sum(); // used System.Linq;
+            return (SumOfSectorsToTrack + sector) * Const.BLOCK_LEN;
+        }
+        // D81
+        public static int GetD81Offset(int track, int sector)
+        {
+            if ((track < Const.MIN_TRACK) || (track > Const.MAX_TRACK_D81) || (sector < Const.MIN_SECTOR) || (sector >= Const.MAX_SECTOR_D81)) // D81
+            {
+                return -1;
+            }
+            return ((track -1 ) * Const.MAX_SECTOR_D81 * Const.BLOCK_LEN) + (sector * Const.BLOCK_LEN);
+        }
+
         #endregion
 
         #region Write (file access)
