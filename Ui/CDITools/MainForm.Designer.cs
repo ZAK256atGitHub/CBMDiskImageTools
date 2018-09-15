@@ -44,6 +44,8 @@
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBoxDiskLabel = new System.Windows.Forms.TextBox();
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.textBoxFilename = new System.Windows.Forms.TextBox();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,11 +63,12 @@
             this.columnHeader6,
             this.columnHeader7,
             this.columnHeader8,
-            this.columnHeader9});
+            this.columnHeader9,
+            this.columnHeader10});
             this.listView1.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listView1.Location = new System.Drawing.Point(12, 56);
+            this.listView1.Location = new System.Drawing.Point(12, 88);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(868, 443);
+            this.listView1.Size = new System.Drawing.Size(1167, 411);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -123,7 +126,7 @@
             this.toolStripMenuItem1});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(893, 27);
+            this.menuStrip2.Size = new System.Drawing.Size(1192, 27);
             this.menuStrip2.TabIndex = 1;
             this.menuStrip2.Text = "menuStrip1";
             // 
@@ -161,18 +164,35 @@
             this.textBoxDiskLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxDiskLabel.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxDiskLabel.Location = new System.Drawing.Point(12, 30);
+            this.textBoxDiskLabel.Location = new System.Drawing.Point(12, 59);
             this.textBoxDiskLabel.Name = "textBoxDiskLabel";
             this.textBoxDiskLabel.ReadOnly = true;
-            this.textBoxDiskLabel.Size = new System.Drawing.Size(868, 23);
+            this.textBoxDiskLabel.Size = new System.Drawing.Size(1167, 23);
             this.textBoxDiskLabel.TabIndex = 2;
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "Info";
+            this.columnHeader10.Width = 300;
+            // 
+            // textBoxFilename
+            // 
+            this.textBoxFilename.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxFilename.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxFilename.Location = new System.Drawing.Point(12, 30);
+            this.textBoxFilename.Name = "textBoxFilename";
+            this.textBoxFilename.ReadOnly = true;
+            this.textBoxFilename.Size = new System.Drawing.Size(1167, 23);
+            this.textBoxFilename.TabIndex = 3;
             // 
             // MainForm
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(893, 509);
+            this.ClientSize = new System.Drawing.Size(1192, 509);
+            this.Controls.Add(this.textBoxFilename);
             this.Controls.Add(this.textBoxDiskLabel);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.menuStrip2);
@@ -206,6 +226,8 @@
         private System.Windows.Forms.ColumnHeader columnHeader9;
         private System.Windows.Forms.TextBox textBoxDiskLabel;
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
+        private System.Windows.Forms.ColumnHeader columnHeader10;
+        private System.Windows.Forms.TextBox textBoxFilename;
     }
 }
 

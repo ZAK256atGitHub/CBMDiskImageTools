@@ -36,6 +36,7 @@ namespace ZAK256.CBMDiskImageTools.Ui.CDITools
         {
             listView1.Items.Clear();
             listView1.Columns[0].TextAlign = HorizontalAlignment.Right;
+            textBoxFilename.Text = fileName;
             string imagePathFilename = fileName;
             byte[] bamBlock;
             ArrayList dirEntryList = new ArrayList();
@@ -63,6 +64,7 @@ namespace ZAK256.CBMDiskImageTools.Ui.CDITools
                     listViewItem.SubItems.Add((GEOSDisk.IsGeosFile(de) ? GEOSDisk.GetGEOSFiletypeName(de) : "   "));
                     listViewItem.SubItems.Add((GEOSDisk.IsGeosFile(de) ? GEOSDisk.GetGEOSFileStructureName(de) : "    "));
                     listViewItem.SubItems.Add(DOSDisk.GetMD5ByFile(de, imageData, imageDataType));
+                    listViewItem.SubItems.Add(DOSDisk.GetInfoTextByMP3File(de, imageData, imageDataType));
                     listView1.Items.Add(listViewItem);
                 }
             }

@@ -544,6 +544,52 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
             byte[] fileData = getFileData(dirEntry, imageData,  imageDataType);
             return Core.GetMD5Hash(fileData);
         }
+        // BUILD of MegaPatch V3.0 File
+        public static string GetInfoTextByMP3File(byte[] dirEntry, byte[] imageData, int imageDataType)
+        {
+            int pos1 = -1;
+            int pos2 = -1;
+            string text = "";
+            byte[] fileData = getFileData(dirEntry, imageData, imageDataType);
+            String textStr = Encoding.ASCII.GetString(fileData);
+            pos1 = textStr.IndexOf("BUILD:");
+            if (pos1 > 0)
+            {
+                pos2 = textStr.IndexOf("\u0000", pos1);
+            }
+            if ((pos1 >= 0) && (pos2 >= 0))
+            {
+                text = textStr.Substring(pos1, pos2 - pos1);
+            }
+            if (text.Length > 0)
+            {
+                text = text + " " + GetInfoTextLANGUAGEByMP3File(dirEntry, imageData, imageDataType);
+            }
+            return text;
+        }
+        // BUILD of MegaPatch V3.0 File
+        public static string GetInfoTextLANGUAGEByMP3File(byte[] dirEntry, byte[] imageData, int imageDataType)
+        {
+            int pos1 = -1;
+            int pos2 = -1;            
+            byte[] fileData = getFileData(dirEntry, imageData, imageDataType);
+            String textStr = Encoding.ASCII.GetString(fileData);
+            pos1 = textStr.IndexOf("Ziel");
+            pos2 = textStr.IndexOf("Target");
+            if ((pos1 >= 0) && (pos2 >= 0))
+            {
+                return "???";
+            }
+            if (pos1 > 0)
+            {
+                return "deutsch";
+            }
+            if (pos2 > 0)
+            {
+                return "englisch";
+            }
+            return "";
+        }
         public static byte[] getFileData(byte[] dirEntry, byte[] imageData, int imageDataType)
         {
             int track = dirEntry[Const.DATA_BLOCK_TRACK_POS_IN_DIR_ENTRY];
