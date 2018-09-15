@@ -539,7 +539,7 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
     public static class DOSDisk
     {
         #region [DISK] File
-        public static string GetMD5ByFile(byte[] dirEntry, byte[] imageData, int imageDataType)
+        public static string GetMD5ByCBMFile(byte[] dirEntry, byte[] imageData, int imageDataType)
         {
             byte[] fileData = getFileData(dirEntry, imageData,  imageDataType);
             return Core.GetMD5Hash(fileData);
@@ -563,7 +563,13 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
             }
             if (text.Length > 0)
             {
-                text = text + " " + GetInfoTextLANGUAGEByMP3File(dirEntry, imageData, imageDataType);
+                string lang = GetInfoTextLANGUAGEByMP3File(dirEntry, imageData, imageDataType);
+                if (lang.Length > 0)
+                    text = text + " " + lang;
+                string c64c128 = GetInfoTextC64C128ByMP3File(dirEntry, imageData, imageDataType);
+                if (c64c128.Length > 0)
+                    text = text + " " + c64c128;
+
             }
             return text;
         }
@@ -588,7 +594,29 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
             {
                 return "englisch";
             }
-            return "";
+            return "---";
+        }
+        public static string GetInfoTextC64C128ByMP3File(byte[] dirEntry, byte[] imageData, int imageDataType)
+        {
+            int pos1 = -1;
+            int pos2 = -1;
+            byte[] fileData = getFileData(dirEntry, imageData, imageDataType);
+            String textStr = Encoding.ASCII.GetString(fileData);
+            pos1 = textStr.IndexOf("StartMP3_128"); // StartMP3_128 MegaPatch128
+            pos2 = textStr.IndexOf("StartMP3_64"); // StartMP3_64 MegaPatch64
+            if ((pos1 >= 0) && (pos2 >= 0))
+            {
+                return "???";
+            }
+            if (pos1 > 0)
+            {
+                return "C128";
+            }
+            if (pos2 > 0)
+            {
+                return "C64";
+            }
+            return "---";
         }
         public static byte[] getFileData(byte[] dirEntry, byte[] imageData, int imageDataType)
         {

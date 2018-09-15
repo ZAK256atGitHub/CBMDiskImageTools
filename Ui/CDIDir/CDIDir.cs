@@ -86,7 +86,7 @@ namespace ZAK256.CBMDiskImageTools.Ui.CDIDir
                             , (GEOSDisk.IsGeosFile(de) ? GEOSDisk.GetGEOSFileStructureName(de) : "    ")
                     );
                     Console.Write("|{0}"
-                        , DOSDisk.GetMD5ByFile(de, imageData, imageDataType)
+                        , DOSDisk.GetMD5ByCBMFile(de, imageData, imageDataType)
                     );
                     Console.WriteLine();
 

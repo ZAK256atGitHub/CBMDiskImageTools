@@ -36,12 +36,13 @@ namespace ZAK256.CBMDiskImageTools.Ui.CDITools
         {
             listView1.Items.Clear();
             listView1.Columns[0].TextAlign = HorizontalAlignment.Right;
-            textBoxFilename.Text = fileName;
+            
             string imagePathFilename = fileName;
             byte[] bamBlock;
             ArrayList dirEntryList = new ArrayList();
             byte[] imageData = DiskImageFile.ReadFile(imagePathFilename);
-            int imageDataType = DiskImageFile.GetImageDataType(imagePathFilename);
+            textBoxFilename.Text = fileName + " MD5:" + Core.GetMD5Hash(imageData);
+            int imageDataType = DiskImageFile.GetImageDataType(imagePathFilename);            
             bamBlock = DOSDisk.ReadBAMBlock(imageData, imageDataType);
             textBoxDiskLabel.Text = String.Format("0 \"{0}\" {1} {2}"
                 , Core.ConvertPETSCII2ASCII(DOSDisk.GetDiskName(bamBlock, imageDataType))
@@ -63,7 +64,7 @@ namespace ZAK256.CBMDiskImageTools.Ui.CDITools
                     listViewItem.SubItems.Add(dirIndex.ToString());
                     listViewItem.SubItems.Add((GEOSDisk.IsGeosFile(de) ? GEOSDisk.GetGEOSFiletypeName(de) : "   "));
                     listViewItem.SubItems.Add((GEOSDisk.IsGeosFile(de) ? GEOSDisk.GetGEOSFileStructureName(de) : "    "));
-                    listViewItem.SubItems.Add(DOSDisk.GetMD5ByFile(de, imageData, imageDataType));
+                    listViewItem.SubItems.Add(DOSDisk.GetMD5ByCBMFile(de, imageData, imageDataType));
                     listViewItem.SubItems.Add(DOSDisk.GetInfoTextByMP3File(de, imageData, imageDataType));
                     listView1.Items.Add(listViewItem);
                 }
