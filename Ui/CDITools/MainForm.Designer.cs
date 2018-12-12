@@ -38,14 +38,16 @@
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBoxDiskLabel = new System.Windows.Forms.TextBox();
-            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.textBoxFilename = new System.Windows.Forms.TextBox();
+            this.textBoxInfoText = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,10 +70,11 @@
             this.listView1.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listView1.Location = new System.Drawing.Point(12, 88);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(1167, 411);
+            this.listView1.Size = new System.Drawing.Size(1167, 236);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listView1_KeyDown);
             // 
             // columnHeader1
             // 
@@ -119,6 +122,11 @@
             // 
             this.columnHeader9.Text = "MD5";
             this.columnHeader9.Width = 280;
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "Info";
+            this.columnHeader10.Width = 300;
             // 
             // menuStrip2
             // 
@@ -170,11 +178,6 @@
             this.textBoxDiskLabel.Size = new System.Drawing.Size(1167, 23);
             this.textBoxDiskLabel.TabIndex = 2;
             // 
-            // columnHeader10
-            // 
-            this.columnHeader10.Text = "Info";
-            this.columnHeader10.Width = 300;
-            // 
             // textBoxFilename
             // 
             this.textBoxFilename.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -186,12 +189,38 @@
             this.textBoxFilename.Size = new System.Drawing.Size(1167, 23);
             this.textBoxFilename.TabIndex = 3;
             // 
+            // textBoxInfoText
+            // 
+            this.textBoxInfoText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxInfoText.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxInfoText.Location = new System.Drawing.Point(12, 359);
+            this.textBoxInfoText.Multiline = true;
+            this.textBoxInfoText.Name = "textBoxInfoText";
+            this.textBoxInfoText.ReadOnly = true;
+            this.textBoxInfoText.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxInfoText.Size = new System.Drawing.Size(1167, 138);
+            this.textBoxInfoText.TabIndex = 4;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button1.Location = new System.Drawing.Point(12, 330);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Copy to Clipboard";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1192, 509);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.textBoxInfoText);
             this.Controls.Add(this.textBoxFilename);
             this.Controls.Add(this.textBoxDiskLabel);
             this.Controls.Add(this.listView1);
@@ -228,6 +257,8 @@
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
         private System.Windows.Forms.ColumnHeader columnHeader10;
         private System.Windows.Forms.TextBox textBoxFilename;
+        private System.Windows.Forms.TextBox textBoxInfoText;
+        private System.Windows.Forms.Button button1;
     }
 }
 

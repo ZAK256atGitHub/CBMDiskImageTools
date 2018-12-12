@@ -15,7 +15,7 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
         internal enum IMAGE_DATA_TYPE : int
         {
             D64 = 0,
-            G64 = 1,
+            G64 = 1, // G64
             D71 = 3, // D71
             D81 = 4, // D81
             unknown = -1
@@ -23,12 +23,13 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
         internal static readonly string D64_IMAGE_FILE_EXTENSION = ".D64";
         internal static readonly string D71_IMAGE_FILE_EXTENSION = ".D71"; // D71
         internal static readonly string D81_IMAGE_FILE_EXTENSION = ".D81"; // D81
-        internal static readonly string G64_IMAGE_FILE_EXTENSION = ".G64";
+        internal static readonly string G64_IMAGE_FILE_EXTENSION = ".G64"; // G64
         internal static readonly string CVT_FILE_EXTENSION = ".CVT";
         internal const int MIN_TRACK = 1;
         internal const int MAX_TRACK_D64 = 35;
         internal const int MAX_TRACK_D71 = 70; // D71
         internal const int MAX_TRACK_D81 = 80; // D81
+        internal const int MAX_TRACK_G64 = 80; // G64
         internal const int MIN_SECTOR = 0;
         internal const int MAX_SECTOR_D81 = 40; // D81
         internal const int BLOCK_LEN = 256;
@@ -53,17 +54,22 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
         internal const int BAM_SECTOR_D71 = 0; // D71
         internal const int BAM_TRACK_D81 = 40; // D81
         internal const int BAM_SECTOR_D81 = 0; // D81
+        internal const int BAM_TRACK_G64 = 18; // G64
+        internal const int BAM_SECTOR_G64 = 0; // G64
         internal const int DOS_TYPE_POS_IN_BAM_BLOCK_D64 = 165;
         internal const int DOS_TYPE_POS_IN_BAM_BLOCK_D71 = 165; // D71
-        internal const int DOS_TYPE_POS_IN_BAM_BLOCK_D81 = 25; // 81
+        internal const int DOS_TYPE_POS_IN_BAM_BLOCK_D81 = 25; // D81
+        internal const int DOS_TYPE_POS_IN_BAM_BLOCK_G64 = 165; // G64
         internal const int DOS_TYPE_LEN = 2;
         internal const int DISK_ID_POS_IN_BAM_BLOCK_D64 = 162;
         internal const int DISK_ID_POS_IN_BAM_BLOCK_D71 = 162; // D71
         internal const int DISK_ID_POS_IN_BAM_BLOCK_D81 = 22; // D81
+        internal const int DISK_ID_POS_IN_BAM_BLOCK_G64 = 162; // G64
         internal const int DISK_ID_LEN = 2;
         internal const int DISK_NAME_POS_IN_BAM_BLOCK_D64 = 144;
         internal const int DISK_NAME_POS_IN_BAM_BLOCK_D71 = 144; // D71
         internal const int DISK_NAME_POS_IN_BAM_BLOCK_D81 = 4; // D81
+        internal const int DISK_NAME_POS_IN_BAM_BLOCK_G64 = 144; // G64
         internal const int DISK_NAME_LEN = 16;
         internal const int FILENAME_POS_IN_DIR_ENTRY = 3;
         internal const int FILENAME_LEN = 16;
@@ -89,6 +95,14 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
                     // Values 5-15 are illegal
         };
         internal readonly static int[] NUM_OF_SECTORS_PER_TRACK_D64 = {
+            0,
+            21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21, // Zone 1
+	        19,19,19,19,19,19,19,                               // Zone 2
+	        18,18,18,18,18,18,                                  // Zone 3
+	        17,17,17,17,17                                      // Zone 4
+        };
+        // G64
+        internal readonly static int[] NUM_OF_SECTORS_PER_TRACK_G64 = {
             0,
             21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21, // Zone 1
 	        19,19,19,19,19,19,19,                               // Zone 2
@@ -536,6 +550,288 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
         }
         #endregion
     }
+    public static class G64
+    {
+        public static byte[] ReadBlockG64(int track, int sector, byte[] imageData)
+        {
+            byte[] blockData = null;
+
+            int trackOffset;
+            int trackLen;
+            GetG64TrackOffsetAndLenghts(track, imageData, out trackOffset, out trackLen);            
+            blockData = ReadSectorG64(ref imageData, sector, trackOffset, trackLen);
+            return blockData;
+        }
+        public static void GetG64TrackOffsetAndLenghts(int track, byte[] imageData, out int offset, out int len)
+        {
+            offset = 0;
+            len = 0;
+
+            // Addr  00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F        ASCII
+            // ----  -----------------------------------------------   ----------------
+            // 0000: 47 43 52 2D 31 35 34 31 00 54 F8 1E .. .. .. ..   GCR-1541?T°?....
+            // 
+            //   Bytes: $0000-0007: File signature "GCR-1541"
+            //                0008: G64 version (presently only $00 defined)
+            //                0009: Number of tracks in image (usually $54, decimal 84)
+            //           000A-000B: Size of each stored track in bytes (usually  7928,  or
+            //                      $1EF8 in LO/HI format.
+
+            // Check 'File signature'
+            byte[] first8Byte = imageData.Take(8).ToArray();
+            if (Encoding.ASCII.GetString(first8Byte) != "GCR-1541")
+            {
+                throw new Exception("file signature error");
+            }
+
+            // Check Number of tracks in image
+            int numberOfTracks = imageData[9];
+            if (track > numberOfTracks)
+            {
+                throw new Exception("number of track error");
+            }
+            //       00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F        ASCII
+            //       -----------------------------------------------   ----------------
+            // 0000: .. .. .. .. .. .. .. .. .. .. .. .. AC 02 00 00   ............¬úúú
+            // 0010: 00 00 00 00 A6 21 00 00 00 00 00 00 A0 40 00 00   úúúú¦!úúúúúú @úú
+            // 0020: 00 00 00 00 9A 5F 00 00 00 00 00 00 94 7E 00 00   úúúúš_úúúúúú”~úú
+            // 0030: 00 00 00 00 8E 9D 00 00 00 00 00 00 88 BC 00 00   úúúúŽúúúúúúˆ¼úú
+            // 0040: 00 00 00 00 82 DB 00 00 00 00 00 00 7C FA 00 00   úúúú‚Ûúúúúúú|úúú
+            // 0050: 00 00 00 00 76 19 01 00 00 00 00 00 70 38 01 00   úúúúvúúúúúúúp8úú
+            // 0060: 00 00 00 00 6A 57 01 00 00 00 00 00 64 76 01 00   úúúújWúúúúúúdvúú
+            // 0070: 00 00 00 00 5E 95 01 00 00 00 00 00 58 B4 01 00   úúúú^•úúúúúúX´úú
+            // 0080: 00 00 00 00 52 D3 01 00 00 00 00 00 4C F2 01 00   úúúúRÓúúúúúúLòúú
+            // 0090: 00 00 00 00 46 11 02 00 00 00 00 00 40 30 02 00   úúúúFúúúúúúú@0úú
+            // 00A0: 00 00 00 00 3A 4F 02 00 00 00 00 00 34 6E 02 00   úúúú:Oúúúúúú4núú
+            // 00B0: 00 00 00 00 2E 8D 02 00 00 00 00 00 28 AC 02 00   úúúú.úúúúúú(¬úú
+            // 00C0: 00 00 00 00 22 CB 02 00 00 00 00 00 1C EA 02 00   úúúú"Ëúúúúúúúêúú
+            // 00D0: 00 00 00 00 16 09 03 00 00 00 00 00 10 28 03 00   úúúúúúúúúúúúú(úú
+            // 00E0: 00 00 00 00 0A 47 03 00 00 00 00 00 04 66 03 00   úúúúúGúúúúúúúfúú
+            // 00F0: 00 00 00 00 FE 84 03 00 00 00 00 00 F8 A3 03 00   úúúúþ„úúúúúúø£úú
+            // 0100: 00 00 00 00 F2 C2 03 00 00 00 00 00 EC E1 03 00   úúúúòÂúúúúúúìáúú
+            // 0110: 00 00 00 00 E6 00 04 00 00 00 00 00 E0 1F 04 00   úúúúæúúúúúúúàúúú
+            // 0120: 00 00 00 00 DA 3E 04 00 00 00 00 00 D4 5D 04 00   úúúúÚ>úúúúúúÔ]úú
+            // 0130: 00 00 00 00 CE 7C 04 00 00 00 00 00 C8 9B 04 00   úúúúÎ|úúúúúúÈ›úú
+            // 0140: 00 00 00 00 C2 BA 04 00 00 00 00 00 BC D9 04 00   úúúúÂºúúúúúú¼Ùúú
+            // 0150: 00 00 00 00 B6 F8 04 00 00 00 00 00 .. .. .. ..   úúúú¶øúúúúú.....
+            // 
+            //   Bytes: $000C-000F: Offset  to  stored  track  1.0  ($000002AC,  in  LO/HI
+            //                      format, see below for more)
+            //           0010-0013: Offset to stored track 1.5 ($00000000)
+            //           0014-0017: Offset to stored track 2.0 ($000021A6)
+            //              ...
+            //           0154-0157: Offset to stored track 42.0 ($0004F8B6)
+            //           0158-015B: Offset to stored track 42.5 ($00000000)
+
+            // Get Offset
+            byte[] offsetToTrackArray = imageData.Skip((track - 1) * 8 + 0x0c).Take(4).ToArray();
+            // If the system architecture is little-endian (that is, little end first),
+            // reverse the byte array.
+            if (!BitConverter.IsLittleEndian)
+            {
+                Array.Reverse(offsetToTrackArray);
+            }
+            offset = BitConverter.ToInt32(offsetToTrackArray, 0) + 2;
+            byte[] offsetToTrackLenArray = imageData.Skip(offset - 2).Take(2).ToArray();
+            if (!BitConverter.IsLittleEndian)
+            {
+                Array.Reverse(offsetToTrackLenArray);
+            }
+            len = BitConverter.ToInt16(offsetToTrackLenArray, 0);
+
+            // From the track 1.0 entry we see it is set for $000002AC.  Going  to  that
+            // file offset, here is what we see...
+            // 
+            //       00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F        ASCII
+            //       -----------------------------------------------   ----------------
+            // 02A0: .. .. .. .. .. .. .. .. .. .. .. .. 0C 1E FF FF   ............úúúú
+            // 02B0: FF FF FF 52 54 B5 29 4B 7A 5E 95 55 55 55 55 55   úúúRTµ)Kz^•UUUUU
+            // 02C0: 55 55 55 55 55 55 FF FF FF FF FF 55 D4 A5 29 4A   UUUUUUúúúúúUÔ¥)J
+            // 02D0: 52 94 A5 29 4A 52 94 A5 29 4A 52 94 A5 29 4A 52   R”¥)JR”¥)JR”¥)JR
+            // 
+            //   Bytes: $02AC-02AD: Actual size of stored track (7692 or $1E0C,  in  LO/HI
+            //                      format)
+            //           02AE-02AE+$1E0C: Track data
+        }
+        public static int FindNextSync(ref byte[] imageData, int trackOffset, int trackLen, int startPosBit)
+        {
+            if (startPosBit > trackLen * 8)
+                return (0);
+
+            int bitCount = 0;
+            for (int i = startPosBit; i < (trackLen * 8) - 1; i++)
+            {
+                if (bitByByteArray(ref imageData, trackOffset, trackLen, i))
+                {
+                    bitCount++;
+                }
+                else
+                {
+                    if (bitCount >= 10)
+                    {
+                        return (i);
+                    }
+                    bitCount = 0;
+                }
+            }
+            return 0;
+        }
+        public static byte[] ReadSectorG64(ref byte[] imageData, int sector, int trackOffset, int trackLen)
+        {
+            byte[] sectorkData = null;
+            byte[] headerDataGCR;
+            byte[] sectorDataGCR;
+            int nextSyncBit = FindNextSync(ref imageData, trackOffset, trackLen, 0);
+            while (nextSyncBit > 0)
+            {
+                byte idByte = GetByte(ref imageData, trackOffset, trackLen, nextSyncBit);
+                if (idByte == 0x52)
+                {
+                    headerDataGCR = GetBytes(ref imageData, trackOffset, trackLen, nextSyncBit, 10);
+                    byte[] headerData = convertBytesFromByteGCR(headerDataGCR);
+                    // MessageBox.Show(ByteArrayToString(headerData));
+                    if (headerData[2] == sector)
+                    {
+                        nextSyncBit = FindNextSync(ref imageData, trackOffset, trackLen, nextSyncBit);
+                        byte idDataByte = GetByte(ref imageData, trackOffset, trackLen, nextSyncBit);
+                        if (idDataByte == 0x55)
+                        {
+                            sectorDataGCR = GetBytes(ref imageData, trackOffset, trackLen, nextSyncBit, 325);
+                            byte[] sectorData = convertBytesFromByteGCR(sectorDataGCR);
+                            sectorkData = sectorData.Skip(1).Take(256).ToArray();
+                            return sectorkData;
+                        }
+                        else
+                        {
+                            // Fehler
+                        }
+                    }
+                    else
+                    {
+                        // weitermachen
+                    }
+                }
+                //MessageBox.Show(idByte.ToString());
+                nextSyncBit = FindNextSync(ref imageData, trackOffset, trackLen, nextSyncBit);
+            }
+            return sectorkData;
+        }
+        public static byte[] convertBytesFromByteGCR(byte[] gcr)
+        {
+            byte[] fiveBytes;
+            byte[] fourBytes;
+            if (gcr.Length % 5 != 0) // muss durch 5 Teilbar sein
+            {
+                throw new Exception("convertBytesFromByteGCR error");
+            }
+            int loops = gcr.Length / 5;
+            byte[] retBytes = new byte[loops * 4];
+            int y = 0;
+            for (int i = 0; i < loops; i++)
+            {
+                fiveBytes = gcr.Skip(i * 5).Take(5).ToArray();
+                fourBytes = convert4BytesFrom5ByteGCR(fiveBytes);
+                retBytes[y] = fourBytes[0];
+                retBytes[y + 1] = fourBytes[1];
+                retBytes[y + 2] = fourBytes[2];
+                retBytes[y + 3] = fourBytes[3];
+                y += 4;
+            }
+            return retBytes;
+        }
+        public static byte[] convert4BytesFrom5ByteGCR(byte[] gcr)
+        {
+            byte[] retBytes = new byte[4];
+            /* GCR-to-Nibble conversion tables */
+            byte[] GCR_decode_high = {
+                0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+                0xff, 0x80, 0x00, 0x10, 0xff, 0xc0, 0x40, 0x50,
+                0xff, 0xff, 0x20, 0x30, 0xff, 0xf0, 0x60, 0x70,
+                0xff, 0x90, 0xa0, 0xb0, 0xff, 0xd0, 0xe0, 0xff
+            };
+
+            byte[] GCR_decode_low = {
+                0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+                0xff, 0x08, 0x00, 0x01, 0xff, 0x0c, 0x04, 0x05,
+                0xff, 0xff, 0x02, 0x03, 0xff, 0x0f, 0x06, 0x07,
+                0xff, 0x09, 0x0a, 0x0b, 0xff, 0x0d, 0x0e, 0xff
+            };
+            byte hnibble, lnibble;
+            int badGCR;
+            // int nConverted;
+
+            badGCR = 0;
+
+            hnibble = GCR_decode_high[gcr[0] >> 3];
+            lnibble = GCR_decode_low[((gcr[0] << 2) | (gcr[1] >> 6)) & 0x1f];
+            if ((hnibble == 0xff || lnibble == 0xff) && (badGCR == 0)) // !badGCR -> (badGCR==0)
+                badGCR = 1;
+            retBytes[0] = (byte)(hnibble | lnibble);
+
+            hnibble = GCR_decode_high[(gcr[1] >> 1) & 0x1f];
+            lnibble = GCR_decode_low[((gcr[1] << 4) | (gcr[2] >> 4)) & 0x1f];
+            if ((hnibble == 0xff || lnibble == 0xff) && (badGCR == 0))
+                badGCR = 2;
+            retBytes[1] = (byte)(hnibble | lnibble);
+
+            hnibble = GCR_decode_high[((gcr[2] << 1) | (gcr[3] >> 7)) & 0x1f];
+            lnibble = GCR_decode_low[(gcr[3] >> 2) & 0x1f];
+            if ((hnibble == 0xff || lnibble == 0xff) && (badGCR == 0))
+                badGCR = 3;
+            retBytes[2] = (byte)(hnibble | lnibble);
+
+            hnibble = GCR_decode_high[((gcr[3] << 3) | (gcr[4] >> 5)) & 0x1f];
+            lnibble = GCR_decode_low[gcr[4] & 0x1f];
+            if ((hnibble == 0xff || lnibble == 0xff) && (badGCR == 0))
+                badGCR = 4;
+            retBytes[3] = (byte)(hnibble | lnibble);
+
+            // nConverted = (badGCR == 0) ? 4 : (badGCR - 1);
+
+            return (retBytes);
+        }
+        public static Boolean bitByByteArray(ref byte[] ba, int offset, int len, int bitIndex)
+        {
+            int pos = bitIndex / 8;
+            if (pos > offset + len)
+            {
+                throw new Exception("Bit Array error");
+            }
+            int pos2 = bitIndex - (pos * 8);
+            byte b = ba[pos + offset];
+            return GetBit(b, pos2);
+        }
+        static bool GetBit(byte b, int bitNumber)
+        {
+            //return (b & (1 << bitNumber)) > 0;
+            return (b & (1 << 7 - bitNumber)) > 0;
+        }
+        static byte GetByte(ref byte[] ba, int offset, int len, int bitIndex)
+        {
+            if (bitIndex + 7 > len * 8)
+            {
+                throw new Exception("GetByte error");
+            }
+            byte b = 0; // Clear all Bits
+            for (int pos = 0; pos <= 7; pos++)
+            {
+                if (bitByByteArray(ref ba, offset, len, bitIndex + pos))
+                {
+                    b = (byte)(b | (1 << 7 - pos));
+                }
+            }
+            return b;
+        }
+        static byte[] GetBytes(ref byte[] ba, int offset, int len, int bitIndex, int byteCount)
+        {
+            byte[] ret = new byte[byteCount];
+            for (int i = 0; i < byteCount; i++)
+            {
+                ret[i] = GetByte(ref ba, offset, len, bitIndex + (i * 8));
+            }
+            return ret;
+        }
+    }
     public static class DOSDisk
     {
         #region [DISK] File
@@ -588,11 +884,11 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
             }
             if (pos1 > 0)
             {
-                return "deutsch";
+                return "Deutsch";
             }
             if (pos2 > 0)
             {
-                return "englisch";
+                return "Englisch";
             }
             return "---";
         }
@@ -790,6 +1086,9 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
                 // D81
                 case (int)Const.IMAGE_DATA_TYPE.D81:
                     return bamBlock.Skip(Const.DOS_TYPE_POS_IN_BAM_BLOCK_D81).Take(Const.DOS_TYPE_LEN).ToArray();
+                // G64
+                case (int)Const.IMAGE_DATA_TYPE.G64:
+                    return bamBlock.Skip(Const.DOS_TYPE_POS_IN_BAM_BLOCK_G64).Take(Const.DOS_TYPE_LEN).ToArray();
                 default:
                     throw new Exception(String.Format("Image data type {0} is not supported!", imageDataType.ToString()));
             }
@@ -807,6 +1106,9 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
                 // D81
                 case (int)Const.IMAGE_DATA_TYPE.D81:
                     return bamBlock.Skip(Const.DISK_ID_POS_IN_BAM_BLOCK_D81).Take(Const.DISK_ID_LEN).ToArray();
+                // G64
+                case (int)Const.IMAGE_DATA_TYPE.G64:
+                    return bamBlock.Skip(Const.DISK_ID_POS_IN_BAM_BLOCK_G64).Take(Const.DISK_ID_LEN).ToArray();
                 default:
                     throw new Exception(String.Format("Image data type {0} is not supported!", imageDataType.ToString()));
             }
@@ -824,6 +1126,9 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
                 // D81
                 case (int)Const.IMAGE_DATA_TYPE.D81:
                     return bamBlock.Skip(Const.DISK_NAME_POS_IN_BAM_BLOCK_D81).Take(Const.DISK_NAME_LEN).ToArray();
+                // G64
+                case (int)Const.IMAGE_DATA_TYPE.G64:
+                    return bamBlock.Skip(Const.DISK_NAME_POS_IN_BAM_BLOCK_G64).Take(Const.DISK_NAME_LEN).ToArray();
                 default:
                     throw new Exception(String.Format("Image data type {0} is not supported!", imageDataType.ToString()));
             }
@@ -844,6 +1149,9 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
                 // D81
                 case (int)Const.IMAGE_DATA_TYPE.D81:
                     return ReadBlock(Const.BAM_TRACK_D81, Const.BAM_SECTOR_D81, imageData, imageDataType);
+                // G64
+                case (int)Const.IMAGE_DATA_TYPE.G64:
+                    return ReadBlock(Const.BAM_TRACK_G64, Const.BAM_SECTOR_G64, imageData, imageDataType);
                 default:
                     throw new Exception(String.Format("Image data type {0} is not supported!", imageDataType.ToString()));
             }            
@@ -896,6 +1204,10 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
                 case (int)Const.IMAGE_DATA_TYPE.D81:
                     blockData = DiskImageFile.ReadBlockD81(track, sector, imageData);
                     break;
+                // G64
+                case (int)Const.IMAGE_DATA_TYPE.G64:
+                    blockData = DiskImageFile.ReadBlockG64(track, sector, imageData);
+                    break;
                 default:
                     throw new Exception(String.Format("Image data type {0} is not supported!", imageDataType.ToString()));
             }
@@ -926,6 +1238,7 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
             {
                 return (int)Const.IMAGE_DATA_TYPE.D64;
             }
+            // G64
             if (fileExt == Const.G64_IMAGE_FILE_EXTENSION)
             { 
                 return (int)Const.IMAGE_DATA_TYPE.G64;
@@ -978,6 +1291,11 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
                 blockData = imageData.Skip(offset).Take(Const.BLOCK_LEN).ToArray();
             }
             return blockData;
+        }
+        // G64
+        public static byte[] ReadBlockG64(int track, int sector, byte[] imageData)
+        {            
+            return G64.ReadBlockG64(track, sector, imageData);             
         }
         public static int GetD64Offset(int track, int sector)
         {
