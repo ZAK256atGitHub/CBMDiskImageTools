@@ -296,7 +296,7 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest
             Console.Write("   pcGeos 0.03 - GGET files               :");
             foreach (var testFile in dictGeos64pcGeos03.Values)
             {
-                testFile.cleanCvtData = GEOSDisk.GetCleanCvtFromCvt(testFile.data);
+                testFile.cleanCvtData = GEOSDisk.GetCleanCvtFromCvt(testFile.data,false);
                 string newMD5 = Core.GetMD5Hash(testFile.cleanCvtData);
                 testFile.CleanCvtDataMd5 = newMD5;
                 Console.Write("\"{0}\" ", testFile.name);
@@ -307,7 +307,7 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest
             {
                 if (testFile.data != null)
                 {
-                    testFile.cleanCvtData = GEOSDisk.GetCleanCvtFromCvt(testFile.data);
+                    testFile.cleanCvtData = GEOSDisk.GetCleanCvtFromCvt(testFile.data,false);
                     string newMD5 = Core.GetMD5Hash(testFile.cleanCvtData);
                     testFile.CleanCvtDataMd5 = newMD5;
                     Console.Write("\"{0}\" ", testFile.name);
@@ -319,7 +319,7 @@ namespace ZAK256.CBMDiskImageTools.Test.UnitTest
             {
                 if (testFile.data != null)
                 {
-                    testFile.cleanCvtData = GEOSDisk.GetCleanCvtFromCvt(testFile.data);
+                    testFile.cleanCvtData = GEOSDisk.GetCleanCvtFromCvt(testFile.data,false);
                     string newMD5 = Core.GetMD5Hash(testFile.cleanCvtData);
                     testFile.CleanCvtDataMd5 = newMD5;
                     Console.Write("\"{0}\" ", testFile.name);

@@ -305,7 +305,7 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
             }
             return cvtVLIRRecordBlock;
         }
-        public static byte[] GetCleanCvtFromCvt(byte[] cvtData)
+        public static byte[] GetCleanCvtFromCvt(byte[] cvtData, bool ignoreFileSignature)
         {
             // CVT
             // Block 0 = Signature Block
@@ -328,9 +328,22 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
                 return null;
             }            
             string fileSignature = System.Text.Encoding.ASCII.GetString(cvtSignatureBlock.Skip(Const.DIR_ENTRY_LEN).Take(Const.CVT_FILE_SIGNATURE_PRG.Length).ToArray());
-            if (fileSignature != Const.CVT_FILE_SIGNATURE_PRG)
+            if (!ignoreFileSignature)
             {
-                throw new Exception(String.Format("The file signature is {0} but {1}!", fileSignature, Const.CVT_FILE_SIGNATURE_PRG));
+                if (fileSignature != Const.CVT_FILE_SIGNATURE_PRG)
+                {
+                    throw new Exception(String.Format("The file signature is {0} but {1}!", fileSignature, Const.CVT_FILE_SIGNATURE_PRG));
+                }
+            }
+            else
+            {
+                int i = Const.DIR_ENTRY_LEN;
+                byte[] ba = System.Text.Encoding.ASCII.GetBytes(Const.CVT_FILE_SIGNATURE_PRG.ToArray());
+                foreach (byte b in ba)
+                {
+                    cvtSignatureBlock[i] = b;
+                    i++;
+                }
             }
             cvtSignatureBlock = ClearCvtSignatureBlock(cvtSignatureBlock);
             ms.Write(cvtSignatureBlock, 0, cvtSignatureBlock.Length);
@@ -380,7 +393,6 @@ namespace ZAK256.CBMDiskImageTools.Logic.Core
             cvtSignatureBlock[Const.DATA_BLOCK_SECTOR_POS_IN_DIR_ENTRY] = 0x00;
             cvtSignatureBlock[Const.GEOS_INFO_BLOCK_TRACK_POS_IN_DIR_ENTRY] = 0x00;
             cvtSignatureBlock[Const.GEOS_INFO_BLOCK_SECTOR_POS_IN_DIR_ENTRY] = 0x00;
-
             for (int i = Const.CVT_DIR_BLOCK_CLEAR_FROM_POS; i < Const.DATA_BLOCK_LEN; i++)
             {
                 cvtSignatureBlock[i] = 0x00;
