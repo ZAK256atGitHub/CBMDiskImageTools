@@ -657,4 +657,5 @@ Die Dateien "GEOS", "GEOBOOT" und "RBOOT" besitzen die falsche falschen GEOS Dat
 * .MD5 Dateien überprüfen
 * CleanCVT für CVT Dateien mit SEQ Dateien (Umwandlung von SEQ in PRG)
 * Stapelverarbeitung (Batch)
+
 * GUI erweitern (z.B. Drag & Drop)
